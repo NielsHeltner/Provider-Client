@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Provider.gui;
 
 namespace Provider
 {
@@ -23,6 +24,22 @@ namespace Provider
         public MainWindow()
         {
             InitializeComponent();
+            frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+        }
+
+        private void fillTextField(object sender, RoutedEventArgs e)
+        {
+            if (frame.Content.GetType() == typeof(Antonio))
+            {
+                Nils n = new Nils();
+                frame.Content = n;
+            }
+            else
+            {
+                Antonio a = new Antonio();
+
+                frame.Content = a;
+            }
         }
     }
 }
