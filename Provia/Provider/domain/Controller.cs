@@ -8,6 +8,9 @@ namespace Provider.domain
 {
     class Controller
     {
+        public Boolean Login(String Name, String Password)
+        {
 
+        }
     }
 }
