@@ -23,7 +23,7 @@ namespace Provider.gui
         private Frame mainWindow;
         private List<TestSupplier> suppliers = new List<TestSupplier>();
         private GridViewColumnHeader lastHeaderClicked = null;
-        private ListSortDirection lastDirection = ListSortDirection.Ascending;
+        private ListSortDirection lastDirection = ListSortDirection.Descending;
 
         public SupplierList(Frame mainWindow)
         {
@@ -65,15 +65,15 @@ namespace Provider.gui
                             direction = ListSortDirection.Ascending;
                         }
                     }
-                    string header = (string)headerClicked.Column.Header;
+                    string header = (string)headerClicked.Content;
                     Sort(header, direction);
                     if(direction == ListSortDirection.Ascending)
                     {
-                        headerClicked.Column.HeaderTemplate = (DataTemplate)Resources["HeaderTemplateArrowUp"];
+                        headerClicked.Column.HeaderTemplate = (DataTemplate)Resources["HeaderTemplateArrowDown"];
                     }
                     else
                     {
-                        headerClicked.Column.HeaderTemplate = (DataTemplate)Resources["HeaderTemplateArrowDown"];
+                        headerClicked.Column.HeaderTemplate = (DataTemplate)Resources["HeaderTemplateArrowUp"];
                     }
                     if(lastHeaderClicked != null && lastHeaderClicked != headerClicked)
                     {

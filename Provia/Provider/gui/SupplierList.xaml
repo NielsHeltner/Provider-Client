@@ -11,16 +11,41 @@
         <Style TargetType="ListViewItem">
             <EventSetter Event="MouseDoubleClick" Handler="ViewSupplierInformation"/>
         </Style>
+        <DataTemplate x:Key="HeaderTemplateArrowUp">
+            <DockPanel LastChildFill="True" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GridViewColumnHeader}}}">
+                <Path x:Name="arrowUp" StrokeThickness="1" Fill="Gray" Data="M 5,10 L 15,10 L 10,5 L 5,10" DockPanel.Dock="Right" Width="20" HorizontalAlignment="Right" Margin="5,0,5,0" SnapsToDevicePixels="True" />
+                <TextBlock Text="{Binding}" />
+            </DockPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="HeaderTemplateArrowDown">
+            <DockPanel LastChildFill="True" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GridViewColumnHeader}}}">
+                <Path x:Name="arrowDown" StrokeThickness="1" Fill="Gray"  Data="M 5,5 L 10,10 L 15,5 L 5,5" DockPanel.Dock="Right" Width="20" HorizontalAlignment="Right" Margin="5,0,5,0" SnapsToDevicePixels="True"/>
+                <TextBlock Text="{Binding }" />
+            </DockPanel>
+        </DataTemplate>
     </Page.Resources>
 
-        <Grid Background="White">
+    <Grid Background="White">
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="659" VerticalAlignment="Top" Width="1139" GridViewColumnHeader.Click="SortSupplierInformation">
             <ListView.View>
                 <GridView>
-                    
-                    <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Troværdighed" Width="100" DisplayMemberBinding="{Binding Credibility}"/>
-                    <GridViewColumn Header="Note" Width="300" DisplayMemberBinding="{Binding Note}" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Credibility}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Troværdighed" HorizontalContentAlignment="Left" MinWidth="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Note}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
 
                 </GridView>
             </ListView.View>
