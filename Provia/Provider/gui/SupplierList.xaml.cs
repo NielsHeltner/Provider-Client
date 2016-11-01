@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
+using System.ComponentModel;
 
 namespace Provider.gui
 {
@@ -21,6 +22,8 @@ namespace Provider.gui
     {
         private Frame mainWindow;
         private List<TestSupplier> suppliers = new List<TestSupplier>();
+        private GridViewColumnHeader lastHeaderClicked = null;
+        private ListSortDirection lastDirection = ListSortDirection.Ascending;
 
         public SupplierList(Frame mainWindow)
         {
@@ -37,6 +40,70 @@ namespace Provider.gui
         private void ViewSupplierInformation(object sender, MouseButtonEventArgs e)
         {
             mainWindow.Content = new SupplierInformation(suppliers.ElementAt(listView.SelectedIndex));
+        }
+
+        private void SortSupplierInformation(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader headerClicked = (GridViewColumnHeader)e.OriginalSource;
+            ListSortDirection direction;
+
+            if(headerClicked != null)
+            {
+                if(headerClicked.Role != GridViewColumnHeaderRole.Padding)
+                {
+                    if(headerClicked != lastHeaderClicked)
+                    {
+                        direction = ListSortDirection.Ascending;
+                    }
+                    else
+                    {
+                        if(lastDirection == ListSortDirection.Ascending)
+                        {
+                            direction = ListSortDirection.Descending;
+                        }
+                        else {
+                            direction = ListSortDirection.Ascending;
+                        }
+                    }
+                    string header = (string)headerClicked.Column.Header;
+                    Sort(header, direction);
+                    if(direction == ListSortDirection.Ascending)
+                    {
+                        headerClicked.Column.HeaderTemplate = (DataTemplate)Resources["HeaderTemplateArrowUp"];
+                    }
+                    else
+                    {
+                        headerClicked.Column.HeaderTemplate = (DataTemplate)Resources["HeaderTemplateArrowDown"];
+                    }
+                    if(lastHeaderClicked != null && lastHeaderClicked != headerClicked)
+                    {
+                        lastHeaderClicked.Column.HeaderTemplate = null;
+                    }
+                    lastHeaderClicked = headerClicked;
+                    lastDirection = direction;
+                }
+            }
+        }
+
+        private void Sort(string sortBy, ListSortDirection direction)
+        {
+            ICollectionView dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
+            dataView.SortDescriptions.Clear();
+            if(sortBy.Equals("Navn"))
+            {
+                sortBy = "Name";
+            }
+            else if(sortBy.Equals("Troværdighed"))
+            {
+                sortBy = "Credibility";
+            }
+            else if(sortBy.Equals("Note"))
+            {
+                sortBy = "Note";
+            }
+            SortDescription sortDesc = new SortDescription(sortBy, direction);
+            dataView.SortDescriptions.Add(sortDesc);
+            dataView.Refresh();
         }
     }
 }

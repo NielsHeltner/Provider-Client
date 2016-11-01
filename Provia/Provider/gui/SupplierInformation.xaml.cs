@@ -22,6 +22,9 @@ namespace Provider.gui
         public SupplierInformation(TestSupplier testSupplier)
         {
             InitializeComponent();
+            name.Content = testSupplier.Name;
+            credibility.Content = testSupplier.Credibility;
+            note.Content = testSupplier.Note;
         }
     }
 }

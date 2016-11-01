@@ -9,6 +9,21 @@
       Title="Page">
 
     <Grid Background="White">
-
+        <Label x:Name="name" Content="" HorizontalAlignment="Left" Margin="118,47,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="credibility" Content="" HorizontalAlignment="Left" Margin="118,97,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="note" Content="" HorizontalAlignment="Left" Margin="118,149,0,0" VerticalAlignment="Top"/>
+        <Label Content="Navn:" HorizontalAlignment="Left" Margin="36,47,0,0" VerticalAlignment="Top"/>
+        <Label Content="Troværdighed:" HorizontalAlignment="Left" Margin="36,97,0,0" VerticalAlignment="Top"/>
+        <Label Content="Note:" HorizontalAlignment="Left" Margin="36,149,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="378" Margin="293,47,0,0" VerticalAlignment="Top" Width="440">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Produkt" Width="200"/>
+                    <GridViewColumn Header="Leveringstid" Width="100"/>
+                    <GridViewColumn Header="Emballage" Width="140"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="763,132,0,0" VerticalAlignment="Top" Height="229" Width="208"/>
     </Grid>
 </Page>
