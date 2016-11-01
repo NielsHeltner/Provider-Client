@@ -8,12 +8,14 @@ namespace Provider.domain.users
 {
     class UserManager
     {
-        public AbstractUser loggedInUser { get; set; }
+        private HashSet<AbstractUser> users;
+
+        private AbstractUser loggedInUser { get; set; }
         
 
         public Boolean validate(String username, String password)
         {
-            ///TODO
+            ///TODO: to be implementede
             throw new NotImplementedException();
         }
     }

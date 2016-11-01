@@ -8,5 +8,6 @@ namespace Provider.domain.users
 {
     abstract class AbstractUser
     {
+        public String userName { get; set; } 
     }
 }

@@ -11,6 +11,7 @@ namespace Provider.domain
     class Controller
     {
         private static Controller instance;
+        private UserManager userManager;
 
         public Controller GetInstance()
         {
@@ -31,11 +32,10 @@ namespace Provider.domain
             ///TODO: to be implementede
             throw new NotImplementedException();
         }
-
-        public Boolean Login(String Name, String Password)
+        
+        public Boolean Login(String name, String password)
         {
-            ///TODO: to be implementede
-            throw new NotImplementedException();
+            return userManager.validate(name, password);
         }
     }
 }
