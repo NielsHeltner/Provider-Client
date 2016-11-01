@@ -67,7 +67,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="gui\Antonio.xaml">
+    <Page Include="gui\SupplierList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,12 +77,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="gui\Antonio.xaml.cs">
-      <DependentUpon>Antonio.xaml</DependentUpon>
+    <Compile Include="gui\SupplierList.xaml.cs">
+      <DependentUpon>SupplierList.xaml</DependentUpon>
     </Compile>
     <Compile Include="gui\Nils.xaml.cs">
       <DependentUpon>Nils.xaml</DependentUpon>
     </Compile>
+    <Compile Include="gui\TestSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

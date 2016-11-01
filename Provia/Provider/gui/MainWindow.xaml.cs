@@ -29,7 +29,7 @@ namespace Provider.gui
 
         private void fillTextField(object sender, RoutedEventArgs e)
         {
-                Antonio a = new Antonio(frame);
+                SupplierList a = new SupplierList(frame);
                 frame.Content = a;
         }
     }
