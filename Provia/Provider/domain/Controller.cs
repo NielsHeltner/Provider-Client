@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.SystemException;
 
 namespace Provider.domain
 {
@@ -10,7 +11,7 @@ namespace Provider.domain
     {
         public Boolean Login(String Name, String Password)
         {
-
+            throw NotImplementedException();
         }
     }
 }

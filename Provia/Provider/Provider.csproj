@@ -59,7 +59,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="domain\Bulletinboard\Bulletinboard.cs" />
+    <Compile Include="domain\Bulletinboard\Post.cs" />
     <Compile Include="domain\Controller.cs" />
+    <Compile Include="domain\page\Page.cs" />
+    <Compile Include="domain\page\PageManager.cs" />
+    <Compile Include="domain\page\Product.cs" />
+    <Compile Include="domain\users\AbstractUser.cs" />
+    <Compile Include="domain\users\Admin.cs" />
+    <Compile Include="domain\users\Note.cs" />
+    <Compile Include="domain\users\Provia.cs" />
+    <Compile Include="domain\users\Supplier.cs" />
+    <Compile Include="domain\users\UserManager.cs" />
     <Compile Include="gui\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -110,6 +121,7 @@
   <ItemGroup>
     <None Include="gui\App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
