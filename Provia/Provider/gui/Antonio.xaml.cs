@@ -15,14 +15,20 @@ using System.Windows.Shapes;
 
 namespace Provider.gui
 {
-    /// <summary>
-    /// Interaction logic for Page.xaml
-    /// </summary>
+
     public partial class Antonio : Page
     {
-        public Antonio()
+        private Frame mainWindow;
+
+        public Antonio(Frame mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+        }
+
+        private void changeToNiels(object sender, RoutedEventArgs e)
+        {
+            mainWindow.Content = new Nils();
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Provider.gui;
 
-namespace Provider
+namespace Provider.gui
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,17 +29,8 @@ namespace Provider
 
         private void fillTextField(object sender, RoutedEventArgs e)
         {
-            if (frame.Content.GetType() == typeof(Antonio))
-            {
-                Nils n = new Nils();
-                frame.Content = n;
-            }
-            else
-            {
-                Antonio a = new Antonio();
-
+                Antonio a = new Antonio(frame);
                 frame.Content = a;
-            }
         }
     }
 }
