@@ -9,7 +9,7 @@
       Title="Page">
 
     <Grid Background="White">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="659" VerticalAlignment="Top" Width="1139">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="659" VerticalAlignment="Top" Width="1139" MouseDoubleClick="ViewSupplierInformation">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Navn" Width="150" DisplayMemberBinding="{Binding Name}"/>

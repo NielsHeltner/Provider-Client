@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Provider.gui
 {
-    class TestSupplier
+    public class TestSupplier
     {
         public string Name { get; set; }
         public string Credibility { get; set; }

@@ -20,12 +20,13 @@ namespace Provider.gui
     public partial class SupplierList : Page
     {
         private Frame mainWindow;
+        private List<TestSupplier> suppliers = new List<TestSupplier>();
 
         public SupplierList(Frame mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            List<TestSupplier> suppliers = new List<TestSupplier>();
+            
             suppliers.Add(new TestSupplier() { Name = "Niels", Credibility = "High", Note = "Meh" });
             suppliers.Add(new TestSupplier() { Name = "Antonio", Credibility = "Low", Note = "Pretty Meh" });
             suppliers.Add(new TestSupplier() { Name = "Niclas", Credibility = "Very High", Note = "Pretty Nice!" });
@@ -33,9 +34,9 @@ namespace Provider.gui
             listView.ItemsSource = suppliers;
         }
 
-        private void changeToNiels(object sender, RoutedEventArgs e)
+        private void ViewSupplierInformation(object sender, MouseButtonEventArgs e)
         {
-            mainWindow.Content = new Nils();
+            mainWindow.Content = new SupplierInformation(suppliers.ElementAt(listView.SelectedIndex));
         }
     }
 }

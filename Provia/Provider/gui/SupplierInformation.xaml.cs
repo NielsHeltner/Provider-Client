@@ -15,12 +15,11 @@ using System.Windows.Shapes;
 
 namespace Provider.gui
 {
-    /// <summary>
-    /// Interaction logic for Nils.xaml
-    /// </summary>
-    public partial class Nils : Page
+
+
+    public partial class SupplierInformation : Page
     {
-        public Nils()
+        public SupplierInformation(TestSupplier testSupplier)
         {
             InitializeComponent();
         }

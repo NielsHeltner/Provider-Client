@@ -71,7 +71,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="gui\Nils.xaml">
+    <Page Include="gui\SupplierInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -80,8 +80,8 @@
     <Compile Include="gui\SupplierList.xaml.cs">
       <DependentUpon>SupplierList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="gui\Nils.xaml.cs">
-      <DependentUpon>Nils.xaml</DependentUpon>
+    <Compile Include="gui\SupplierInformation.xaml.cs">
+      <DependentUpon>SupplierInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="gui\TestSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
