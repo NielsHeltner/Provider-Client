@@ -12,8 +12,9 @@ namespace Provider.domain
     {
         private static Controller instance;
         private UserManager userManager;
+        private PageManager pageManager;
 
-        public Controller GetInstance()
+        public static Controller GetInstance()
         {
             if(instance == null)
             {
@@ -23,19 +24,17 @@ namespace Provider.domain
         }
         public List<Supplier> ViewSuppliers()
         {
-            ///TODO: to be implementede
-            throw new NotImplementedException();
+            return userManager.GetSuppliers();
         }
 
         public Page GetSupplierPage(Supplier s)
         {
-            ///TODO: to be implementede
-            throw new NotImplementedException();
+            return pageManager.GetSupplierPage(s);
         }
         
         public Boolean Login(String name, String password)
         {
-            return userManager.validate(name, password);
+            return userManager.Validate(name, password);
         }
     }
 }

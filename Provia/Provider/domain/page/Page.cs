@@ -9,7 +9,7 @@ namespace Provider.domain.page
 {
     class Page
     {
-        private Supplier owner;
+        public Supplier owner { get; }
         private List<Product> product;
 
 

@@ -10,13 +10,28 @@ namespace Provider.domain.users
     {
         private HashSet<AbstractUser> users;
 
-        private AbstractUser loggedInUser { get; set; }
+        private AbstractUser LoggedInUser { get; set; }
         
 
-        public Boolean validate(String username, String password)
+        public Boolean Validate(String username, String password)
         {
             ///TODO: to be implementede
             throw new NotImplementedException();
         }
+
+        public List<Supplier> GetSuppliers()
+        {
+            List<Supplier> suppliers = new List<Supplier>();
+            foreach(AbstractUser a in this.users)
+            {
+                if(a.GetType() == typeof(Supplier)){
+                    suppliers.Add((Supplier) a);
+                }
+                        
+            }
+
+            return suppliers;
+        }
+
     }
 }

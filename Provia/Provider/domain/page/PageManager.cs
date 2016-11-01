@@ -9,7 +9,7 @@ namespace Provider.domain.page
 {
     class PageManager
     {
-        private List<Page> pages;
+        public List<Page> pages { get; }
 
         /// <summary>
         /// Returns a suppliers page
@@ -18,8 +18,7 @@ namespace Provider.domain.page
         /// <returns>Returns a specifik suppliers page</returns>
         public Page GetSupplierPage(Supplier supplier)
         {
-            ///TODO: to be implementede
-            throw new NotImplementedException();
+            return pages.Find(x => x.owner.Equals(supplier));
         }
     }
 }
