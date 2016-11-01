@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Provider"
         mc:Ignorable="d"
-        Title="Provider" Height="800" Width="1280">
+        Title="Provider" Height="800" Width="1281">
     <Grid>
         <Button x:Name="button" Content="Tryk" HorizontalAlignment="Left" Margin="72,98,0,0" VerticalAlignment="Top" Width="76" Click="fillTextField"/>
         <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="662" Margin="232,100,0,0" VerticalAlignment="Top" Width="1033"/>
