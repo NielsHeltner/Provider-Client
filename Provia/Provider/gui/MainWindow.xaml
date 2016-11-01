@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Provider" Height="800" Width="1280">
     <Grid>
-        <Button x:Name="button" Content="Hent leverandører" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Width="76" Click="fillTextField"/>
+        <Button x:Name="button" Content="Hent leverandører" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Width="115" Click="fillTextField"/>
         <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="659" Margin="100,100,0,0" VerticalAlignment="Top" Width="1163"/>
 
     </Grid>
