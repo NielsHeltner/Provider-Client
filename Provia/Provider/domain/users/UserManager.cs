@@ -16,18 +16,7 @@ namespace Provider.domain.users
             ///TODO: to be implementede
         }
 
-        public List<Supplier> GetSuppliers()
-        {
-            List<Supplier> suppliers = new List<Supplier>();
-            foreach(AbstractUser a in users)
-            {
-                if(a.GetType() == typeof(Supplier)){
-                    suppliers.Add((Supplier) a);
-                }
-                        
-            }
-            return suppliers;
-        }
+        
 
     }
 }
