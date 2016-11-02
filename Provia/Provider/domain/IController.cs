@@ -13,5 +13,9 @@ namespace Provider.domain
         List<Page> ViewSuppliers();
 
         Page GetSupplierPage(Supplier supplier);
+
+        bool LogIn(string name, string password);
+
+        void LogOut();
     }
 }

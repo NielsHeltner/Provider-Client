@@ -42,7 +42,7 @@ namespace Provider.domain
             return pageManager.GetSupplierPage(supplier);
         }
         
-        public bool Login(string name, string password)
+        public bool LogIn(string name, string password)
         {
             return userManager.Validate(name, password);
         }
