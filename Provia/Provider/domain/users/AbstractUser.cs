@@ -12,5 +12,11 @@ namespace Provider.domain.users
 
         public String password { get; private set; }
 
+        public AbstractUser(string username, string password)
+        {
+            this.userName = username;
+            this.password = password;
+        }
+
     }
 }

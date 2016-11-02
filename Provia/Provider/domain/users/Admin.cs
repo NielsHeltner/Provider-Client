@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    public class Admin
+    public class Admin : AbstractUser
     {
+        public Admin(string username, string password) : base(username, password)
+        {
+        }
     }
 }

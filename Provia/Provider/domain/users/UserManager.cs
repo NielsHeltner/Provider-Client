@@ -12,6 +12,12 @@ namespace Provider.domain.users
 
         public AbstractUser LoggedInUser { get; private set; }
 
+        public UserManager()
+        {
+            usersSet = new HashSet<AbstractUser>();
+            usersSet.Add(new Provia("Jebisan", "123"));
+        }
+
         public Boolean Validate(String username, String password)
         {
             foreach(AbstractUser user in usersSet)
