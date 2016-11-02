@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    public class UserManager
+    public class UserManager : IUserManager
     {
         private HashSet<AbstractUser> usersSet;
 
@@ -18,7 +18,7 @@ namespace Provider.domain.users
             usersSet.Add(new Provia("Jebisan", "123"));
         }
 
-        public Boolean Validate(String username, String password)
+        public bool Validate(String username, String password)
         {
             foreach(AbstractUser user in usersSet)
             {
