@@ -32,9 +32,9 @@ namespace Provider.domain
             pageManager = new PageManager();
         }
 
-        public List<Supplier> ViewSuppliers()
+        public List<Page> ViewSuppliers()
         {
-            return userManager.GetSuppliers();
+            return pageManager.pages;
         }
 
         public Page GetSupplierPage(Supplier supplier)

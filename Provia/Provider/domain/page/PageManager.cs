@@ -11,6 +11,15 @@ namespace Provider.domain.page
     {
         public List<Page> pages { get; private set; }
 
+        public PageManager()
+        {
+            List<Page> pageList = new List<Page>();
+            pageList.Add(new Page(new Supplier()));
+            pageList.Add(new Page(new Supplier()));
+            pageList.Add(new Page(new Supplier()));
+            pages = pageList;
+        }
+
         /// <summary>
         /// Returns a suppliers page
         /// </summary>

@@ -18,11 +18,11 @@ namespace Provider.domain.users
             users.Add(new Provia("Jebisan", "123"));
         }
 
-        public bool Validate(string username, string password)
+        public bool Validate(string userName, string password)
         {
             foreach(AbstractUser user in users)
             {
-               if(username.Equals(user.userName))
+               if(userName.Equals(user.userName))
                 {
                     if(password.Equals(user.password))
                     {
@@ -31,19 +31,6 @@ namespace Provider.domain.users
                 }
             }
             return false;
-        }
-
-        public List<Supplier> GetSuppliers()
-        {
-            List<Supplier> suppliers = new List<Supplier>();
-            foreach(AbstractUser user in users)
-            {
-                if(user.GetType() == typeof(Supplier)){
-                    suppliers.Add((Supplier) user);
-                }
-                        
-            }
-            return suppliers;
         }
 
     }

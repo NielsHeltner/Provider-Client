@@ -12,6 +12,10 @@ namespace Provider.domain.page
         public Supplier owner { get; private set; }
         private List<Product> product;
 
+        public Page(Supplier owner)
+        {
+            this.owner = owner;
+        }
 
         /// <summary>
         /// Returns the specifik product with this product ID
