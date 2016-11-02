@@ -11,8 +11,8 @@ namespace Provider.domain.page
         private int ID;
         public double price { get; private set; }
         public DateTime deliveryTime { get; private set; }
-        public String productInfomation { get; private set; }
-        public String productName { get; private set; }
+        public string productInfomation { get; private set; }
+        public string productName { get; private set; }
         /// <summary>
         /// The constructor to a product
         /// Make sure that the price isnt negativ
@@ -22,7 +22,7 @@ namespace Provider.domain.page
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
         /// <param name="delverytime">The estimated time for a delvery</param>
-        public Product(int ID, double price, String productInfomation, String productName, DateTime deliveryTime)
+        public Product(int ID, double price, string productInfomation, string productName, DateTime deliveryTime)
         {
             this.ID = ID;
             this.price = price;
@@ -38,7 +38,7 @@ namespace Provider.domain.page
         /// <param name="price">Price for this</param>
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
-        public Product(int ID, double price, String productInfomation, String productName) : 
+        public Product(int ID, double price, string productInfomation, string productName) : 
             this(ID, price, productInfomation, productName, default(DateTime)){ }
     }
 }

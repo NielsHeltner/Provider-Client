@@ -18,7 +18,7 @@ namespace Provider.domain.users
             users.Add(new Provia("Jebisan", "123"));
         }
 
-        public bool Validate(String username, String password)
+        public bool Validate(string username, string password)
         {
             foreach(AbstractUser user in users)
             {
@@ -36,10 +36,10 @@ namespace Provider.domain.users
         public List<Supplier> GetSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
-            foreach(AbstractUser a in users)
+            foreach(AbstractUser user in users)
             {
-                if(a.GetType() == typeof(Supplier)){
-                    suppliers.Add((Supplier) a);
+                if(user.GetType() == typeof(Supplier)){
+                    suppliers.Add((Supplier) user);
                 }
                         
             }

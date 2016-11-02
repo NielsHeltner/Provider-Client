@@ -8,13 +8,13 @@ namespace Provider.domain.users
 {
     public abstract class AbstractUser
     {
-        public String userName { get; private set; }
+        public string userName { get; private set; }
 
-        public String password { get; private set; }
+        public string password { get; private set; }
 
-        public AbstractUser(string username, string password)
+        public AbstractUser(string userName, string password)
         {
-            this.userName = username;
+            this.userName = userName;
             this.password = password;
         }
 

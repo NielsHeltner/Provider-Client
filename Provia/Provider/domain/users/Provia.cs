@@ -8,7 +8,7 @@ namespace Provider.domain.users
 {
     public class Provia : AbstractUser
     {
-        public Provia(string username, string password) : base(username, password)
+        public Provia(string userName, string password) : base(userName, password)
         {
         }
     }

@@ -8,7 +8,7 @@ namespace Provider.domain.users
 {
     public class Supplier : AbstractUser
     {
-        public Supplier(string username, string password) : base(username, password)
+        public Supplier(string userName, string password) : base(userName, password)
         {
         }
     }
