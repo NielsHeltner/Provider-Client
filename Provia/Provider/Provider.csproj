@@ -67,7 +67,6 @@
     <Compile Include="domain\page\Product.cs" />
     <Compile Include="domain\users\AbstractUser.cs" />
     <Compile Include="domain\users\Admin.cs" />
-    <Compile Include="domain\users\IUserManager.cs" />
     <Compile Include="domain\users\Note.cs" />
     <Compile Include="domain\users\Provia.cs" />
     <Compile Include="domain\users\Supplier.cs" />

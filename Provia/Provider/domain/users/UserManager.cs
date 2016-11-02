@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    public class UserManager : IUserManager
+    public class UserManager
     {
         private HashSet<AbstractUser> usersSet;
 
