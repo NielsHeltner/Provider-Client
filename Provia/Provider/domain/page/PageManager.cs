@@ -13,11 +13,11 @@ namespace Provider.domain.page
 
         public PageManager()
         {
-            List<Page> pageList = new List<Page>();
-            pageList.Add(new Page(new Supplier()));
-            pageList.Add(new Page(new Supplier()));
-            pageList.Add(new Page(new Supplier()));
-            pages = pageList;
+            pages = new List<Page>();
+            pages.Add(new Page(new Supplier("Vitafit", "password1234")));
+            pages.Add(new Page(new Supplier("B2Vitas", "password1234")));
+            pages.Add(new Page(new Supplier("ProteinVitmins", "password1234")));
+            Console.WriteLine(pages.GetType());
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Provider.domain.page
         /// <returns>Returns a specifik suppliers page</returns>
         public Page GetSupplierPage(Supplier supplier)
         {
-            return pages.Find(x => x.owner.Equals(supplier));
+            return pages.Find(page => page.owner.Equals(supplier));
         }
     }
 }
