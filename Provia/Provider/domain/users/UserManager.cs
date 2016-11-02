@@ -8,9 +8,9 @@ namespace Provider.domain.users
 {
     public class UserManager
     {
-        private HashSet<AbstractUser> users;
+        private HashSet<AbstractUser> users; //Temporary Hashset of all the users in the system.
 
-        public AbstractUser LoggedInUser { get; private set; }
+        public AbstractUser LoggedInUser { get; private set; } //Holds the current logged in user.
 
         public UserManager()
         {
@@ -41,7 +41,9 @@ namespace Provider.domain.users
             }
             return false;
         }
-
+        /// <summary>
+        /// logs out the current logged in user.
+        /// </summary>
         public void LogOut()
         {
             LoggedInUser = null;
