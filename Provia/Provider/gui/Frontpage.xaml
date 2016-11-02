@@ -1,0 +1,87 @@
+﻿<Page x:Class="Provider.gui.Frontpage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Provider.gui"
+      mc:Ignorable="d" 
+      d:DesignHeight="659" d:DesignWidth="1168"
+      Title="Frontpage">
+
+    <Grid Background="White">
+        <Label x:Name="label" Content="Velkommen til Provider" Margin="21,39,0,0" VerticalAlignment="Top" FontSize="72" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="395" Margin="21,203,0,0" VerticalAlignment="Top" Width="530">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Leverandører" HorizontalContentAlignment="Left" Width="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Produkt" HorizontalContentAlignment="Left" Width="200"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Pris" HorizontalContentAlignment="Left" Width="100"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="18,173,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
+        <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="18,593,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="0" HorizontalAlignment="Left" Margin="90,594,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="142" Margin="581,203,0,0" VerticalAlignment="Top" Width="539">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Producent" HorizontalContentAlignment="Left" Width="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="260"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="122"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="listView2" HorizontalAlignment="Left" Height="181" Margin="581,417,0,0" VerticalAlignment="Top" Width="539">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Forespørgsel" HorizontalContentAlignment="Left" Width="300"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Pickups" HorizontalContentAlignment="Left" Width="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label1_Copy" Content="Advarsler" HorizontalAlignment="Left" Margin="578,173,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
+        <Label x:Name="label1_Copy1" Content="Provias forespørgsler" HorizontalAlignment="Left" Margin="577,385,0,0" VerticalAlignment="Top" Width="184" FontSize="18" FontFamily="Yu Gothic UI"/>
+        <Label x:Name="label2_Copy" Content="Antal opslag: " HorizontalAlignment="Left" Margin="577,593,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3_Copy" Content="0" HorizontalAlignment="Left" Margin="649,594,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="580,339,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3_Copy1" Content="0" HorizontalAlignment="Left" Margin="652,340,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

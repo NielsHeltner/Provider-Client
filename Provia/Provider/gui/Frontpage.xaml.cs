@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Provider.gui
 {
     /// <summary>
-    /// Interaction logic for Nils.xaml
+    /// Interaction logic for Frontpage.xaml
     /// </summary>
-    public partial class Nils : Page
+    public partial class Frontpage : Page
     {
-        public Nils()
+        public Frontpage()
         {
             InitializeComponent();
         }

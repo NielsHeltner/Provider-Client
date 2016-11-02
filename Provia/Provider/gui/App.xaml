@@ -1,7 +1,7 @@
-﻿<Application x:Class="Provider.App"
+﻿<Application x:Class="Provider.gui.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Provider"
+             xmlns:local="clr-namespace:Provider.gui"
              StartupUri="gui\MainWindow.xaml">
     <Application.Resources>
          

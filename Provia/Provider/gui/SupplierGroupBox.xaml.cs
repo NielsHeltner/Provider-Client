@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Provider.gui
 {
     /// <summary>
-    /// Interaction logic for Page.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Antonio : Page
+    public partial class SupplierGroupBox : Page
     {
-        public Antonio()
+        public SupplierGroupBox()
         {
             InitializeComponent();
         }

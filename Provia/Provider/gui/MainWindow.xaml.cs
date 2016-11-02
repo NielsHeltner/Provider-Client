@@ -14,32 +14,30 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Provider.gui;
 
-namespace Provider
+namespace Provider.gui
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        Frontpage frontpage = new Frontpage();
         public MainWindow()
         {
             InitializeComponent();
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            frame.Content = frontpage;
+        }
+
+        private void goToFrontpage(object sender, RoutedEventArgs e)
+        {
+            frame.Content = frontpage;
         }
 
         private void fillTextField(object sender, RoutedEventArgs e)
         {
-            if (frame.Content.GetType() == typeof(Antonio))
-            {
-                Nils n = new Nils();
-                frame.Content = n;
-            }
-            else
-            {
-                Antonio a = new Antonio();
-
+                SupplierList a = new SupplierList(frame);
                 frame.Content = a;
-            }
         }
     }
 }
