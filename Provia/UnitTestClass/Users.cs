@@ -21,6 +21,16 @@ namespace UnitTest.Users
             Assert.IsFalse(userManager.Validate("Karim", "123"));
         }
 
+        [TestMethod]
+        public void CheckIfUserIsLoggedInUser()
+        {
+            
+            UserManager userManager = new UserManager();
+            userManager.Validate("Jebisan","123");
+            Assert.AreEqual("Jebisan",userManager.LoggedInUser);
+        }
+
+
 
     }
 }

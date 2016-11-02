@@ -46,5 +46,11 @@ namespace Provider.domain
         {
             return userManager.Validate(name, password);
         }
+
+        public void logOut()
+        {
+
+            userManager.logOut();
+        }
     }
 }

@@ -26,11 +26,18 @@ namespace Provider.domain.users
                 {
                     if(password.Equals(user.password))
                     {
+                        LoggedInUser = user;
                         return true;
                     }
                 }
             }
             return false;
+        }
+
+        public void logOut()
+        {
+            LoggedInUser = null;
+
         }
 
     }
