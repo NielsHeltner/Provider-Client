@@ -16,7 +16,6 @@ using System.Windows.Shapes;
 namespace Provider.gui
 {
 
-
     public partial class SupplierInformation : Page
     {
         public SupplierInformation(TestSupplier testSupplier)
