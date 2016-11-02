@@ -8,19 +8,19 @@ namespace Provider.domain.users
 {
     public class UserManager
     {
-        private HashSet<AbstractUser> usersSet;
+        private HashSet<AbstractUser> users;
 
         public AbstractUser LoggedInUser { get; private set; }
 
         public UserManager()
         {
-            usersSet = new HashSet<AbstractUser>();
-            usersSet.Add(new Provia("Jebisan", "123"));
+            users = new HashSet<AbstractUser>();
+            users.Add(new Provia("Jebisan", "123"));
         }
 
         public bool Validate(String username, String password)
         {
-            foreach(AbstractUser user in usersSet)
+            foreach(AbstractUser user in users)
             {
                if(username.Equals(user.userName))
                 {
@@ -36,7 +36,7 @@ namespace Provider.domain.users
         public List<Supplier> GetSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
-            foreach(AbstractUser a in usersSet)
+            foreach(AbstractUser a in users)
             {
                 if(a.GetType() == typeof(Supplier)){
                     suppliers.Add((Supplier) a);
