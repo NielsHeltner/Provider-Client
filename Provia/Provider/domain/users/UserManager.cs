@@ -8,17 +8,17 @@ namespace Provider.domain.users
 {
     public class UserManager
     {
-        private HashSet<AbstractUser> users;
+        private HashSet<AbstractUser> usersSet;
 
         public AbstractUser LoggedInUser { get; private set; }
 
         public Boolean Validate(String username, String password)
         {
-            foreach(AbstractUser a in users)
+            foreach(AbstractUser user in usersSet)
             {
-               if(username == a.userName)
+               if(username.Equals(user.userName))
                 {
-                    if(password == a.password)
+                    if(password.Equals(user.password))
                     {
                         return true;
                     }
@@ -30,7 +30,7 @@ namespace Provider.domain.users
         public List<Supplier> GetSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
-            foreach(AbstractUser a in users)
+            foreach(AbstractUser a in usersSet)
             {
                 if(a.GetType() == typeof(Supplier)){
                     suppliers.Add((Supplier) a);
