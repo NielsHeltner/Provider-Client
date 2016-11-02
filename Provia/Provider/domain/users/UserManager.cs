@@ -34,7 +34,7 @@ namespace Provider.domain.users
             return false;
         }
 
-        public void logOut()
+        public void LogOut()
         {
             LoggedInUser = null;
 

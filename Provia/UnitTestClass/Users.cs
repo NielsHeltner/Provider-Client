@@ -22,20 +22,23 @@ namespace UnitTest.Users
         }
 
         [TestMethod]
-        public void CheckIfUserIsLoggedInUser()
+        public void CheckIfUserIsLoggedIn()
         {
             
             UserManager userManager = new UserManager();
-            userManager.Validate("Jebisan","123");
-            Assert.AreEqual("Jebisan",userManager.LoggedInUser.userName);
+            userManager.Validate("Jebisan", "123");
+            Assert.IsNotNull(userManager.LoggedInUser);
+           
         }
 
         [TestMethod]
-        public void CheckIfUserIsNotLoggedInUser()
+        public void CheckIfUserIsLoggedOut()
         {
 
             UserManager userManager = new UserManager();
-            Assert.AreNotEqual("Karim", userManager.LoggedInUser.userName);
+            userManager.Validate("Jebisan", "123");
+            userManager.LogOut(); 
+            Assert.IsNull(userManager.LoggedInUser);
         }
 
 

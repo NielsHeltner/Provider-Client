@@ -47,10 +47,10 @@ namespace Provider.domain
             return userManager.Validate(name, password);
         }
 
-        public void logOut()
+        public void LogOut()
         {
 
-            userManager.logOut();
+            userManager.LogOut();
         }
     }
 }
