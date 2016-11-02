@@ -27,7 +27,15 @@ namespace UnitTest.Users
             
             UserManager userManager = new UserManager();
             userManager.Validate("Jebisan","123");
-            Assert.AreEqual("Jebisan",userManager.LoggedInUser);
+            Assert.AreEqual("Jebisan",userManager.LoggedInUser.userName);
+        }
+
+        [TestMethod]
+        public void CheckIfUserIsNotLoggedInUser()
+        {
+
+            UserManager userManager = new UserManager();
+            Assert.AreNotEqual("Karim", userManager.LoggedInUser.userName);
         }
 
 
