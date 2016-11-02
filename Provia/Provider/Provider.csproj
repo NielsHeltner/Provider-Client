@@ -62,6 +62,7 @@
     <Compile Include="domain\Bulletinboard\Bulletinboard.cs" />
     <Compile Include="domain\Bulletinboard\Post.cs" />
     <Compile Include="domain\Controller.cs" />
+    <Compile Include="domain\IController.cs" />
     <Compile Include="domain\page\Page.cs" />
     <Compile Include="domain\page\PageManager.cs" />
     <Compile Include="domain\page\Product.cs" />
