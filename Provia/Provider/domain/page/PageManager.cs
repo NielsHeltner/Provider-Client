@@ -14,12 +14,9 @@ namespace Provider.domain.page
         public PageManager()
         {
             List<Page> pageList = new List<Page>();
-            Page VitaFit = new Page();
-            Page B2Vitas = new Page();
-            Page ProteinVita = new Page();
-            pageList.Add(new Page());
-            pageList.Add(new Page());
-            pageList.Add(new Page());
+            pageList.Add(new Page(new Supplier()));
+            pageList.Add(new Page(new Supplier()));
+            pageList.Add(new Page(new Supplier()));
             pages = pageList;
         }
         
