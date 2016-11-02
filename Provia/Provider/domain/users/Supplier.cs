@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    class Supplier : AbstractUser
+    public class Supplier : AbstractUser
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.Bulletinboard
 {
-    class Bulletinboard
+    public class Bulletinboard
     {
     }
 }

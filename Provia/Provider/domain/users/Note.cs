@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    class Note
+    public class Note
     {
     }
 }

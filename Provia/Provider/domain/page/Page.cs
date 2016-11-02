@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.page
 {
-    class Page
+    public class Page
     {
-        public Supplier owner { get; }
+        public Supplier owner { get; private set; }
         private List<Product> product;
 
 

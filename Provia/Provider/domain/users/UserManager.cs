@@ -6,30 +6,26 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    class UserManager
+    public class UserManager
     {
         private HashSet<AbstractUser> users;
-
-        private AbstractUser LoggedInUser { get; set; }
-        
+        public AbstractUser LoggedInUser { get; private set; }
 
         public Boolean Validate(String username, String password)
         {
             ///TODO: to be implementede
-            throw new NotImplementedException();
         }
 
         public List<Supplier> GetSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
-            foreach(AbstractUser a in this.users)
+            foreach(AbstractUser a in users)
             {
                 if(a.GetType() == typeof(Supplier)){
                     suppliers.Add((Supplier) a);
                 }
                         
             }
-
             return suppliers;
         }
 

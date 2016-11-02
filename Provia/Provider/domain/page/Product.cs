@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.page
 {
-    class Product
+    public class Product
     {
         private int ID;
-        private double price;
-        private DateTime delverytime;
-        private String productinfomation;
-        private String productname; 
+        public double price { get; private set; }
+        public DateTime deliveryTime { get; private set; }
+        public String productInfomation { get; private set; }
+        public String productName { get; private set; }
         /// <summary>
         /// The constructor to a product
         /// Make sure that the price isnt negativ
@@ -22,13 +22,13 @@ namespace Provider.domain.page
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
         /// <param name="delverytime">The estimated time for a delvery</param>
-        public Product(int ID, double price, String productinfomation, String productname, DateTime delverytime)
+        public Product(int ID, double price, String productInfomation, String productName, DateTime deliveryTime)
         {
             this.ID = ID;
             this.price = price;
-            this.productinfomation = productinfomation;
-            this.productname = productname;
-            this.delverytime = delverytime;
+            this.productInfomation = productInfomation;
+            this.productName = productName;
+            this.deliveryTime = deliveryTime;
         }
         /// <summary>
         /// The constructor to a product 
@@ -38,7 +38,7 @@ namespace Provider.domain.page
         /// <param name="price">Price for this</param>
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
-        public Product(int ID, double price, String productinfomation, String productname) : 
-            this(ID, price, productinfomation, productname, default(DateTime)){ }
+        public Product(int ID, double price, String productInfomation, String productName) : 
+            this(ID, price, productInfomation, productName, default(DateTime)){ }
     }
 }

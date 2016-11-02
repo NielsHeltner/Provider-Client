@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    abstract class AbstractUser
+    public abstract class AbstractUser
     {
-        public String userName { get; set; } 
+        public String userName { get; private set; } 
     }
 }

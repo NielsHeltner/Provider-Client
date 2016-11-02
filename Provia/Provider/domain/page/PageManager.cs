@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.page
 {
-    class PageManager
+    public class PageManager
     {
-        public List<Page> pages { get; }
+        public List<Page> pages { get; private set; }
 
         /// <summary>
         /// Returns a suppliers page

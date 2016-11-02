@@ -8,28 +8,38 @@ using System.Threading.Tasks;
 
 namespace Provider.domain
 {
-    class Controller
+    public class Controller
     {
         private static Controller instance;
         private UserManager userManager;
         private PageManager pageManager;
 
-        public static Controller GetInstance()
+        public static Controller Instance
         {
-            if(instance == null)
+            get
             {
-                instance = new Controller();                
-            }           
-                return instance;        
+                if (instance == null)
+                {
+                    instance = new Controller();
+                }
+                return instance;
+            }
         }
+
+        private Controller()
+        {
+            userManager = new UserManager();
+            pageManager = new PageManager();
+        }
+
         public List<Supplier> ViewSuppliers()
         {
             return userManager.GetSuppliers();
         }
 
-        public Page GetSupplierPage(Supplier s)
+        public Page GetSupplierPage(Supplier supplier)
         {
-            return pageManager.GetSupplierPage(s);
+            return pageManager.GetSupplierPage(supplier);
         }
         
         public Boolean Login(String name, String password)
