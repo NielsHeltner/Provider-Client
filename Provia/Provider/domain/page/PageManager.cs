@@ -11,7 +11,7 @@ namespace Provider.domain.page
     {
         public List<Page> pages { get; private set; }
 
-        public PageManager()
+        public PageManager() //Temporary
         {
             pages = new List<Page>();
             pages.Add(new Page(new Supplier("Vitafit", "password1234")));

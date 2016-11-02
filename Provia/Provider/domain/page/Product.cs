@@ -13,6 +13,7 @@ namespace Provider.domain.page
         public DateTime deliveryTime { get; private set; }
         public string packaging { get; private set; }
         public string productName { get; private set; }
+       
         /// <summary>
         /// The constructor to a product
         /// Make sure that the price isnt negativ
@@ -30,6 +31,7 @@ namespace Provider.domain.page
             this.productName = productName;
             this.deliveryTime = deliveryTime;
         }
+  
         /// <summary>
         /// The constructor to a product 
         /// Make sure that the price isnt negativ
