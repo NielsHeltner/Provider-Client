@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    public class Provia
+    public class Provia : AbstractUser
     {
+        public Provia(string userName, string password) : base(userName, password)
+        {
+
+        }
     }
 }

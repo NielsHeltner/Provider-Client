@@ -6,17 +6,31 @@ using System.Threading.Tasks;
 
 namespace Provider.domain.users
 {
-    class UserManager
+    public class UserManager
     {
         private HashSet<AbstractUser> users;
 
-        private AbstractUser LoggedInUser { get; set; }
+        public AbstractUser LoggedInUser { get; private set; }
         
-
-        public Boolean Validate(String username, String password)
+        public UserManager()
         {
-            ///TODO: to be implementede
-            throw new NotImplementedException();
+            users = new HashSet<AbstractUser>();
+            users.Add(new Provia("Jebisan", "123"));
+        }
+
+        public bool Validate(String username, String password)
+        {
+            foreach (AbstractUser user in users)
+            {
+                if(username.Equals(user.userName))
+                {
+                    if(password.Equals(user.password))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public List<Supplier> GetSuppliers()
