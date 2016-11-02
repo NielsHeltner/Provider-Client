@@ -27,7 +27,7 @@ namespace Provider.domain.page
         /// <returns>Returns a specifik suppliers page</returns>
         public Page GetSupplierPage(Supplier supplier)
         {
-            return pages.Find(x => x.owner.Equals(supplier));
+            return pages.Find(page => page.owner.Equals(supplier));
         }
     }
 }

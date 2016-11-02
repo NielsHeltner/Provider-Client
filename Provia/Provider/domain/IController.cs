@@ -11,5 +11,7 @@ namespace Provider.domain
     public interface IController
     {
         List<Page> ViewSuppliers();
+
+        Page GetSupplierPage(Supplier supplier);
     }
 }
