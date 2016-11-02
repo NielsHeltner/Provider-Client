@@ -34,7 +34,7 @@ namespace Provider.domain
 
         public List<Page> ViewSuppliers()
         {
-            return pageManager.GetSuppliers();
+            return pageManager.pages;
         }
 
         public Page GetSupplierPage(Supplier supplier)
