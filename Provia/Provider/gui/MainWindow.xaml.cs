@@ -21,10 +21,17 @@ namespace Provider.gui
     /// </summary>
     public partial class MainWindow : Window
     {
+        Frontpage frontpage = new Frontpage();
         public MainWindow()
         {
             InitializeComponent();
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            frame.Content = frontpage;
+        }
+
+        private void goToFrontpage(object sender, RoutedEventArgs e)
+        {
+            frame.Content = frontpage;
         }
 
         private void fillTextField(object sender, RoutedEventArgs e)
