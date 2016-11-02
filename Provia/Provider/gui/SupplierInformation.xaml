@@ -23,7 +23,7 @@
     </Page.Resources>
 
     <Grid Background="White">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="625" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="732,24,0,0">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="703,24,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding productName}">
@@ -47,8 +47,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="649" Width="700" FontSize="36">
-            <Frame x:Name="frame" HorizontalAlignment="Left" Height="585" Margin="10,0,0,0" VerticalAlignment="Top" Width="669"/>
+        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="564" Width="659" FontSize="36">
+            <Frame x:Name="frame" HorizontalAlignment="Left" Height="499" Margin="10,0,0,0" VerticalAlignment="Top" Width="626" FontFamily="Yu Gothic UI"/>
         </GroupBox>
     </Grid>
 </Page>
