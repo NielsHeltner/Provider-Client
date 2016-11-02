@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Provider.domain
 {
-    public class Controller
+    public class Controller : IController
     {
         private static Controller instance;
         private UserManager userManager;
