@@ -8,6 +8,9 @@ namespace Provider.domain.users
 {
     public abstract class AbstractUser
     {
-        public String userName { get; private set; } 
+        public String userName { get; private set; }
+
+        public String password { get; private set; }
+
     }
 }

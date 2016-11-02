@@ -9,11 +9,22 @@ namespace Provider.domain.users
     public class UserManager
     {
         private HashSet<AbstractUser> users;
+
         public AbstractUser LoggedInUser { get; private set; }
 
         public Boolean Validate(String username, String password)
         {
-            ///TODO: to be implementede
+            foreach(AbstractUser a in users)
+            {
+               if(username == a.userName)
+                {
+                    if(password == a.password)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public List<Supplier> GetSuppliers()
