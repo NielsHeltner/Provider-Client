@@ -2,10 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Provider.domain.users;
 
-namespace UnitTestClass
+namespace UnitTest.Users
 {
     [TestClass]
-    public class Users
+    public class UsersUnitTest
     {
         [TestMethod]
         public void LogInTrue()
