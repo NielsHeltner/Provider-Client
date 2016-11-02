@@ -11,6 +11,18 @@ namespace Provider.domain.page
     {
         public List<Page> pages { get; private set; }
 
+        public PageManager()
+        {
+            List<Page> pageList = new List<Page>();
+            Page VitaFit = new Page();
+            Page B2Vitas = new Page();
+            Page ProteinVita = new Page();
+            pageList.Add(new Page());
+            pageList.Add(new Page());
+            pageList.Add(new Page());
+            pages = pageList;
+        }
+        
         /// <summary>
         /// Returns a suppliers page
         /// </summary>
@@ -21,14 +33,6 @@ namespace Provider.domain.page
             return pages.Find(x => x.owner.Equals(supplier));
         }
 
-        public List<Page> GetSuppliers()
-        {
-            List<Page> suppliers = new List<Page>();
-            foreach (Page a in pages)
-            {
-                suppliers.Add((Page)a);
-            }
-            return suppliers;
-        }
+        
     }
 }
