@@ -20,5 +20,15 @@ namespace Provider.domain.page
         {
             return pages.Find(x => x.owner.Equals(supplier));
         }
+
+        public List<Page> GetSuppliers()
+        {
+            List<Page> suppliers = new List<Page>();
+            foreach (Page a in pages)
+            {
+                suppliers.Add((Page)a);
+            }
+            return suppliers;
+        }
     }
 }
