@@ -7,23 +7,48 @@
       mc:Ignorable="d" 
       d:DesignHeight="659" d:DesignWidth="1163"
       Title="Page">
+    <Page.Resources>
+        <DataTemplate x:Key="HeaderTemplateArrowUp">
+            <DockPanel LastChildFill="True" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GridViewColumnHeader}}}">
+                <Path x:Name="arrowUp" StrokeThickness="1" Fill="Gray" Data="M 5,10 L 15,10 L 10,5 L 5,10" DockPanel.Dock="Right" Width="20" HorizontalAlignment="Right" Margin="5,0,5,0" SnapsToDevicePixels="True" />
+                <TextBlock Text="{Binding}" />
+            </DockPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="HeaderTemplateArrowDown">
+            <DockPanel LastChildFill="True" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GridViewColumnHeader}}}">
+                <Path x:Name="arrowDown" StrokeThickness="1" Fill="Gray"  Data="M 5,5 L 10,10 L 15,5 L 5,5" DockPanel.Dock="Right" Width="20" HorizontalAlignment="Right" Margin="5,0,5,0" SnapsToDevicePixels="True"/>
+                <TextBlock Text="{Binding }" />
+            </DockPanel>
+        </DataTemplate>
+    </Page.Resources>
 
     <Grid Background="White">
-        <Label x:Name="name" Content="" HorizontalAlignment="Left" Margin="118,47,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="credibility" Content="" HorizontalAlignment="Left" Margin="118,97,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="note" Content="" HorizontalAlignment="Left" Margin="118,149,0,0" VerticalAlignment="Top"/>
-        <Label Content="Navn:" HorizontalAlignment="Left" Margin="36,47,0,0" VerticalAlignment="Top"/>
-        <Label Content="Troværdighed:" HorizontalAlignment="Left" Margin="36,97,0,0" VerticalAlignment="Top"/>
-        <Label Content="Note:" HorizontalAlignment="Left" Margin="36,149,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="378" Margin="293,47,0,0" VerticalAlignment="Top" Width="440">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="625" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="732,24,0,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Produkt" Width="200"/>
-                    <GridViewColumn Header="Leveringstid" Width="100"/>
-                    <GridViewColumn Header="Emballage" Width="140"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding productName}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Produkt" HorizontalContentAlignment="Left" MinWidth="100"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding deliveryTime}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Leveringstid" HorizontalContentAlignment="Left" MinWidth="140"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding packaging}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Emballage" HorizontalContentAlignment="Left" MinWidth="100"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
-        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="763,132,0,0" VerticalAlignment="Top" Height="229" Width="208"/>
+        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="649" Width="700" FontSize="36">
+            <Frame x:Name="frame" HorizontalAlignment="Left" Height="585" Margin="10,0,0,0" VerticalAlignment="Top" Width="669"/>
+        </GroupBox>
     </Grid>
 </Page>

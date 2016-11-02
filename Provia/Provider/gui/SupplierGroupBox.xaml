@@ -1,0 +1,17 @@
+﻿<Page x:Class="Provider.gui.SupplierGroupBox"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Provider.gui"
+      mc:Ignorable="d" 
+      d:DesignHeight="585" d:DesignWidth="669"
+      Title="Page">
+
+    <Grid Background="White">
+        <Label x:Name="label" HorizontalAlignment="Left" Margin="207,105,0,0" VerticalAlignment="Top">
+            <Label x:Name="label1" Content="Test"/>
+        </Label>
+
+    </Grid>
+</Page>
