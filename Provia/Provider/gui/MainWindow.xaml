@@ -6,6 +6,25 @@
         xmlns:local="clr-namespace:Provider.gui"
         mc:Ignorable="d"
         Title="Provider" Height="800" Width="1280" MinWidth="1280" MaxWidth="1280">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid x:Name="test">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1019*"/>
@@ -17,18 +36,7 @@
         <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="681" Margin="0,91,0,0" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="2"/>
         <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="124,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut" Grid.Column="1"/>
         <Label x:Name="loggedIn" Content="Provia logget ind" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="button1" Content="Søg" HorizontalAlignment="Left" Margin="913,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White">
-            <!--<Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="image" Storyboard.TargetProperty="(Opacity)" From="0" To="1" Duration="0:0:2"/>
-                            <DoubleAnimation Storyboard.TargetName="image" Storyboard.TargetProperty="(Canvas.Left)" From="0" To="100" Duration="0:0:2"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>-->
-        </Button>
+        <Button x:Name="button1" Content="Søg" HorizontalAlignment="Left" Margin="913,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White"/>
         <Button x:Name="button2" Content="Forside" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Width="75" Click="GoToFrontpage" Background="#FF0C4A63" Foreground="White"/>
 
 
@@ -46,7 +54,7 @@
             </TextBlock.Style>
         </TextBlock>
         <Canvas HorizontalAlignment="Left" Height="95" Margin="255,0,0,0" VerticalAlignment="Top" Width="482">
-            <Image x:Name="image" HorizontalAlignment="Left" Height="76" VerticalAlignment="Top" Width="380" Source="../resources/provider.png" Canvas.Top="9" Canvas.Left="213"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Height="76" VerticalAlignment="Top" Width="380" Source="../resources/provider.png" Canvas.Top="9" Canvas.Left="136"/>
         </Canvas>
 
     </Grid>

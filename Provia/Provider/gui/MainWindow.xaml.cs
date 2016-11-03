@@ -36,7 +36,7 @@ namespace Provider.gui
             buttons.Add(button2);
             buttons.Add(button1);
             buttons.Add(logout);
-            logIn = new LogIn(frame, frontpage, buttons, loggedIn, searchText, SearchTermTextBox, this);
+            logIn = new LogIn(frame, frontpage, buttons, loggedIn, searchText, SearchTermTextBox);
             frame.Content = logIn;
         }
 
@@ -66,24 +66,6 @@ namespace Provider.gui
             loggedIn.Visibility = Visibility.Hidden;
             searchText.Visibility = Visibility.Hidden;
             SearchTermTextBox.Visibility = Visibility.Hidden;
-        }
-
-        public void button1_Click()
-        {
-            Storyboard sb = new Storyboard();
-            TimeSpan dur = new TimeSpan(0, 0, 2);
-            DoubleAnimation da = new DoubleAnimation();
-            da.To = 92;
-            da.From = 213;
-            da.Duration = new Duration(dur);
-            Storyboard.SetTargetName(da, image.Name);
-            Storyboard.SetTargetProperty(da, new PropertyPath(Canvas.LeftProperty));
-            sb.Children.Add(da);
-            //sb.Completed += Sb_Completed;
-            
-
-            sb.Begin(this);
-
         }
 
     }
