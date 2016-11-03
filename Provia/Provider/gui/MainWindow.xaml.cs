@@ -74,6 +74,7 @@ namespace Provider.gui
         }
         public void AnimateHeaderLogin()
         {
+            AnimateAfterImageCompleted();
             Storyboard storyboard = new Storyboard();
             TimeSpan duration = new TimeSpan(0, 0, 0, 2, 0);
             DoubleAnimation doubleanimate = new DoubleAnimation();
@@ -90,11 +91,11 @@ namespace Provider.gui
             ease.EasingMode = EasingMode.EaseOut;
             doubleanimate.EasingFunction = ease;
 
-            storyboard.Completed += AnimateAfterImageCompleted;
+            //storyboard.Completed += AnimateAfterImageCompleted;
            
             storyboard.Begin(this);
         }
-        private void AnimateAfterImageCompleted(object sender, EventArgs e)
+        private void AnimateAfterImageCompleted()
         {
             Storyboard storyboard = new Storyboard();
             TimeSpan duration = new TimeSpan(0, 0, 0, 0, 500);
