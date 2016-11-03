@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Provider.gui;
 using Provider.domain;
+using System.Windows.Media.Animation;
 
 namespace Provider.gui
 {
@@ -23,11 +24,20 @@ namespace Provider.gui
     public partial class MainWindow : Window
     {
         Frontpage frontpage = new Frontpage();
+        LogIn login;
+        
         public MainWindow()
-        {
+        {  
             InitializeComponent();
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            frame.Content = frontpage;
+            SetVisibilityToHidden();
+            List<Button> buttonList = new List<Button>();
+            buttonList.Add(button);
+            buttonList.Add(button2);
+            buttonList.Add(button1);
+            buttonList.Add(logout);
+            login = new LogIn(frame, frontpage, buttonList, logged_in, searchText, SearchTermTextBox);
+            frame.Content = login;
         }
 
         private void goToFrontpage(object sender, RoutedEventArgs e)
@@ -44,7 +54,19 @@ namespace Provider.gui
         private void LogOut(object sender, RoutedEventArgs e)
         {
             Controller.Instance.LogOut();
-            frame.Content = null;
+            frame.Content = login;
+            SetVisibilityToHidden();
+        }
+
+        private void SetVisibilityToHidden()
+        {
+            button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            logout.Visibility = Visibility.Hidden;
+            logged_in.Visibility = Visibility.Hidden;
+            searchText.Visibility = Visibility.Hidden;
+            SearchTermTextBox.Visibility = Visibility.Hidden;
         }
     }
 }

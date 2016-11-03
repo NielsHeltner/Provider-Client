@@ -5,21 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Provider"
         mc:Ignorable="d"
-        Title="Provider" Height="800" Width="1280">
-    <Grid>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1275"/>
+        Title="Provider" Height="800" Width="1280" MinWidth="1280" MaxWidth="1280">
+    <Grid x:Name="test">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1019*"/>
+            <ColumnDefinition Width="256*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="2"/>
 
         <Button x:Name="button" Content="Hent leverandører" HorizontalAlignment="Left" Margin="136,35,0,0" VerticalAlignment="Top" Width="114" Click="fillTextField" Background="#FF0C4A63" Foreground="White"/>
-        <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="659" Margin="50,100,0,0" VerticalAlignment="Top" Width="1168"/>
-        <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="1143,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut"/>
-        <Label x:Name="logged_in" Content="Provia logget ind" HorizontalAlignment="Left" Margin="1038,32,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button1" Content="Søg" HorizontalAlignment="Left" Margin="469,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White"/>
+        <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="681" Margin="0,91,0,0" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="2"/>
+        <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="124,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut" Grid.Column="1"/>
+        <Label x:Name="logged_in" Content="Provia logget ind" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="button1" Content="Søg" HorizontalAlignment="Left" Margin="913,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White"/>
         <Button x:Name="button2" Content="Forside" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Width="75" Click="goToFrontpage" Background="#FF0C4A63" Foreground="White"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="76" Margin="582,10,0,0" VerticalAlignment="Top" Width="380" Source="../resources/provider.png"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="76" Margin="390,10,0,0" VerticalAlignment="Top" Width="380" Source="../resources/provider.png"/>
 
-        <TextBox Width="169"  VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="295,35,0,0" Height="20
-                 "/>
-        <TextBlock IsHitTestVisible="False" Text="Søg..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="299,37,0,0" Foreground="DarkGray">
+
+        <TextBox Width="169" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="739,35,0,0" Height="20 "/>
+        <TextBlock x:Name="searchText" IsHitTestVisible="False" Text="Søg..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="742,37,0,0" Foreground="DarkGray">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>

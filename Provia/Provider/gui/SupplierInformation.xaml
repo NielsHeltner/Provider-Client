@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Provider.gui"
       mc:Ignorable="d" 
-      d:DesignHeight="659" d:DesignWidth="1163"
+      d:DesignHeight="659" d:DesignWidth="1275"
       Title="Page">
     <Page.Resources>
         <DataTemplate x:Key="HeaderTemplateArrowUp">
@@ -23,7 +23,7 @@
     </Page.Resources>
 
     <Grid Background="White">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="703,24,0,0">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="763,24,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding productName}">
@@ -47,7 +47,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="564" Width="659" FontSize="36">
+        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Height="564" Width="659" FontSize="36">
             <Frame x:Name="frame" HorizontalAlignment="Left" Height="499" Margin="10,0,0,0" VerticalAlignment="Top" Width="626" FontFamily="Yu Gothic UI"/>
         </GroupBox>
     </Grid>
