@@ -44,6 +44,7 @@ namespace Provider.gui
         private void LogOut(object sender, RoutedEventArgs e)
         {
             Controller.Instance.LogOut();
+            frame.Content = null;
         }
     }
 }
