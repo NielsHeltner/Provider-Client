@@ -26,7 +26,8 @@ namespace Provider.gui
         private Label loggedIn;
         private TextBlock searchText;
         private TextBox searchBox;
-        public LogIn(Frame frame, Frontpage frontpage, List<Button> buttons, Label loggedIn, TextBlock searchText, TextBox searchBox)
+        private MainWindow mainwindow;
+        public LogIn(Frame frame, Frontpage frontpage, List<Button> buttons, Label loggedIn, TextBlock searchText, TextBox searchBox, MainWindow mainwindow)
         {
             InitializeComponent();
             this.frame = frame;
@@ -35,13 +36,15 @@ namespace Provider.gui
             this.loggedIn = loggedIn;
             this.searchText = searchText;
             this.searchBox = searchBox;
+            this.mainwindow = mainwindow;
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
         {
+            mainwindow.AnimateHeaderLogin();
             loggedIn.Visibility = Visibility.Visible;
-            searchText.Visibility = Visibility.Visible;
-            searchBox.Visibility = Visibility.Visible;
+            //searchText.Visibility = Visibility.Visible;
+            //searchBox.Visibility = Visibility.Visible;
             foreach(Button button in buttons)
             {
                 button.Visibility = Visibility.Visible;

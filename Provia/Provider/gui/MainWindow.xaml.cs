@@ -36,7 +36,7 @@ namespace Provider.gui
             buttons.Add(button2);
             buttons.Add(button1);
             buttons.Add(logout);
-            logIn = new LogIn(frame, frontpage, buttons, loggedIn, searchText, SearchTermTextBox);
+            logIn = new LogIn(frame, frontpage, buttons, loggedIn, searchText, SearchTermTextBox, this);
             frame.Content = logIn;
         }
 
@@ -55,6 +55,7 @@ namespace Provider.gui
             Controller.instance.LogOut();
             frame.Content = logIn;
             SetVisibilityToHidden();
+            AnimateHeaderLogout();
         }
 
         private void SetVisibilityToHidden()
@@ -64,8 +65,55 @@ namespace Provider.gui
             button2.Visibility = Visibility.Hidden;
             logout.Visibility = Visibility.Hidden;
             loggedIn.Visibility = Visibility.Hidden;
-            searchText.Visibility = Visibility.Hidden;
-            SearchTermTextBox.Visibility = Visibility.Hidden;
+            //searchText.Visibility = Visibility.Hidden;
+            searchText.Opacity = 0;
+            //SearchTermTextBox.Visibility = Visibility.Hidden;
+            SearchTermTextBox.Opacity = 0;
+        }
+        public void AnimateHeaderLogin()
+        {
+            Storyboard storyboard = new Storyboard();
+            TimeSpan duration = new TimeSpan(0, 0, 1);
+            DoubleAnimation doubleanimate = new DoubleAnimation();
+            doubleanimate.To = 0;
+            doubleanimate.From = 90;
+            doubleanimate.Duration = new Duration(duration);
+            Storyboard.SetTargetName(doubleanimate, image.Name);
+            Storyboard.SetTargetProperty(doubleanimate, new PropertyPath(Canvas.LeftProperty));
+            storyboard.Children.Add(doubleanimate);
+            storyboard.Completed += new EventHandler(AnimateAfterImageCompleted);
+
+            storyboard.Begin(this);
+        }
+        private void AnimateAfterImageCompleted(object sender, EventArgs e)
+        {
+            Storyboard storyboard = new Storyboard();
+            TimeSpan duration = new TimeSpan(0, 0, 1);
+
+            DoubleAnimation doubleanimation = new DoubleAnimation(0, 1, new Duration(duration));
+            Storyboard.SetTargetName(doubleanimation, SearchTermTextBox.Name);
+            Storyboard.SetTargetProperty(doubleanimation, new PropertyPath(Control.OpacityProperty));
+            storyboard.Children.Add(doubleanimation);
+
+            DoubleAnimation searchTextAnimate = new DoubleAnimation(0, 1, new Duration(duration));
+            Storyboard.SetTargetName(searchTextAnimate, searchText.Name);
+            Storyboard.SetTargetProperty(searchTextAnimate, new PropertyPath(Control.OpacityProperty));
+            storyboard.Children.Add(searchTextAnimate);
+
+            storyboard.Begin(this);
+        }
+        private void AnimateHeaderLogout()
+        {
+            Storyboard sb = new Storyboard();
+            TimeSpan dur = new TimeSpan(0, 0, 1);
+            DoubleAnimation da = new DoubleAnimation();
+            da.To = 90;
+            da.From = 0;
+            da.Duration = new Duration(dur);
+            Storyboard.SetTargetName(da, image.Name);
+            Storyboard.SetTargetProperty(da, new PropertyPath(Canvas.LeftProperty));
+            sb.Children.Add(da);
+            sb.Begin(this);
         }
     }
 }
