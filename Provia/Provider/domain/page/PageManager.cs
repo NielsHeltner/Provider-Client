@@ -38,7 +38,7 @@ namespace Provider.domain.page
         /// Returns a suppliers page
         /// </summary>
         /// <param name="supplier">The name of the suppliers page that should</param>
-        /// <returns>Returns a specifik suppliers page</returns>
+        /// <returns>Returns a specific suppliers page</returns>
         public Page GetSupplierPage(Supplier supplier)
         {
             return pages.Find(page => page.owner.Equals(supplier));
