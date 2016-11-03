@@ -74,7 +74,7 @@ namespace Provider.gui
         public void AnimateHeaderLogin()
         {
             Storyboard storyboard = new Storyboard();
-            TimeSpan duration = new TimeSpan(0, 0, 0, 0, 500);
+            TimeSpan duration = new TimeSpan(0, 0, 0, 1, 0);
             DoubleAnimation doubleanimate = new DoubleAnimation();
             doubleanimate.To = 0;
             doubleanimate.From = 90;
@@ -82,6 +82,13 @@ namespace Provider.gui
             Storyboard.SetTargetName(doubleanimate, image.Name);
             Storyboard.SetTargetProperty(doubleanimate, new PropertyPath(Canvas.LeftProperty));
             storyboard.Children.Add(doubleanimate);
+
+            ElasticEase ease = new ElasticEase();
+            ease.Springiness = 10;
+            ease.Oscillations = 0;
+            ease.EasingMode = EasingMode.EaseOut;
+            doubleanimate.EasingFunction = ease;
+
             storyboard.Completed += AnimateAfterImageCompleted;
            
             storyboard.Begin(this);
