@@ -111,7 +111,6 @@
     <Compile Include="gui\SupplierInformation.xaml.cs">
       <DependentUpon>SupplierInformation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="gui\TestSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
