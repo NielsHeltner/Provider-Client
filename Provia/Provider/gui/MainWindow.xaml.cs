@@ -70,6 +70,7 @@ namespace Provider.gui
             //searchText.Opacity = 1;
             //SearchTermTextBox.Visibility = Visibility.Hidden;
             SearchTermTextBox.Opacity = 0;
+            SearchTermTextBox.IsEnabled = false;
         }
         public void AnimateHeaderLogin()
         {
@@ -110,6 +111,8 @@ namespace Provider.gui
             storyboard.Completed += AnimateControlsCompleted;
 
             storyboard.Begin(this);
+
+            SearchTermTextBox.IsEnabled = true;
         }
 
         private void AnimateControlsCompleted(object sender, EventArgs e)
