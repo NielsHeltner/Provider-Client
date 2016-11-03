@@ -74,52 +74,31 @@ namespace Provider.gui
         }
         public void AnimateHeaderLogin()
         {
-            AnimateAfterImageCompleted();
-            Storyboard storyboard = new Storyboard();
-            TimeSpan duration = new TimeSpan(0, 0, 0, 2, 0);
-            DoubleAnimation doubleanimate = new DoubleAnimation();
-            doubleanimate.To = 0;
-            doubleanimate.From = 90;
-            doubleanimate.Duration = new Duration(duration);
-            Storyboard.SetTargetName(doubleanimate, image.Name);
-            Storyboard.SetTargetProperty(doubleanimate, new PropertyPath(Canvas.LeftProperty));
-            storyboard.Children.Add(doubleanimate);
+            //AnimateAfterImageCompleted();
 
+            // Animate image logo 
+            DoubleAnimation imageAnimate = new DoubleAnimation(90, 0, new TimeSpan(0, 0, 2));
             ElasticEase ease = new ElasticEase();
             ease.Springiness = 10;
             ease.Oscillations = 0;
             ease.EasingMode = EasingMode.EaseOut;
-            doubleanimate.EasingFunction = ease;
+            imageAnimate.EasingFunction = ease;
+            image.BeginAnimation(Canvas.LeftProperty, imageAnimate);
 
-            //storyboard.Completed += AnimateAfterImageCompleted;
-           
-            storyboard.Begin(this);
+            // Animate Search bar
+            DoubleAnimation searchbarAnimate = new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop);
+            searchbarAnimate.Completed += AnimateControlsCompleted;
+            SearchTermTextBox.BeginAnimation(Control.OpacityProperty, searchbarAnimate);
+
+            // Animate Search bar text
+            searchText.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+
         }
-        private void AnimateAfterImageCompleted()
-        {
-            Storyboard storyboard = new Storyboard();
-            TimeSpan duration = new TimeSpan(0, 0, 0, 0, 500);
-
-            DoubleAnimation doubleanimation = new DoubleAnimation(0, 1, duration, FillBehavior.Stop);
-            Storyboard.SetTargetName(doubleanimation, SearchTermTextBox.Name);
-            Storyboard.SetTargetProperty(doubleanimation, new PropertyPath(Control.OpacityProperty));
-            storyboard.Children.Add(doubleanimation);
-
-            DoubleAnimation searchTextAnimate = new DoubleAnimation(0, 1, duration, FillBehavior.Stop);
-            Storyboard.SetTargetName(searchTextAnimate, searchText.Name);
-            Storyboard.SetTargetProperty(searchTextAnimate, new PropertyPath(Control.OpacityProperty));
-            storyboard.Children.Add(searchTextAnimate);
-            storyboard.Completed += AnimateControlsCompleted;
-
-            storyboard.Begin(this);
-
-            SearchTermTextBox.IsEnabled = true;
-        }
-
         private void AnimateControlsCompleted(object sender, EventArgs e)
         {
             searchText.Opacity = 1;
             SearchTermTextBox.Opacity = 1;
+            SearchTermTextBox.IsEnabled = true;
         }
 
         private void AnimateHeaderLogout()
