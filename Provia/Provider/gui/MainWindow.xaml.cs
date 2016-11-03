@@ -103,8 +103,7 @@ namespace Provider.gui
 
         private void AnimateHeaderLogout()
         {
-            TimeSpan dur = new TimeSpan(0, 0, 0, 2, 0);
-            DoubleAnimation da = new DoubleAnimation(0,90, dur);
+            DoubleAnimation da = new DoubleAnimation(0,90, new TimeSpan(0, 0, 2));
             ElasticEase ease = new ElasticEase();
             ease.Springiness = 10;
             ease.Oscillations = 0;
