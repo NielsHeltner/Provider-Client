@@ -74,7 +74,7 @@ namespace Provider.gui
         public void AnimateHeaderLogin()
         {
             Storyboard storyboard = new Storyboard();
-            TimeSpan duration = new TimeSpan(0, 0, 1);
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, 500);
             DoubleAnimation doubleanimate = new DoubleAnimation();
             doubleanimate.To = 0;
             doubleanimate.From = 90;
@@ -82,14 +82,14 @@ namespace Provider.gui
             Storyboard.SetTargetName(doubleanimate, image.Name);
             Storyboard.SetTargetProperty(doubleanimate, new PropertyPath(Canvas.LeftProperty));
             storyboard.Children.Add(doubleanimate);
-            storyboard.Completed += new EventHandler(AnimateAfterImageCompleted);
+            storyboard.Completed += AnimateAfterImageCompleted;
            
             storyboard.Begin(this);
         }
         private void AnimateAfterImageCompleted(object sender, EventArgs e)
         {
             Storyboard storyboard = new Storyboard();
-            TimeSpan duration = new TimeSpan(0, 0, 1);
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, 500);
 
             DoubleAnimation doubleanimation = new DoubleAnimation(0, 1, duration, FillBehavior.Stop);
             Storyboard.SetTargetName(doubleanimation, SearchTermTextBox.Name);
@@ -113,8 +113,13 @@ namespace Provider.gui
 
         private void AnimateHeaderLogout()
         {
-            TimeSpan dur = new TimeSpan(0, 0, 1);
+            TimeSpan dur = new TimeSpan(0, 0, 0, 2, 0);
             DoubleAnimation da = new DoubleAnimation(0,90, dur);
+            ElasticEase ease = new ElasticEase();
+            ease.Springiness = 10;
+            ease.Oscillations = 0;
+            ease.EasingMode = EasingMode.EaseOut;
+            da.EasingFunction = ease;
             image.BeginAnimation(Canvas.LeftProperty, da);
         }
     }
