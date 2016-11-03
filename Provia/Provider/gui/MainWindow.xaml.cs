@@ -75,7 +75,7 @@ namespace Provider.gui
         public void AnimateHeaderLogin()
         {
             Storyboard storyboard = new Storyboard();
-            TimeSpan duration = new TimeSpan(0, 0, 0, 1, 0);
+            TimeSpan duration = new TimeSpan(0, 0, 0, 2, 0);
             DoubleAnimation doubleanimate = new DoubleAnimation();
             doubleanimate.To = 0;
             doubleanimate.From = 90;
