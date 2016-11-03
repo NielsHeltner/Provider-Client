@@ -14,9 +14,7 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="389,148,0,0" TextWrapping="Wrap" Text="Brugernavn:" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
         <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="389,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Password:" FontSize="18" Foreground="White"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="503,194,0,0" VerticalAlignment="Top" Width="286" Height="24" FontSize="18"/>
-        <Button x:Name="button" Content="Log ind" HorizontalAlignment="Left" Margin="503,236,0,0" VerticalAlignment="Top" Width="75" Background="White" Foreground="#FF0C4A63" BorderBrush="#00707070" Click="LogUserIn" Style="{DynamicResource ButtonStyle1}">
-
-        </Button>
+        <Button x:Name="button" Content="Log ind" HorizontalAlignment="Left" Margin="503,236,0,0" VerticalAlignment="Top" Width="75" Background="White" Foreground="#FF0C4A63" BorderBrush="#00707070" Click="LogUserIn"/>
 
     </Grid>
 </Page>
