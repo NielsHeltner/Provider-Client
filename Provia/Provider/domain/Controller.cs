@@ -10,11 +10,11 @@ namespace Provider.domain
 {
     public class Controller : IController
     {
-        private static Controller instance;
+        private static IController instance;
         private UserManager userManager;
         private PageManager pageManager;
 
-        public static Controller Instance
+        public static IController Instance
         {
             get
             {
