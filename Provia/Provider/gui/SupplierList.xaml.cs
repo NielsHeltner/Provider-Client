@@ -31,11 +31,6 @@ namespace Provider.gui
             InitializeComponent();
             this.mainWindow = mainWindow;
             suppliers = Controller.Instance.ViewSuppliers();
-            
-            //suppliers.Add(new TestSupplier() { Name = "Niels", Credibility = "High", Note = "Meh" });
-            //suppliers.Add(new TestSupplier() { Name = "Antonio", Credibility = "Low", Note = "Pretty Meh" });
-            //suppliers.Add(new TestSupplier() { Name = "Niclas", Credibility = "Very High", Note = "Pretty Nice!" });
-   
             listView.ItemsSource = suppliers;
         }
 

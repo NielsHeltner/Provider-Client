@@ -17,12 +17,13 @@ namespace Provider.domain.page
                 return owner.userName;
             }
         }
-        private List<Product> products;
+        public List<Product> products { get; private set; }
         public string note { get; set; }
 
         public Page(Supplier owner)
         {
             this.owner = owner;
+            products = new List<Product>();
         }
 
         /// <summary>
@@ -34,6 +35,11 @@ namespace Provider.domain.page
         {
             ///TODO: to be implementede
             throw new NotImplementedException();
+        }
+
+        public void AddProduct(Product product)
+        {
+            products.Add(product);
         }
     }
 }
