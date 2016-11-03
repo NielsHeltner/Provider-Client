@@ -67,6 +67,7 @@ namespace Provider.gui
             loggedIn.Visibility = Visibility.Hidden;
             //searchText.Visibility = Visibility.Hidden;
             searchText.Opacity = 0;
+            //searchText.Opacity = 1;
             //SearchTermTextBox.Visibility = Visibility.Hidden;
             SearchTermTextBox.Opacity = 0;
         }
@@ -82,7 +83,7 @@ namespace Provider.gui
             Storyboard.SetTargetProperty(doubleanimate, new PropertyPath(Canvas.LeftProperty));
             storyboard.Children.Add(doubleanimate);
             storyboard.Completed += new EventHandler(AnimateAfterImageCompleted);
-
+           
             storyboard.Begin(this);
         }
         private void AnimateAfterImageCompleted(object sender, EventArgs e)
@@ -90,30 +91,31 @@ namespace Provider.gui
             Storyboard storyboard = new Storyboard();
             TimeSpan duration = new TimeSpan(0, 0, 1);
 
-            DoubleAnimation doubleanimation = new DoubleAnimation(0, 1, new Duration(duration));
+            DoubleAnimation doubleanimation = new DoubleAnimation(0, 1, duration, FillBehavior.Stop);
             Storyboard.SetTargetName(doubleanimation, SearchTermTextBox.Name);
             Storyboard.SetTargetProperty(doubleanimation, new PropertyPath(Control.OpacityProperty));
             storyboard.Children.Add(doubleanimation);
 
-            DoubleAnimation searchTextAnimate = new DoubleAnimation(0, 1, new Duration(duration));
+            DoubleAnimation searchTextAnimate = new DoubleAnimation(0, 1, duration, FillBehavior.Stop);
             Storyboard.SetTargetName(searchTextAnimate, searchText.Name);
             Storyboard.SetTargetProperty(searchTextAnimate, new PropertyPath(Control.OpacityProperty));
             storyboard.Children.Add(searchTextAnimate);
+            storyboard.Completed += AnimateControlsCompleted;
 
             storyboard.Begin(this);
         }
+
+        private void AnimateControlsCompleted(object sender, EventArgs e)
+        {
+            searchText.Opacity = 1;
+            SearchTermTextBox.Opacity = 1;
+        }
+
         private void AnimateHeaderLogout()
         {
-            Storyboard sb = new Storyboard();
             TimeSpan dur = new TimeSpan(0, 0, 1);
-            DoubleAnimation da = new DoubleAnimation();
-            da.To = 90;
-            da.From = 0;
-            da.Duration = new Duration(dur);
-            Storyboard.SetTargetName(da, image.Name);
-            Storyboard.SetTargetProperty(da, new PropertyPath(Canvas.LeftProperty));
-            sb.Children.Add(da);
-            sb.Begin(this);
+            DoubleAnimation da = new DoubleAnimation(0,90, dur);
+            image.BeginAnimation(Canvas.LeftProperty, da);
         }
     }
 }
