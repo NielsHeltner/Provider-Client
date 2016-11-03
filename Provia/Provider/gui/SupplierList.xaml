@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Provider.gui"
       mc:Ignorable="d" 
-      d:DesignHeight="659" d:DesignWidth="1139"
+      d:DesignHeight="659" d:DesignWidth="1275"
       Title="Page">
     <Page.Resources>
         <Style TargetType="ListViewItem">
@@ -26,7 +26,7 @@
     </Page.Resources>
 
     <Grid Background="White">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="659" VerticalAlignment="Top" Width="1139" GridViewColumnHeader.Click="SortSupplierInformation">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="637" VerticalAlignment="Top" Width="1009" GridViewColumnHeader.Click="SortSupplierInformation" Margin="130,22,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding name}">
