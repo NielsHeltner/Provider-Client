@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Provider.gui;
+using Provider.domain;
 
 namespace Provider.gui
 {
@@ -42,7 +43,7 @@ namespace Provider.gui
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-
+            Controller.Instance.LogOut();
         }
     }
 }
