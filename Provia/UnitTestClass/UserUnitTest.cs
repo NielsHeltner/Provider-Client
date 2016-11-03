@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Provider.domain.users;
 
-namespace UnitTest.Users
+namespace UnitTest.users
 {
     [TestClass]
     public class UserUnitTest
@@ -24,24 +24,19 @@ namespace UnitTest.Users
         [TestMethod]
         public void CheckIfUserIsLoggedIn()
         {
-            
             UserManager userManager = new UserManager();
             userManager.Validate("Jebisan", "123");
-            Assert.IsNotNull(userManager.LoggedInUser);
-           
+            Assert.IsNotNull(userManager.loggedInUser);
         }
 
         [TestMethod]
         public void CheckIfUserIsLoggedOut()
         {
-
             UserManager userManager = new UserManager();
             userManager.Validate("Jebisan", "123");
             userManager.LogOut(); 
-            Assert.IsNull(userManager.LoggedInUser);
+            Assert.IsNull(userManager.loggedInUser);
         }
-
-
-
+        
     }
 }

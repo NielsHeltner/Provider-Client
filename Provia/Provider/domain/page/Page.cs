@@ -16,6 +16,10 @@ namespace Provider.domain.page
             {
                 return owner.userName;
             }
+            private set
+            {
+                name = value;
+            }
         }
         public List<Product> products { get; private set; }
         public string note { get; set; }

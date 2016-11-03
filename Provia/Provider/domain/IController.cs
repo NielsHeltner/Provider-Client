@@ -10,11 +10,11 @@ namespace Provider.domain
 {
     public interface IController
     {
-        List<Page> ViewSuppliers();
+        List<Page> GetPages();
 
         Page GetSupplierPage(Supplier supplier);
 
-        bool LogIn(string name, string password);
+        bool LogIn(string userName, string password);
 
         void LogOut();
     }

@@ -10,19 +10,23 @@ namespace Provider.domain
 {
     public class Controller : IController
     {
-        private static IController instance;
+        private static IController _instance;
         private UserManager userManager;
         private PageManager pageManager;
 
-        public static IController Instance
+        public static IController instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new Controller();
+                    _instance = new Controller();
                 }
-                return instance;
+                return _instance;
+            }
+            private set
+            {
+
             }
         }
 
@@ -32,7 +36,7 @@ namespace Provider.domain
             pageManager = new PageManager();
         }
 
-        public List<Page> ViewSuppliers()
+        public List<Page> GetPages()
         {
             return pageManager.pages;
         }
@@ -42,14 +46,13 @@ namespace Provider.domain
             return pageManager.GetSupplierPage(supplier);
         }
         
-        public bool LogIn(string name, string password)
+        public bool LogIn(string userName, string password)
         {
-            return userManager.Validate(name, password);
+            return userManager.Validate(userName, password);
         }
 
         public void LogOut()
         {
-
             userManager.LogOut();
         }
     }

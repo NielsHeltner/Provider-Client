@@ -20,33 +20,32 @@ namespace Provider.gui
     /// </summary>
     public partial class LogIn : Page
     {
-        Frame frame;
-        Frontpage frontpage;
-        List<Button> buttons;
-        Label logged_in;
-        TextBlock searchText;
-        TextBox searchBox;
-        public LogIn(Frame frame, Frontpage frontpage, List<Button> button, Label logged_in, TextBlock searchText, TextBox searchBox)
+        private Frame frame;
+        private Frontpage frontpage;
+        private List<Button> buttons;
+        private Label loggedIn;
+        private TextBlock searchText;
+        private TextBox searchBox;
+        public LogIn(Frame frame, Frontpage frontpage, List<Button> buttons, Label loggedIn, TextBlock searchText, TextBox searchBox)
         {
             InitializeComponent();
             this.frame = frame;
             this.frontpage = frontpage;
-            this.buttons = button;
-            this.logged_in = logged_in;
+            this.buttons = buttons;
+            this.loggedIn = loggedIn;
             this.searchText = searchText;
             this.searchBox = searchBox;
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
         {
-            logged_in.Visibility = Visibility.Visible;
+            loggedIn.Visibility = Visibility.Visible;
             searchText.Visibility = Visibility.Visible;
             searchBox.Visibility = Visibility.Visible;
             foreach(Button button in buttons)
             {
                 button.Visibility = Visibility.Visible;
             }
-
             frame.Content = frontpage;
         }
     }

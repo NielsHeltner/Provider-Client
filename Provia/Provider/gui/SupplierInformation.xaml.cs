@@ -16,10 +16,8 @@ using System.ComponentModel;
 
 namespace Provider.gui
 {
-
     public partial class SupplierInformation : Page
     {
-
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
         private List<Provider.domain.page.Product> products = new List<Provider.domain.page.Product>();
@@ -32,7 +30,6 @@ namespace Provider.gui
             products = page.products;
             listView.ItemsSource = products;
         }
-
 
         private void SortProductInformation(object sender, RoutedEventArgs e)
         {

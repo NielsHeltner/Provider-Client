@@ -30,7 +30,7 @@ namespace Provider.gui
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            suppliers = Controller.Instance.ViewSuppliers();
+            suppliers = Controller.instance.GetPages();
             listView.ItemsSource = suppliers;
         }
 

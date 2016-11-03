@@ -23,38 +23,37 @@ namespace Provider.gui
     /// </summary>
     public partial class MainWindow : Window
     {
-        Frontpage frontpage = new Frontpage();
-        LogIn login;
+        private Frontpage frontpage = new Frontpage();
+        private LogIn logIn;
         
         public MainWindow()
         {  
             InitializeComponent();
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             SetVisibilityToHidden();
-            List<Button> buttonList = new List<Button>();
-            buttonList.Add(button);
-            buttonList.Add(button2);
-            buttonList.Add(button1);
-            buttonList.Add(logout);
-            login = new LogIn(frame, frontpage, buttonList, logged_in, searchText, SearchTermTextBox);
-            frame.Content = login;
+            List<Button> buttons = new List<Button>();
+            buttons.Add(button);
+            buttons.Add(button2);
+            buttons.Add(button1);
+            buttons.Add(logout);
+            logIn = new LogIn(frame, frontpage, buttons, loggedIn, searchText, SearchTermTextBox);
+            frame.Content = logIn;
         }
 
-        private void goToFrontpage(object sender, RoutedEventArgs e)
+        private void GoToFrontpage(object sender, RoutedEventArgs e)
         {
             frame.Content = frontpage;
         }
 
-        private void fillTextField(object sender, RoutedEventArgs e)
+        private void GetSupplierPages(object sender, RoutedEventArgs e)
         {
-                SupplierList a = new SupplierList(frame);
-                frame.Content = a;
+            frame.Content = new SupplierList(frame);
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            Controller.Instance.LogOut();
-            frame.Content = login;
+            Controller.instance.LogOut();
+            frame.Content = logIn;
             SetVisibilityToHidden();
         }
 
@@ -64,7 +63,7 @@ namespace Provider.gui
             button1.Visibility = Visibility.Hidden;
             button2.Visibility = Visibility.Hidden;
             logout.Visibility = Visibility.Hidden;
-            logged_in.Visibility = Visibility.Hidden;
+            loggedIn.Visibility = Visibility.Hidden;
             searchText.Visibility = Visibility.Hidden;
             SearchTermTextBox.Visibility = Visibility.Hidden;
         }

@@ -10,7 +10,7 @@ namespace Provider.domain.users
     {
         private HashSet<AbstractUser> users; //Temporary Hashset of all the users in the system.
 
-        public AbstractUser LoggedInUser { get; private set; } //Holds the current logged in user.
+        public AbstractUser loggedInUser { get; private set; } //Holds the current logged in user.
 
         public UserManager()
         {
@@ -34,19 +34,20 @@ namespace Provider.domain.users
                 {
                     if(password.Equals(user.password))
                     {
-                        LoggedInUser = user;
+                        loggedInUser = user;
                         return true;
                     }
                 }
             }
             return false;
         }
+
         /// <summary>
         /// logs out the current logged in user.
         /// </summary>
         public void LogOut()
         {
-            LoggedInUser = null;
+            loggedInUser = null;
 
         }
 
