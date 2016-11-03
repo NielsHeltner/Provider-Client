@@ -11,7 +11,7 @@
 
         <Button x:Name="button" Content="Hent leverandører" HorizontalAlignment="Left" Margin="136,35,0,0" VerticalAlignment="Top" Width="114" Click="fillTextField" Background="#FF0C4A63" Foreground="White"/>
         <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="659" Margin="50,100,0,0" VerticalAlignment="Top" Width="1168"/>
-        <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="1143,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White"/>
+        <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="1143,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut"/>
         <Label x:Name="logged_in" Content="Provia logget ind" HorizontalAlignment="Left" Margin="1038,32,0,0" VerticalAlignment="Top"/>
         <Button x:Name="button1" Content="Søg" HorizontalAlignment="Left" Margin="469,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White"/>
         <Button x:Name="button2" Content="Forside" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Width="75" Click="goToFrontpage" Background="#FF0C4A63" Foreground="White"/>

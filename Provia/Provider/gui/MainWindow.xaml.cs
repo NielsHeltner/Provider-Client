@@ -39,5 +39,10 @@ namespace Provider.gui
                 SupplierList a = new SupplierList(frame);
                 frame.Content = a;
         }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
