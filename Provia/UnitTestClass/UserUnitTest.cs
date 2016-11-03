@@ -5,7 +5,7 @@ using Provider.domain.users;
 namespace UnitTest.Users
 {
     [TestClass]
-    public class UsersUnitTest
+    public class UserUnitTest
     {
         [TestMethod]
         public void LogInTrue()

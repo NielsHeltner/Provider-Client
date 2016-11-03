@@ -52,8 +52,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Page.cs" />
-    <Compile Include="Users.cs" />
+    <Compile Include="PageUnitTest.cs" />
+    <Compile Include="UserUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
