@@ -22,16 +22,14 @@ namespace Provider.gui
 
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
-        private List<TestProduct> products = new List<TestProduct>();
+        private List<Provider.domain.page.Product> products = new List<Provider.domain.page.Product>();
 
-        public SupplierInformation(TestSupplier testSupplier)
+        public SupplierInformation(Provider.domain.page.Page page)
         {
             InitializeComponent();
-            groupBox.Header = testSupplier.Name;
+            groupBox.Header = page.name;
             frame.Content = new SupplierGroupBox();
-            products.Add(new TestProduct() { productName = "VitaMin", deliveryTime = new DateTime(), packaging = "Plastik" });
-            products.Add(new TestProduct() { productName = "VitaMere", deliveryTime = new DateTime(2017, 01, 20, 22, 30, 00), packaging = "Spande" });
-            products.Add(new TestProduct() { productName = "VitaNice", deliveryTime = new DateTime(1969, 11, 04, 06, 05, 05), packaging = "Sække" });
+            products = page.products;
             listView.ItemsSource = products;
         }
 
@@ -99,13 +97,6 @@ namespace Provider.gui
             SortDescription sortDesc = new SortDescription(sortBy, direction);
             dataView.SortDescriptions.Add(sortDesc);
             dataView.Refresh();
-        }
-
-        private class TestProduct
-        {
-            public string productName { get; set; }
-            public DateTime deliveryTime { get; set; }
-            public string packaging { get; set; }
         }
     }
 }
