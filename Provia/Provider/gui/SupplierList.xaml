@@ -29,19 +29,12 @@
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="659" VerticalAlignment="Top" Width="1139" GridViewColumnHeader.Click="SortSupplierInformation">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}">
+                    <GridViewColumn DisplayMemberBinding="{Binding name}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-
-                    <GridViewColumn DisplayMemberBinding="{Binding Credibility}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Troværdighed" HorizontalContentAlignment="Left" MinWidth="150"/>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-
-                    <GridViewColumn DisplayMemberBinding="{Binding Note}">
+                    <GridViewColumn DisplayMemberBinding="{Binding note}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="150"/>
                         </GridViewColumn.Header>

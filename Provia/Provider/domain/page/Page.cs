@@ -10,7 +10,15 @@ namespace Provider.domain.page
     public class Page
     {
         public Supplier owner { get; private set; }
-        private List<Product> product;
+        public string name
+        {
+            get
+            {
+                return owner.userName;
+            }
+        }
+        private List<Product> products;
+        public string note { get; set; }
 
         public Page(Supplier owner)
         {

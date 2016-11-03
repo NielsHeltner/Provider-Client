@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
 using System.ComponentModel;
+using Provider.domain;
 
 namespace Provider.gui
 {
@@ -21,7 +22,7 @@ namespace Provider.gui
     public partial class SupplierList : Page
     {
         private Frame mainWindow;
-        private List<TestSupplier> suppliers = new List<TestSupplier>();
+        private List<Provider.domain.page.Page> suppliers;
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
 
@@ -29,11 +30,12 @@ namespace Provider.gui
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            suppliers = Controller.Instance.ViewSuppliers();
             
-            suppliers.Add(new TestSupplier() { Name = "Niels", Credibility = "High", Note = "Meh" });
-            suppliers.Add(new TestSupplier() { Name = "Antonio", Credibility = "Low", Note = "Pretty Meh" });
-            suppliers.Add(new TestSupplier() { Name = "Niclas", Credibility = "Very High", Note = "Pretty Nice!" });
-
+            //suppliers.Add(new TestSupplier() { Name = "Niels", Credibility = "High", Note = "Meh" });
+            //suppliers.Add(new TestSupplier() { Name = "Antonio", Credibility = "Low", Note = "Pretty Meh" });
+            //suppliers.Add(new TestSupplier() { Name = "Niclas", Credibility = "Very High", Note = "Pretty Nice!" });
+   
             listView.ItemsSource = suppliers;
         }
 
@@ -91,15 +93,11 @@ namespace Provider.gui
             dataView.SortDescriptions.Clear();
             if(sortBy.Equals("Navn"))
             {
-                sortBy = "Name";
-            }
-            else if(sortBy.Equals("Troværdighed"))
-            {
-                sortBy = "Credibility";
+                sortBy = "name";
             }
             else if(sortBy.Equals("Note"))
             {
-                sortBy = "Note";
+                sortBy = "note";
             }
             SortDescription sortDesc = new SortDescription(sortBy, direction);
             dataView.SortDescriptions.Add(sortDesc);

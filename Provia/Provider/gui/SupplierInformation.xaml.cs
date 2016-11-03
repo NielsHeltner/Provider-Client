@@ -24,10 +24,10 @@ namespace Provider.gui
         private ListSortDirection lastDirection = ListSortDirection.Descending;
         private List<TestProduct> products = new List<TestProduct>();
 
-        public SupplierInformation(TestSupplier testSupplier)
+        public SupplierInformation(Provider.domain.page.Page page)
         {
             InitializeComponent();
-            groupBox.Header = testSupplier.Name;
+            groupBox.Header = page.owner.userName;
             frame.Content = new SupplierGroupBox();
             products.Add(new TestProduct() { productName = "VitaMin", deliveryTime = new DateTime(), packaging = "Plastik" });
             products.Add(new TestProduct() { productName = "VitaMere", deliveryTime = new DateTime(2017, 01, 20, 22, 30, 00), packaging = "Spande" });
