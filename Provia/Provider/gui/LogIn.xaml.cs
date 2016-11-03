@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -26,7 +27,9 @@ namespace Provider.gui
         private Label loggedIn;
         private TextBlock searchText;
         private TextBox searchBox;
-        public LogIn(Frame frame, Frontpage frontpage, List<Button> buttons, Label loggedIn, TextBlock searchText, TextBox searchBox)
+        private Image image;
+        private MainWindow mw;
+        public LogIn(Frame frame, Frontpage frontpage, List<Button> buttons, Label loggedIn, TextBlock searchText, TextBox searchBox, MainWindow mw)
         {
             InitializeComponent();
             this.frame = frame;
@@ -35,10 +38,14 @@ namespace Provider.gui
             this.loggedIn = loggedIn;
             this.searchText = searchText;
             this.searchBox = searchBox;
+            // this.image = image;
+            this.mw = mw;
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
         {
+            //AnimateHeader();
+            mw.button1_Click();
             loggedIn.Visibility = Visibility.Visible;
             searchText.Visibility = Visibility.Visible;
             searchBox.Visibility = Visibility.Visible;
@@ -47,6 +54,23 @@ namespace Provider.gui
                 button.Visibility = Visibility.Visible;
             }
             frame.Content = frontpage;
+        }
+
+        private void AnimateHeader()
+        {
+            Storyboard sb = new Storyboard();
+            TimeSpan dur = new TimeSpan(0, 0, 2);
+            DoubleAnimation da = new DoubleAnimation();
+            da.To = 100;
+            da.From = 0;
+            da.Duration = new Duration(dur);
+            Storyboard.SetTargetName(da, image.Name);
+            Storyboard.SetTargetProperty(da, new PropertyPath(Canvas.LeftProperty));
+            sb.Children.Add(da);
+            //sb.Completed += Sb_Completed;
+
+
+            sb.Begin(this);
         }
     }
 }
