@@ -23,6 +23,7 @@ namespace Provider.gui
     {
         private Frame mainWindow;
         private List<Provider.domain.page.Page> suppliers;
+        private ICollectionView dataView;
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
 
@@ -32,11 +33,12 @@ namespace Provider.gui
             this.mainWindow = mainWindow;
             suppliers = Controller.instance.GetPages();
             listView.ItemsSource = suppliers;
+            dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
         }
 
         private void ViewSupplierInformation(object sender, MouseButtonEventArgs e)
         {
-            mainWindow.Content = new SupplierInformation(suppliers.ElementAt(listView.SelectedIndex));
+            mainWindow.Content = new SupplierInformation((Provider.domain.page.Page) listView.SelectedItem);
         }
 
         private void SortSupplierInformation(object sender, RoutedEventArgs e)
@@ -84,7 +86,6 @@ namespace Provider.gui
 
         private void Sort(string sortBy, ListSortDirection direction)
         {
-            ICollectionView dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
             dataView.SortDescriptions.Clear();
             if(sortBy.Equals("Navn"))
             {
