@@ -15,7 +15,7 @@ namespace Provider.domain.users
         public UserManager()
         {
             users = new HashSet<AbstractUser>();
-            users.Add(new Provia("Jebisan", "123"));
+            users.Add(new Provia("Provia", "123"));
         }
 
         /// <summary>
@@ -30,13 +30,10 @@ namespace Provider.domain.users
         {
             foreach(AbstractUser user in users)
             {
-               if(userName.Equals(user.userName))
+                if (userName.Equals(user.userName) && password.Equals(user.password))
                 {
-                    if(password.Equals(user.password))
-                    {
-                        loggedInUser = user;
-                        return true;
-                    }
+                    loggedInUser = user;
+                    return true;
                 }
             }
             return false;
