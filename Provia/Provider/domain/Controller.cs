@@ -63,5 +63,10 @@ namespace Provider.domain
         {
             return bulletinboard.ViewBulletinBoard(type);
         }
+
+        public void CreatePost(AbstractUser owner, string description, int type)
+        {
+            bulletinboard.CreatePost(owner, description, type);
+        }
     }
 }
