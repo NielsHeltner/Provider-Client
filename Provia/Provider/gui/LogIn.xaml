@@ -38,20 +38,20 @@
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=usernameBox}" Value="">
+                        <DataTrigger Binding="{Binding IsFocused, ElementName=usernameBox}" Value="False">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="466,149,0,0" VerticalAlignment="Top" Width="312" Height="32" FontSize="18"/>
+        <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" Margin="466,149,0,0" VerticalAlignment="Top" Width="312" Height="32" FontSize="18"/>
         <TextBlock x:Name="passwordText" IsHitTestVisible="False" Text="Password..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="468,152,0,0" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Password, ElementName=passwordBox}" Value="">
+                        <DataTrigger Binding="{Binding IsFocused, ElementName=passwordBox}" Value="False">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
