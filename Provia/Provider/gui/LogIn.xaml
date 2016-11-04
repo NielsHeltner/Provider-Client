@@ -7,14 +7,61 @@
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="1168"
       Title="LogIn">
+    <Page.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF116a8e"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF188cbb"/>
+        <Style x:Key="loginButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#FF0C4A63">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="389,26,0,0" TextWrapping="Wrap" Text="Log ind" VerticalAlignment="Top" FontFamily="Yu Gothic UI" FontSize="72" Foreground="White"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="24" Margin="503,148,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="286" FontSize="18"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="389,148,0,0" TextWrapping="Wrap" Text="Brugernavn:" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
-        <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="389,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Password:" FontSize="18" Foreground="White"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="503,194,0,0" VerticalAlignment="Top" Width="286" Height="24" FontSize="18"/>
-        <Button x:Name="button" Content="Log ind" HorizontalAlignment="Left" Margin="503,236,0,0" VerticalAlignment="Top" Width="75" Background="White" Foreground="#FF0C4A63" BorderBrush="#00707070" Click="LogUserIn"/>
+        <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Height="32" Margin="466,88,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="312" FontSize="18"/>
+        <TextBlock x:Name="usernameText" IsHitTestVisible="False" Text="Brugernavn..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="469,92,0,0" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=usernameBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="466,149,0,0" VerticalAlignment="Top" Width="312" Height="32" FontSize="18"/>
+        <TextBlock x:Name="passwordText" IsHitTestVisible="False" Text="Password..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="468,152,0,0" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Password, ElementName=passwordBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <Button x:Name="button" Content="Log ind" HorizontalAlignment="Left" Margin="466,210,0,0" VerticalAlignment="Top" Width="312" Background="#FF063749" Foreground="White" BorderBrush="{x:Null}" Click="LogUserIn" Height="63" FontSize="22" FontFamily="Yu Gothic UI" Style="{DynamicResource loginButton}">
+
+        </Button>
 
     </Grid>
 </Page>
