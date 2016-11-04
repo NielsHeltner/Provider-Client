@@ -49,8 +49,8 @@ namespace Provider.gui
             {
                 button.Visibility = Visibility.Visible;
             }
-            frame.NavigationService.RemoveBackEntry();
             frame.Content = frontpage;
+            frame.NavigationService.RemoveBackEntry();
         }
     }
 }
