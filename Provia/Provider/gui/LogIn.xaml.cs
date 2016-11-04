@@ -33,6 +33,8 @@ namespace Provider.gui
             this.mainwindow = mainwindow;
             this.frontpage = frontpage;
             wrongUsernameOrPassword.Visibility = Visibility.Hidden;
+            usernameBox.Text = "Provia";
+            passwordBox.Password = "123";
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
@@ -73,6 +75,14 @@ namespace Provider.gui
             if (passwordBox.Password.Length == 0)
             {
                 passwordText.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void submitForm(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LogUserIn(sender, e);
             }
         }
     }

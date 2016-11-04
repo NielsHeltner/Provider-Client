@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Provider.domain.page;
+using Provider.domain.bulletinboard;
 using Provider.domain.users;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,5 @@ namespace Provider.domain
         void LogOut();
 
         string GetLoggedInUser();
-
-        void AddNoteToSupplier(string supplierName, string text);
     }
 }

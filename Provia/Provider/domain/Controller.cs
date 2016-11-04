@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Provider.domain.bulletinboard;
 
 namespace Provider.domain
 {
@@ -13,6 +14,7 @@ namespace Provider.domain
         private static IController _instance;
         private UserManager userManager;
         private PageManager pageManager;
+        private Bulletinboard bulletinboard;
 
         public static IController instance
         {
@@ -34,6 +36,7 @@ namespace Provider.domain
         {
             userManager = new UserManager();
             pageManager = new PageManager();
+            bulletinboard = new Bulletinboard();
         }
 
         public List<Page> GetPages()
@@ -56,9 +59,9 @@ namespace Provider.domain
             return userManager.loggedInUser.userName;
         }
 
-        public void AddNoteToSupplier(string supplierName, string text)
+        public List<Post> ViewBulletinBoard(int type)
         {
-            pageManager.AddNoteToSupplier(supplierName, text);
+            return bulletinboard.ViewBulletinBoard(type);
         }
     }
 }
