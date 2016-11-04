@@ -11,7 +11,7 @@ namespace UnitTest.users
         public void LogInTrue()
         {
             UserManager userManager = new UserManager();
-            Assert.IsTrue(userManager.Validate("Jebisan", "123"));
+            Assert.IsTrue(userManager.Validate("Provia", "123"));
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@ namespace UnitTest.users
         public void CheckIfUserIsLoggedIn()
         {
             UserManager userManager = new UserManager();
-            userManager.Validate("Jebisan", "123");
+            userManager.Validate("Provia", "123");
             Assert.IsNotNull(userManager.loggedInUser);
         }
 
@@ -33,7 +33,7 @@ namespace UnitTest.users
         public void CheckIfUserIsLoggedOut()
         {
             UserManager userManager = new UserManager();
-            userManager.Validate("Jebisan", "123");
+            userManager.Validate("Provia", "123");
             userManager.LogOut(); 
             Assert.IsNull(userManager.loggedInUser);
         }

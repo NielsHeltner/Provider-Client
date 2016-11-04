@@ -31,12 +31,7 @@ namespace Provider.gui
             InitializeComponent();
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             SetVisibilityToHidden();
-            List<Button> buttons = new List<Button>();
-            buttons.Add(showSuppliersButton);
-            buttons.Add(homeButton);
-            buttons.Add(searchButton);
-            buttons.Add(logout);
-            logIn = new LogIn(frame, frontpage, buttons, loggedIn, searchText, SearchTermTextBox, this);
+            logIn = new LogIn(frame, this, frontpage);
             frame.Content = logIn;
         }
 

@@ -17,5 +17,7 @@ namespace Provider.domain
         bool LogIn(string userName, string password);
 
         void LogOut();
+
+        string GetLoggedInUser();
     }
 }
