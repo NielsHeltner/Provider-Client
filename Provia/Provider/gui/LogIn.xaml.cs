@@ -49,5 +49,31 @@ namespace Provider.gui
                 wrongUsernameOrPassword.Visibility = Visibility.Visible;
             }
         }
+
+        private void UsernameGotFocus(object sender, RoutedEventArgs e)
+        {
+            usernameText.Visibility = Visibility.Hidden;
+        }
+
+        private void UsernameLostFocus(object sender, RoutedEventArgs e)
+        {
+            if(usernameBox.Text.Length == 0)
+            {
+                usernameText.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void PasswordGotFocus(object sender, RoutedEventArgs e)
+        {
+            passwordText.Visibility = Visibility.Hidden;
+        }
+
+        private void PasswordLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (passwordBox.Password.Length == 0)
+            {
+                passwordText.Visibility = Visibility.Visible;
+            }
+        }
     }
 }
