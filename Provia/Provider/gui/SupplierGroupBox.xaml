@@ -7,6 +7,29 @@
       mc:Ignorable="d" 
       d:DesignHeight="499" d:DesignWidth="626"
       Title="Page">
+    <Page.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" OpacityMask="#FF0E5470"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="White">
         <GroupBox x:Name="groupBox" Header="Beskrivelse" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Height="154" Width="586" FontFamily="Yu Gothic UI" FontSize="16">
@@ -21,6 +44,6 @@
         <GroupBox x:Name="groupBox_Copy" Header="Note" HorizontalAlignment="Left" Margin="20,256,0,0" VerticalAlignment="Top" Height="154" Width="586" FontFamily="Yu Gothic UI" FontSize="16">
             <TextBox x:Name="noteTextBox" HorizontalAlignment="Left" Height="129" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="576" Margin="0,0,-2,-3" BorderBrush="{x:Null}" FontSize="12" IsReadOnly="True"/>
         </GroupBox>
-        <Button x:Name="editNote" Content="Rediger Notater" HorizontalAlignment="Left" Margin="20,424,0,0" VerticalAlignment="Top" Width="112" Click="EditNote"/>
+        <Button x:Name="editNote" Content="Rediger Notater" HorizontalAlignment="Left" Margin="20,424,0,0" VerticalAlignment="Top" Width="112" Click="EditNote" Background="#FF0E5774" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
     </Grid>
 </Page>
