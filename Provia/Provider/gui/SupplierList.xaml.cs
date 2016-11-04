@@ -93,7 +93,7 @@ namespace Provider.gui
             }
             else if(sortBy.Equals("Note"))
             {
-                sortBy = "note";
+                sortBy = "noteText";
             }
             SortDescription sortDesc = new SortDescription(sortBy, direction);
             dataView.SortDescriptions.Add(sortDesc);

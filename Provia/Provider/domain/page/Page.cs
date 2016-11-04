@@ -22,7 +22,21 @@ namespace Provider.domain.page
             }
         }
         public List<Product> products { get; private set; }
-        public string note { get; set; }
+        public Note note { get; set; }
+        public string noteText
+        {
+            get
+            {
+                if (note == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return note.text;
+                }
+            }
+        }
 
         public Page(Supplier owner)
         {

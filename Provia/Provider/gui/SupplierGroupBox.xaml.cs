@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Provider.domain;
+using Provider.domain.users;
 
 namespace Provider.gui
 {
@@ -20,9 +22,30 @@ namespace Provider.gui
     /// </summary>
     public partial class SupplierGroupBox : Page
     {
-        public SupplierGroupBox()
+        private Provider.domain.page.Page page;
+        public SupplierGroupBox(Provider.domain.page.Page page)
         {
             InitializeComponent();
+            this.page = page;
+            if(page.note != null)
+            {
+                noteTextBox.Text = page.note.text;
+            }
+        }
+
+        private void EditNote(object sender, RoutedEventArgs e)
+        {
+            if (noteTextBox.IsReadOnly)
+            {
+                noteTextBox.IsReadOnly = false;
+                editNote.Content = "Gem";
+            }
+            else
+            {
+                noteTextBox.IsReadOnly = true;
+                editNote.Content = "Rediger notater";
+                Controller.instance.AddNoteToSupplier(page.name, noteTextBox.Text);
+            }
         }
     }
 }

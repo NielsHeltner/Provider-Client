@@ -7,6 +7,29 @@
       mc:Ignorable="d" 
       d:DesignHeight="499" d:DesignWidth="626"
       Title="Page">
+    <Page.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" OpacityMask="#FF0E5470"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="White">
         <GroupBox x:Name="groupBox" Header="Beskrivelse" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Height="154" Width="586" FontFamily="Yu Gothic UI" FontSize="16">
@@ -19,7 +42,8 @@
             <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." VerticalAlignment="Top" FontSize="12" TextTrimming="CharacterEllipsis" Width="256"/>
         </GroupBox>
         <GroupBox x:Name="groupBox_Copy" Header="Note" HorizontalAlignment="Left" Margin="20,256,0,0" VerticalAlignment="Top" Height="154" Width="586" FontFamily="Yu Gothic UI" FontSize="16">
-            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur libero tortor, eleifend at mollis eget, convallis a nisi. Curabitur leo lorem, eleifend et orci et, semper feugiat dolor. Suspendisse fringilla sagittis ex sit amet tempor. Mauris venenatis, elit in sagittis convallis, ex sapien suscipit neque, vel eleifend elit arcu facilisis tellus. Proin vestibulum convallis tortor, ac suscipit lectus fringilla vel. Phasellus eu lacinia dui, et gravida mi. Phasellus tincidunt bibendum justo. Pellentesque sed interdum est, vel auctor felis. Fusce ac libero aliquam, accumsan lacus ullamcorper, tempus lorem. In hac habitasse platea dictumst. Mauris scelerisque, urna nec gravida cursus, dolor ante suscipit nisl, ut dictum lorem ligula quis magna. Nullam auctor ante urna, quis hendrerit magna congue vitae. Phasellus tempus hendrerit diam posuere congue. Praesent id risus quis nibh tincidunt elementum. Quisque sed placerat elit, quis tristique metus." VerticalAlignment="Top" Height="130" Width="560" Margin="10,0,0,-4" FontSize="12" TextTrimming="WordEllipsis"/>
+            <TextBox x:Name="noteTextBox" HorizontalAlignment="Left" Height="129" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="576" Margin="0,0,-2,-3" BorderBrush="{x:Null}" FontSize="12" IsReadOnly="True"/>
         </GroupBox>
+        <Button x:Name="editNote" Content="Rediger Notater" HorizontalAlignment="Left" Margin="20,424,0,0" VerticalAlignment="Top" Width="112" Click="EditNote" Background="#FF0E5774" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
     </Grid>
 </Page>
