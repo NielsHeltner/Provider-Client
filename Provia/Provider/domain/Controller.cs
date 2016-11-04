@@ -40,11 +40,6 @@ namespace Provider.domain
         {
             return pageManager.pages;
         }
-
-        public Page GetSupplierPage(Supplier supplier)
-        {
-            return pageManager.GetSupplierPage(supplier);
-        }
         
         public bool LogIn(string userName, string password)
         {

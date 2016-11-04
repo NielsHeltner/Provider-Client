@@ -12,8 +12,6 @@ namespace Provider.domain
     {
         List<Page> GetPages();
 
-        Page GetSupplierPage(Supplier supplier);
-
         bool LogIn(string userName, string password);
 
         void LogOut();
