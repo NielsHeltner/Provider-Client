@@ -32,10 +32,10 @@
     </Page.Resources>
 
     <Grid Background="#FF0C4A63">
-        <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Height="32" Margin="466,88,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="312" FontSize="18" GotFocus="UsernameGotFocus" LostFocus="UsernameLostFocus"/>
+        <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Height="32" Margin="466,88,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="312" FontSize="18" GotFocus="UsernameGotFocus" LostFocus="UsernameLostFocus" KeyUp="submitForm"/>
         <TextBlock x:Name="usernameText" IsHitTestVisible="False" Text="Brugernavn..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="469,92,0,0" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
         </TextBlock>
-        <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" Margin="466,149,0,0" VerticalAlignment="Top" Width="312" Height="32" FontSize="18" LostFocus="PasswordLostFocus" GotFocus="PasswordGotFocus"/>
+        <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" Margin="466,149,0,0" VerticalAlignment="Top" Width="312" Height="32" FontSize="18" LostFocus="PasswordLostFocus" GotFocus="PasswordGotFocus" KeyUp="submitForm"/>
         <TextBlock x:Name="passwordText" IsHitTestVisible="False" Text="Password..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="468,152,0,0" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
         </TextBlock>
 

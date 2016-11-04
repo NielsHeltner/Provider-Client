@@ -27,20 +27,21 @@
     </Window.Resources>
     <Grid x:Name="test">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1019*"/>
-            <ColumnDefinition Width="256*"/>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="64*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="3"/>
 
         <Button x:Name="showSuppliersButton" Content="Hent leverandører" HorizontalAlignment="Left" Margin="136,35,0,0" VerticalAlignment="Top" Width="114" Click="GetSupplierPages" Background="#FF0C4A63" Foreground="White"/>
-        <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="681" Margin="0,91,0,0" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="2"/>
-        <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="124,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut" Grid.Column="1"/>
-        <Label x:Name="loggedIn" Content="Provia logget ind" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="searchButton" Content="Søg" HorizontalAlignment="Left" Margin="913,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White"/>
+        <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="681" Margin="0,91,0,0" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="3"/>
+        <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="124,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut" Grid.Column="2"/>
+        <Label x:Name="loggedIn" Content="Provia logget ind" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Button x:Name="searchButton" Content="Søg" HorizontalAlignment="Left" Margin="45.5,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White" Grid.Column="1"/>
         <Button x:Name="homeButton" Content="Forside" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Width="75" Click="GoToFrontpage" Background="#FF0C4A63" Foreground="White"/>
 
 
-        <TextBox Width="169" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="739,35,0,0" Height="20 " Opacity="0"/>
+        <TextBox Width="169" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="739,35,0,0" Height="20 " Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="searchText" IsHitTestVisible="False" Text="Søg..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="742,37,0,0" Foreground="DarkGray" Opacity="0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -53,8 +54,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Canvas HorizontalAlignment="Left" Height="95" Margin="390,0,0,0" VerticalAlignment="Top" Width="403">
-            <Image x:Name="image" HorizontalAlignment="Left" Height="76" VerticalAlignment="Top" Width="380" Source="../resources/provider.png" Canvas.Left="90" Canvas.Top="9"/>
+        <Canvas HorizontalAlignment="Left" Height="95" Margin="338,0,0,0" VerticalAlignment="Top" Width="455">
+            <Image x:Name="image" HorizontalAlignment="Left" Height="76" VerticalAlignment="Top" Width="380" Source="../resources/provider2.png" Canvas.Left="122" Canvas.Top="10"/>
         </Canvas>
 
     </Grid>
