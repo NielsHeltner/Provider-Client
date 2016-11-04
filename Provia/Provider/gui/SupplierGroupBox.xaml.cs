@@ -31,10 +31,6 @@ namespace Provider.gui
             {
                 noteTextBox.Text = page.note.text;
             }
-            else
-            {
-                noteTextBox.Text = "Note er null";
-            }
         }
 
         private void EditNote(object sender, RoutedEventArgs e)
