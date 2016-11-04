@@ -32,8 +32,33 @@
     </Page.Resources>
 
     <Grid Background="#FF0C4A63">
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="32" Margin="466,88,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="312" FontSize="18"/>
+        <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Height="32" Margin="466,88,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="312" FontSize="18"/>
+        <TextBlock x:Name="usernameText" IsHitTestVisible="False" Text="Brugernavn..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="469,92,0,0" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=usernameBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="466,149,0,0" VerticalAlignment="Top" Width="312" Height="32" FontSize="18"/>
+        <TextBlock x:Name="passwordText" IsHitTestVisible="False" Text="Password..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="468,152,0,0" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Password, ElementName=passwordBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
         <Button x:Name="button" Content="Log ind" HorizontalAlignment="Left" Margin="466,210,0,0" VerticalAlignment="Top" Width="312" Background="#FF063749" Foreground="White" BorderBrush="{x:Null}" Click="LogUserIn" Height="63" FontSize="22" FontFamily="Yu Gothic UI" Style="{DynamicResource loginButton}">
 
         </Button>
