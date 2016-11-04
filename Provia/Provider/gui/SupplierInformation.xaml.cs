@@ -26,7 +26,7 @@ namespace Provider.gui
         {
             InitializeComponent();
             groupBox.Header = page.name;
-            frame.Content = new SupplierGroupBox();
+            frame.Content = new SupplierGroupBox(page);
             products = page.products;
             listView.ItemsSource = products;
         }
@@ -95,5 +95,7 @@ namespace Provider.gui
             dataView.SortDescriptions.Add(sortDesc);
             dataView.Refresh();
         }
+
+        
     }
 }

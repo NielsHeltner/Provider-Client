@@ -46,7 +46,14 @@ namespace Provider.domain.page
 
         public void AddNoteToSupplier(string supplierName, string text)
         {
-            GetSupplierPage(supplierName).note = new Note(text);
+            if(GetSupplierPage(supplierName).note == null)
+            {
+                GetSupplierPage(supplierName).note = new Note(text);
+            }
+            else
+            {
+                GetSupplierPage(supplierName).note.text = text;
+            }
         }
     }
 }

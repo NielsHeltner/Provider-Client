@@ -63,5 +63,10 @@ namespace Provider.domain
         {
             return bulletinboard.ViewBulletinBoard(type);
         }
+
+        public void AddNoteToSupplier(string supplierName, string text)
+        {
+            pageManager.AddNoteToSupplier(supplierName, text);
+        }
     }
 }

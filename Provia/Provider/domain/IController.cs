@@ -18,5 +18,7 @@ namespace Provider.domain
         void LogOut();
 
         string GetLoggedInUser();
+
+        void AddNoteToSupplier(string supplierName, string text);
     }
 }
