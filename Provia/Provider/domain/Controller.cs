@@ -55,5 +55,10 @@ namespace Provider.domain
         {
             return userManager.loggedInUser.userName;
         }
+
+        public void AddNoteToSupplier(string supplierName, string text)
+        {
+            pageManager.AddNoteToSupplier(supplierName, text);
+        }
     }
 }
