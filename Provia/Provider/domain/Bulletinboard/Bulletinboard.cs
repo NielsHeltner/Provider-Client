@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Provider.domain.users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace Provider.domain.Bulletinboard
 {
     public class Bulletinboard
     {
+        public void CreatePost(AbstractUser owner, string description) {
+            new Post(owner, description);
+        }
+
     }
 }
