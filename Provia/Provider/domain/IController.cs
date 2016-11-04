@@ -13,6 +13,12 @@ namespace Provider.domain
     {
         List<Page> GetPages();
 
+        void EditPost(string editedText, Post post);
+
+        void DeletePost(Post post);
+
+        void CreatePost(AbstractUser owner, string description, int type);
+
         bool LogIn(string userName, string password);
 
         void LogOut();
