@@ -64,9 +64,19 @@ namespace Provider.domain
             return bulletinboard.ViewBulletinBoard(type);
         }
 
-        public void AddNoteToSupplier(string supplierName, string text)
+        public void CreatePost(AbstractUser owner, string description, int type)
         {
-            pageManager.AddNoteToSupplier(supplierName, text);
+            bulletinboard.CreatePost(owner, description, type);
+        }
+
+        public void DeletePost(Post post)
+        {
+            bulletinboard.DeletePost(post);
+        }
+
+        public void EditPost(string editedText, Post post)
+        {
+            bulletinboard.EditPost(editedText, post);
         }
     }
 }
