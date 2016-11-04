@@ -129,5 +129,6 @@ namespace Provider.gui
             da.EasingFunction = ease;
             image.BeginAnimation(Canvas.LeftProperty, da);
         }
+
     }
 }
