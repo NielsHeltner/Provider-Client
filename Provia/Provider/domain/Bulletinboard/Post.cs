@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Provider.domain.Bulletinboard
+namespace Provider.domain.bulletinboard
 {
     public class Post
     {

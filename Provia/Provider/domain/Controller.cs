@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Provider.domain.Bulletinboard;
+using Provider.domain.bulletinboard;
 
 namespace Provider.domain
 {
@@ -14,7 +14,7 @@ namespace Provider.domain
         private static IController _instance;
         private UserManager userManager;
         private PageManager pageManager;
-        private Provider.domain.Bulletinboard.Bulletinboard bulletinboard;
+        private Bulletinboard bulletinboard;
 
         public static IController instance
         {
@@ -36,7 +36,7 @@ namespace Provider.domain
         {
             userManager = new UserManager();
             pageManager = new PageManager();
-            bulletinboard = new Provider.domain.Bulletinboard.Bulletinboard();
+            bulletinboard = new Bulletinboard();
         }
 
         public List<Page> GetPages()
