@@ -75,5 +75,13 @@ namespace Provider.gui
                 passwordText.Visibility = Visibility.Visible;
             }
         }
+
+        private void submitForm(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LogUserIn(sender, e);
+            }
+        }
     }
 }
