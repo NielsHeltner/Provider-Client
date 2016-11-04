@@ -5,19 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Provider.domain.Bulletinboard
+namespace Provider.domain.bulletinboard
 {
     public class Post
     {
-        string description;
-        DateTime creationDate;
-        AbstractUser owner;
-        
-        public Post(AbstractUser owner, string description)
-        {
-            this.description = description;
-            this.owner = owner;
-        }
-
     }
 }
