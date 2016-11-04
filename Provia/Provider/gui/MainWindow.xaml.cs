@@ -74,7 +74,7 @@ namespace Provider.gui
             //AnimateAfterImageCompleted();
 
             // Animate image logo 
-            DoubleAnimation imageAnimate = new DoubleAnimation(90, 0, new TimeSpan(0, 0, 2));
+            DoubleAnimation imageAnimate = new DoubleAnimation(122, 0, new TimeSpan(0, 0, 2));
             ElasticEase ease = new ElasticEase();
             ease.Springiness = 10;
             ease.Oscillations = 0;
@@ -116,7 +116,7 @@ namespace Provider.gui
 
         private void AnimateHeaderLogout()
         {
-            DoubleAnimation da = new DoubleAnimation(0,90, new TimeSpan(0, 0, 2));
+            DoubleAnimation da = new DoubleAnimation(0,122, new TimeSpan(0, 0, 2));
             ElasticEase ease = new ElasticEase();
             ease.Springiness = 10;
             ease.Oscillations = 0;
