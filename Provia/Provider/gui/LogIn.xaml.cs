@@ -50,7 +50,6 @@ namespace Provider.gui
                 button.Visibility = Visibility.Visible;
             }
             frame.Content = frontpage;
-            frame.NavigationService.RemoveBackEntry();
         }
     }
 }
