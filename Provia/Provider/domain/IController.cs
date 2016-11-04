@@ -25,11 +25,11 @@ namespace Provider.domain
 
         string GetLoggedInUser();
 
-        // Retuns a list of posts.
-        // If type = "0" all posts are returned
-        // If type = "1" warningPost are returned
-        // If type = "2" requestPost are returned
-        // If type = "3" offerPost are returned
+        /// Retuns a list of posts.
+        /// If type = "0" all posts are returned
+        /// If type = "1" warningPost are returned
+        /// If type = "2" requestPost are returned
+        /// If type = "3" offerPost are returned
         List<Post> ViewBulletinBoard(int type);
     }
 }
