@@ -43,5 +43,17 @@ namespace Provider.domain.page
         {
             return pages.Find(page => page.owner.userName.Equals(supplierName));
         }
+
+        public void AddNoteToSupplier(string supplierName, string text)
+        {
+            if(GetSupplierPage(supplierName).note == null)
+            {
+                GetSupplierPage(supplierName).note = new Note(text);
+            }
+            else
+            {
+                GetSupplierPage(supplierName).note.text = text;
+            }
+        }
     }
 }

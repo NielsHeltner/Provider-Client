@@ -38,7 +38,8 @@ namespace Provider.gui
 
         private void ViewSupplierInformation(object sender, MouseButtonEventArgs e)
         {
-            mainWindow.Content = new SupplierInformation((Provider.domain.page.Page) listView.SelectedItem);
+            //mainWindow.Content = new SupplierInformation((Provider.domain.page.Page) listView.SelectedItem);
+            mainWindow.Content = new SupplierInformation(suppliers.ElementAt(listView.SelectedIndex));
         }
 
         private void SortSupplierInformation(object sender, RoutedEventArgs e)
@@ -93,7 +94,7 @@ namespace Provider.gui
             }
             else if(sortBy.Equals("Note"))
             {
-                sortBy = "note";
+                sortBy = "noteText";
             }
             SortDescription sortDesc = new SortDescription(sortBy, direction);
             dataView.SortDescriptions.Add(sortDesc);

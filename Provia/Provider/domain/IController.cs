@@ -31,6 +31,8 @@ namespace Provider.domain
         /// If type = "2" requestPost are returned
         /// If type = "3" offerPost are returned
         List<Post> ViewBulletinBoard(int type);
+
+        void AddNoteToSupplier(string supplierName, string text);
     }
 }
     

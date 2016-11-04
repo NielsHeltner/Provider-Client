@@ -78,5 +78,10 @@ namespace Provider.domain
         {
             bulletinboard.EditPost(editedText, post);
         }
+
+        public void AddNoteToSupplier(string supplierName, string text)
+        {
+            pageManager.AddNoteToSupplier(supplierName, text);
+        }
     }
 }
