@@ -15,12 +15,12 @@ namespace Provider.domain.page
         {
             pages = new List<Page>();
             Page p1 = new Page(new Supplier("Vitafit", "password1234"));
-            p1.AddProduct(new Product(0, 100, "Sække", "VitaMere", new DateTime(2017, 01, 20, 22, 30, 00)));
-            p1.AddProduct(new Product(0, 100, "Spande", "VitaMindre", new DateTime(2017, 01, 18, 16, 15, 00)));
-            p1.AddProduct(new Product(0, 100, "Plastik", "VitaNice", new DateTime(2016, 12, 22, 06, 05, 00)));
+            p1.AddProduct(new Product(0, 100, "Sække", "VitaMere", new DateTime(2017, 01, 20, 22, 30, 00), "Mega lækkert vitamin"));
+            p1.AddProduct(new Product(0, 100, "Spande", "VitaMindre", new DateTime(2017, 01, 18, 16, 15, 00), "Smager udemærket"));
+            p1.AddProduct(new Product(0, 100, "Plastik", "VitaNice", new DateTime(2016, 12, 22, 06, 05, 00), "Lugter fint"));
 
             Page p2 = new Page(new Supplier("B2Vitas", "password1234"));
-            p2.AddProduct(new Product(0, 100, "Paller", "Tiamin", new DateTime(2017, 02, 01, 22, 30, 00)));
+            p2.AddProduct(new Product(0, 100, "Paller", "Tiamin", new DateTime(2017, 02, 01, 22, 30, 00), "Er lidt gennemsigtigt"));
             p2.AddProduct(new Product(0, 100, "Spande", "Biotin", new DateTime(2016, 12, 02, 09, 15, 00)));
             p2.AddProduct(new Product(0, 100, "Plastik", "Fyllokinon", new DateTime(2016, 11, 23, 11, 45, 00)));
 
