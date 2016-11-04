@@ -30,7 +30,6 @@ namespace Provider.gui
         {  
             InitializeComponent();
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            frame.NavigationService.RemoveBackEntry();
             SetVisibilityToHidden();
             List<Button> buttons = new List<Button>();
             buttons.Add(showSuppliersButton);
