@@ -8,5 +8,13 @@ namespace Provider.domain.users
 {
     public class Note
     {
+        public string text { get; set; }
+        public DateTime creationDate { get; private set; }
+
+        public Note(string text)
+        {
+            this.text = text;
+            creationDate = DateTime.Now;
+        }
     }
 }
