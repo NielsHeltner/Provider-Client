@@ -13,7 +13,6 @@ namespace Provider.domain.bulletinboard
         public Bulletinboard()
         {
             posts = new List<Post>();
-
         }
 
         // Retuns a list of posts.
