@@ -25,9 +25,19 @@ namespace Provider.domain.bulletinboard
         /// "2" is requestPost
         /// "3" is offerPost
         /// </param>
+
         public void CreatePost(AbstractUser owner, string description, int type)
         {
             posts.Add(new Post(owner, description, type));
+        }
+        public void DeletePost(Post post)
+        {
+            posts.Remove(post);
+        }
+
+        public void EditPost(string editedText, Post post)
+        {
+            posts.Find(x => x == post).description = editedText;
         }
 
         // Retuns a list of posts.
