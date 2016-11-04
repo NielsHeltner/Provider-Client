@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Provider.domain;
 
 namespace Provider.gui
 {
@@ -22,35 +23,31 @@ namespace Provider.gui
     public partial class LogIn : Page
     {
         private Frame frame;
-        private Frontpage frontpage;
-        private List<Button> buttons;
-        private Label loggedIn;
-        private TextBlock searchText;
-        private TextBox searchBox;
         private MainWindow mainwindow;
-        public LogIn(Frame frame, Frontpage frontpage, List<Button> buttons, Label loggedIn, TextBlock searchText, TextBox searchBox, MainWindow mainwindow)
+        private Frontpage frontpage;
+
+        public LogIn(Frame frame, MainWindow mainwindow, Frontpage frontpage)
         {
             InitializeComponent();
             this.frame = frame;
-            this.frontpage = frontpage;
-            this.buttons = buttons;
-            this.loggedIn = loggedIn;
-            this.searchText = searchText;
-            this.searchBox = searchBox;
             this.mainwindow = mainwindow;
+            this.frontpage = frontpage;
+            wrongUsernameOrPassword.Visibility = Visibility.Hidden;
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
         {
-            mainwindow.AnimateHeaderLogin();
-            loggedIn.Visibility = Visibility.Visible;
-            //searchText.Visibility = Visibility.Visible;
-            //searchBox.Visibility = Visibility.Visible;
-            foreach(Button button in buttons)
+            if (Controller.instance.LogIn(usernameBox.Text, passwordBox.Password))
             {
-                button.Visibility = Visibility.Visible;
+                wrongUsernameOrPassword.Visibility = Visibility.Hidden;
+                mainwindow.AnimateHeaderLogin();
+                frame.Content = frontpage;
+                mainwindow.loggedIn.Content = Controller.instance.GetLoggedInUser() + " logget ind";
             }
-            frame.Content = frontpage;
+            else
+            {
+                wrongUsernameOrPassword.Visibility = Visibility.Visible;
+            }
         }
     }
 }
