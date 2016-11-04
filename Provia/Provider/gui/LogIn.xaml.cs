@@ -25,6 +25,7 @@ namespace Provider.gui
         private Frame frame;
         private MainWindow mainwindow;
         private Frontpage frontpage;
+
         public LogIn(Frame frame, MainWindow mainwindow, Frontpage frontpage)
         {
             InitializeComponent();
