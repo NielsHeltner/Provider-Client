@@ -8,5 +8,6 @@ namespace Provider.domain.Bulletinboard
 {
     public class Post
     {
+        public int type { get; private set; }
     }
 }
