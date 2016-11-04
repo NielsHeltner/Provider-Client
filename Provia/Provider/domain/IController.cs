@@ -33,3 +33,4 @@ namespace Provider.domain
         List<Post> ViewBulletinBoard(int type);
     }
 }
+    

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Provider.domain.users;
 
-namespace UnitTest.users
+namespace UnitTestClass.users
 {
     [TestClass]
     public class UserUnitTest
