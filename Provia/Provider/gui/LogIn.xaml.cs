@@ -33,8 +33,8 @@ namespace Provider.gui
             this.mainwindow = mainwindow;
             this.frontpage = frontpage;
             wrongUsernameOrPassword.Visibility = Visibility.Hidden;
-            usernameBox.Text = "Provia";
-            passwordBox.Password = "123";
+            //usernameBox.Text = "Provia";
+            //passwordBox.Password = "123";
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
@@ -49,6 +49,26 @@ namespace Provider.gui
             else
             {
                 wrongUsernameOrPassword.Visibility = Visibility.Visible;
+                DoubleAnimationUsingKeyFrames daukf = new DoubleAnimationUsingKeyFrames();
+                //daukf.RepeatBehavior = new RepeatBehavior(3);
+                EasingDoubleKeyFrame frame1 = new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 50));
+                EasingDoubleKeyFrame frame2 = new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 100));
+                EasingDoubleKeyFrame frame3 = new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 150));
+                EasingDoubleKeyFrame frame4 = new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 200));
+                EasingDoubleKeyFrame frame5 = new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 250));
+                EasingDoubleKeyFrame frame6 = new EasingDoubleKeyFrame(56, new TimeSpan(0, 0, 0, 0, 300));
+                DoubleKeyFrameCollection frameCollection = new DoubleKeyFrameCollection();
+                frameCollection.Add(frame1);
+                frameCollection.Add(frame2);
+                frameCollection.Add(frame3);
+                frameCollection.Add(frame4);
+                frameCollection.Add(frame5);
+                frameCollection.Add(frame6);
+                daukf.KeyFrames = frameCollection;
+                usernameBox.BeginAnimation(Canvas.LeftProperty, daukf);
+                usernameText.BeginAnimation(Canvas.LeftProperty, daukf);
+                passwordBox.BeginAnimation(Canvas.LeftProperty, daukf);
+                passwordText.BeginAnimation(Canvas.LeftProperty, daukf);
             }
         }
 
