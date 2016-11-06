@@ -83,5 +83,10 @@ namespace Provider.domain
         {
             pageManager.AddNoteToSupplier(supplierName, text);
         }
+
+        public List<Page> Search(string searchTerm)
+        {
+            return pageManager.Search(searchTerm);
+        }
     }
 }

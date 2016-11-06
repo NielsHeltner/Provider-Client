@@ -22,17 +22,17 @@ namespace Provider.gui
     public partial class SupplierList : Page
     {
         private Frame mainWindow;
-        private List<Provider.domain.page.Page> suppliers;
+        private List<Provider.domain.page.Page> listToShow;
         private ICollectionView dataView;
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
 
-        public SupplierList(Frame mainWindow)
+        public SupplierList(Frame mainWindow, List<Provider.domain.page.Page> listToShow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            suppliers = Controller.instance.GetPages();
-            listView.ItemsSource = suppliers;
+            this.listToShow = listToShow;
+            listView.ItemsSource = this.listToShow;
             dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
         }
 
