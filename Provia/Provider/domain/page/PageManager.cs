@@ -55,5 +55,18 @@ namespace Provider.domain.page
                 GetSupplierPage(supplierName).note.text = text;
             }
         }
+
+        public List<Page> Search(string searchTerm)
+        {
+            List<Page> results = new List<Page>();
+            foreach (Page page in pages)
+            {
+                if(page.name.ToLower().Contains(searchTerm.ToLower()))
+                {
+                    results.Add(page);
+                }
+            }
+            return results;
+        }
     }
 }

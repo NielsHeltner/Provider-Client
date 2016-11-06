@@ -33,6 +33,8 @@ namespace Provider.domain
         List<Post> ViewBulletinBoard(int type);
 
         void AddNoteToSupplier(string supplierName, string text);
+
+        List<Page> Search(string searchTerm);
     }
 }
     
