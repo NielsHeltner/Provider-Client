@@ -11,15 +11,15 @@ namespace UnitTestClass.page
         [TestMethod]
         public void ViewSuppliersTest()
         {
-            PageManager pg = new PageManager();
-            Assert.AreEqual(typeof(List<Provider.domain.page.Page>), pg.pages.GetType());
+            PageManager pm = new PageManager();
+            Assert.AreEqual(typeof(List<Provider.domain.page.Page>), pm.pages.GetType());
         }
 
         [TestMethod]
-        public void ViewSupplierInformationTest()
+        public void SearchTest() // TODO: skal muligvis laves om, så den tester resultatet i stedet for typen
         {
-            PageManager pg = new PageManager();
-            Assert.AreEqual(typeof(Provider.domain.page.Page), pg.GetSupplierPage(pg.pages[0].owner).GetType());
+            PageManager pm = new PageManager();
+            Assert.AreEqual(typeof(List<Provider.domain.page.Page>), pm.Search("e").GetType());
         }
 
     }
