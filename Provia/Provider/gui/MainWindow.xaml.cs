@@ -126,7 +126,7 @@ namespace Provider.gui
             image.BeginAnimation(Canvas.LeftProperty, da);
         }
 
-        private void _Search()
+        private void _Search(string searchTerm)
         {
             if (string.IsNullOrWhiteSpace(searchTermTextBox.Text))
             {
@@ -134,18 +134,21 @@ namespace Provider.gui
             }
             else
             {
-                frame.Content = new SupplierList(frame, Controller.instance.Search(searchTermTextBox.Text));
+                this.Dispatcher.Invoke(() =>
+                {
+                    frame.Content = new SupplierList(frame, Controller.instance.Search(searchTerm));
+                });
             }
         }
 
         private void Search(object sender, KeyEventArgs e)
         {
-            _Search();
+            _Search(searchTermTextBox.Text);
         }
 
         private void Search(object sender, RoutedEventArgs e)
         {
-            _Search();
+            _Search(searchTermTextBox.Text);
         }
     }
 }
