@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Provider.domain.bulletinboard;
 
 namespace Provider.gui
 {
@@ -20,9 +21,19 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardProductPage : Page
     {
+        private Post selectedItem;
+
         public BulletinBoardProductPage()
         {
             InitializeComponent();
+            deletePostButton.Visibility = Visibility.Hidden;
+            saveButton.Visibility = Visibility.Hidden;
+            
+        }
+
+        public BulletinBoardProductPage(Post selectedItem)
+        {
+         postTitel.Text = selectedItem   
         }
     }
 }

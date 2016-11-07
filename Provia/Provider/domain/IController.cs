@@ -24,6 +24,7 @@ namespace Provider.domain
         // If type = "1" warningPost are returned
         // If type = "2" requestPost are returned
         // If type = "3" offerPost are returned
+
         List<Post> ViewBulletinBoard(int type);
     }
 }

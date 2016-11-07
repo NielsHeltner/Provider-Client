@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Provider.domain;
+
 
 namespace Provider.gui
 {
@@ -20,10 +22,19 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardPage : Page
     {
+
+        private List<Provider.domain.bulletinboard.Post> posts = new List<domain.bulletinboard.Post>();
         public BulletinBoardPage()
         {
             InitializeComponent();
             frame.Content = new BulletinBoardProductPage();
+            posts = Controller.instance.ViewBulletinBoard(0);
+            listView.ItemsSource = posts;
+
+        }
+        private void ViewPostInformation(object sender, MouseButtonEventArgs e)
+        {
+            frame.Content = new BulletinBoardProductPage((Provider.domain.bulletinboard.Post)listView.SelectedItem);
         }
     }
 }
