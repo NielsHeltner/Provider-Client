@@ -25,23 +25,35 @@ namespace Provider.gui
         public BulletinBoardProductPage()
         {
             InitializeComponent();
+            HideButtons();
         }
 
         public BulletinBoardProductPage(Post selectedItem)
         {
             InitializeComponent();
-            deletePostButton.Visibility = Visibility.Collapsed;
-            saveButton.Opacity = 0;
+            HideButtons();
             postTitel.Text = selectedItem.title;
             postDesciption.Text = selectedItem.description;
             postOwner.Text = selectedItem.owner.userName;
             postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
+        }
+        public void HideButtons()
+        {
+            deletePostButton.Visibility = Visibility.Hidden;
+            saveButton.Visibility = Visibility.Hidden;
+            postDesciption.IsReadOnly = true;
+            postTitel.IsReadOnly = true;
         }
 
         private void Click_editPostButton(object sender, RoutedEventArgs e)
         {
             deletePostButton.Visibility = Visibility.Visible;
             saveButton.Visibility = Visibility.Visible;
+            postDesciption.IsReadOnly = false;
+            postDesciption.AcceptsReturn = true;
+            postDesciption.IsUndoEnabled = true;
+            postTitel.IsReadOnly = false;
+            postTitel.Focus();
         }
     }
 }
