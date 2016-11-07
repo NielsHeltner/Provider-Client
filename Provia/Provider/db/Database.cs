@@ -32,7 +32,7 @@ namespace Provider.db
         private void GetConnection()
         {
             NpgsqlConnection conn = new NpgsqlConnection("Host=tek-mmmi-db0a.tek.c.sdu.dk;Username=group_2;Password=MDI5NTli;Database=group_2_db");
-            conn.Open();
+            conn.Open(); // TODO: burde overveje en try-catch her, da der noglegange opstår exceptions
             cmd.Connection = conn;
         }
 
