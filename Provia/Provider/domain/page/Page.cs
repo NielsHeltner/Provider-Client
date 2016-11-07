@@ -59,5 +59,10 @@ namespace Provider.domain.page
         {
             products.Add(product);
         }
+
+        public void AddProduct(List<Product> productList)
+        {
+            products.AddRange(productList);
+        }
     }
 }
