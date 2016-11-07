@@ -56,6 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="gui\BulletinBoardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="gui\BulletinBoardProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="gui\Frontpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +92,12 @@
     <Compile Include="gui\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="gui\BulletinBoardPage.xaml.cs">
+      <DependentUpon>BulletinBoardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="gui\BulletinBoardProductPage.xaml.cs">
+      <DependentUpon>BulletinBoardProductPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="gui\Frontpage.xaml.cs">
       <DependentUpon>Frontpage.xaml</DependentUpon>
