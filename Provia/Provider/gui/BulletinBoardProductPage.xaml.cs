@@ -21,11 +21,12 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardProductPage : Page
     {
-
+        Post selectedItem;
         public BulletinBoardProductPage(Post selectedItem)
         {
             InitializeComponent();
             HideButtons();
+            this.selectedItem = selectedItem;
             postTitel.Text = selectedItem.title;
             postDesciption.Text = selectedItem.description;
             postOwner.Text = selectedItem.owner.userName;
@@ -68,6 +69,25 @@ namespace Provider.gui
             postDesciption.IsUndoEnabled = true;
             postTitel.IsReadOnly = false;
             postTitel.Focus();
+        }
+
+        private void SavePost(object sender, RoutedEventArgs e)
+        {
+            selectedItem.description = postDesciption.Text;
+            selectedItem.title = postTitel.Text;
+            HideButtons();
+        }
+
+        private void DeletePost(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult confirmation = MessageBox.Show("Er du sikker på du vil slette dette opslag?", "Bekræft sletning", MessageBoxButton.YesNo);
+            switch (confirmation)
+            {
+                case MessageBoxResult.Yes:
+                    domain.Controller.instance.DeletePost(selectedItem);
+                    break;
+            }
+
         }
     }
 }

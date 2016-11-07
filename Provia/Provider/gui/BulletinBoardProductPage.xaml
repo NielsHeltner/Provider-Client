@@ -16,9 +16,9 @@
         <TextBox x:Name="postDesciption" HorizontalAlignment="Left" Height="254" Margin="33,119,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365" SpellCheck.IsEnabled="True" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
          ScrollViewer.VerticalScrollBarVisibility="Auto" />
         <Button x:Name="editPostButton" Content="Rediger" HorizontalAlignment="Left" Margin="33,406,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2"/>
-        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="260,406,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF0404" BorderBrush="#FF707070" Foreground="Black" Grid.Column="1"/>
+        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="260,406,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF0404" BorderBrush="#FF707070" Foreground="Black" Grid.Column="1" Click="DeletePost"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="33,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False"><Run Text="Den"/><Run Text=":"/></TextBlock>
-        <Button x:Name="saveButton" Content="Gem" HorizontalAlignment="Left" Margin="105,406,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button x:Name="saveButton" Content="Gem" HorizontalAlignment="Left" Margin="105,406,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="SavePost"/>
         <TextBox x:Name="postTitel" HorizontalAlignment="Left" Height="23" Margin="33,10,0,0" TextWrapping="Wrap" MaxLines="1" Text="TextBox" VerticalAlignment="Top" Width="362" SpellCheck.IsEnabled="True" BorderThickness="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="postOwner" Grid.Column="1" HorizontalAlignment="Left" Margin="36,38,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="75" Height="20"/>
         <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="62,63,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
