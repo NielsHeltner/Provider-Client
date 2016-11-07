@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Provider.db;
 
 namespace Provider.domain.users
 {
@@ -28,13 +29,19 @@ namespace Provider.domain.users
 
         public bool Validate(string userName, string password)
         {
-            foreach(AbstractUser user in users)
+            /*foreach(AbstractUser user in users)
             {
                 if (userName.Equals(user.userName) && password.Equals(user.password))
                 {
                     loggedInUser = user;
                     return true;
                 }
+            }*/
+            if(Database.instance.GetLogin(userName, password))
+            {
+                loggedInUser = new Provia(userName, password);
+                return true;
+                
             }
             return false;
         }
