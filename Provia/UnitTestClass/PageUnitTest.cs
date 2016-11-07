@@ -9,15 +9,9 @@ namespace UnitTestClass.page
     [TestClass]
     public class PageUnitTest
     {
-        [TestMethod]
-        public void ViewSuppliersTest()
-        { 
-            PageManager pm = new PageManager();
-            Assert.AreEqual(typeof(List<Provider.domain.page.Page>), pm.pages.GetType());
-        }
 
         [TestMethod]
-        public void SearchTest() // TODO: skal muligvis laves om, så den tester resultatet i stedet for typen
+        public void SearchTest() // TODO: skal også teste på produkter
         {
             PageManager pm = new PageManager();
             pm.pages.Add(new Page(new Supplier("DSM Nutritional Products Ltd", "somepswd")));
@@ -26,7 +20,6 @@ namespace UnitTestClass.page
             Assert.AreEqual("Chr.Olesen Nutrition A/S",pm.Search("chr")[0].name);
             Assert.AreEqual("DSM Nutritional Products Ltd", pm.Search("DSM")[0].name);
             Assert.AreEqual(2, pm.Search("Ltd").Count);
-            //Assert.AreEqual(typeof(List<Provider.domain.page.Page>), pm.Search("e").GetType());
         }
 
     }
