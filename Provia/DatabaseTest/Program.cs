@@ -17,12 +17,16 @@ namespace DatabaseTest
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT * FROM public.user";
+            cmd.CommandText = "SELECT " +
+                "public.product.id, public.product.\"productName\", public.product.description, public.product.price, public.product.packaging, " +
+                "public.product.\"chemicalName\", public.product.density, public.product.\"deliveryTime\" " +
+                "FROM public.product " +
+                "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product";
             NpgsqlDataReader read = cmd.ExecuteReader();
 
             while (read.Read())
             {
-                Console.WriteLine(read.GetString(0));
+                Console.WriteLine(read.GetString(4));
             }
             Console.ReadLine();
         }

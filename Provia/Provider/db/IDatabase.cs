@@ -10,7 +10,7 @@ namespace Provider.db
     public interface IDatabase
     {
         bool GetLogin(string username, string password);
-
         List<Page> GetSuppliers();
+        List<Product> GetProducts(string supplier);
     }
 }

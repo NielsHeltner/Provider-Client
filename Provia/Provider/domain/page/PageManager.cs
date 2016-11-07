@@ -35,6 +35,10 @@ namespace Provider.domain.page
             pages.Add(p3);
             */
             pages = Database.instance.GetSuppliers();
+            foreach(Page supplierPage in pages)
+            {
+                supplierPage.AddProduct(Database.instance.GetProducts(supplierPage.name));
+            }
         }
 
         /// <summary>

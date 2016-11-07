@@ -60,7 +60,7 @@ namespace Provider.db
         public List<Page> GetSuppliers()
         {
             GetConnection();
-            cmd.CommandText = "SELECT* FROM public.user WHERE rights=2";
+            cmd.CommandText = "SELECT * FROM public.user WHERE rights=2";
             NpgsqlDataReader read = null;
 
             List<Page> pageList = new List<Page>();
@@ -77,6 +77,36 @@ namespace Provider.db
             }
 
             return pageList;
+        }
+
+        public List<Product> GetProducts(string supplier)
+        {
+            GetConnection();
+            cmd.CommandText = "SELECT " +
+                "public.product.id, public.product.\"productName\", public.product.description, public.product.price, public.product.packaging, " +
+                "public.product.\"chemicalName\", public.product.density, public.product.\"deliveryTime\" " +
+                "FROM public.product " +
+                "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE " +
+                "public.pageproducts.page='" + supplier + "'";
+
+            NpgsqlDataReader reader = null;
+            List<Product> productList = new List<Product>();
+
+            try
+            {
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    //System.Diagnostics.Debug.WriteLine(reader.GetInt32(0));
+                    //System.Diagnostics.Debug.WriteLine(reader.GetString(1));
+                    productList.Add(new Product(reader.GetInt32(0), reader.GetString(1),reader.GetString(2),reader.GetDouble(3),reader.GetString(4), reader.GetString(5), reader.GetDouble(6)));
+                }
+            } catch (PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return productList;
         }
     }
 }
