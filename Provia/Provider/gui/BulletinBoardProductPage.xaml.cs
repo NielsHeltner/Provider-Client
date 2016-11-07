@@ -22,12 +22,6 @@ namespace Provider.gui
     public partial class BulletinBoardProductPage : Page
     {
 
-        public BulletinBoardProductPage()
-        {
-            InitializeComponent();
-            HideButtons();
-        }
-
         public BulletinBoardProductPage(Post selectedItem)
         {
             InitializeComponent();
@@ -45,7 +39,7 @@ namespace Provider.gui
             postTitel.IsReadOnly = true;
         }
 
-        private void Click_editPostButton(object sender, RoutedEventArgs e)
+        private void EditPost(object sender, RoutedEventArgs e)
         {
             deletePostButton.Visibility = Visibility.Visible;
             saveButton.Visibility = Visibility.Visible;

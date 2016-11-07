@@ -28,7 +28,6 @@ namespace Provider.gui
         {
             InitializeComponent();
             posts = new List<domain.bulletinboard.Post>();
-            frame.Content = new BulletinBoardProductPage();
             posts = Controller.instance.ViewBulletinBoard(0);
             listView.ItemsSource = posts;
 
