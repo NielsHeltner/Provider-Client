@@ -80,7 +80,7 @@ namespace Provider.gui
 
         private void DeletePost(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult confirmation = MessageBox.Show("Er du sikker på du vil slette dette opslag?", "Bekræft sletning", MessageBoxButton.YesNo);
+            MessageBoxResult confirmation = MessageBox.Show("Er du sikker på du vil slette dette opslag?", "Bekræft sletning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (confirmation)
             {
                 case MessageBoxResult.Yes:
