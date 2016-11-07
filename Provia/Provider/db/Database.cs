@@ -51,10 +51,6 @@ namespace Provider.db
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
             return read.HasRows;
-            /*while (read.Read())
-            {
-                Console.WriteLine(read.GetString(1));
-            }*/
         }
 
         public List<Page> GetSuppliers()
