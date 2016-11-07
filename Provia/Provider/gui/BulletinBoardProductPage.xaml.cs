@@ -30,15 +30,15 @@ namespace Provider.gui
         public BulletinBoardProductPage(Post selectedItem)
         {
             InitializeComponent();
-            deletePostButton.Visibility = Visibility.Collapsed;
-            saveButton.Opacity = 0;
+            deletePostButton.Visibility = Visibility.Hidden;
+            saveButton.Visibility = Visibility.Hidden;
             postTitel.Text = selectedItem.title;
             postDesciption.Text = selectedItem.description;
             postOwner.Text = selectedItem.owner.userName;
             postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
         }
 
-        private void Click_editPostButton(object sender, RoutedEventArgs e)
+        private void EditPost(object sender, RoutedEventArgs e)
         {
             deletePostButton.Visibility = Visibility.Visible;
             saveButton.Visibility = Visibility.Visible;

@@ -15,8 +15,8 @@
         <TextBlock x:Name="postOwner" HorizontalAlignment="Left" Margin="99,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.815" Width="144" IsEnabled="False"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="33,55,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top" IsEnabled="False"/>
         <TextBox x:Name="postDesciption" HorizontalAlignment="Left" Height="310" Margin="33,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="397" IsEnabled="False"/>
-        <Button x:Name="editPostButton" Content="Rediger" HorizontalAlignment="Left" Margin="33,464,0,0" VerticalAlignment="Top" Width="75" Click="Click_editPostButton"/>
-        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="355,464,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF0404" BorderBrush="#FF707070" Foreground="Black"/>
+        <Button x:Name="editPostButton" Content="Rediger" HorizontalAlignment="Left" Margin="33,464,0,0" VerticalAlignment="Top" Width="75" Click="EditPost"/>
+        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="355,464,0,0" VerticalAlignment="Top" Width="75" Background="#FFDB2828" BorderBrush="#FF707070" Foreground="White"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="33,76,0,0" TextWrapping="Wrap" Text="Den" VerticalAlignment="Top" IsEnabled="False"/>
         <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="59,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
         <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="33,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
