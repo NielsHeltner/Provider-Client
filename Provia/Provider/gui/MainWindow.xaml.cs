@@ -69,6 +69,7 @@ namespace Provider.gui
             loggedIn.IsEnabled = false;
             logout.IsEnabled = false;
             searchTermTextBox.IsEnabled = false;
+            opslagstavleButton.IsEnabled = false;
         }
         public void AnimateHeaderLogin()
         {
@@ -113,6 +114,7 @@ namespace Provider.gui
             loggedIn.IsEnabled = true;
             logout.IsEnabled = true;
             searchTermTextBox.IsEnabled = true;
+            opslagstavleButton.IsEnabled = true;
         }
 
         private void AnimateHeaderLogout()
@@ -149,6 +151,11 @@ namespace Provider.gui
         private void Search(object sender, RoutedEventArgs e)
         {
             _Search(searchTermTextBox.Text);
+        }
+
+        private void Click_OpslagstavleButton(object sender, RoutedEventArgs e)
+        {
+            frame.Content = new BulletinBoardPage();
         }
     }
 }

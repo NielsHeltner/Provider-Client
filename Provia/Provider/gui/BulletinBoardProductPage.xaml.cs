@@ -30,10 +30,23 @@ namespace Provider.gui
             saveButton.Visibility = Visibility.Hidden;
             
         }
-
+        
         public BulletinBoardProductPage(Post selectedItem)
         {
-         postTitel.Text = selectedItem   
+            deletePostButton.Visibility = Visibility.Hidden;
+            saveButton.Visibility = Visibility.Hidden;
+            postTitel.Text = selectedItem.title;
+            postDesciption.Text = selectedItem.description;
+            postOwner.Text = selectedItem.owner.userName;
+            postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
+                   
+        }
+
+        private void Click_editPostButton(object sender, RoutedEventArgs e)
+        {
+            deletePostButton.Visibility = Visibility.Visible;
+            saveButton.Visibility = Visibility.Visible;
+
         }
     }
 }

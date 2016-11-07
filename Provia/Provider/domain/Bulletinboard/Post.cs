@@ -9,10 +9,11 @@ namespace Provider.domain.bulletinboard
 {
     public class Post
     {
-        private AbstractUser owner;
-        private DateTime creationDate;
+        public AbstractUser owner { get; private set; }
+        public DateTime creationDate { get; private set; }
         public string description { get; set; }
         public int type { get; private set; }
+        public string title { get; set; }
 
 
 
