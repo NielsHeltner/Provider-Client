@@ -73,6 +73,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="db\Database.cs" />
+    <Compile Include="db\IDatabase.cs" />
     <Compile Include="domain\bulletinboard\Bulletinboard.cs" />
     <Compile Include="domain\bulletinboard\Post.cs" />
     <Compile Include="domain\Controller.cs" />

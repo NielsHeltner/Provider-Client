@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
+using Provider.domain.page;
 
 namespace Provider.db
 {
-    class Database
+    public class Database : IDatabase
     {
-        private static Database _instance;
+        private static IDatabase _instance;
+        private NpgsqlCommand cmd = new NpgsqlCommand();
 
-        public static Database instance
+        public static IDatabase instance
         {
             get
             {
@@ -27,15 +29,18 @@ namespace Provider.db
             }
         }
 
-        public bool GetLogin(string username, string password)
+        private void GetConnection()
         {
             NpgsqlConnection conn = new NpgsqlConnection("Host=tek-mmmi-db0a.tek.c.sdu.dk;Username=group_2;Password=MDI5NTli;Database=group_2_db");
             conn.Open();
-
-            NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
+        }
 
-            cmd.CommandText = "SELECT * FROM public.user WHERE username='"+username+"' AND password='"+password+"'";
+        public bool GetLogin(string username, string password)
+        {
+            GetConnection();
+
+            cmd.CommandText = "SELECT * FROM public.user WHERE username='"+username+"' AND password='"+password+"' AND rights=1";
             NpgsqlDataReader read = null;
             try
             {
@@ -50,6 +55,28 @@ namespace Provider.db
             {
                 Console.WriteLine(read.GetString(1));
             }*/
+        }
+
+        public List<Page> GetSuppliers()
+        {
+            GetConnection();
+            cmd.CommandText = "SELECT* FROM public.user WHERE rights=2";
+            NpgsqlDataReader read = null;
+
+            List<Page> pageList = new List<Page>();
+            try
+            {
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    pageList.Add(new Page(new domain.users.Supplier(read.GetString(0), read.GetString(1))));
+                }
+            } catch(PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return pageList;
         }
     }
 }
