@@ -63,6 +63,7 @@ namespace Provider.gui
             logout.Opacity = 0;
             searchText.Opacity = 0;
             searchTermTextBox.Opacity = 0;
+            opslagstavleButton.Opacity = 0;
             searchTermTextBox.IsEnabled = false;
             showSuppliersButton.IsEnabled = false;
             homeButton.IsEnabled = false;
@@ -108,6 +109,7 @@ namespace Provider.gui
             searchButton.Opacity = 1;
             logout.Opacity = 1;
             loggedIn.Opacity = 1;
+            opslagstavleButton.Opacity = 1;
             searchTermTextBox.IsEnabled = true;
             showSuppliersButton.IsEnabled = true;
             homeButton.IsEnabled = true;

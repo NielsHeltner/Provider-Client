@@ -12,18 +12,18 @@
         </Style>
     </Page.Resources>
     <Grid  Background="White">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,30,0,0" TextWrapping="Wrap" Text="Opslagstavle" VerticalAlignment="Top" FontSize="36"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="430" Margin="50,104,0,0" VerticalAlignment="Top" Width="670">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,11,0,0" TextWrapping="Wrap" Text="Opslagstavle" VerticalAlignment="Top" FontSize="36"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="470" Margin="50,64,0,0" VerticalAlignment="Top" Width="670">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <GroupBox x:Name="groupBox" Header="Opslag information" HorizontalAlignment="Left" Margin="794,104,0,0" VerticalAlignment="Top" Height="502" Width="445" FontSize="16">
-            <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="482" Margin="0,10,-2,-18" VerticalAlignment="Top" Width="435"/>
+        <GroupBox x:Name="groupBox" Header="Opslag information" HorizontalAlignment="Left" Margin="794,32,0,0" VerticalAlignment="Top" Height="546" Width="445" FontSize="16">
+            <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Margin="0,10,-2,2" Width="435"/>
         </GroupBox>
-        <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,566,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,558,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Page>
