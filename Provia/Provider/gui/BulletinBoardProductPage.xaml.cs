@@ -76,6 +76,7 @@ namespace Provider.gui
             selectedItem.description = postDesciption.Text;
             selectedItem.title = postTitel.Text;
             HideButtons();
+            
         }
 
         private void DeletePost(object sender, RoutedEventArgs e)
