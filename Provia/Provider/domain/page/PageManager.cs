@@ -65,15 +65,22 @@ namespace Provider.domain.page
 
         public List<Page> Search(string searchTerm)
         {
-            List<Page> results = new List<Page>();
+            HashSet<Page> results = new HashSet<Page>();
             foreach (Page page in pages)
             {
                 if(page.name.ToLower().Contains(searchTerm.ToLower()))
                 {
                     results.Add(page);
                 }
+                foreach (Product product in page.products)
+                {
+                    if(product.productName.ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        results.Add(page);
+                    }
+                }
             }
-            return results;
+            return results.ToList();
         }
     }
 }
