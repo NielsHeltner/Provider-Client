@@ -30,6 +30,26 @@ namespace Provider.gui
             postDesciption.Text = selectedItem.description;
             postOwner.Text = selectedItem.owner.userName;
             postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
+            typeOfPost.Text = TypeOfPost(selectedItem.type);
+        }
+        
+        /// "1" is warningPost
+        /// "2" is requestPost
+        /// "3" is offerPost
+        /// burde måske blive flyttet til domain Snak lige om det.
+        private string TypeOfPost(int type)
+        {
+            switch (type)
+            {
+                case 1:
+                    return "Advarelse";
+                case 2:
+                    return "For spørgelse";
+                case 3:
+                    return "Tilbud";
+                default:
+                    return "N/A(error)";
+            }
         }
         public void HideButtons()
         {
