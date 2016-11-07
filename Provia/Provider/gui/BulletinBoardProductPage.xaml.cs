@@ -21,39 +21,27 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardProductPage : Page
     {
-        private Post selectedItem;
 
-        private void SetVisbilityToHidden()
-        {
-            deletePostButton.Visibility = Visibility.Collapsed;
-            saveButton.Opacity= 0;
-        }
-        private void SetVisbilityTovisibile()
-        {
-            deletePostButton.Visibility = Visibility.Visible;
-            saveButton.Visibility = Visibility.Visible;
-        }
         public BulletinBoardProductPage()
         {
             InitializeComponent();
-            SetVisbilityToHidden();
-            
         }
-        
+
         public BulletinBoardProductPage(Post selectedItem)
         {
-            SetVisbilityToHidden();
+            InitializeComponent();
+            deletePostButton.Visibility = Visibility.Collapsed;
+            saveButton.Opacity = 0;
             postTitel.Text = selectedItem.title;
             postDesciption.Text = selectedItem.description;
             postOwner.Text = selectedItem.owner.userName;
             postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
-                   
         }
 
         private void Click_editPostButton(object sender, RoutedEventArgs e)
         {
-            SetVisbilityTovisibile();
-
+            deletePostButton.Visibility = Visibility.Visible;
+            saveButton.Visibility = Visibility.Visible;
         }
     }
 }

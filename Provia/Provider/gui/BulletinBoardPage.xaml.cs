@@ -23,10 +23,11 @@ namespace Provider.gui
     public partial class BulletinBoardPage : Page
     {
 
-        private List<Provider.domain.bulletinboard.Post> posts = new List<domain.bulletinboard.Post>();
+        private List<Provider.domain.bulletinboard.Post> posts;
         public BulletinBoardPage()
         {
             InitializeComponent();
+            posts = new List<domain.bulletinboard.Post>();
             frame.Content = new BulletinBoardProductPage();
             posts = Controller.instance.ViewBulletinBoard(0);
             listView.ItemsSource = posts;
