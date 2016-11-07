@@ -23,7 +23,7 @@ namespace Provider.gui
     public partial class BulletinBoardPage : Page
     {
 
-        private List<Provider.domain.bulletinboard.Post> posts;
+        private List<domain.bulletinboard.Post> posts;
         public BulletinBoardPage()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace Provider.gui
         }
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
-            frame.Content = new BulletinBoardProductPage((Provider.domain.bulletinboard.Post) listView.SelectedItem);
+            frame.Content = new BulletinBoardProductPage((domain.bulletinboard.Post) listView.SelectedItem);
         }
     }
 }
