@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Provider.domain.users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,30 @@ namespace Provider.domain.bulletinboard
         public Bulletinboard()
         {
             posts = new List<Post>();
+        }
+        /// <summary>
+        /// create a post
+        /// </summary>
+        /// <param name="owner">the owner of the post</param>
+        /// <param name="description"> text in the post</param>
+        /// <param name="type">takes a integer
+        /// "1" is warningPost
+        /// "2" is requestPost
+        /// "3" is offerPost
+        /// </param>
+        public void CreatePost(AbstractUser owner, string description, int type)
+        {
+            posts.Add(new Post(owner, description, type));
+        }
+
+        public void DeletePost(Post post)
+        {
+            posts.Remove(post);
+        }
+
+        public void EditPost(string editedText, Post post)
+        {
+            posts.Find(x => x == post).description = editedText;
         }
 
         // Retuns a list of posts.

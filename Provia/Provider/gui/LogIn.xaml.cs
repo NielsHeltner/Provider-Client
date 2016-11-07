@@ -33,8 +33,8 @@ namespace Provider.gui
             this.mainwindow = mainwindow;
             this.frontpage = frontpage;
             wrongUsernameOrPassword.Visibility = Visibility.Hidden;
-            usernameBox.Text = "Provia";
-            passwordBox.Password = "123";
+            //usernameBox.Text = "Provia";
+            //passwordBox.Password = "123";
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
@@ -49,6 +49,20 @@ namespace Provider.gui
             else
             {
                 wrongUsernameOrPassword.Visibility = Visibility.Visible;
+                DoubleAnimationUsingKeyFrames animationKeyFrames = new DoubleAnimationUsingKeyFrames();
+
+                DoubleKeyFrameCollection frameCollection = new DoubleKeyFrameCollection();
+                frameCollection.Add(new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 50)));
+                frameCollection.Add(new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 100)));
+                frameCollection.Add(new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 150)));
+                frameCollection.Add(new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 200)));
+                frameCollection.Add(new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 250)));
+                frameCollection.Add(new EasingDoubleKeyFrame(56, new TimeSpan(0, 0, 0, 0, 300)));
+                animationKeyFrames.KeyFrames = frameCollection;
+                usernameBox.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
+                usernameText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
+                passwordBox.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
+                passwordText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
             }
         }
 

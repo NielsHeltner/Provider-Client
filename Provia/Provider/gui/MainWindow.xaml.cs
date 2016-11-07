@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Provider.gui;
 using Provider.domain;
 using System.Windows.Media.Animation;
+using System.Threading;
 
 namespace Provider.gui
 {
@@ -42,7 +43,7 @@ namespace Provider.gui
 
         private void GetSupplierPages(object sender, RoutedEventArgs e)
         {
-            frame.Content = new SupplierList(frame);
+            frame.Content = new SupplierList(frame, Controller.instance.GetPages());
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
@@ -61,13 +62,13 @@ namespace Provider.gui
             loggedIn.Opacity = 0;
             logout.Opacity = 0;
             searchText.Opacity = 0;
-            SearchTermTextBox.Opacity = 0;
-            SearchTermTextBox.IsEnabled = false;
+            searchTermTextBox.Opacity = 0;
+            searchTermTextBox.IsEnabled = false;
             showSuppliersButton.IsEnabled = false;
             homeButton.IsEnabled = false;
             loggedIn.IsEnabled = false;
             logout.IsEnabled = false;
-            SearchTermTextBox.IsEnabled = false;
+            searchTermTextBox.IsEnabled = false;
         }
         public void AnimateHeaderLogin()
         {
@@ -85,7 +86,7 @@ namespace Provider.gui
             // Animate Search bar
             DoubleAnimation searchbarAnimate = new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop);
             searchbarAnimate.Completed += AnimateControlsCompleted;
-            SearchTermTextBox.BeginAnimation(Control.OpacityProperty, searchbarAnimate);
+            searchTermTextBox.BeginAnimation(Control.OpacityProperty, searchbarAnimate);
 
             // Animate Search bar text
             searchText.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
@@ -100,18 +101,18 @@ namespace Provider.gui
         private void AnimateControlsCompleted(object sender, EventArgs e)
         {
             searchText.Opacity = 1;
-            SearchTermTextBox.Opacity = 1;
+            searchTermTextBox.Opacity = 1;
             homeButton.Opacity = 1;
             showSuppliersButton.Opacity = 1;
             searchButton.Opacity = 1;
             logout.Opacity = 1;
             loggedIn.Opacity = 1;
-            SearchTermTextBox.IsEnabled = true;
+            searchTermTextBox.IsEnabled = true;
             showSuppliersButton.IsEnabled = true;
             homeButton.IsEnabled = true;
             loggedIn.IsEnabled = true;
             logout.IsEnabled = true;
-            SearchTermTextBox.IsEnabled = true;
+            searchTermTextBox.IsEnabled = true;
         }
 
         private void AnimateHeaderLogout()
@@ -125,5 +126,29 @@ namespace Provider.gui
             image.BeginAnimation(Canvas.LeftProperty, da);
         }
 
+        private void _Search(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTermTextBox.Text))
+            {
+                frame.Content = frontpage;
+            }
+            else
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    frame.Content = new SupplierList(frame, Controller.instance.Search(searchTerm));
+                });
+            }
+        }
+
+        private void Search(object sender, KeyEventArgs e)
+        {
+            _Search(searchTermTextBox.Text);
+        }
+
+        private void Search(object sender, RoutedEventArgs e)
+        {
+            _Search(searchTermTextBox.Text);
+        }
     }
 }

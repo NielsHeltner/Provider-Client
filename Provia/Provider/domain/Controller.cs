@@ -63,5 +63,30 @@ namespace Provider.domain
         {
             return bulletinboard.ViewBulletinBoard(type);
         }
+
+        public void CreatePost(AbstractUser owner, string description, int type)
+        {
+            bulletinboard.CreatePost(owner, description, type);
+        }
+
+        public void DeletePost(Post post)
+        {
+            bulletinboard.DeletePost(post);
+        }
+
+        public void EditPost(string editedText, Post post)
+        {
+            bulletinboard.EditPost(editedText, post);
+        }
+
+        public void AddNoteToSupplier(string supplierName, string text)
+        {
+            pageManager.AddNoteToSupplier(supplierName, text);
+        }
+
+        public List<Page> Search(string searchTerm)
+        {
+            return pageManager.Search(searchTerm);
+        }
     }
 }

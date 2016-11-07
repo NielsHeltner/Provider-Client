@@ -9,11 +9,14 @@ namespace Provider.domain.page
     public class Product
     {
         private int ID;
-        public double price { get; private set; }
-        public DateTime deliveryTime { get; private set; }
-        public string packaging { get; private set; }
         public string productName { get; private set; }
-       
+        public string description { get; private set; }
+        public double price { get; private set; }
+        public string packaging { get; private set; }
+        public string chemicalName { get; private set; }
+        public double density { get; private set; }
+        public DateTime deliveryTime { get; private set; }
+
         /// <summary>
         /// The constructor to a product
         /// Make sure that the price isnt negativ
@@ -23,12 +26,15 @@ namespace Provider.domain.page
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
         /// <param name="delverytime">The estimated time for a delvery</param>
-        public Product(int ID, double price, string packaging, string productName, DateTime deliveryTime)
+        public Product(int ID, string productName, string description, double price, string packaging, string chemicalName, double density, DateTime deliveryTime)
         {
             this.ID = ID;
+            this.productName = productName;
+            this.description = description;
             this.price = price;
             this.packaging = packaging;
-            this.productName = productName;
+            this.chemicalName = chemicalName;
+            this.density = density;
             this.deliveryTime = deliveryTime;
         }
   
@@ -40,7 +46,7 @@ namespace Provider.domain.page
         /// <param name="price">Price for this</param>
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
-        public Product(int ID, double price, string packaging, string productName) : 
-            this(ID, price, packaging, productName, default(DateTime)){ }
+        public Product(int ID, string productName, string description, double price, string packaging, string chemicalName, double density) : 
+            this(ID, productName, description, price, packaging, chemicalName, density, default(DateTime)) { }
     }
 }

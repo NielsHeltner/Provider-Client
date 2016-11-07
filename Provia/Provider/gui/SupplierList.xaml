@@ -34,7 +34,7 @@
                             <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding note}">
+                    <GridViewColumn DisplayMemberBinding="{Binding noteText}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="150"/>
                         </GridViewColumn.Header>

@@ -37,17 +37,17 @@
         <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="681" Margin="0,91,0,0" VerticalAlignment="Top" Width="1275" Grid.ColumnSpan="3"/>
         <Button x:Name="logout" Content="Log ud" HorizontalAlignment="Left" Margin="124,35,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut" Grid.Column="2"/>
         <Label x:Name="loggedIn" Content="Provia logget ind" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-        <Button x:Name="searchButton" Content="Søg" HorizontalAlignment="Left" Margin="45.5,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White" Grid.Column="1"/>
+        <Button x:Name="searchButton" Content="Søg" HorizontalAlignment="Left" Margin="45.5,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White" Grid.Column="1" Click="Search"/>
         <Button x:Name="homeButton" Content="Forside" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Width="75" Click="GoToFrontpage" Background="#FF0C4A63" Foreground="White"/>
 
 
-        <TextBox Width="169" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="739,35,0,0" Height="20 " Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="searchTermTextBox" Width="169" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="739,35,0,0" Height="20 " Opacity="0" Grid.ColumnSpan="2" KeyUp="Search" ToolTip="Begynd at skrive i søgefeltet for at søge."/>
         <TextBlock x:Name="searchText" IsHitTestVisible="False" Text="Søg..." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="742,37,0,0" Foreground="DarkGray" Opacity="0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                        <DataTrigger Binding="{Binding Text, ElementName=searchTermTextBox}" Value="">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
