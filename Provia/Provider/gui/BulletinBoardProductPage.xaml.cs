@@ -23,18 +23,26 @@ namespace Provider.gui
     {
         private Post selectedItem;
 
+        private void SetVisbilityToHidden()
+        {
+            deletePostButton.Visibility = Visibility.Hidden;
+            saveButton.Visibility = Visibility.Hidden;
+        }
+        private void SetVisbilityTovisibile()
+        {
+            deletePostButton.Visibility = Visibility.Visible;
+            saveButton.Visibility = Visibility.Visible;
+        }
         public BulletinBoardProductPage()
         {
             InitializeComponent();
-            deletePostButton.Visibility = Visibility.Hidden;
-            saveButton.Visibility = Visibility.Hidden;
+            SetVisbilityToHidden();
             
         }
         
         public BulletinBoardProductPage(Post selectedItem)
         {
-            deletePostButton.Visibility = Visibility.Hidden;
-            saveButton.Visibility = Visibility.Hidden;
+            SetVisbilityToHidden();
             postTitel.Text = selectedItem.title;
             postDesciption.Text = selectedItem.description;
             postOwner.Text = selectedItem.owner.userName;
@@ -44,8 +52,7 @@ namespace Provider.gui
 
         private void Click_editPostButton(object sender, RoutedEventArgs e)
         {
-            deletePostButton.Visibility = Visibility.Visible;
-            saveButton.Visibility = Visibility.Visible;
+            SetVisbilityTovisibile();
 
         }
     }

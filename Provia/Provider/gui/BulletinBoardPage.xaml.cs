@@ -34,7 +34,7 @@ namespace Provider.gui
         }
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
-            frame.Content = new BulletinBoardProductPage((Provider.domain.bulletinboard.Post)listView.SelectedItem);
+            frame.Content = new BulletinBoardProductPage((Provider.domain.bulletinboard.Post) listView.SelectedItem);
         }
     }
 }
