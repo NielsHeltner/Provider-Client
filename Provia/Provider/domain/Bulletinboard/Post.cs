@@ -17,11 +17,12 @@ namespace Provider.domain.bulletinboard
 
 
 
-        public Post(AbstractUser owner, string description, int type)
+        public Post(AbstractUser owner, string title, string description, int type)
         {
             this.description = description;
             this.owner = owner;
             this.type = type;
+            this.title = title;
             creationDate = DateTime.Now;
         }
     }

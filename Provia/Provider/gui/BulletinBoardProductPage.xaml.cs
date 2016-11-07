@@ -25,8 +25,8 @@ namespace Provider.gui
 
         private void SetVisbilityToHidden()
         {
-            deletePostButton.Visibility = Visibility.Hidden;
-            saveButton.Visibility = Visibility.Hidden;
+            deletePostButton.Visibility = Visibility.Collapsed;
+            saveButton.Opacity= 0;
         }
         private void SetVisbilityTovisibile()
         {
