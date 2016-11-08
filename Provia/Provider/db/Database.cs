@@ -29,6 +29,10 @@ namespace Provider.db
             }
         }
 
+        private Database()
+        {
+        }
+
         private void GetConnection()
         {
             NpgsqlConnection conn = new NpgsqlConnection("Host=tek-mmmi-db0a.tek.c.sdu.dk;Username=group_2;Password=MDI5NTli;Database=group_2_db");
@@ -58,7 +62,6 @@ namespace Provider.db
             GetConnection();
             cmd.CommandText = "SELECT * FROM public.user WHERE rights=2";
             NpgsqlDataReader read = null;
-
             List<Page> pageList = new List<Page>();
             try
             {
@@ -67,11 +70,11 @@ namespace Provider.db
                 {
                     pageList.Add(new Page(new domain.users.Supplier(read.GetString(0), read.GetString(1))));
                 }
-            } catch(PostgresException e)
+            }
+            catch (PostgresException e)
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
-
             return pageList;
         }
 
@@ -87,7 +90,6 @@ namespace Provider.db
 
             NpgsqlDataReader reader = null;
             List<Product> productList = new List<Product>();
-
             try
             {
                 reader = cmd.ExecuteReader();
@@ -97,11 +99,11 @@ namespace Provider.db
                     //System.Diagnostics.Debug.WriteLine(reader.GetString(1));
                     productList.Add(new Product(reader.GetInt32(0), reader.GetString(1),reader.GetString(2),reader.GetDouble(3),reader.GetString(4), reader.GetString(5), reader.GetDouble(6)));
                 }
-            } catch (PostgresException e)
+            }
+            catch (PostgresException e)
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
-
             return productList;
         }
     }
