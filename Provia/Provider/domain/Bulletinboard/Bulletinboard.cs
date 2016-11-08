@@ -14,9 +14,9 @@ namespace Provider.domain.bulletinboard
         public Bulletinboard()
         {
             posts = new List<Post>();
-            posts.Add(new Post(new Supplier("Vitafit", "password1234"), "sejhed", "vi er seje", 2));
-            posts.Add(new Post(new Supplier("B2Vitas", "password1234"), "mere sejhed","vi er også seje", 2));
-            posts.Add(new Post(new Supplier("ProteinVitmins", "password1234"), "mest sejhed","vi er ok seje", 2));
+            posts.Add(new Post("Vitafit", "sejhed", "vi er seje", 2));
+            posts.Add(new Post("B2Vitas", "mere sejhed","vi er også seje", 2));
+            posts.Add(new Post("ProteinVitmins", "mest sejhed","vi er ok seje", 2));
         }
         /// <summary>
         /// create a post
@@ -28,7 +28,7 @@ namespace Provider.domain.bulletinboard
         /// "2" is requestPost
         /// "3" is offerPost
         /// </param>
-        public void CreatePost(AbstractUser owner, string title, string description, int type)
+        public void CreatePost(String owner, string title, string description, int type)
         {
             posts.Add(new Post(owner, title, description, type));
         }

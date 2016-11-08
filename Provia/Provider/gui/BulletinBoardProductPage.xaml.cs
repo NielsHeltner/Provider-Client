@@ -30,7 +30,7 @@ namespace Provider.gui
             this.selectedItem = selectedItem;
             postTitel.Text = selectedItem.title;
             postDesciption.Text = selectedItem.description;
-            postOwner.Text = selectedItem.owner.userName;
+            postOwner.Text = selectedItem.owner;
             postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
             typeOfPost.Text = TypeOfPost(selectedItem.type);
         }

@@ -17,7 +17,7 @@ namespace Provider.domain
 
         void DeletePost(Post post);
 
-        void CreatePost(AbstractUser owner, string title, string description, int type);
+        void CreatePost(String owner, string title, string description, int type);
 
         bool LogIn(string userName, string password);
 

@@ -9,7 +9,7 @@ namespace Provider.domain.bulletinboard
 {
     public class Post
     {
-        public AbstractUser owner { get; private set; }
+        public String owner { get; private set; }
         public DateTime creationDate { get; private set; }
         public string description { get; set; }
         public int type { get; private set; }
@@ -17,7 +17,7 @@ namespace Provider.domain.bulletinboard
 
 
 
-        public Post(AbstractUser owner, string title, string description, int type)
+        public Post(String owner, string title, string description, int type)
         {
             this.description = description;
             this.owner = owner;

@@ -42,7 +42,7 @@ namespace Provider.gui
                 } else if(OfferRB.IsChecked == true)
                 {
                     typeOfPost = 3;
-                }
+                } else { typeOfPost = 0; }
                 Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
 
         }
