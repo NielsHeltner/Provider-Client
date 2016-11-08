@@ -41,7 +41,14 @@ namespace Provider.gui
         private void CreateNewPost(object sender, RoutedEventArgs e)
         {
             groupBox.Header = "Opret nyt opslag";
-            frame.Content = new CreateNewPostPage();
+            frame.Content = new CreateNewPostPage(this);
+        }
+
+        public void RefreshPage()
+        {
+            posts = Controller.instance.ViewBulletinBoard(0);
+            listView.ItemsSource = posts;
+            frame.Content = null;
         }
     }
 }

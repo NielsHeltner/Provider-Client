@@ -21,9 +21,13 @@ namespace Provider.gui
     /// </summary>
     public partial class CreateNewPostPage : Page
     {
-        public CreateNewPostPage()
+        private Page bulletinBoardPage;
+        public CreateNewPostPage(Page Bulletinboard)
         {
             InitializeComponent();
+            this.bulletinBoardPage = Bulletinboard;
+            CreationDateTextBlock.Text = DateTime.Today.ToShortDateString();
+            OwnerTextBlock.Text = Controller.instance.GetLoggedInUserName();
         }
         /// "1" is warningPost
         /// "2" is requestPost
@@ -31,20 +35,30 @@ namespace Provider.gui
         /// skal måske laves om... det snakker vi lige om
         private void CreateNewPost(object sender, RoutedEventArgs e)
         {
-
                 int typeOfPost;
-                if (WarningRB.IsChecked == true)
-                {
-                    typeOfPost = 1;
-                } else if(requestRB.IsChecked == true)
-                {
-                    typeOfPost = 2;
-                } else if(OfferRB.IsChecked == true)
-                {
-                    typeOfPost = 3;
-                } else { typeOfPost = 0; }
-                Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+            if (WarningRB.IsChecked == true)
+            {
+                typeOfPost = 1;
+            }
+            else if (requestRB.IsChecked == true)
+            {
+                typeOfPost = 2;
+            }
+            else if (OfferRB.IsChecked == true)
+            {
+                typeOfPost = 3;
+            }
+            else
+            {
+                SomthingWentWrongLabel.Visibility = Visibility.Visible
+            };
 
+
+               
+        }
+        private void CreatePost(int type)
+        {
+            Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, type);
         }
     }
 }
