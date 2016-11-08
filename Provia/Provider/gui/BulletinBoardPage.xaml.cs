@@ -26,7 +26,6 @@ namespace Provider.gui
         {
             InitializeComponent();
             listView.ItemsSource = Controller.instance.ViewBulletinBoard(0);
-            RefreshPage();
         }
 
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
