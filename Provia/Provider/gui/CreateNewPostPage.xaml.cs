@@ -36,13 +36,11 @@ namespace Provider.gui
         /// skal måske laves om... det snakker vi lige om
         private void CreateNewPost(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(PostDescriptionTextBox.Text)== false || string.IsNullOrWhiteSpace(TitleTextBox.Text) == false)
+            if(!string.IsNullOrWhiteSpace(PostDescriptionTextBox.Text) && !string.IsNullOrWhiteSpace(TitleTextBox.Text))
             {
-                if(WarningRB.IsChecked == true || requestRB.IsChecked ==true|| OfferRB.IsChecked == true)
-                {
-                    CreatePost();               
-                }
-            }else
+                CreatePost();
+            }
+            else
             {
                 SomthingWentWrongLabel.Visibility = Visibility.Visible;
             }
@@ -52,15 +50,15 @@ namespace Provider.gui
         {
 
             int typeOfPost;
-            if (WarningRB.IsChecked == true)
+            if (WarningRB.IsChecked.Value)
             {
                 typeOfPost = 1;
             }
-            else if (requestRB.IsChecked == true)
+            else if (requestRB.IsChecked.Value)
             {
                 typeOfPost = 2;
             }
-            else if (OfferRB.IsChecked == true)
+            else if (OfferRB.IsChecked.Value)
             {
                 typeOfPost = 3;
             } else

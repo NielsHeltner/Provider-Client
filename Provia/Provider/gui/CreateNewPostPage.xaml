@@ -5,19 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Provider.gui"
       mc:Ignorable="d"
-      Title="CreateNewPost" Height="337.234" Width="314.894">
+      Title="CreateNewPost" Height="400" Width="488">
 
-    <Grid Background="White" Margin="-40,-27,0,0">
-        <TextBox x:Name="TitleTextBox" HorizontalAlignment="Left" Height="23" Margin="20,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True"/>
-        <TextBox x:Name="PostDescriptionTextBox" HorizontalAlignment="Left" Height="179" Margin="20,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" SpellCheck.IsEnabled="True" ToolTip="Udyb dit opslag her..."/>
-        <Button x:Name="CreationButton" Content="Opret" HorizontalAlignment="Left" Margin="20,307,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost"/>
-        <RadioButton x:Name="requestRB" Content="Efterspørgelse" HorizontalAlignment="Left" Margin="110,274,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
-        <RadioButton x:Name="WarningRB" Content="Advarelse" HorizontalAlignment="Left" Margin="20,274,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
-        <RadioButton x:Name="OfferRB" Content="Tilbud" HorizontalAlignment="Left" Margin="218,274,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
-        <TextBlock x:Name="OwnerTextBlock" HorizontalAlignment="Left" Margin="275,47,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="CreationDateTextBlock" HorizontalAlignment="Left" Margin="275,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="209,47,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="199,10,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
+    <Grid Background="White" Margin="0,0,0,0">
+        <TextBox x:Name="TitleTextBox" HorizontalAlignment="Left" Height="23" Margin="20,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True"/>
+        <TextBox x:Name="PostDescriptionTextBox" HorizontalAlignment="Left" Height="179" Margin="20,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" SpellCheck.IsEnabled="True" ToolTip="Udyb dit opslag her..."/>
+        <Button x:Name="CreationButton" Content="Opret" HorizontalAlignment="Left" Margin="20,326,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost"/>
+        <RadioButton x:Name="requestRB" Content="Efterspørgelse" HorizontalAlignment="Left" Margin="110,293,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
+        <RadioButton x:Name="WarningRB" Content="Advarelse" HorizontalAlignment="Left" Margin="20,293,0,0" VerticalAlignment="Top" GroupName="TypeOfPost" IsChecked="True"/>
+        <RadioButton x:Name="OfferRB" Content="Tilbud" HorizontalAlignment="Left" Margin="218,293,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
+        <TextBlock x:Name="OwnerTextBlock" HorizontalAlignment="Left" Margin="86,16,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="CreationDateTextBlock" HorizontalAlignment="Left" Margin="96,37,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,16,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="20,37,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
         <Label x:Name="SomthingWentWrongLabel" Content="Error Husk at vælge katagori" HorizontalAlignment="Left" Margin="126,304,0,0" VerticalAlignment="Top" Width="166" Visibility="Hidden" Foreground="Red"/>
     </Grid>
 </Page>
