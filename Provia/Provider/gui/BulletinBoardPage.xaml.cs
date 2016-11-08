@@ -23,15 +23,17 @@ namespace Provider.gui
     public partial class BulletinBoardPage : Page
     {
 
-        private List<domain.bulletinboard.Post> posts;
+       
+
         public BulletinBoardPage()
         {
             InitializeComponent();
+            List<domain.bulletinboard.Post> posts;
             posts = new List<domain.bulletinboard.Post>();
             posts = Controller.instance.ViewBulletinBoard(0);
             listView.ItemsSource = posts;
-
         }
+
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
             groupBox.Header = "Opslag Information";
@@ -46,9 +48,9 @@ namespace Provider.gui
 
         public void RefreshPage()
         {
-            posts = Controller.instance.ViewBulletinBoard(0);
-            listView.ItemsSource = posts;
+            
             frame.Content = null;
+            groupBox.Header = "Opslag Information";
         }
     }
 }

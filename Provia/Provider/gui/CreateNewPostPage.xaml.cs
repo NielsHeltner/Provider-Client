@@ -21,21 +21,37 @@ namespace Provider.gui
     /// </summary>
     public partial class CreateNewPostPage : Page
     {
-        private Page bulletinBoardPage;
-        public CreateNewPostPage(Page Bulletinboard)
+        private BulletinBoardPage bulletinBoardPage;
+        public CreateNewPostPage(BulletinBoardPage Bulletinboard)
         {
             InitializeComponent();
             this.bulletinBoardPage = Bulletinboard;
             CreationDateTextBlock.Text = DateTime.Today.ToShortDateString();
             OwnerTextBlock.Text = Controller.instance.GetLoggedInUserName();
         }
+        /// 0 is error
         /// "1" is warningPost
         /// "2" is requestPost
         /// "3" is offerPost
         /// skal måske laves om... det snakker vi lige om
         private void CreateNewPost(object sender, RoutedEventArgs e)
         {
-                int typeOfPost;
+            if(string.IsNullOrWhiteSpace(PostDescriptionTextBox.Text)== false || string.IsNullOrWhiteSpace(TitleTextBox.Text) == false)
+            {
+                if(WarningRB.IsChecked == true || requestRB.IsChecked ==true|| OfferRB.IsChecked == true)
+                {
+                    CreatePost();               
+                }
+            }else
+            {
+                SomthingWentWrongLabel.Visibility = Visibility.Visible;
+            }
+               
+        }
+        private void CreatePost()
+        {
+
+            int typeOfPost;
             if (WarningRB.IsChecked == true)
             {
                 typeOfPost = 1;
@@ -47,18 +63,15 @@ namespace Provider.gui
             else if (OfferRB.IsChecked == true)
             {
                 typeOfPost = 3;
-            }
-            else
+            } else
             {
-                SomthingWentWrongLabel.Visibility = Visibility.Visible
-            };
-
-
-               
+                typeOfPost = 0;
+            }
+            Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+            bulletinBoardPage.RefreshPage();
+            SomthingWentWrongLabel.Visibility = Visibility.Hidden;
         }
-        private void CreatePost(int type)
-        {
-            Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, type);
-        }
+        
+        
     }
 }
