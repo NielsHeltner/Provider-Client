@@ -54,7 +54,7 @@ namespace Provider.domain
             userManager.LogOut();
         }
 
-        public string GetLoggedInUser()
+        public string GetLoggedInUserName()
         {
             return userManager.loggedInUser.userName;
         }

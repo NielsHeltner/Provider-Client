@@ -23,7 +23,7 @@ namespace Provider.domain
 
         void LogOut();
 
-        string GetLoggedInUser();
+        string GetLoggedInUserName();
 
         /// Retuns a list of posts.
         /// If type = "0" all posts are returned

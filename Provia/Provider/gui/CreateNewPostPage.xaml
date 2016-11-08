@@ -1,0 +1,23 @@
+﻿<Page x:Class="Provider.gui.CreateNewPostPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Provider.gui"
+      mc:Ignorable="d"
+      Title="CreateNewPost" Height="337.234" Width="314.894">
+
+    <Grid Background="White" Margin="-40,-27,0,0">
+        <TextBox x:Name="TitleTextBox" HorizontalAlignment="Left" Height="23" Margin="20,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True"/>
+        <TextBox x:Name="PostDescriptionTextBox" HorizontalAlignment="Left" Height="179" Margin="20,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" SpellCheck.IsEnabled="True" ToolTip="Udyb dit opslag her..."/>
+        <Button x:Name="CreationButton" Content="Opret" HorizontalAlignment="Left" Margin="20,307,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost"/>
+        <RadioButton x:Name="requestRB" Content="Efterspørgelse" HorizontalAlignment="Left" Margin="110,274,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
+        <RadioButton x:Name="WarningRB" Content="Advarelse" HorizontalAlignment="Left" Margin="20,274,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
+        <RadioButton x:Name="OfferRB" Content="Tilbud" HorizontalAlignment="Left" Margin="218,274,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
+        <TextBlock x:Name="OwnerTextBlock" HorizontalAlignment="Left" Margin="275,47,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="CreationDateTextBlock" HorizontalAlignment="Left" Margin="275,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="209,47,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="199,10,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
+        <Label x:Name="SomthingWentWrongLabel" Content="Error Husk at vælge katagori" HorizontalAlignment="Left" Margin="126,304,0,0" VerticalAlignment="Top" Width="166" Visibility="Hidden" Foreground="Red"/>
+    </Grid>
+</Page>

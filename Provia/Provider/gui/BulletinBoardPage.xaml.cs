@@ -41,7 +41,7 @@ namespace Provider.gui
         private void CreateNewPost(object sender, RoutedEventArgs e)
         {
             groupBox.Header = "Opret nyt opslag";
-            frame.Content = new CreateNewPost();
+            frame.Content = new CreateNewPostPage();
         }
     }
 }
