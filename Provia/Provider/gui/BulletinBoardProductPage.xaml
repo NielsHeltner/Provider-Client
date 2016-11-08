@@ -23,5 +23,6 @@
         <TextBlock x:Name="postOwner" Grid.Column="1" HorizontalAlignment="Left" Margin="36,38,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="75" Height="20"/>
         <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="62,63,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="33,84,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="savedPostTextBlock" Grid.Column="1" Margin="67,385,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" TextAlignment="Center" Foreground="#FF1CC901"/>
     </Grid>
 </Page>

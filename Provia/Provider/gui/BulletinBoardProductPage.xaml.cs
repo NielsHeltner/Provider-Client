@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Provider.domain.bulletinboard;
+using System.Windows.Media.Animation;
 
 namespace Provider.gui
 {
@@ -58,6 +59,7 @@ namespace Provider.gui
             saveButton.Visibility = Visibility.Hidden;
             postDesciption.IsReadOnly = true;
             postTitel.IsReadOnly = true;
+            savedPostTextBlock.Visibility = Visibility.Hidden;
         }
 
         private void EditPost(object sender, RoutedEventArgs e)
@@ -76,7 +78,8 @@ namespace Provider.gui
             selectedItem.description = postDesciption.Text;
             selectedItem.title = postTitel.Text;
             HideButtons();
-            
+            savedPostTextBlock.Visibility = Visibility.Visible;
+            savedPostTextBlock.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
         }
 
         private void DeletePost(object sender, RoutedEventArgs e)
