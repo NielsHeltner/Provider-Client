@@ -33,7 +33,7 @@
         <GroupBox x:Name="groupBox" Header="Opslag information" HorizontalAlignment="Left" Margin="794,64,0,0" VerticalAlignment="Top" Height="470" Width="445" FontSize="16">
             <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Margin="0,10,-2,0" Width="435"/>
         </GroupBox>
-        <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,558,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,558,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost"/>
 
     </Grid>
 </Page>

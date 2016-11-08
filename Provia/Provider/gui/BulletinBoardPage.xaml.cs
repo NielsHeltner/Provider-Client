@@ -34,7 +34,14 @@ namespace Provider.gui
         }
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
+            groupBox.Header = "Opslag Information";
             frame.Content = new BulletinBoardProductPage((domain.bulletinboard.Post) listView.SelectedItem);
+        }
+
+        private void CreateNewPost(object sender, RoutedEventArgs e)
+        {
+            groupBox.Header = "Opret nyt opslag";
+            frame.Content = new CreateNewPost();
         }
     }
 }
