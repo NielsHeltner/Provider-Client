@@ -44,6 +44,8 @@ namespace Provider.gui
             postTitel.IsReadOnly = true;
             postDesciption.Cursor = Cursors.Arrow;
             postTitel.Cursor = Cursors.Arrow;
+            postDesciption.Background = Brushes.GhostWhite;
+
         }
 
         private void EditPost(object sender, RoutedEventArgs e)
@@ -51,6 +53,7 @@ namespace Provider.gui
             if (postDesciption.IsReadOnly)
             {
                 deletePostButton.Visibility = Visibility.Visible;
+                postDesciption.Background = null;
                 postDesciption.IsReadOnly = false;
                 postDesciption.AcceptsReturn = true;
                 postDesciption.IsUndoEnabled = true;

@@ -8,7 +8,7 @@
       Title="BulletinBoardPage" Height="644" Width="1286">
     <Page.Resources>
         <Style TargetType="ListViewItem">
-            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ViewPostInformation"/>
+            <EventSetter Event="MouseDoubleClick" Handler="ViewPostInformation"/>
         </Style>
     </Page.Resources>
     <Grid  Background="White">

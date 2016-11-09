@@ -81,7 +81,7 @@
         <Label x:Name="label2_Copy" Content="Antal opslag: " HorizontalAlignment="Left" Margin="623,523,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3_Copy" Content="0" HorizontalAlignment="Left" Margin="695,524,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="626,269,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3_Copy1" Content="0" HorizontalAlignment="Left" Margin="698,270,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="numberOfWarningPostLabel" Content="0" HorizontalAlignment="Left" Margin="698,270,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1131,277,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,529,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand"/>

@@ -30,6 +30,7 @@ namespace Provider.gui
             this.bulletinBoard = bulletinBoard;
             WarningListView.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
             WarningListView.ItemsSource = domain.Controller.instance.ViewWarningPosts();
+            numberOfWarningPostLabel.Content = domain.Controller.instance.ViewWarningPosts().Count;
         }
 
         private void GoToBulletinBoardPageNews(object sender, MouseButtonEventArgs e)
