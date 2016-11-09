@@ -70,6 +70,8 @@ namespace Provider.gui
                 postDesciption.IsReadOnly = false;
                 postDesciption.AcceptsReturn = true;
                 postDesciption.IsUndoEnabled = true;
+                postDesciption.ToolTip = "Uddyb dit opslag her";
+                postTitel.ToolTip = "Skriv titlen på det opsalg her";
                 postTitel.IsReadOnly = false;
                 postTitel.Focus();
                 editPostButton.Content = "Gem";
