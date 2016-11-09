@@ -18,6 +18,7 @@ namespace Provider.gui
     /// <summary>
     /// Interaction logic for Frontpage.xaml
     /// </summary>
+    /// TODO instantiere de 2 andre lister(tilbud og request), hvis de skal det.
     public partial class Frontpage : Page
     {
         private Frame frame;
