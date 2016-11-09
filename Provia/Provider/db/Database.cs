@@ -61,7 +61,8 @@ namespace Provider.db
         public List<Page> GetSuppliers()
         {
             GetConnection();
-            cmd.CommandText = "SELECT username FROM public.user WHERE rights=2";
+            cmd.CommandText = "SELECT public.user.username, public.note.text, public.note.date FROM public.user " +
+                                "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights=2";
             NpgsqlDataReader read = null;
             List<Page> pageList = new List<Page>();
             try
@@ -69,7 +70,17 @@ namespace Provider.db
                 read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    pageList.Add(new Page((read.GetString(0))));
+                    if(read.IsDBNull(2))
+                    {
+                        Page page = new Page(read.GetString(0));
+
+                    }
+                    else
+                    {
+                        Page page = new Page(read.GetString(0)) {note = null };
+
+                    }
+                    pageList.Add(new Page(read.GetString(0)));
                 }
             }
             catch (PostgresException e)
@@ -106,6 +117,35 @@ namespace Provider.db
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
             return productList;
+        }
+
+        public void AddNote(string supplierName, Note note)
+        {
+            GetConnection();
+            cmd.CommandText = "INSERT INTO public.note(supplier, text, date) " + 
+                                "VALUES('" + supplierName + "', '" + note.text + "', '" + note.creationDate + "');";
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch(PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+        }
+
+        public void UpdateNote(string supplierName, Note note)
+        {
+            GetConnection();
+            cmd.CommandText = "UPDATE public.note SET text = '" + note.text + "' WHERE public.note.supplier = '" + supplierName + "';";
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
         }
     }
 }

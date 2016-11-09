@@ -11,10 +11,12 @@ namespace Provider.domain.page
         public string text { get; set; }
         public DateTime creationDate { get; private set; }
 
-        public Note(string text)
+        public Note(string text, DateTime creationDate)
         {
             this.text = text;
-            creationDate = DateTime.Now;
+            this.creationDate = creationDate;
         }
+        public Note(string text) : this(text, DateTime.Today) { }
+        
     }
 }

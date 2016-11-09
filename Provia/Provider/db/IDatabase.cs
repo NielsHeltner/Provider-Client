@@ -12,5 +12,7 @@ namespace Provider.db
         bool GetLogin(string username, string password);
         List<Page> GetSuppliers();
         List<Product> GetProducts(string supplier);
+        void AddNote(string supplierName, Note note);
+        void UpdateNote(string supplierName, Note note);
     }
 }
