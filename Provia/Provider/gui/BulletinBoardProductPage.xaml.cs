@@ -42,6 +42,8 @@ namespace Provider.gui
             deletePostButton.Visibility = Visibility.Hidden;
             postDesciption.IsReadOnly = true;
             postTitel.IsReadOnly = true;
+            postDesciption.Cursor = Cursors.Arrow;
+            postTitel.Cursor = Cursors.Arrow;
         }
 
         private void EditPost(object sender, RoutedEventArgs e)
@@ -56,6 +58,8 @@ namespace Provider.gui
                 postTitel.ToolTip = "Skriv titlen på det opsalg her";
                 postTitel.IsReadOnly = false;
                 postTitel.Focus();
+                postTitel.Cursor = Cursors.IBeam;
+                postDesciption.Cursor = Cursors.IBeam;
                 editPostButton.Content = "Gem";
              } else
             {
