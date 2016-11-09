@@ -27,6 +27,8 @@ namespace Provider.gui
             InitializeComponent();
             this.frame = frame;
             this.bulletinBoard = bulletinBoard;
+            WarningListView.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
+            WarningListView.ItemsSource = domain.Controller.instance.ViewWarningPosts();
         }
 
         private void GoToBulletinBoardPageNews(object sender, MouseButtonEventArgs e)
@@ -51,5 +53,6 @@ namespace Provider.gui
         {
             frame.Content = bulletinBoard;
         }
+
     }
 }

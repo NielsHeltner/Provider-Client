@@ -10,7 +10,7 @@
 
     <Grid Background="White">
         <Label x:Name="label" Content="Velkommen til Provider" Margin="40,42,0,0" VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="395" Margin="67,133,0,0" VerticalAlignment="Top" Width="530">
+        <ListView x:Name="offersListView" HorizontalAlignment="Left" Height="395" Margin="67,133,0,0" VerticalAlignment="Top" Width="530">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>
@@ -36,30 +36,30 @@
         <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="64,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
         <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="64,523,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3" Content="0" HorizontalAlignment="Left" Margin="136,524,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="142" Margin="627,133,0,0" VerticalAlignment="Top" Width="539">
+        <ListView x:Name="WarningListView" HorizontalAlignment="Left" Height="142" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn DisplayMemberBinding="{Binding owner}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Producent" HorizontalContentAlignment="Left" Width="150"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding description}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="260"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding creationDate}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="122"/>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="125"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="listView2" HorizontalAlignment="Left" Height="181" Margin="627,347,0,0" VerticalAlignment="Top" Width="539">
+        <ListView x:Name="RequestListView" HorizontalAlignment="Left" Height="181" Margin="627,347,0,0" VerticalAlignment="Top" Width="555">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>
@@ -83,9 +83,9 @@
         <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="626,269,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3_Copy1" Content="0" HorizontalAlignment="Left" Margin="698,270,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1115,274,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1115,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand"/>
-        <Button x:Name="viewAllPostButton" Content="Se alle opslag" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="75" Click="viewAllPost" Background="#FF0C4A63" Foreground="White"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1131,277,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,529,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand"/>
+        <Button x:Name="viewAllPostButton" Content="Se alle opslag" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="89" Click="viewAllPost" Background="#FF0C4A63" Foreground="White"/>
 
     </Grid>
 </Page>
