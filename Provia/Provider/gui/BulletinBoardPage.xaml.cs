@@ -54,5 +54,21 @@ namespace Provider.gui
             listView.ItemsSource = Controller.instance.ViewBulletinBoard(0);
             groupBox.Header = "Opslag Information";
         }
+
+        private void ListMyPosts(object sender, RoutedEventArgs e)
+        {
+            List<Provider.domain.bulletinboard.Post> posts = new List<domain.bulletinboard.Post>();
+            List<Provider.domain.bulletinboard.Post> myPosts = new List<domain.bulletinboard.Post>();
+            posts = Controller.instance.ViewBulletinBoard(0);
+            foreach(domain.bulletinboard.Post post in posts)
+            {
+                if (post.owner.Equals(Controller.instance.GetLoggedInUserName()))
+                {
+                    myPosts.Add(post);
+                }
+            }
+            listView.ItemsSource = null;
+            listView.ItemsSource = myPosts;
+        }
     }
 }

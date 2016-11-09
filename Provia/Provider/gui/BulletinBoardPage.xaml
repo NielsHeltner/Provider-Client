@@ -8,7 +8,7 @@
       Title="BulletinBoardPage" Height="644" Width="1286">
     <Page.Resources>
         <Style TargetType="ListViewItem">
-            <EventSetter Event="MouseDoubleClick" Handler="ViewPostInformation"/>
+            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ViewPostInformation"/>
         </Style>
     </Page.Resources>
     <Grid  Background="White">
@@ -34,6 +34,7 @@
             <Frame x:Name="frame" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="488"/>
         </GroupBox>
         <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,558,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost"/>
+        <Button x:Name="myPostButton" Content="Mine opslag" HorizontalAlignment="Left" Margin="146,558,0,0" VerticalAlignment="Top" Width="74" Click="ListMyPosts"/>
 
     </Grid>
 </Page>
