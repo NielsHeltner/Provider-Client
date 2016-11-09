@@ -21,12 +21,21 @@
                             <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding type}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Type" HorizontalContentAlignment="Left" MinWidth="100"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding creationDate}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Oprettet den" HorizontalContentAlignment="Left" MinWidth="100"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding description}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="150"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-
                 </GridView>
             </ListView.View>
         </ListView>

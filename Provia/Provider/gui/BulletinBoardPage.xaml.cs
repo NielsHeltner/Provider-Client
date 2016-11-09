@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Provider.domain;
+using Provider.domain.bulletinboard;
 
 
 namespace Provider.gui
@@ -26,13 +27,13 @@ namespace Provider.gui
         public BulletinBoardPage()
         {
             InitializeComponent();
-            listView.ItemsSource = Controller.instance.ViewBulletinBoard(0);
+            listView.ItemsSource = Controller.instance.ViewAllPosts();
         }
 
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
             groupBox.Header = "Opslag Information";
-            frame.Content = new BulletinBoardProductPage((domain.bulletinboard.Post) listView.SelectedItem, this);
+            frame.Content = new BulletinBoardProductPage((Post) listView.SelectedItem, this);
         }
 
         private void CreateNewPost(object sender, RoutedEventArgs e)
@@ -44,7 +45,7 @@ namespace Provider.gui
         public void RefreshPage()
         {
             listView.ItemsSource = null;
-            listView.ItemsSource = Controller.instance.ViewBulletinBoard(0);
+            listView.ItemsSource = Controller.instance.ViewAllPosts();
             frame.Content = null;
             groupBox.Header = "Opslag Information";
         }
@@ -52,17 +53,14 @@ namespace Provider.gui
         public void RefreshList()
         {
             listView.ItemsSource = null;
-            listView.ItemsSource = Controller.instance.ViewBulletinBoard(0);
+            listView.ItemsSource = Controller.instance.ViewAllPosts();
             groupBox.Header = "Opslag Information";
         }
 
         private void ListMyPosts(object sender, RoutedEventArgs e)
         {
-
-            List<Provider.domain.bulletinboard.Post> posts = new List<domain.bulletinboard.Post>();
-            List<Provider.domain.bulletinboard.Post> myPosts = new List<domain.bulletinboard.Post>();
-            posts = Controller.instance.ViewBulletinBoard(0);
-            foreach(domain.bulletinboard.Post post in posts)
+            List<Post> myPosts = new List<Post>();
+            foreach(Post post in Controller.instance.ViewAllPosts())
             {
                 if (post.owner.Equals(Controller.instance.GetLoggedInUserName()))
                 {
@@ -75,10 +73,11 @@ namespace Provider.gui
                 listView.ItemsSource = myPosts;
                 myPostButton.Content = "Alle Opslag";
                 whatsOnTheList = 1;
-            } else
+            }
+            else
             {
                 listView.ItemsSource = null;
-                listView.ItemsSource = posts;
+                listView.ItemsSource = Controller.instance.ViewAllPosts();
                 myPostButton.Content = "Mine opslag";
                 whatsOnTheList = 0;
             }

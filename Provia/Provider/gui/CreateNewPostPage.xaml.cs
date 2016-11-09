@@ -65,7 +65,7 @@ namespace Provider.gui
             {
                 typeOfPost = 0;
             }
-            Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+            //Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
             bulletinBoardPage.RefreshPage();
             SomthingWentWrongLabel.Visibility = Visibility.Hidden;
         }

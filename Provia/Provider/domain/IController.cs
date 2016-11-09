@@ -17,7 +17,7 @@ namespace Provider.domain
 
         void DeletePost(Post post);
 
-        void CreatePost(String owner, string title, string description, int type);
+        void CreatePost(String owner, string title, string description, Post.Types type);
 
         bool LogIn(string userName, string password);
 
@@ -30,7 +30,13 @@ namespace Provider.domain
         /// If type = "1" warningPost are returned
         /// If type = "2" requestPost are returned
         /// If type = "3" offerPost are returned
-        List<Post> ViewBulletinBoard(int type);
+        List<Post> ViewAllPosts();
+
+        List<Post> ViewWarningPosts();
+
+        List<Post> ViewRequestPosts();
+
+        List<Post> ViewOfferPosts();
 
         void AddNoteToSupplier(string supplierName, string text);
 

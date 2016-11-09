@@ -82,6 +82,7 @@
         <Label x:Name="label3_Copy" Content="0" HorizontalAlignment="Left" Margin="695,524,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="626,269,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3_Copy1" Content="0" HorizontalAlignment="Left" Margin="698,270,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="548,533,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

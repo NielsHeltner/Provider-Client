@@ -14,9 +14,9 @@ namespace Provider.domain.bulletinboard
         public Bulletinboard()
         {
             posts = new List<Post>();
-            posts.Add(new Post("Vitafit", "sejhed", "vi er seje", 2));
-            posts.Add(new Post("B2Vitas", "mere sejhed","vi er også seje", 2));
-            posts.Add(new Post("ProteinVitmins", "mest sejhed","vi er ok seje", 2));
+            posts.Add(new Post("Vitafit", "sejhed", "vi er seje", Post.Types.Warning));
+            posts.Add(new Post("B2Vitas", "mere sejhed","vi er også seje", Post.Types.Request));
+            posts.Add(new Post("ProteinVitmins", "mest sejhed","vi er ok seje", Post.Types.Offer));
         }
         /// <summary>
         /// create a post
@@ -28,7 +28,7 @@ namespace Provider.domain.bulletinboard
         /// "2" is requestPost
         /// "3" is offerPost
         /// </param>
-        public void CreatePost(String owner, string title, string description, int type)
+        public void CreatePost(String owner, string title, string description, Post.Types type)
         {
             posts.Add(new Post(owner, title, description, type));
         }
@@ -48,21 +48,34 @@ namespace Provider.domain.bulletinboard
         // If type = "1" warningPost are returned
         // If type = "2" requestPost are returned
         // If type = "3" offerPost are returned
-        public List<Post> ViewBulletinBoard(int type)
+        private List<Post> GetPosts(Post.Types type)
         {
-            if(type == 0)
-            {
-                return posts;
-            }
             List<Post> postResults = new List<Post>();
             foreach (Post post in posts)
             {
-                if(post.type == type)
+                if (post.type == type)
                 {
                     postResults.Add(post);
                 }
             }
             return postResults;
+        }
+        public List<Post> ViewAllPosts()
+        {
+            return posts;
+        }
+
+        public List<Post> ViewWarningPosts()
+        {
+            return GetPosts(Post.Types.Warning);
+        }
+        public List<Post> ViewRequestPosts()
+        {
+            return GetPosts(Post.Types.Request);
+        }
+        public List<Post> ViewOfferPosts()
+        {
+            return GetPosts(Post.Types.Offer);
         }
     }
 }

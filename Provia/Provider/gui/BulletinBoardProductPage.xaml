@@ -21,7 +21,7 @@
         <TextBox x:Name="postTitel" HorizontalAlignment="Left" Height="23" Margin="14,6,0,0" TextWrapping="NoWrap" MaxLines="1" Text="TextBox" VerticalAlignment="Top" Width="362" SpellCheck.IsEnabled="True" BorderThickness="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="postOwner" Grid.Column="1" HorizontalAlignment="Left" Margin="17,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="75" Height="20"/>
         <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="43,59,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="14,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="14,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="149"/>
         <TextBlock x:Name="savedPostTextBlock" HorizontalAlignment="Left" Margin="10,381,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Foreground="#FF10AC00" Grid.ColumnSpan="2" Width="102" Visibility="Hidden"/>
     </Grid>
 </Page>
