@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Provider.db;
 
 namespace Provider.domain.page
 {
@@ -13,7 +14,7 @@ namespace Provider.domain.page
 
         public PageManager()
         {
-            pages = new List<Page>();
+            /*pages = new List<Page>();
             Page p1 = new Page(new Supplier("Vitafit", "password1234"));
             p1.AddProduct(new Product(0, "VitaMere", "Mega lækkert vitamin", 100, "Sække", "C3-P0", 2.5, new DateTime(2017, 01, 20, 22, 30, 00)));
             p1.AddProduct(new Product(1, "VitaMindre", "Smager udemærket", 210, "Spande", "D2-H1", 1.3, new DateTime(2017, 01, 18, 16, 15, 00)));
@@ -32,6 +33,12 @@ namespace Provider.domain.page
             pages.Add(p1);
             pages.Add(p2);
             pages.Add(p3);
+            */
+            pages = Database.instance.GetSuppliers();
+            foreach(Page supplierPage in pages)
+            {
+                supplierPage.AddProduct(Database.instance.GetProducts(supplierPage.owner));
+            }
         }
 
         /// <summary>
@@ -41,7 +48,7 @@ namespace Provider.domain.page
         /// <returns>Returns a specific suppliers page</returns>
         private Page GetSupplierPage(string supplierName)
         {
-            return pages.Find(page => page.owner.userName.Equals(supplierName));
+            return pages.Find(page => page.owner.Equals(supplierName));
         }
 
         public void AddNoteToSupplier(string supplierName, string text)
@@ -49,24 +56,33 @@ namespace Provider.domain.page
             if(GetSupplierPage(supplierName).note == null)
             {
                 GetSupplierPage(supplierName).note = new Note(text);
+                Database.instance.AddNote(supplierName, GetSupplierPage(supplierName).note);
             }
             else
             {
                 GetSupplierPage(supplierName).note.text = text;
+                Database.instance.UpdateNote(supplierName, GetSupplierPage(supplierName).note);
             }
         }
 
         public List<Page> Search(string searchTerm)
         {
-            List<Page> results = new List<Page>();
-            foreach (Page page in pages)
+            HashSet<Page> results = new HashSet<Page>();
+            pages.AsParallel().ForAll(page =>
             {
-                if(page.name.ToLower().Contains(searchTerm.ToLower()))
+                if (page.owner.ToLower().Contains(searchTerm.ToLower()))
                 {
                     results.Add(page);
                 }
-            }
-            return results;
+                foreach (Product product in page.products)
+                {
+                    if (product.productName.ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        results.Add(page);
+                    }
+                }
+            });
+            return results.ToList();
         }
     }
 }

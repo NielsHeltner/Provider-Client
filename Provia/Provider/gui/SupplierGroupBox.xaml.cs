@@ -30,6 +30,7 @@ namespace Provider.gui
             if(page.note != null)
             {
                 noteTextBox.Text = page.note.text;
+                lastEdited.Text = page.note.creationDate.ToLongDateString();
             }
         }
 
@@ -44,7 +45,8 @@ namespace Provider.gui
             {
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
-                Controller.instance.AddNoteToSupplier(page.name, noteTextBox.Text);
+                lastEdited.Text = DateTime.Today.ToLongDateString();
+                Controller.instance.AddNoteToSupplier(page.owner, noteTextBox.Text);
             }
         }
     }

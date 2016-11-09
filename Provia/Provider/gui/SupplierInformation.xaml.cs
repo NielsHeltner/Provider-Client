@@ -25,7 +25,7 @@ namespace Provider.gui
         public SupplierInformation(Provider.domain.page.Page page)
         {
             InitializeComponent();
-            groupBox.Header = page.name;
+            groupBox.Header = page.owner;
             frame.Content = new SupplierGroupBox(page);
             products = page.products;
             listView.ItemsSource = products;
