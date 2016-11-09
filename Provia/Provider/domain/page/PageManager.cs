@@ -56,10 +56,12 @@ namespace Provider.domain.page
             if(GetSupplierPage(supplierName).note == null)
             {
                 GetSupplierPage(supplierName).note = new Note(text);
+                Database.instance.AddNote(supplierName, GetSupplierPage(supplierName).note);
             }
             else
             {
                 GetSupplierPage(supplierName).note.text = text;
+                Database.instance.UpdateNote(supplierName, GetSupplierPage(supplierName).note);
             }
         }
 
