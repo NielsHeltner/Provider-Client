@@ -9,18 +9,7 @@ namespace Provider.domain.page
 {
     public class Page
     {
-        public Supplier owner { get; private set; }
-        public string name
-        {
-            get
-            {
-                return owner.userName;
-            }
-            private set
-            {
-                name = value;
-            }
-        }
+        public string owner { get; private set; }
         public List<Product> products { get; private set; }
         public Note note { get; set; }
         public string noteText
@@ -38,7 +27,7 @@ namespace Provider.domain.page
             }
         }
 
-        public Page(Supplier owner)
+        public Page(string owner)
         {
             this.owner = owner;
             products = new List<Product>();

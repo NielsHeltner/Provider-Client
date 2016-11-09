@@ -44,7 +44,7 @@ namespace Provider.gui
             {
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
-                Controller.instance.AddNoteToSupplier(page.name, noteTextBox.Text);
+                Controller.instance.AddNoteToSupplier(page.owner, noteTextBox.Text);
             }
         }
     }

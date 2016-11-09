@@ -89,7 +89,7 @@ namespace Provider.gui
             dataView.SortDescriptions.Clear();
             if(sortBy.Equals("Navn"))
             {
-                sortBy = "name";
+                sortBy = "owner";
             }
             else if(sortBy.Equals("Note"))
             {

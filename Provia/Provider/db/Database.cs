@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using Provider.domain.page;
+using Provider.domain.users;
 
 namespace Provider.db
 {
@@ -60,7 +61,7 @@ namespace Provider.db
         public List<Page> GetSuppliers()
         {
             GetConnection();
-            cmd.CommandText = "SELECT * FROM public.user WHERE rights=2";
+            cmd.CommandText = "SELECT username FROM public.user WHERE rights=2";
             NpgsqlDataReader read = null;
             List<Page> pageList = new List<Page>();
             try
@@ -68,7 +69,7 @@ namespace Provider.db
                 read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    pageList.Add(new Page(new domain.users.Supplier(read.GetString(0), read.GetString(1))));
+                    pageList.Add(new Page((read.GetString(0))));
                 }
             }
             catch (PostgresException e)

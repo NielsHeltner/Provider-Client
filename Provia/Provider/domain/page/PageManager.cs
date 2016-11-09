@@ -37,7 +37,7 @@ namespace Provider.domain.page
             pages = Database.instance.GetSuppliers();
             foreach(Page supplierPage in pages)
             {
-                supplierPage.AddProduct(Database.instance.GetProducts(supplierPage.name));
+                supplierPage.AddProduct(Database.instance.GetProducts(supplierPage.owner));
             }
         }
 
@@ -48,7 +48,7 @@ namespace Provider.domain.page
         /// <returns>Returns a specific suppliers page</returns>
         private Page GetSupplierPage(string supplierName)
         {
-            return pages.Find(page => page.owner.userName.Equals(supplierName));
+            return pages.Find(page => page.owner.Equals(supplierName));
         }
 
         public void AddNoteToSupplier(string supplierName, string text)
@@ -68,7 +68,7 @@ namespace Provider.domain.page
             HashSet<Page> results = new HashSet<Page>();
             pages.AsParallel().ForAll(page =>
             {
-                if (page.name.ToLower().Contains(searchTerm.ToLower()))
+                if (page.owner.ToLower().Contains(searchTerm.ToLower()))
                 {
                     results.Add(page);
                 }
