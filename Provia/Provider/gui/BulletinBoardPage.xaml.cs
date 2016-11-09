@@ -43,19 +43,13 @@ namespace Provider.gui
             frame.Content = new CreateNewPostPage(this);
         }
 
-        public void RefreshPage()
-        {
-            listView.ItemsSource = null;
-            listView.ItemsSource = Controller.instance.ViewAllPosts();
-            frame.Content = null;
-            groupBox.Header = "Opslag Information";
-        }
-
-        public void RefreshList()
+        public void RefreshPage(bool refreshFrameToo)
         {
             listView.ItemsSource = null;
             listView.ItemsSource = Controller.instance.ViewAllPosts();
             groupBox.Header = "Opslag Information";
+            if (refreshFrameToo)
+                frame.Content = null;
         }
 
         private void ListMyPosts(object sender, RoutedEventArgs e)

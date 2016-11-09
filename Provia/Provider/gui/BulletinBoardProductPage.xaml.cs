@@ -70,7 +70,7 @@ namespace Provider.gui
                 selectedItem.title = postTitel.Text;
                 HideButtons();
                 editPostButton.Content = "Redigere";
-                bulletinBoard.RefreshList();
+                bulletinBoard.RefreshPage(false);
                 savedPostTextBlock.Visibility = Visibility.Visible;
                 savedPostTextBlock.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
 
@@ -82,7 +82,7 @@ namespace Provider.gui
             selectedItem.description = postDesciption.Text;
             selectedItem.title = postTitel.Text;
             HideButtons();
-            bulletinBoard.RefreshPage();
+            bulletinBoard.RefreshPage(true);
         }
 
         private void DeletePost(object sender, RoutedEventArgs e)
@@ -92,7 +92,7 @@ namespace Provider.gui
             {
                 case MessageBoxResult.Yes:
                     domain.Controller.instance.DeletePost(selectedItem);
-                    bulletinBoard.RefreshPage();
+                    bulletinBoard.RefreshPage(true);
                     break;
             }
 
