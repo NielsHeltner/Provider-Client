@@ -58,7 +58,6 @@ namespace Provider.gui
         public void HideButtons()
         {
             deletePostButton.Visibility = Visibility.Hidden;
-            saveButton.Visibility = Visibility.Hidden;
             postDesciption.IsReadOnly = true;
             postTitel.IsReadOnly = true;
             savedPostTextBlock.Visibility = Visibility.Hidden;
@@ -69,7 +68,6 @@ namespace Provider.gui
             if (postDesciption.IsReadOnly)
             {
                 deletePostButton.Visibility = Visibility.Visible;
-                saveButton.Visibility = Visibility.Visible;
                 postDesciption.IsReadOnly = false;
                 postDesciption.AcceptsReturn = true;
                 postDesciption.IsUndoEnabled = true;
