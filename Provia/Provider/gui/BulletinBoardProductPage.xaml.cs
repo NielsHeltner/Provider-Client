@@ -23,7 +23,8 @@ namespace Provider.gui
     public partial class BulletinBoardProductPage : Page
     {
         Post selectedItem;
-        public BulletinBoardProductPage(Post selectedItem)
+        BulletinBoardPage bulletinBoard;
+        public BulletinBoardProductPage(Post selectedItem, BulletinBoardPage bulletinBoard)
         {
             InitializeComponent();
             HideButtons();
@@ -33,6 +34,7 @@ namespace Provider.gui
             postOwner.Text = selectedItem.owner;
             postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
             typeOfPost.Text = TypeOfPost(selectedItem.type);
+            this.bulletinBoard = bulletinBoard;
         }
         
         /// "1" is warningPost
@@ -64,13 +66,25 @@ namespace Provider.gui
 
         private void EditPost(object sender, RoutedEventArgs e)
         {
-            deletePostButton.Visibility = Visibility.Visible;
-            saveButton.Visibility = Visibility.Visible;
-            postDesciption.IsReadOnly = false;
-            postDesciption.AcceptsReturn = true;
-            postDesciption.IsUndoEnabled = true;
-            postTitel.IsReadOnly = false;
-            postTitel.Focus();
+            if (postDesciption.IsReadOnly)
+            {
+                deletePostButton.Visibility = Visibility.Visible;
+                saveButton.Visibility = Visibility.Visible;
+                postDesciption.IsReadOnly = false;
+                postDesciption.AcceptsReturn = true;
+                postDesciption.IsUndoEnabled = true;
+                postTitel.IsReadOnly = false;
+                postTitel.Focus();
+                editPostButton.Content = "Gem";
+            } else
+            {
+                selectedItem.description = postDesciption.Text;
+                selectedItem.title = postTitel.Text;
+                HideButtons();
+                savedPostTextBlock.Visibility = Visibility.Visible;
+                savedPostTextBlock.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
+                editPostButton.Content = "Redigere";
+            }
         }
 
         private void SavePost(object sender, RoutedEventArgs e)

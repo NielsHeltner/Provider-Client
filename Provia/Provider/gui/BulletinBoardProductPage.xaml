@@ -18,11 +18,10 @@
         <Button x:Name="editPostButton" Content="Rediger" HorizontalAlignment="Left" Margin="14,402,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2"/>
         <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="241,402,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF0404" BorderBrush="#FF707070" Foreground="Black" Grid.Column="1" Click="DeletePost"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="14,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False"><Run Text="Den"/><Run Text=":"/></TextBlock>
-        <Button x:Name="saveButton" Content="Gem" HorizontalAlignment="Left" Margin="86,402,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="SavePost"/>
         <TextBox x:Name="postTitel" HorizontalAlignment="Left" Height="23" Margin="14,6,0,0" TextWrapping="NoWrap" MaxLines="1" Text="TextBox" VerticalAlignment="Top" Width="362" SpellCheck.IsEnabled="True" BorderThickness="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="postOwner" Grid.Column="1" HorizontalAlignment="Left" Margin="17,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="75" Height="20"/>
         <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="43,59,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="14,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="savedPostTextBlock" Grid.Column="1" Margin="48,381,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" TextAlignment="Center" Foreground="#FF1CC901"/>
+        <TextBlock x:Name="savedPostTextBlock" Margin="-22,381,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" TextAlignment="Center" Foreground="#FF1CC901" Grid.ColumnSpan="2"/>
     </Grid>
 </Page>
