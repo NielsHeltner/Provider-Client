@@ -42,8 +42,8 @@
         <GroupBox x:Name="groupBox" Header="Opslag information" HorizontalAlignment="Left" Margin="741,52,0,0" VerticalAlignment="Top" Height="482" Width="498" FontSize="16">
             <Frame x:Name="frame" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="488"/>
         </GroupBox>
-        <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,558,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost"/>
-        <Button x:Name="myPostButton" Content="Mine opslag" HorizontalAlignment="Left" Margin="146,558,0,0" VerticalAlignment="Top" Width="74" Click="ListMyPosts"/>
+        <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,558,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost" Background="#FF0C4A63" Foreground="White"/>
+        <Button x:Name="myPostButton" Content="Mine opslag" HorizontalAlignment="Left" Margin="146,558,0,0" VerticalAlignment="Top" Width="74" Click="ListMyPosts" Background="#FF0C4A63" Foreground="White"/>
 
     </Grid>
 </Page>

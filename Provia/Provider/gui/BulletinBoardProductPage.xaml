@@ -15,7 +15,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="14,34,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top" IsEnabled="False" Grid.ColumnSpan="2"/>
         <TextBox x:Name="postDesciption" HorizontalAlignment="Left" Height="254" Margin="14,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365" SpellCheck.IsEnabled="True" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
          ScrollViewer.VerticalScrollBarVisibility="Auto" />
-        <Button x:Name="editPostButton" Content="Rediger" HorizontalAlignment="Left" Margin="14,402,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2"/>
+        <Button x:Name="editPostButton" Content="Rediger" HorizontalAlignment="Left" Margin="14,402,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2" Background="#FF0C4A63" Foreground="White"/>
         <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="241,402,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF0404" BorderBrush="#FF707070" Foreground="Black" Grid.Column="1" Click="DeletePost"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="14,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False"><Run Text="Den"/><Run Text=":"/></TextBlock>
         <TextBox x:Name="postTitel" HorizontalAlignment="Left" Height="23" Margin="14,6,0,0" TextWrapping="NoWrap" MaxLines="1" Text="TextBox" VerticalAlignment="Top" Width="362" SpellCheck.IsEnabled="True" BorderThickness="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold"/>

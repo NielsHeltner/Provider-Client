@@ -85,7 +85,7 @@
         <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1115,274,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1115,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand"/>
-        <Button x:Name="viewAllPostButton" Content="Se alle nyhed" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="75" Click="viewAllPost"/>
+        <Button x:Name="viewAllPostButton" Content="Se alle nyhed" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="75" Click="viewAllPost" Background="#FF0C4A63" Foreground="White"/>
 
     </Grid>
 </Page>
