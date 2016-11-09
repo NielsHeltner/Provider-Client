@@ -23,11 +23,12 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardPage : Page
     {
-        private bool isItMyList = false; // false = its all the post, true = its the loggedin users posts
+        private bool isItMyList = false; // false = its all the post, true = its the loggedin users posts OR a specifik group post, 'all warning post' ect.
         public BulletinBoardPage()
         {
             InitializeComponent();
             listView.ItemsSource = Controller.instance.ViewAllPosts();
+
         }
 
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
@@ -60,7 +61,7 @@ namespace Provider.gui
         private void ListMyPosts(object sender, RoutedEventArgs e)
         {
             List<Post> myPosts = new List<Post>();
-            foreach(Post post in Controller.instance.ViewAllPosts())
+            foreach (Post post in Controller.instance.ViewAllPosts())
             {
                 if (post.owner.Equals(Controller.instance.GetLoggedInUserName()))
                 {
@@ -81,7 +82,28 @@ namespace Provider.gui
                 myPostButton.Content = "Mine opslag";
                 isItMyList = false;
             }
-
+        }
+        public void SetListToWarning()
+        {
+            listView.ItemsSource = null;
+            listView.ItemsSource = Controller.instance.ViewWarningPosts();
+            isItMyList = true;
+            myPostButton.Content = "Alle Opslag";
+        }
+        public void SetListToRequest()
+        {
+            listView.ItemsSource = null;
+            listView.ItemsSource = Controller.instance.ViewRequestPosts();
+            isItMyList = true;
+            myPostButton.Content = "Alle Opslag";
+        }
+        public void SetListToOffer()
+        {
+            listView.ItemsSource = null;
+            listView.ItemsSource = Controller.instance.ViewOfferPosts();
+            isItMyList = true;
+            myPostButton.Content = "Alle Opslag";
+        }
         }
     }
-}
+

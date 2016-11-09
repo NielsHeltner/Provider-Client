@@ -24,12 +24,14 @@ namespace Provider.gui
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Frontpage frontpage = new Frontpage();
+        private BulletinBoardPage bulletinBoardPage = new BulletinBoardPage();
+        private Frontpage frontpage;
         private LogIn logIn;
         
         public MainWindow()
         {  
             InitializeComponent();
+            this.frontpage = new Frontpage(frame, bulletinBoardPage);
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             SetVisibilityToHidden();
             logIn = new LogIn(frame, this, frontpage);
@@ -63,14 +65,12 @@ namespace Provider.gui
             logout.Opacity = 0;
             searchText.Opacity = 0;
             searchTermTextBox.Opacity = 0;
-            opslagstavleButton.Opacity = 0;
             searchTermTextBox.IsEnabled = false;
             showSuppliersButton.IsEnabled = false;
             homeButton.IsEnabled = false;
             loggedIn.IsEnabled = false;
             logout.IsEnabled = false;
             searchTermTextBox.IsEnabled = false;
-            opslagstavleButton.IsEnabled = false;
         }
         public void AnimateHeaderLogin()
         {
@@ -109,14 +109,12 @@ namespace Provider.gui
             searchButton.Opacity = 1;
             logout.Opacity = 1;
             loggedIn.Opacity = 1;
-            opslagstavleButton.Opacity = 1;
             searchTermTextBox.IsEnabled = true;
             showSuppliersButton.IsEnabled = true;
             homeButton.IsEnabled = true;
             loggedIn.IsEnabled = true;
             logout.IsEnabled = true;
             searchTermTextBox.IsEnabled = true;
-            opslagstavleButton.IsEnabled = true;
         }
 
         private void AnimateHeaderLogout()
@@ -153,11 +151,6 @@ namespace Provider.gui
         private void Search(object sender, RoutedEventArgs e)
         {
             _Search(searchTermTextBox.Text);
-        }
-
-        private void Click_OpslagstavleButton(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new BulletinBoardPage();
         }
     }
 }

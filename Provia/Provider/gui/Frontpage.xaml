@@ -82,7 +82,10 @@
         <Label x:Name="label3_Copy" Content="0" HorizontalAlignment="Left" Margin="695,524,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="626,269,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3_Copy1" Content="0" HorizontalAlignment="Left" Margin="698,270,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="548,533,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1115,274,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1115,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand"/>
+        <Button x:Name="viewAllPostButton" Content="Se alle nyhed" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="75" Click="viewAllPost"/>
 
     </Grid>
 </Page>

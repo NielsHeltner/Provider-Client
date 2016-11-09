@@ -20,9 +20,36 @@ namespace Provider.gui
     /// </summary>
     public partial class Frontpage : Page
     {
-        public Frontpage()
+        private Frame frame;
+        private BulletinBoardPage bulletinBoard;
+        public Frontpage(Frame frame, BulletinBoardPage bulletinBoard)
         {
             InitializeComponent();
+            this.frame = frame;
+            this.bulletinBoard = bulletinBoard;
+        }
+
+        private void GoToBulletinBoardPageNews(object sender, MouseButtonEventArgs e)
+        {
+            frame.Content = bulletinBoard;
+            bulletinBoard.SetListToRequest();
+        }
+
+        private void GoToBulletinBoardPageWarning(object sender, MouseButtonEventArgs e)
+        {
+            frame.Content = bulletinBoard;
+            bulletinBoard.SetListToWarning();
+        }
+
+        private void GoToBulletinBoardPageOffer(object sender, MouseButtonEventArgs e)
+        {
+            frame.Content = bulletinBoard;
+            bulletinBoard.SetListToOffer();
+        }
+
+        private void viewAllPost(object sender, RoutedEventArgs e)
+        {
+            frame.Content = bulletinBoard;
         }
     }
 }
