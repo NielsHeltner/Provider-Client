@@ -60,7 +60,6 @@ namespace Provider.gui
             deletePostButton.Visibility = Visibility.Hidden;
             postDesciption.IsReadOnly = true;
             postTitel.IsReadOnly = true;
-            savedPostTextBlock.Visibility = Visibility.Hidden;
         }
 
         private void EditPost(object sender, RoutedEventArgs e)
@@ -74,14 +73,16 @@ namespace Provider.gui
                 postTitel.IsReadOnly = false;
                 postTitel.Focus();
                 editPostButton.Content = "Gem";
-            } else
+             } else
             {
                 selectedItem.description = postDesciption.Text;
                 selectedItem.title = postTitel.Text;
                 HideButtons();
+                editPostButton.Content = "Redigere";
+                bulletinBoard.RefreshList();
                 savedPostTextBlock.Visibility = Visibility.Visible;
                 savedPostTextBlock.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
-                editPostButton.Content = "Redigere";
+
             }
         }
 
@@ -90,8 +91,7 @@ namespace Provider.gui
             selectedItem.description = postDesciption.Text;
             selectedItem.title = postTitel.Text;
             HideButtons();
-            savedPostTextBlock.Visibility = Visibility.Visible;
-            savedPostTextBlock.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
+            bulletinBoard.RefreshPage();
         }
 
         private void DeletePost(object sender, RoutedEventArgs e)
@@ -101,6 +101,7 @@ namespace Provider.gui
             {
                 case MessageBoxResult.Yes:
                     domain.Controller.instance.DeletePost(selectedItem);
+                    bulletinBoard.RefreshPage();
                     break;
             }
 

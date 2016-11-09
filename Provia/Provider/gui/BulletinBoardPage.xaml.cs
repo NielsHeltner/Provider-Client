@@ -47,5 +47,12 @@ namespace Provider.gui
             frame.Content = null;
             groupBox.Header = "Opslag Information";
         }
+
+        public void RefreshList()
+        {
+            listView.ItemsSource = null;
+            listView.ItemsSource = Controller.instance.ViewBulletinBoard(0);
+            groupBox.Header = "Opslag Information";
+        }
     }
 }
