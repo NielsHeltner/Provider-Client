@@ -23,7 +23,7 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardPage : Page
     {
-        private int whatsOnTheList = 0; // 0 = det er alle post, 1 = mine post
+        private bool isItMyList = false; // false = its all the post, true = its the loggedin users posts
         public BulletinBoardPage()
         {
             InitializeComponent();
@@ -67,19 +67,19 @@ namespace Provider.gui
                     myPosts.Add(post);
                 }
             }
-            if (whatsOnTheList == 0)
+            if (isItMyList == false)
             {
                 listView.ItemsSource = null;
                 listView.ItemsSource = myPosts;
                 myPostButton.Content = "Alle Opslag";
-                whatsOnTheList = 1;
+                isItMyList = true;
             }
             else
             {
                 listView.ItemsSource = null;
                 listView.ItemsSource = Controller.instance.ViewAllPosts();
                 myPostButton.Content = "Mine opslag";
-                whatsOnTheList = 0;
+                isItMyList = false;
             }
 
         }
