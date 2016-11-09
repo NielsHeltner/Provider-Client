@@ -75,7 +75,7 @@ namespace Provider.gui
                 listView.ItemsSource = myPosts;
                 myPostButton.Content = "Alle Opslag";
                 whatsOnTheList = 1;
-            } else if (whatsOnTheList == 1)
+            } else
             {
                 listView.ItemsSource = null;
                 listView.ItemsSource = posts;
