@@ -65,22 +65,23 @@ namespace Provider.db
                                 "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights=2";
             NpgsqlDataReader read = null;
             List<Page> pageList = new List<Page>();
+            Page page;
             try
             {
                 read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    if(read.IsDBNull(2))
+                    if(read.IsDBNull(1) && read.IsDBNull(2))
                     {
-                        Page page = new Page(read.GetString(0));
+                        page = new Page(read.GetString(0));
 
                     }
                     else
                     {
-                        Page page = new Page(read.GetString(0)) {note = null };
+                        page = new Page(read.GetString(0), new Note(read.GetString(1), read.GetDateTime(2)));
 
                     }
-                    pageList.Add(new Page(read.GetString(0)));
+                    pageList.Add(page);
                 }
             }
             catch (PostgresException e)
@@ -137,7 +138,7 @@ namespace Provider.db
         public void UpdateNote(string supplierName, Note note)
         {
             GetConnection();
-            cmd.CommandText = "UPDATE public.note SET text = '" + note.text + "' WHERE public.note.supplier = '" + supplierName + "';";
+            cmd.CommandText = "UPDATE public.note SET text = '" + note.text + "', date = '"+DateTime.Today+"' WHERE public.note.supplier = '" + supplierName + "';";
             try
             {
                 cmd.ExecuteNonQuery();

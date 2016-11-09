@@ -33,6 +33,13 @@ namespace Provider.domain.page
             products = new List<Product>();
         }
 
+        public Page(string owner, Note note)
+        {
+            this.owner = owner;
+            this.note = note;
+            products = new List<Product>();
+        }
+
         /// <summary>
         /// Returns the specifik product with this product ID
         /// </summary>
