@@ -22,6 +22,7 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardPage : Page
     {
+        private int whatsOnTheList = 0; // 0 = det er alle post, 1 = mine post
         public BulletinBoardPage()
         {
             InitializeComponent();
@@ -57,6 +58,7 @@ namespace Provider.gui
 
         private void ListMyPosts(object sender, RoutedEventArgs e)
         {
+
             List<Provider.domain.bulletinboard.Post> posts = new List<domain.bulletinboard.Post>();
             List<Provider.domain.bulletinboard.Post> myPosts = new List<domain.bulletinboard.Post>();
             posts = Controller.instance.ViewBulletinBoard(0);
@@ -67,8 +69,20 @@ namespace Provider.gui
                     myPosts.Add(post);
                 }
             }
-            listView.ItemsSource = null;
-            listView.ItemsSource = myPosts;
+            if (whatsOnTheList == 0)
+            {
+                listView.ItemsSource = null;
+                listView.ItemsSource = myPosts;
+                myPostButton.Content = "Alle Opslag";
+                whatsOnTheList = 1;
+            } else if (whatsOnTheList == 1)
+            {
+                listView.ItemsSource = null;
+                listView.ItemsSource = posts;
+                myPostButton.Content = "Mine opslag";
+                whatsOnTheList = 0;
+            }
+
         }
     }
 }
