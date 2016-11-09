@@ -49,25 +49,25 @@ namespace Provider.gui
         private void CreatePost()
         {
 
-            int typeOfPost;
+            domain.bulletinboard.Post.Types typeOfPost;
+
             if (WarningRB.IsChecked.Value)
             {
-                typeOfPost = 1;
+                typeOfPost = domain.bulletinboard.Post.Types.Warning;
             }
             else if (requestRB.IsChecked.Value)
             {
-                typeOfPost = 2;
+                typeOfPost = domain.bulletinboard.Post.Types.Request;
             }
             else if (OfferRB.IsChecked.Value)
             {
-                typeOfPost = 3;
+                typeOfPost = domain.bulletinboard.Post.Types.Offer;
             } else
             {
-                typeOfPost = 0;
+                typeOfPost = domain.bulletinboard.Post.Types.NotAvailabe;
             }
-            //Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
-            bulletinBoardPage.RefreshPage();
-            SomthingWentWrongLabel.Visibility = Visibility.Hidden;
+                Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), TitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+                bulletinBoardPage.RefreshPage();
         }
         
         

@@ -9,7 +9,7 @@ namespace Provider.domain.bulletinboard
 {
     public class Post
     {
-        public enum Types { Warning, Request, Offer };
+        public enum Types { Warning, Request, Offer, NotAvailabe, };
         public String owner { get; private set; }
         public DateTime creationDate { get; private set; }
         public string description { get; set; }
