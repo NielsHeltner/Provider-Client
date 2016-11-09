@@ -54,19 +54,32 @@ namespace Provider.domain
             userManager.LogOut();
         }
 
-        public string GetLoggedInUser()
+        public string GetLoggedInUserName()
         {
             return userManager.loggedInUser.userName;
         }
 
-        public List<Post> ViewBulletinBoard(int type)
+        public List<Post> ViewAllPosts()
         {
-            return bulletinboard.ViewBulletinBoard(type);
+            return bulletinboard.ViewAllPosts();
         }
 
-        public void CreatePost(AbstractUser owner, string description, int type)
+        public List<Post> ViewWarningPosts()
         {
-            bulletinboard.CreatePost(owner, description, type);
+            return bulletinboard.ViewWarningPosts();
+        }
+        public List<Post> ViewRequestPosts()
+        {
+            return bulletinboard.ViewRequestPosts();
+        }
+        public List<Post> ViewOfferPosts()
+        {
+            return bulletinboard.ViewOfferPosts();
+        }
+
+        public void CreatePost(String owner, string title, string description, Post.Types type)
+        {
+            bulletinboard.CreatePost(owner, title, description, type);
         }
 
         public void DeletePost(Post post)

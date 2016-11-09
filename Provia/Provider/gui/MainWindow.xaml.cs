@@ -24,12 +24,14 @@ namespace Provider.gui
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Frontpage frontpage = new Frontpage();
+        private BulletinBoardPage bulletinBoardPage = new BulletinBoardPage();
+        private Frontpage frontpage;
         private LogIn logIn;
         
         public MainWindow()
         {  
             InitializeComponent();
+            this.frontpage = new Frontpage(frame, bulletinBoardPage);
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             SetVisibilityToHidden();
             logIn = new LogIn(frame, this, frontpage);

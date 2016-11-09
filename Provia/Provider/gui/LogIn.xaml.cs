@@ -44,7 +44,7 @@ namespace Provider.gui
                 wrongUsernameOrPassword.Visibility = Visibility.Hidden;
                 mainwindow.AnimateHeaderLogin();
                 frame.Content = frontpage;
-                mainwindow.loggedIn.Content = Controller.instance.GetLoggedInUser() + " logget ind";
+                mainwindow.loggedIn.Content = Controller.instance.GetLoggedInUserName() + " logget ind";
             }
             else
             {
