@@ -41,6 +41,7 @@ namespace Provider.gui
         private void GoToFrontpage(object sender, RoutedEventArgs e)
         {
             frame.Content = frontpage;
+            frontpage.RefreshFrontPage();
         }
 
         private void GetSupplierPages(object sender, RoutedEventArgs e)

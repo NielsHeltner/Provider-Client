@@ -44,6 +44,7 @@
         </GroupBox>
         <Button x:Name="createNewPostButton" Content="Nyt Opslag" HorizontalAlignment="Left" Margin="50,558,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost" Background="#FF0C4A63" Foreground="White"/>
         <Button x:Name="myPostButton" Content="Mine opslag" HorizontalAlignment="Left" Margin="146,558,0,0" VerticalAlignment="Top" Width="74" Click="ListMyPosts" Background="#FF0C4A63" Foreground="White"/>
+        <TextBlock x:Name="typeOfList" HorizontalAlignment="Left" Margin="265,11,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="50" Width="310" FontSize="36"/>
 
     </Grid>
 </Page>
