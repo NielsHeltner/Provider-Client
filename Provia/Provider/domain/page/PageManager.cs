@@ -74,13 +74,13 @@ namespace Provider.domain.page
                 {
                     results.Add(page);
                 }
-                foreach (Product product in page.products)
+                page.products.AsParallel().ForAll(product =>
                 {
                     if (product.productName.ToLower().Contains(searchTerm.ToLower()))
                     {
                         results.Add(page);
                     }
-                }
+                });
             });
             return results.ToList();
         }

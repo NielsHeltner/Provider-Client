@@ -137,10 +137,7 @@ namespace Provider.gui
             }
             else
             {
-                this.Dispatcher.Invoke(() =>
-                {
-                    frame.Content = new SupplierList(frame, Controller.instance.Search(searchTerm));
-                });
+                frame.Content = new SupplierList(frame, Controller.instance.Search(searchTerm));
             }
         }
 
