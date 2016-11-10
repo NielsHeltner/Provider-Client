@@ -11,7 +11,7 @@ namespace UnitTestClass.page
     {
 
         [TestMethod]
-        public void SearchTest()
+        public void SearchTest() // TODO: lav denne test bedre
         {
             PageManager pm = new PageManager();
             var page1 = new Page("DSM Nutritional Products Ltd");
@@ -23,7 +23,7 @@ namespace UnitTestClass.page
             pm.pages.Add(page1);
             pm.pages.Add(page2);
             pm.pages.Add(page3);
-            Assert.AreEqual("Chr.Olesen Nutrition A/S",pm.Search("chr")[0].owner);
+            Assert.AreEqual("Chr.Olesen Nutrition A/S", pm.Search("chr")[0].owner);
             Assert.AreEqual("DSM Nutritional Products Ltd", pm.Search("DSM")[0].owner);
             Assert.AreEqual(2, pm.Search("Ltd").Count);
             Assert.AreEqual("DSM Nutritional Products Ltd", pm.Search("rovimix")[0].owner);
