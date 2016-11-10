@@ -68,20 +68,23 @@ namespace Provider.domain.page
         public List<Page> Search(string searchTerm)
         {
             HashSet<Page> results = new HashSet<Page>();
-            pages.AsParallel().ForAll(page =>
+            lock (pages)
             {
-                if (page.owner.ToLower().Contains(searchTerm.ToLower()))
+                pages.AsParallel().ForAll(page =>
                 {
-                    results.Add(page);
-                }
-                page.products.AsParallel().ForAll(product =>
-                {
-                    if (product.productName.ToLower().Contains(searchTerm.ToLower()))
+                    if (page.owner.ToLower().Contains(searchTerm.ToLower()))
                     {
                         results.Add(page);
                     }
+                    page.products.AsParallel().ForAll(product =>
+                    {
+                        if (product.productName.ToLower().Contains(searchTerm.ToLower()))
+                        {
+                            results.Add(page);
+                        }
+                    });
                 });
-            });
+            }
             return results.ToList();
         }
     }
