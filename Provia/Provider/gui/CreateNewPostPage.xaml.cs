@@ -50,7 +50,7 @@ namespace Provider.gui
 
             } else
             {
-                SomthingWentWrongLabel.Content = "Der skal være noget indhold dit opslag";
+                SomthingWentWrongLabel.Content = "Der skal være en title og en beskrivelse i dit opslag";
                 SomthingWentWrongLabel.Visibility = Visibility.Visible;
             }
               
