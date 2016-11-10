@@ -10,6 +10,27 @@
         <Style TargetType="ListViewItem">
             <EventSetter Event="MouseDoubleClick" Handler="ViewPostInformation"/>
         </Style>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <Grid  Background="White">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,11,0,0" TextWrapping="Wrap" Text="Opslagstavle" VerticalAlignment="Top" FontSize="36"/>

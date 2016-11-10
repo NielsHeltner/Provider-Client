@@ -7,6 +7,29 @@
       mc:Ignorable="d" 
       d:DesignHeight="659" d:DesignWidth="1275"
       Title="Frontpage">
+    <Page.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="White">
         <Label x:Name="label" Content="Velkommen til Provider" Margin="40,42,0,0" VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
@@ -85,7 +108,7 @@
         <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1131,277,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,529,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand"/>
-        <Button x:Name="viewAllPostButton" Content="Se alle opslag" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="89" Click="viewAllPost" Background="#FF0C4A63" Foreground="White"/>
+        <Button x:Name="viewAllPostButton" Content="Se alle opslag" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="89" Click="viewAllPost" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
 
     </Grid>
 </Page>

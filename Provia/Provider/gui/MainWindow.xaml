@@ -8,6 +8,7 @@
         Title="Provider" Height="800" Width="1280" MinWidth="1280" MaxWidth="1280">
     <Window.Resources>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -18,6 +19,9 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

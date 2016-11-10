@@ -6,6 +6,46 @@
       xmlns:local="clr-namespace:Provider.gui"
       mc:Ignorable="d"
       Title="Page" Height="440" Width="488">
+    <Page.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF25718F"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF2286AE"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FFce4343"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FFd45757"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -15,8 +55,8 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="14,34,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top" IsEnabled="False" Grid.ColumnSpan="2"/>
         <TextBox x:Name="postDesciption" HorizontalAlignment="Left" Height="254" Margin="14,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365" SpellCheck.IsEnabled="True" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
          ScrollViewer.VerticalScrollBarVisibility="Auto" />
-        <Button x:Name="editPostButton" Content="Redigér" HorizontalAlignment="Left" Margin="14,402,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2" Background="#FF0C4A63" Foreground="White"/>
-        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="241,402,0,0" VerticalAlignment="Top" Width="75" Background="#FF890000" BorderBrush="#FF707070" Foreground="White" Grid.Column="1" Click="DeletePost"/>
+        <Button x:Name="editPostButton" Content="Redigér" HorizontalAlignment="Left" Margin="14,402,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
+        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="241,402,0,0" VerticalAlignment="Top" Width="75" Background="#FFC53333" BorderBrush="#FF707070" Foreground="White" Grid.Column="1" Click="DeletePost" Style="{DynamicResource ButtonStyle2}"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="14,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" Text="Oprettet den:" Grid.ColumnSpan="2" Width="75"/>
         <TextBox x:Name="postTitel" HorizontalAlignment="Left" Height="23" Margin="14,6,0,0" TextWrapping="NoWrap" MaxLines="1" Text="TextBox" VerticalAlignment="Top" Width="362" SpellCheck.IsEnabled="True" BorderThickness="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold"/>
         <TextBlock x:Name="postOwner" Grid.Column="1" HorizontalAlignment="Left" Margin="17,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="75" Height="20"/>
