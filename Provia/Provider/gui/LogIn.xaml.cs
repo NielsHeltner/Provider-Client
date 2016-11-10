@@ -24,7 +24,7 @@ namespace Provider.gui
     {
         private Frame frame;
         private MainWindow mainwindow;
-        private Frontpage frontpage;
+        public Frontpage frontpage { get; set; }
 
         public LogIn(Frame frame, MainWindow mainwindow, Frontpage frontpage)
         {
@@ -44,6 +44,7 @@ namespace Provider.gui
             {
                 wrongUsernameOrPassword.Visibility = Visibility.Hidden;
                 mainwindow.AnimateHeaderLogin();
+                mainwindow.Refresh();
                 frame.Content = frontpage;
                 mainwindow.loggedIn.Content = Controller.instance.GetLoggedInUser().userName + " logget ind";
             }

@@ -70,11 +70,10 @@ namespace Provider.gui
             {
                 Controller.instance.EditPost(selectedItem, postDesciption.Text, postTitel.Text);
                 HideButtons();
-                editPostButton.Content = "Redigere";
+                editPostButton.Content = "Redigér";
                 bulletinBoard.RefreshPage(false);
                 savedPostTextBlock.Visibility = Visibility.Visible;
                 savedPostTextBlock.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
-
             }
         }
 

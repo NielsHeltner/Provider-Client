@@ -31,7 +31,6 @@ namespace Provider.gui
             WarningListView.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
             WarningListView.SetValue(ScrollViewer.VerticalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
             RefreshFrontPage();
-
         }
 
         private void GoToBulletinBoardPageNews(object sender, MouseButtonEventArgs e)
