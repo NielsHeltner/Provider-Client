@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Provider.domain.bulletinboard;
 
 namespace Provider.gui
 {
@@ -56,23 +57,22 @@ namespace Provider.gui
         }
         private void CreatePost()
         {
-
-            domain.bulletinboard.Post.Types typeOfPost;
-
+            Post.Types typeOfPost;
             if (WarningRB.IsChecked.Value)
             {
-                typeOfPost = domain.bulletinboard.Post.Types.Warning;
+                typeOfPost = Post.Types.Warning;
             }
             else if (requestRB.IsChecked.Value)
             {
-                typeOfPost = domain.bulletinboard.Post.Types.Request;
+                typeOfPost = Post.Types.Request;
             }
             else if (OfferRB.IsChecked.Value)
             {
-                typeOfPost = domain.bulletinboard.Post.Types.Offer;
-            } else
+                typeOfPost = Post.Types.Offer;
+            }
+            else
             {
-                typeOfPost = domain.bulletinboard.Post.Types.NotAvailabe;
+                typeOfPost = Post.Types.NotAvailabe;
             }
                 Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
                 bulletinBoardPage.RefreshPage(true);
@@ -81,7 +81,9 @@ namespace Provider.gui
         private void TitleLostFocus(object sender, RoutedEventArgs e)
         {
             if (postTitleTextBox.Text.Length == 0)
+            {
                 titleText.Visibility = Visibility.Visible;
+            }
         }
 
         private void TitleGotFocus(object sender, RoutedEventArgs e)
