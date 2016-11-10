@@ -18,5 +18,10 @@ namespace Provider.domain.users
             this.password = password;
         }
 
+        public int getRights()
+        {
+            return 1;
+        }
+
     }
 }

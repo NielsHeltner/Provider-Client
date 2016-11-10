@@ -54,9 +54,9 @@ namespace Provider.domain
             userManager.LogOut();
         }
 
-        public string GetLoggedInUserName()
+        public AbstractUser GetLoggedInUser()
         {
-            return userManager.loggedInUser.userName;
+            return userManager.loggedInUser;
         }
 
         public List<Post> ViewAllPosts()

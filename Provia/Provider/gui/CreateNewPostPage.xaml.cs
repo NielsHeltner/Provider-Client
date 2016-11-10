@@ -28,7 +28,11 @@ namespace Provider.gui
             InitializeComponent();
             this.bulletinBoardPage = Bulletinboard;
             CreationDateTextBlock.Text = DateTime.Today.ToShortDateString();
-            OwnerTextBlock.Text = Controller.instance.GetLoggedInUserName();
+            OwnerTextBlock.Text = Controller.instance.GetLoggedInUser().userName;
+            if (Controller.instance.GetLoggedInUser().getRights() == 1)
+            {
+                WarningRB.Visibility = Visibility.Collapsed;
+            }
         }
         /// 0 is error
         /// "1" is warningPost
@@ -74,7 +78,7 @@ namespace Provider.gui
             {
                 typeOfPost = Post.Types.NotAvailabe;
             }
-                Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+                Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().userName, postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
                 bulletinBoardPage.RefreshPage(true);
         }
 
