@@ -49,9 +49,9 @@
             </TextBlock.Style>
         </TextBlock>
         <Canvas HorizontalAlignment="Left" Height="100" Margin="410,88,0,0" VerticalAlignment="Top" Width="418">
-            <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Height="32" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="312" FontSize="18" GotFocus="UsernameGotFocus" LostFocus="UsernameLostFocus" KeyUp="submitForm" Canvas.Left="56"/>
+            <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Height="32" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="312" FontSize="18" GotFocus="UsernameGotFocus" LostFocus="UsernameLostFocus" KeyUp="SubmitForm" Canvas.Left="56"/>
             <TextBlock x:Name="usernameText" IsHitTestVisible="False" Text="Brugernavn..." VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI" Canvas.Left="56" Canvas.Top="4"/>
-            <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="312" Height="32" FontSize="18" LostFocus="PasswordLostFocus" GotFocus="PasswordGotFocus" KeyUp="submitForm" Canvas.Left="56" Canvas.Top="53"/>
+            <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="312" Height="32" FontSize="18" LostFocus="PasswordLostFocus" GotFocus="PasswordGotFocus" KeyUp="SubmitForm" Canvas.Left="56" Canvas.Top="53"/>
             <TextBlock x:Name="passwordText" IsHitTestVisible="False" Text="Password..." VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="DarkGray" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI" Canvas.Left="56" Canvas.Top="56"/>
         </Canvas>
 

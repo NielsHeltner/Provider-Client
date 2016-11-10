@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Provider.domain.page;
-using Provider.domain.users;
-using System.Collections.Generic;
 
 namespace UnitTestClass.page
 {

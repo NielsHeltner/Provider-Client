@@ -2,9 +2,6 @@
 using Provider.domain.users;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Provider.domain.bulletinboard;
 
 namespace Provider.domain
@@ -25,10 +22,6 @@ namespace Provider.domain
                     _instance = new Controller();
                 }
                 return _instance;
-            }
-            private set
-            {
-
             }
         }
 

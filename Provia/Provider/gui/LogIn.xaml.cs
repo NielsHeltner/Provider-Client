@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Provider.domain;
 
 namespace Provider.gui
@@ -34,8 +24,6 @@ namespace Provider.gui
             this.frontpage = frontpage;
             wrongUsernameOrPassword.Visibility = Visibility.Hidden;
             usernameBox.Focus();
-            //usernameBox.Text = "Provia";
-            //passwordBox.Password = "123";
         }
 
         private void LogUserIn(object sender, RoutedEventArgs e)
@@ -52,14 +40,15 @@ namespace Provider.gui
             {
                 wrongUsernameOrPassword.Visibility = Visibility.Visible;
                 DoubleAnimationUsingKeyFrames animationKeyFrames = new DoubleAnimationUsingKeyFrames();
-
-                DoubleKeyFrameCollection frameCollection = new DoubleKeyFrameCollection();
-                frameCollection.Add(new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 50)));
-                frameCollection.Add(new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 100)));
-                frameCollection.Add(new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 150)));
-                frameCollection.Add(new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 200)));
-                frameCollection.Add(new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 250)));
-                frameCollection.Add(new EasingDoubleKeyFrame(56, new TimeSpan(0, 0, 0, 0, 300)));
+                DoubleKeyFrameCollection frameCollection = new DoubleKeyFrameCollection
+                {
+                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 50)),
+                    new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 100)),
+                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 150)),
+                    new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 200)),
+                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 250)),
+                    new EasingDoubleKeyFrame(56, new TimeSpan(0, 0, 0, 0, 300))
+                };
                 animationKeyFrames.KeyFrames = frameCollection;
                 usernameBox.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
                 usernameText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
@@ -94,7 +83,7 @@ namespace Provider.gui
             }
         }
 
-        private void submitForm(object sender, KeyEventArgs e)
+        private void SubmitForm(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {

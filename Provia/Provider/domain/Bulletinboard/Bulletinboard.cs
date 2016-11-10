@@ -1,24 +1,15 @@
-﻿using Provider.domain.users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Provider.db;
-using Provider.domain.bulletinboard;
 
 namespace Provider.domain.bulletinboard
 {
     public class Bulletinboard
     {
-        public List<Post> posts { get; private set; }
+        public List<Post> posts { get; }
 
         public Bulletinboard()
         {
             posts = Database.instance.GetPosts();
-            /*posts.Add(new Post("Vitafit", "sejhed", "vi er seje", Post.Types.Warning));
-            posts.Add(new Post("B2Vitas", "mere sejhed","vi er også seje", Post.Types.Request));
-            posts.Add(new Post("ProteinVitmins", "mest sejhed","vi er ok seje", Post.Types.Offer));*/
         }
         /// <summary>
         /// create a post
@@ -51,11 +42,6 @@ namespace Provider.domain.bulletinboard
             Database.instance.UpdatePost(post.owner, post);
         }
 
-        // Retuns a list of posts.
-        // If type = "0" all posts are returned
-        // If type = "1" warningPost are returned
-        // If type = "2" requestPost are returned
-        // If type = "3" offerPost are returned
         private List<Post> GetPosts(Post.Types type)
         {
             List<Post> postResults = new List<Post>();

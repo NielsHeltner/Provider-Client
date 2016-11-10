@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Provider.domain;
 using Provider.domain.bulletinboard;
 
@@ -23,12 +13,11 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardPage : Page
     {
-        private bool isItMyList = false; // false = its all the post, true = its the loggedin users posts OR a specifik group post, 'all warning post' ect.
+        private bool isItMyList; // false = its all the post, true = its the loggedin users posts OR a specifik group post, 'all warning post' ect.
         public BulletinBoardPage()
         {
             InitializeComponent();
             listView.ItemsSource = Controller.instance.ViewAllPosts();
-
         }
 
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
@@ -68,9 +57,8 @@ namespace Provider.gui
                     myPosts.Add(post);
                 }
             }
-            if (isItMyList == false)
+            if (!isItMyList)
             {
-                listView.ItemsSource = null;
                 listView.ItemsSource = myPosts;
                 myPostButton.Content = "Alle opslag";
                 isItMyList = true;
@@ -78,12 +66,12 @@ namespace Provider.gui
             }
             else
             {
-                listView.ItemsSource = null;
                 listView.ItemsSource = Controller.instance.ViewAllPosts();
                 myPostButton.Content = "Mine opslag";
                 isItMyList = false;
                 typeOfList.Text = "Alle opslag";
             }
+            listView.ItemsSource = null;
         }
         public void SetListToWarning()
         {
@@ -109,6 +97,5 @@ namespace Provider.gui
             myPostButton.Content = "Alle opslag";
             typeOfList.Text = "Alle tilbud";
         }
-        }
     }
-
+}

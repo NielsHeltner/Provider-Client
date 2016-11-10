@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Provider.domain.users
+﻿namespace Provider.domain.users
 {
     public abstract class AbstractUser
     {
@@ -12,7 +6,7 @@ namespace Provider.domain.users
 
         public string password { get; private set; }
 
-        public AbstractUser(string userName, string password)
+        protected AbstractUser(string userName, string password)
         {
             this.userName = userName;
             this.password = password;

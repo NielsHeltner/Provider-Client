@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Provider.gui;
-using Provider.domain;
 using System.Windows.Media.Animation;
-using System.Threading;
+using System.Windows.Navigation;
+using Provider.domain;
 
 namespace Provider.gui
 {
@@ -85,27 +74,29 @@ namespace Provider.gui
 
             // Animate image logo 
             DoubleAnimation imageAnimate = new DoubleAnimation(122, 0, new TimeSpan(0, 0, 2));
-            ElasticEase ease = new ElasticEase();
-            ease.Springiness = 10;
-            ease.Oscillations = 0;
-            ease.EasingMode = EasingMode.EaseOut;
+            ElasticEase ease = new ElasticEase
+            {
+                Springiness = 10,
+                Oscillations = 0,
+                EasingMode = EasingMode.EaseOut
+            };
             imageAnimate.EasingFunction = ease;
             image.BeginAnimation(Canvas.LeftProperty, imageAnimate);
 
             // Animate Search bar
             DoubleAnimation searchbarAnimate = new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop);
             searchbarAnimate.Completed += AnimateControlsCompleted;
-            searchTermTextBox.BeginAnimation(Control.OpacityProperty, searchbarAnimate);
+            searchTermTextBox.BeginAnimation(OpacityProperty, searchbarAnimate);
 
             // Animate Search bar text
-            searchText.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            searchText.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
 
             // Animate buttons
-            homeButton.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            showSuppliersButton.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            searchButton.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            logout.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            loggedIn.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            homeButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            showSuppliersButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            searchButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            logout.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            loggedIn.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
         }
         private void AnimateControlsCompleted(object sender, EventArgs e)
         {
@@ -127,10 +118,12 @@ namespace Provider.gui
         private void AnimateHeaderLogout()
         {
             DoubleAnimation da = new DoubleAnimation(0,122, new TimeSpan(0, 0, 2));
-            ElasticEase ease = new ElasticEase();
-            ease.Springiness = 10;
-            ease.Oscillations = 0;
-            ease.EasingMode = EasingMode.EaseOut;
+            ElasticEase ease = new ElasticEase
+            {
+                Springiness = 10,
+                Oscillations = 0,
+                EasingMode = EasingMode.EaseOut
+            };
             da.EasingFunction = ease;
             image.BeginAnimation(Canvas.LeftProperty, da);
         }

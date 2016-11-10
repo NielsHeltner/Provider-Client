@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Threading;
 using System.ComponentModel;
-using Provider.domain;
 
 namespace Provider.gui
 {
@@ -24,7 +13,7 @@ namespace Provider.gui
         private Frame mainWindow;
         private List<Provider.domain.page.Page> listToShow;
         private ICollectionView dataView;
-        private GridViewColumnHeader lastHeaderClicked = null;
+        private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
 
         public SupplierList(Frame mainWindow, List<Provider.domain.page.Page> listToShow)
@@ -60,7 +49,8 @@ namespace Provider.gui
                         {
                             direction = ListSortDirection.Descending;
                         }
-                        else {
+                        else
+                        {
                             direction = ListSortDirection.Ascending;
                         }
                     }

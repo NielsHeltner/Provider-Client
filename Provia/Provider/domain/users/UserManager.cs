@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Provider.db;
+﻿using Provider.db;
 
 namespace Provider.domain.users
 {
     public class UserManager
     {
-        private HashSet<AbstractUser> users; //Temporary Hashset of all the users in the system.
-
-        public AbstractUser loggedInUser { get; private set; } //Holds the current logged in user.
-
-        public UserManager()
-        {
-            users = new HashSet<AbstractUser>();
-            users.Add(new Provia("Provia", "123"));
-        }
+        public AbstractUser loggedInUser { get; private set; }
 
         /// <summary>
         /// Checks if the userName is found in the set of users, and then checks the users password. 
@@ -29,14 +16,6 @@ namespace Provider.domain.users
 
         public bool Validate(string userName, string password)
         {
-            /*foreach(AbstractUser user in users)
-            {
-                if (userName.Equals(user.userName) && password.Equals(user.password))
-                {
-                    loggedInUser = user;
-                    return true;
-                }
-            }*/
             if(Database.instance.GetLogin(userName, password))
             {
                 loggedInUser = new Provia(userName, password);
@@ -52,7 +31,6 @@ namespace Provider.domain.users
         public void LogOut()
         {
             loggedInUser = null;
-
         }
 
     }

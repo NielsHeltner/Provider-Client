@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Provider.domain.bulletinboard;
 using System.Windows.Media.Animation;
 using Provider.domain;
@@ -23,8 +14,8 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardProductPage : Page
     {
-        Post selectedItem;
-        BulletinBoardPage bulletinBoard;
+        private Post selectedItem;
+        private BulletinBoardPage bulletinBoard;
         public BulletinBoardProductPage(Post selectedItem, BulletinBoardPage bulletinBoard)
         {
             InitializeComponent();
@@ -73,16 +64,8 @@ namespace Provider.gui
                 editPostButton.Content = "Redigér";
                 bulletinBoard.RefreshPage(false);
                 savedPostTextBlock.Visibility = Visibility.Visible;
-                savedPostTextBlock.BeginAnimation(Control.OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
+                savedPostTextBlock.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
             }
-        }
-
-        private void SavePost(object sender, RoutedEventArgs e)
-        {
-            selectedItem.description = postDesciption.Text;
-            selectedItem.title = postTitel.Text;
-            HideButtons();
-            bulletinBoard.RefreshPage(true);
         }
 
         private void DeletePost(object sender, RoutedEventArgs e)
@@ -91,7 +74,7 @@ namespace Provider.gui
             switch (confirmation)
             {
                 case MessageBoxResult.Yes:
-                    domain.Controller.instance.DeletePost(selectedItem);
+                    Controller.instance.DeletePost(selectedItem);
                     bulletinBoard.RefreshPage(true);
                     break;
             }

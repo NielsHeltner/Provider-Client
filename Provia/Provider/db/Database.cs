@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 using Provider.domain.page;
-using Provider.domain.users;
 using Provider.domain.bulletinboard;
 
 namespace Provider.db
@@ -25,15 +21,9 @@ namespace Provider.db
                 }
                 return _instance;
             }
-            private set
-            {
-
-            }
         }
 
-        private Database()
-        {
-        }
+        private Database() { }
 
         private void GetConnection()
         {
@@ -46,7 +36,7 @@ namespace Provider.db
         {
             GetConnection();
 
-            cmd.CommandText = "SELECT * FROM public.user WHERE username='"+username+"' AND password='"+password+"' AND rights=1";
+            cmd.CommandText = "SELECT * FROM public.user WHERE username='"+username+"' AND password='"+password+"'";
             NpgsqlDataReader read = null;
             try
             {
@@ -64,18 +54,16 @@ namespace Provider.db
             GetConnection();
             cmd.CommandText = "SELECT public.user.username, public.note.text, public.note.date FROM public.user " +
                                 "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights=2";
-            NpgsqlDataReader read = null;
             List<Page> pageList = new List<Page>();
-            Page page;
             try
             {
-                read = cmd.ExecuteReader();
+                NpgsqlDataReader read = cmd.ExecuteReader();
+                Page page;
                 while (read.Read())
                 {
                     if(read.IsDBNull(1) && read.IsDBNull(2))
                     {
                         page = new Page(read.GetString(0));
-
                     }
                     else
                     {
@@ -101,16 +89,12 @@ namespace Provider.db
                 "FROM public.product " +
                 "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE " +
                 "public.pageproducts.page='" + supplier + "'";
-
-            NpgsqlDataReader reader = null;
             List<Product> productList = new List<Product>();
             try
             {
-                reader = cmd.ExecuteReader();
+                NpgsqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    //System.Diagnostics.Debug.WriteLine(reader.GetInt32(0));
-                    //System.Diagnostics.Debug.WriteLine(reader.GetString(1));
                     productList.Add(new Product(reader.GetInt32(0), reader.GetString(1),reader.GetString(2),reader.GetDouble(3),reader.GetString(4), reader.GetString(5), reader.GetDouble(6)));
                 }
             }
@@ -156,11 +140,10 @@ namespace Provider.db
             cmd.CommandText = "INSERT INTO public.post(username, type, text, \"creationDate\", title) " +
                                 "VALUES('" + owner + "', '" + post.type.ToString() + "', '" + post.description + "', '" + post.creationDate + "', '" + post.title + "') " + 
                                 "RETURNING id;";
-            NpgsqlDataReader reader = null;
             int id = 0;
             try
             {
-                reader = cmd.ExecuteReader();
+                NpgsqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     id = reader.GetInt32(0);
@@ -205,12 +188,10 @@ namespace Provider.db
         {
             GetConnection();
             cmd.CommandText = "SELECT * FROM public.post";
-
-            NpgsqlDataReader reader = null;
             List<Post> postList = new List<Post>();
             try
             {
-                reader = cmd.ExecuteReader();
+                NpgsqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     Post.Types type;

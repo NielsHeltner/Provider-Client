@@ -1,18 +1,7 @@
-﻿using Provider.domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Provider.domain;
 using Provider.domain.bulletinboard;
 
 namespace Provider.gui
@@ -26,7 +15,7 @@ namespace Provider.gui
         public CreateNewPostPage(BulletinBoardPage Bulletinboard)
         {
             InitializeComponent();
-            this.bulletinBoardPage = Bulletinboard;
+            bulletinBoardPage = Bulletinboard;
             CreationDateTextBlock.Text = DateTime.Today.ToShortDateString();
             OwnerTextBlock.Text = Controller.instance.GetLoggedInUser().userName;
             if (Controller.instance.GetLoggedInUser().getRights() == 1)
@@ -47,18 +36,20 @@ namespace Provider.gui
                 {
                     SomthingWentWrongLabel.Content = "Husk at vælge katagori";
                     SomthingWentWrongLabel.Visibility = Visibility.Visible;
-                } else
+                }
+                else
                 {
                     CreatePost();
                 } 
 
-            } else
+            }
+            else
             {
-                SomthingWentWrongLabel.Content = "Der skal være en title og en beskrivelse i dit opslag";
+                SomthingWentWrongLabel.Content = "Der skal være en titel og en beskrivelse i dit opslag";
                 SomthingWentWrongLabel.Visibility = Visibility.Visible;
             }
-              
         }
+
         private void CreatePost()
         {
             Post.Types typeOfPost;
@@ -98,7 +89,9 @@ namespace Provider.gui
         private void PostDescriptionLostFocus(object sender, RoutedEventArgs e)
         {
             if (PostDescriptionTextBox.Text.Length == 0)
+            {
                 desriptionText.Visibility = Visibility.Visible;
+            }
         }
 
         private void PostDescriptionGotFocus(object sender, RoutedEventArgs e)

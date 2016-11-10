@@ -1,16 +1,12 @@
-﻿using Provider.domain.users;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Provider.domain.page
 {
     public class Page
     {
         public string owner { get; private set; }
-        public List<Product> products { get; private set; }
+        public List<Product> products { get; }
         public Note note { get; set; }
         public string noteText
         {
@@ -20,10 +16,7 @@ namespace Provider.domain.page
                 {
                     return "";
                 }
-                else
-                {
-                    return note.text;
-                }
+                return note.text;
             }
         }
 
