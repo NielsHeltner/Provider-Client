@@ -10,7 +10,7 @@ namespace Provider.domain.page
 {
     public class PageManager
     {
-        public List<Page> pages { get; private set; }
+        public List<Page> pages { get; }
 
         public PageManager()
         {
