@@ -74,6 +74,7 @@ namespace Provider.gui
                 listView.ItemsSource = myPosts;
                 myPostButton.Content = "Alle Opslag";
                 isItMyList = true;
+                typeOfList.Text = "Mine opslag";
             }
             else
             {
@@ -81,6 +82,7 @@ namespace Provider.gui
                 listView.ItemsSource = Controller.instance.ViewAllPosts();
                 myPostButton.Content = "Mine opslag";
                 isItMyList = false;
+                typeOfList.Text = "Alle Opslag";
             }
         }
         public void SetListToWarning()

@@ -33,6 +33,7 @@ namespace Provider.gui
             this.mainwindow = mainwindow;
             this.frontpage = frontpage;
             wrongUsernameOrPassword.Visibility = Visibility.Hidden;
+            usernameBox.Focus();
             //usernameBox.Text = "Provia";
             //passwordBox.Password = "123";
         }
