@@ -8,7 +8,7 @@ namespace Provider.domain.page
 {
     public class Product
     {
-        private int ID;
+        private int id;
         public string productName { get; private set; }
         public string description { get; private set; }
         public double price { get; private set; }
@@ -26,9 +26,9 @@ namespace Provider.domain.page
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
         /// <param name="delverytime">The estimated time for a delvery</param>
-        public Product(int ID, string productName, string description, double price, string packaging, string chemicalName, double density, DateTime deliveryTime)
+        public Product(int id, string productName, string description, double price, string packaging, string chemicalName, double density, DateTime deliveryTime)
         {
-            this.ID = ID;
+            this.id = id;
             this.productName = productName;
             this.description = description;
             this.price = price;
@@ -46,7 +46,7 @@ namespace Provider.domain.page
         /// <param name="price">Price for this</param>
         /// <param name="productinfomation">Information about product</param>
         /// <param name="productname">The name of the product</param>
-        public Product(int ID, string productName, string description, double price, string packaging, string chemicalName, double density) : 
-            this(ID, productName, description, price, packaging, chemicalName, density, default(DateTime)) { }
+        public Product(int id, string productName, string description, double price, string packaging, string chemicalName, double density) : 
+            this(id, productName, description, price, packaging, chemicalName, density, default(DateTime)) { }
     }
 }

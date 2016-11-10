@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Provider.db;
+using Provider.domain.bulletinboard;
 
 namespace Provider.domain.bulletinboard
 {
@@ -13,10 +15,10 @@ namespace Provider.domain.bulletinboard
 
         public Bulletinboard()
         {
-            posts = new List<Post>();
-            posts.Add(new Post("Vitafit", "sejhed", "vi er seje", Post.Types.Warning));
+            posts = Database.instance.GetPosts();
+            /*posts.Add(new Post("Vitafit", "sejhed", "vi er seje", Post.Types.Warning));
             posts.Add(new Post("B2Vitas", "mere sejhed","vi er også seje", Post.Types.Request));
-            posts.Add(new Post("ProteinVitmins", "mest sejhed","vi er ok seje", Post.Types.Offer));
+            posts.Add(new Post("ProteinVitmins", "mest sejhed","vi er ok seje", Post.Types.Offer));*/
         }
         /// <summary>
         /// create a post
@@ -28,13 +30,16 @@ namespace Provider.domain.bulletinboard
         /// "2" is requestPost
         /// "3" is offerPost
         /// </param>
-        public void CreatePost(String owner, string title, string description, Post.Types type)
+        public void CreatePost(string owner, string title, string description, Post.Types type)
         {
-            posts.Add(new Post(owner, title, description, type));
+            Post post = new Post(owner, title, description, type);
+            post.id = Database.instance.AddPost(owner, post);
+            posts.Add(post);
         }
 
         public void DeletePost(Post post)
         {
+            Database.instance.DeletePost(post);
             posts.Remove(post);
         }
 
@@ -43,6 +48,7 @@ namespace Provider.domain.bulletinboard
             Post postFound = posts.Find(p => p == post);
             postFound.description = newDescription;
             postFound.title = newTitle;
+            Database.instance.UpdatePost(post.owner, post);
         }
 
         // Retuns a list of posts.

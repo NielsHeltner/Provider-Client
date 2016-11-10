@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Npgsql;
 using Provider.domain.page;
 using Provider.domain.users;
+using Provider.domain.bulletinboard;
 
 namespace Provider.db
 {
@@ -147,6 +148,95 @@ namespace Provider.db
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
+        }
+
+        public int AddPost(string owner, Post post)
+        {
+            GetConnection();
+            cmd.CommandText = "INSERT INTO public.post(username, type, text, \"creationDate\", title) " +
+                                "VALUES('" + owner + "', '" + post.type.ToString() + "', '" + post.description + "', '" + post.creationDate + "', '" + post.title + "') " + 
+                                "RETURNING id;";
+            NpgsqlDataReader reader = null;
+            int id = 0;
+            try
+            {
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+            }
+            catch (PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            return id;
+        }
+
+        public void UpdatePost(string owner, Post post)
+        {
+            GetConnection();
+            cmd.CommandText = "UPDATE public.post SET text = '" + post.description + "', title = '" + post.title + "' WHERE id = " + post.id + ";";
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+        }
+
+        public void DeletePost(Post post)
+        {
+            GetConnection();
+            cmd.CommandText = "DELETE FROM public.post WHERE id = " + post.id + ";";
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+        }
+
+        public List<Post> GetPosts()
+        {
+            GetConnection();
+            cmd.CommandText = "SELECT * FROM public.post";
+
+            NpgsqlDataReader reader = null;
+            List<Post> postList = new List<Post>();
+            try
+            {
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Post.Types type;
+                    switch(reader.GetString(4))
+                    {
+                        case "Warning":
+                            type = Post.Types.Warning;
+                            break;
+                        case "Request":
+                            type = Post.Types.Request;
+                            break;
+                        case "Offer":
+                            type = Post.Types.Offer;
+                            break;
+                        default:
+                            type = Post.Types.NotAvailabe;
+                            break;
+                    }
+                    postList.Add(new Post(reader.GetString(0), reader.GetString(3), reader.GetString(1), type, reader.GetDateTime(2), reader.GetInt32(5)));
+                }
+            }
+            catch (PostgresException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            return postList;
         }
     }
 }
