@@ -13,7 +13,7 @@ namespace Provider.domain
     {
         List<Page> GetPages();
 
-        void EditPost(string editedText, Post post);
+        void EditPost(Post post, string newDescription, string newTitle);
 
         void DeletePost(Post post);
 

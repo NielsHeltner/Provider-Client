@@ -38,9 +38,11 @@ namespace Provider.domain.bulletinboard
             posts.Remove(post);
         }
 
-        public void EditPost(string editedText, Post post)
+        public void EditPost(Post post, string newDescription, string newTitle)
         {
-            posts.Find(x => x == post).description = editedText;
+            Post postFound = posts.Find(p => p == post);
+            postFound.description = newDescription;
+            postFound.title = newTitle;
         }
 
         // Retuns a list of posts.

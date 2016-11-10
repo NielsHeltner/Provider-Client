@@ -87,9 +87,9 @@ namespace Provider.domain
             bulletinboard.DeletePost(post);
         }
 
-        public void EditPost(string editedText, Post post)
+        public void EditPost(Post post, string newDescription, string newTitle)
         {
-            bulletinboard.EditPost(editedText, post);
+            bulletinboard.EditPost(post, newDescription, newTitle);
         }
 
         public void AddNoteToSupplier(string supplierName, string text)

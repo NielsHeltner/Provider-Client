@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Provider.domain.bulletinboard;
 using System.Windows.Media.Animation;
+using Provider.domain;
 
 namespace Provider.gui
 {
@@ -64,10 +65,10 @@ namespace Provider.gui
                 postTitel.Cursor = Cursors.IBeam;
                 postDesciption.Cursor = Cursors.IBeam;
                 editPostButton.Content = "Gem";
-             } else
+            }
+            else
             {
-                selectedItem.description = postDesciption.Text;
-                selectedItem.title = postTitel.Text;
+                Controller.instance.EditPost(selectedItem, postDesciption.Text, postTitel.Text);
                 HideButtons();
                 editPostButton.Content = "Redigere";
                 bulletinBoard.RefreshPage(false);
