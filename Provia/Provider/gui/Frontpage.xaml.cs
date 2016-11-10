@@ -54,6 +54,7 @@ namespace Provider.gui
         private void viewAllPost(object sender, RoutedEventArgs e)
         {
             frame.Content = bulletinBoard;
+            bulletinBoard.RefreshPage(true);
         }
 
     }
