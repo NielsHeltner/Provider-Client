@@ -33,7 +33,7 @@ namespace Provider.gui
 
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
-            groupBox.Header = "Opslag Information";
+            groupBox.Header = "Opslag information";
             frame.Content = new BulletinBoardProductPage((Post) listView.SelectedItem, this);
         }
 
@@ -52,8 +52,8 @@ namespace Provider.gui
         {
             listView.ItemsSource = null;
             listView.ItemsSource = Controller.instance.ViewAllPosts();
-            groupBox.Header = "Opslag Information";
-            typeOfList.Text = "Alle Opslag";
+            groupBox.Header = "Opslag information";
+            typeOfList.Text = "Alle opslag";
             if (refreshFrameToo)
                 frame.Content = null;
         }
@@ -72,7 +72,7 @@ namespace Provider.gui
             {
                 listView.ItemsSource = null;
                 listView.ItemsSource = myPosts;
-                myPostButton.Content = "Alle Opslag";
+                myPostButton.Content = "Alle opslag";
                 isItMyList = true;
                 typeOfList.Text = "Mine opslag";
             }
@@ -82,7 +82,7 @@ namespace Provider.gui
                 listView.ItemsSource = Controller.instance.ViewAllPosts();
                 myPostButton.Content = "Mine opslag";
                 isItMyList = false;
-                typeOfList.Text = "Alle Opslag";
+                typeOfList.Text = "Alle opslag";
             }
         }
         public void SetListToWarning()
@@ -90,24 +90,24 @@ namespace Provider.gui
             listView.ItemsSource = null;
             listView.ItemsSource = Controller.instance.ViewWarningPosts();
             isItMyList = true;
-            myPostButton.Content = "Alle Opslag";
-            typeOfList.Text = "Alle Advarelser";
+            myPostButton.Content = "Alle opslag";
+            typeOfList.Text = "Alle advarelser";
         }
         public void SetListToRequest()
         {
             listView.ItemsSource = null;
             listView.ItemsSource = Controller.instance.ViewRequestPosts();
             isItMyList = true;
-            myPostButton.Content = "Alle Opslag";
-            typeOfList.Text = "Alle Efterspørgelser";
+            myPostButton.Content = "Alle opslag";
+            typeOfList.Text = "Alle efterspørgelser";
         }
         public void SetListToOffer()
         {
             listView.ItemsSource = null;
             listView.ItemsSource = Controller.instance.ViewOfferPosts();
             isItMyList = true;
-            myPostButton.Content = "Alle Opslag";
-            typeOfList.Text = "Alle Tilbud";
+            myPostButton.Content = "Alle opslag";
+            typeOfList.Text = "Alle tilbud";
         }
         }
     }
