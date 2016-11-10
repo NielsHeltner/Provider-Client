@@ -75,7 +75,7 @@ namespace Provider.gui
                 typeOfPost = Post.Types.NotAvailabe;
             }
                 Controller.instance.CreatePost(Controller.instance.GetLoggedInUserName(), postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
-                bulletinBoardPage.RefreshPage(true);
+            bulletinBoardPage.RefreshPage(true);
         }
 
         private void TitleLostFocus(object sender, RoutedEventArgs e)

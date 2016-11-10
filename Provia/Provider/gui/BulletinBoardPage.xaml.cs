@@ -42,12 +42,18 @@ namespace Provider.gui
             groupBox.Header = "Opret nyt opslag";
             frame.Content = new CreateNewPostPage(this);
         }
-
+        /// <summary>
+        /// Refresh BulletinBoardPage
+        /// True = refresh product information
+        /// False = refreshs only the ListView
+        /// </summary>
+        /// <param name="refreshFrameToo">bool</param>
         public void RefreshPage(bool refreshFrameToo)
         {
             listView.ItemsSource = null;
             listView.ItemsSource = Controller.instance.ViewAllPosts();
             groupBox.Header = "Opslag Information";
+            typeOfList.Text = "Alle Opslag";
             if (refreshFrameToo)
                 frame.Content = null;
         }
@@ -83,6 +89,7 @@ namespace Provider.gui
             listView.ItemsSource = Controller.instance.ViewWarningPosts();
             isItMyList = true;
             myPostButton.Content = "Alle Opslag";
+            typeOfList.Text = "Alle Advarelser";
         }
         public void SetListToRequest()
         {
@@ -90,6 +97,7 @@ namespace Provider.gui
             listView.ItemsSource = Controller.instance.ViewRequestPosts();
             isItMyList = true;
             myPostButton.Content = "Alle Opslag";
+            typeOfList.Text = "Alle Efterspørgelser";
         }
         public void SetListToOffer()
         {
@@ -97,6 +105,7 @@ namespace Provider.gui
             listView.ItemsSource = Controller.instance.ViewOfferPosts();
             isItMyList = true;
             myPostButton.Content = "Alle Opslag";
+            typeOfList.Text = "Alle Tilbud";
         }
         }
     }

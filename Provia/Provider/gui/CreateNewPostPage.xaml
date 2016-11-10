@@ -8,8 +8,8 @@
       Title="CreateNewPost" Height="400" Width="488">
 
     <Grid Background="White" Margin="0,0,0,0">
-        <TextBox x:Name="postTitleTextBox" HorizontalAlignment="Left" Height="23" Margin="20,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" LostFocus="TitleLostFocus" GotFocus="TitleGotFocus"/>
-        <TextBox x:Name="PostDescriptionTextBox" HorizontalAlignment="Left" Height="179" Margin="20,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" SpellCheck.IsEnabled="True" ToolTip="Udyb dit opslag her..." LostFocus="PostDescriptionLostFocus" GotFocus="PostDescriptionGotFocus"/>
+        <TextBox x:Name="postTitleTextBox" HorizontalAlignment="Left" Height="23" Margin="20,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her..." SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" LostFocus="TitleLostFocus" GotFocus="TitleGotFocus"/>
+        <TextBox x:Name="PostDescriptionTextBox" HorizontalAlignment="Left" Height="179" Margin="20,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" SpellCheck.IsEnabled="True" ToolTip="Uddyb dit opslag her..." LostFocus="PostDescriptionLostFocus" GotFocus="PostDescriptionGotFocus"/>
         <Button x:Name="CreationButton" Content="Opret" HorizontalAlignment="Left" Margin="20,326,0,0" VerticalAlignment="Top" Width="75" Click="CreateNewPost" Background="#FF0C4A63" Foreground="White"/>
         <RadioButton x:Name="requestRB" Content="Efterspørgsel" HorizontalAlignment="Left" Margin="110,293,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
         <RadioButton x:Name="WarningRB" Content="Advarsel" HorizontalAlignment="Left" Margin="20,293,0,0" VerticalAlignment="Top" GroupName="TypeOfPost"/>
@@ -20,6 +20,6 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="20,37,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
         <Label x:Name="SomthingWentWrongLabel" Content="Error Husk at vælge katagori" HorizontalAlignment="Left" Margin="96,324,0,0" VerticalAlignment="Top" Width="300" Foreground="#FFBD0000" Background="White" Visibility="Hidden"/>
         <TextBlock x:Name="titleText" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="23,66,0,0" TextWrapping="Wrap" Text="Skriv titlen på dit opslag her..." VerticalAlignment="Top" Foreground="DarkGray"/>
-        <TextBlock x:Name="desriptionText" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="23,101,0,0" TextWrapping="Wrap" Text="Uddyp dit opslag her" VerticalAlignment="Top" Foreground="DarkGray"/>
+        <TextBlock x:Name="desriptionText" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="23,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="DarkGray"><Run Text="Uddy"/><Run Text="b"/><Run Text=" dit opslag her"/><Run Text="..."/></TextBlock>
     </Grid>
 </Page>
