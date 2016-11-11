@@ -46,7 +46,7 @@ namespace Provider.gui
             if (refreshFrameToo)
                 frame.Content = null;
         }
-
+        //TODO foreach uden for if?
         private void ListMyPosts(object sender, RoutedEventArgs e)
         {
             List<Post> myPosts = new List<Post>();
@@ -57,6 +57,7 @@ namespace Provider.gui
                     myPosts.Add(post);
                 }
             }
+            listView.ItemsSource = null;
             if (!isItMyList)
             {
                 listView.ItemsSource = myPosts;
@@ -71,7 +72,7 @@ namespace Provider.gui
                 isItMyList = false;
                 typeOfList.Text = "Alle opslag";
             }
-            listView.ItemsSource = null;
+
         }
         public void SetListToWarning()
         {
