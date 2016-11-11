@@ -19,7 +19,6 @@ namespace Provider.gui
         public BulletinBoardProductPage(Post selectedItem, BulletinBoardPage bulletinBoard)
         {
             InitializeComponent();
-            HideButtons();
             this.selectedItem = selectedItem;
             postTitel.Text = selectedItem.title;
             postDesciption.Text = selectedItem.description;
@@ -27,6 +26,7 @@ namespace Provider.gui
             postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
             typeOfPost.Text = selectedItem.type.ToString();
             this.bulletinBoard = bulletinBoard;
+            HideButtons();
         }
 
         public void HideButtons()
@@ -37,6 +37,11 @@ namespace Provider.gui
             postDesciption.Cursor = Cursors.Arrow;
             postTitel.Cursor = Cursors.Arrow;
             postDesciption.Background = Brushes.GhostWhite;
+            accessDeniedTextBox.Visibility = Visibility.Hidden;
+            if (!Controller.instance.GetLoggedInUser().userName.Equals(selectedItem.owner))
+            {
+                editPostButton.Visibility = Visibility.Hidden;
+            }
 
         }
 
@@ -56,8 +61,7 @@ namespace Provider.gui
                 postTitel.Cursor = Cursors.IBeam;
                 postDesciption.Cursor = Cursors.IBeam;
                 editPostButton.Content = "Gem";
-            }
-            else
+            } else
             {
                 Controller.instance.EditPost(selectedItem, postDesciption.Text, postTitel.Text);
                 HideButtons();
