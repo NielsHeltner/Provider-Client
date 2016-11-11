@@ -40,7 +40,7 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="20,37,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
         <Label x:Name="SomthingWentWrongLabel" Content="Error Husk at vælge katagori" HorizontalAlignment="Left" Margin="96,324,0,0" VerticalAlignment="Top" Width="300" Foreground="#FFBD0000" Background="White" Visibility="Hidden"/>
         <TextBlock x:Name="titleText" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="23,66,0,0" TextWrapping="Wrap" Text="Skriv titlen på dit opslag her..." VerticalAlignment="Top" Foreground="DarkGray"/>
-        <TextBlock x:Name="desriptionText" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="23,101,0,0" TextWrapping="Wrap" Text="Uddyp dit opslag her" VerticalAlignment="Top" Foreground="DarkGray"/>
+        <TextBlock x:Name="desriptionText" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="23,101,0,0" TextWrapping="Wrap" Text="Uddyb dit opslag her..." VerticalAlignment="Top" Foreground="DarkGray"/>
         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="20" Margin="20,291,0,0" VerticalAlignment="Top" Width="321">
             <RadioButton x:Name="WarningRB" Content="Advarsel" Margin="0, 0, 10, 0" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="TypeOfPost"/>
             <RadioButton x:Name="requestRB" Content="Efterspørgsel" Margin="0, 0, 10, 0" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="TypeOfPost"/>

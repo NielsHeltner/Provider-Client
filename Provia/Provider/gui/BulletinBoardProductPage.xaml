@@ -63,6 +63,5 @@
         <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="17,59,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" ToolTip="Oprettelses dato" Grid.Column="1"/>
         <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="14,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="149" ToolTip="Typen af opslag"/>
         <TextBlock x:Name="savedPostTextBlock" HorizontalAlignment="Left" Margin="10,381,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Foreground="#FF10AC00" Grid.ColumnSpan="2" Width="102" Visibility="Hidden"/>
-        <TextBox x:Name="accessDeniedTextBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="12,374,0,0" TextWrapping="Wrap" Text="Du har ikke de fornødne rettigheder til at redigere i dette opslag" VerticalAlignment="Top" Width="348" Foreground="#FFC53333"/>
     </Grid>
 </Page>
