@@ -3,6 +3,7 @@ using Provider.domain.users;
 using System;
 using System.Collections.Generic;
 using Provider.domain.bulletinboard;
+using IO.Swagger.Api;
 
 namespace Provider.domain
 {
@@ -30,6 +31,8 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
+            LoginApi api = new LoginApi("http://10.126.13.11:8080");
+            IO.Swagger.Model.User user = api.LogIn("Niclas", "Antonio");
         }
 
         public List<Page> GetPages()
