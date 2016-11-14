@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Provider.domain.bulletinboard;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -52,5 +53,11 @@ namespace Provider.gui
             numberOfWarningPostLabel.Content = domain.Controller.instance.ViewWarningPosts().Count;
         }
 
+        private void ViewWarningPost(object sender, MouseButtonEventArgs e)
+        {
+            bulletinBoard.SetPostInformation((Post)WarningListView.SelectedItem);
+            bulletinBoard.RefreshPage(false);
+            frame.Content = bulletinBoard;
+        }
     }
 }
