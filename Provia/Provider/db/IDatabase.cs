@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using Provider.domain.page;
 using Provider.domain.bulletinboard;
+using Provider.domain.users;
 
 namespace Provider.db
 {
     public interface IDatabase
     {
-        bool GetLogin(string username, string password);
+        User GetLogin(string username, string password);
         List<Page> GetSuppliers();
         List<Product> GetProducts(string supplier);
         void AddNote(string supplierName, Note note);

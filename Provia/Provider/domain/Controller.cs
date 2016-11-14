@@ -47,7 +47,7 @@ namespace Provider.domain
             userManager.LogOut();
         }
 
-        public AbstractUser GetLoggedInUser()
+        public User GetLoggedInUser()
         {
             return userManager.loggedInUser;
         }
