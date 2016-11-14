@@ -48,20 +48,26 @@
     </Page.Resources>
 
     <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="9*"/>
-            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="184*"/>
+            <ColumnDefinition Width="148*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="14,34,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="postDesciption" HorizontalAlignment="Left" Height="254" Margin="14,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365" SpellCheck.IsEnabled="True" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-         ScrollViewer.VerticalScrollBarVisibility="Auto" />
-        <Button x:Name="editPostButton" Content="Redigér" HorizontalAlignment="Left" Margin="14,402,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
-        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="241,402,0,0" VerticalAlignment="Top" Width="75" Background="#FFC53333" BorderBrush="#FF707070" Foreground="White" Grid.Column="1" Click="DeletePost" Style="{DynamicResource ButtonStyle2}"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="14,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" Text="Oprettet den:" Grid.ColumnSpan="2" Width="75"/>
-        <TextBox x:Name="postTitel" HorizontalAlignment="Left" Height="23" Margin="14,6,0,0" TextWrapping="NoWrap" MaxLines="1" Text="TextBox" VerticalAlignment="Top" Width="362" SpellCheck.IsEnabled="True" BorderThickness="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold"/>
-        <TextBlock x:Name="postOwner" Grid.Column="1" HorizontalAlignment="Left" Margin="17,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="75" Height="20"/>
-        <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="17,59,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" ToolTip="Oprettelses dato" Grid.Column="1"/>
-        <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="14,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="149" ToolTip="Typen af opslag"/>
-        <TextBlock x:Name="savedPostTextBlock" HorizontalAlignment="Left" Margin="10,381,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Foreground="#FF10AC00" Grid.ColumnSpan="2" Width="102" Visibility="Hidden"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="14,12,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top" IsEnabled="False" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <TextBox x:Name="postDesciption" HorizontalAlignment="Left" Height="254" Margin="14,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365" SpellCheck.IsEnabled="True" Grid.ColumnSpan="4" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+         ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1" />
+        <Button x:Name="editPostButton" Content="Redigér" HorizontalAlignment="Left" Margin="14,380,0,0" VerticalAlignment="Top" Width="75" Click="EditPost" Grid.ColumnSpan="2" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}" Grid.Row="1"/>
+        <Button x:Name="deletePostButton" Content="Slet" HorizontalAlignment="Left" Margin="156,380,0,0" VerticalAlignment="Top" Width="75" Background="#FFC53333" BorderBrush="#FF707070" Foreground="White" Grid.Column="2" Click="DeletePost" Style="{DynamicResource ButtonStyle2}" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="14,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" Text="Oprettet den:" Grid.ColumnSpan="2" Width="75" Grid.Row="1"/>
+        <TextBox x:Name="postTitel" HorizontalAlignment="Left" Height="23" Margin="14,6,0,0" TextWrapping="NoWrap" MaxLines="1" Text="TextBox" VerticalAlignment="Top" Width="362" SpellCheck.IsEnabled="True" BorderThickness="0" Grid.ColumnSpan="4" FontSize="16" FontWeight="Bold" Grid.RowSpan="2"/>
+        <TextBlock x:Name="postOwner" Grid.Column="1" HorizontalAlignment="Left" Margin="17,12,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="75" Height="20" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="postDateLabel" HorizontalAlignment="Left" Margin="17,37,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" ToolTip="Oprettelses dato" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock x:Name="typeOfPost" HorizontalAlignment="Left" Margin="14,58,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="149" ToolTip="Typen af opslag" Grid.Row="1"/>
+        <TextBlock x:Name="savedPostTextBlock" HorizontalAlignment="Left" Margin="10,359,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Foreground="#FF10AC00" Grid.ColumnSpan="2" Width="102" Visibility="Hidden" Grid.Row="1"/>
     </Grid>
 </Page>

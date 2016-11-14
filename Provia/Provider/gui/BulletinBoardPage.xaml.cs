@@ -20,6 +20,11 @@ namespace Provider.gui
             listView.ItemsSource = Controller.instance.ViewAllPosts();
         }
 
+        public void SetPostInformation(Post selectedItem)
+            {
+            frame.Content = new BulletinBoardProductPage(selectedItem, this);
+            }
+
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
             groupBox.Header = "Opslag information";

@@ -59,7 +59,7 @@
         <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="64,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
         <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="64,523,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3" Content="0" HorizontalAlignment="Left" Margin="136,524,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="WarningListView" HorizontalAlignment="Left" Height="142" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView x:Name="WarningListView" HorizontalAlignment="Left" Height="142" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn DisplayMemberBinding="{Binding owner}">
