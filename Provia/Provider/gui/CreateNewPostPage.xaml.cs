@@ -12,22 +12,14 @@ namespace Provider.gui
     public partial class CreateNewPostPage : Page
     {
         private BulletinBoardPage bulletinBoardPage;
-        public CreateNewPostPage(BulletinBoardPage Bulletinboard)
+        public CreateNewPostPage(BulletinBoardPage bulletinboard)
         {
             InitializeComponent();
-            bulletinBoardPage = Bulletinboard;
+            bulletinBoardPage = bulletinboard;
             CreationDateTextBlock.Text = DateTime.Today.ToShortDateString();
             OwnerTextBlock.Text = Controller.instance.GetLoggedInUser().userName;
-            if (Controller.instance.GetLoggedInUser().getRights() == 1)
-            {
-                WarningRB.Visibility = Visibility.Collapsed;
-            }
         }
-        /// 0 is error
-        /// "1" is warningPost
-        /// "2" is requestPost
-        /// "3" is offerPost
-        /// skal måske laves om... det snakker vi lige om
+
         private void CreateNewPost(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(PostDescriptionTextBox.Text) && !string.IsNullOrWhiteSpace(postTitleTextBox.Text))

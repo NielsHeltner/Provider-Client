@@ -4,7 +4,14 @@ namespace Provider.domain.bulletinboard
 {
     public class Post
     {
-        public enum Types { Warning, Request, Offer, NotAvailabe };
+        public enum Types
+        {
+            Warning,
+            Request,
+            Offer,
+            NotAvailabe
+        };
+
         public int id { get; set; }
         public String owner { get; private set; }
         public DateTime creationDate { get; private set; }

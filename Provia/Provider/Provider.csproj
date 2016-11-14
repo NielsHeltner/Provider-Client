@@ -97,11 +97,8 @@
     <Compile Include="domain\page\Page.cs" />
     <Compile Include="domain\page\PageManager.cs" />
     <Compile Include="domain\page\Product.cs" />
-    <Compile Include="domain\users\AbstractUser.cs" />
-    <Compile Include="domain\users\Admin.cs" />
+    <Compile Include="domain\users\User.cs" />
     <Compile Include="domain\page\Note.cs" />
-    <Compile Include="domain\users\Provia.cs" />
-    <Compile Include="domain\users\Supplier.cs" />
     <Compile Include="domain\users\UserManager.cs" />
     <Compile Include="gui\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

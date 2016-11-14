@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Npgsql;
 using Provider.domain.page;
 using Provider.domain.bulletinboard;
+using Provider.domain.users;
 
 namespace Provider.db
 {
@@ -32,21 +33,41 @@ namespace Provider.db
             cmd.Connection = conn;
         }
 
-        public bool GetLogin(string username, string password)
+        public User GetLogin(string username, string password)
         {
             GetConnection();
 
-            cmd.CommandText = "SELECT * FROM public.user WHERE username='"+username+"' AND password='"+password+"'";
-            NpgsqlDataReader read = null;
+            cmd.CommandText = "SELECT * FROM public.user WHERE username='" + username + "' AND password='" + password + "'";
+            User user = null;
             try
             {
-                read = cmd.ExecuteReader();
+                NpgsqlDataReader read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    User.Rights rights;
+                    switch (read.GetString(2))
+                    {
+                        case "Provia":
+                            rights = User.Rights.Provia;
+                            break;
+                        case "Supplier":
+                            rights = User.Rights.Supplier;
+                            break;
+                        case "Admin":
+                            rights = User.Rights.Admin;
+                            break;
+                        default:
+                            rights = default(User.Rights);
+                            break;
+                    }
+                    user = new User(read.GetString(0), read.GetString(1), rights);
+                }
             }
             catch(PostgresException e)
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
-            return read.HasRows;
+            return user;
         }
 
         public List<Page> GetSuppliers()
@@ -123,7 +144,8 @@ namespace Provider.db
         public void UpdateNote(string supplierName, Note note)
         {
             GetConnection();
-            cmd.CommandText = "UPDATE public.note SET text = '" + note.text + "', date = '"+DateTime.Today+"' WHERE public.note.supplier = '" + supplierName + "';";
+            cmd.CommandText = "UPDATE public.note SET text = '" + note.text + "', date = '" + DateTime.Today + 
+                                "' WHERE public.note.supplier = '" + supplierName + "';";
             try
             {
                 cmd.ExecuteNonQuery();
