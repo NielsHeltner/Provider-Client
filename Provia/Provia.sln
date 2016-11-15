@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provider", "Provider\Provid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestClass", "UnitTestClass\UnitTestClass.csproj", "{ECD9C166-19D0-4252-ADD8-31743584B40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger", "..\..\csharp-client\src\IO.Swagger\IO.Swagger.csproj", "{9E1065F2-3884-49D2-ABEB-347449A3F834}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger", "..\..\Provider-Client\src\IO.Swagger\IO.Swagger.csproj", "{D98D8F24-8492-48D4-A286-3A89DF9FAF82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{ECD9C166-19D0-4252-ADD8-31743584B40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECD9C166-19D0-4252-ADD8-31743584B40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECD9C166-19D0-4252-ADD8-31743584B40C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E1065F2-3884-49D2-ABEB-347449A3F834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E1065F2-3884-49D2-ABEB-347449A3F834}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E1065F2-3884-49D2-ABEB-347449A3F834}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E1065F2-3884-49D2-ABEB-347449A3F834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98D8F24-8492-48D4-A286-3A89DF9FAF82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98D8F24-8492-48D4-A286-3A89DF9FAF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98D8F24-8492-48D4-A286-3A89DF9FAF82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98D8F24-8492-48D4-A286-3A89DF9FAF82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

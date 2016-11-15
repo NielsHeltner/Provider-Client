@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Provider.domain.bulletinboard;
 using IO.Swagger.Api;
+using IO.Swagger.Client;
 
 namespace Provider.domain
 {
@@ -31,8 +32,7 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            LoginApi api = new LoginApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            IO.Swagger.Model.User user = api.LogIn("Niclas", "Antonio");
+            //userManager.loggedInUser;
         }
 
         public List<Page> GetPages()
@@ -42,7 +42,30 @@ namespace Provider.domain
         
         public bool LogIn(string userName, string password)
         {
-            return userManager.Validate(userName, password);
+
+            //LoginApi api = new LoginApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
+            LoginApi api = new LoginApi("http://10.126.13.145:8080");
+            //IO.Swagger.Model.User user = api.LogIn("Niclas", "Antonio");
+
+            try
+            {
+                IO.Swagger.Model.User user = api.Validate(userName, password);
+                if (user != null)
+                {
+                    userManager.loggedInUser = new User(user.Username, password, User.Rights.Admin);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (ApiException e)
+            {
+                return false;
+                //e.printStackTrace();
+            }
+            //return userManager.Validate(userName, password);
         }
 
         public void LogOut()

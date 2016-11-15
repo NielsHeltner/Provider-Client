@@ -183,8 +183,8 @@
     <Resource Include="P.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\csharp-client\src\IO.Swagger\IO.Swagger.csproj">
-      <Project>{9E1065F2-3884-49D2-ABEB-347449A3F834}</Project>
+    <ProjectReference Include="..\..\..\Provider-Client\src\IO.Swagger\IO.Swagger.csproj">
+      <Project>{D98D8F24-8492-48D4-A286-3A89DF9FAF82}</Project>
       <Name>IO.Swagger</Name>
     </ProjectReference>
   </ItemGroup>

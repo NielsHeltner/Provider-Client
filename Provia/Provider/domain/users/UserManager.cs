@@ -4,7 +4,7 @@ namespace Provider.domain.users
 {
     public class UserManager
     {
-        public User loggedInUser { get; private set; }
+        public User loggedInUser { get; set; }
 
         /// <summary>
         /// Checks if the userName is found in the set of users, and then checks the users password. 
