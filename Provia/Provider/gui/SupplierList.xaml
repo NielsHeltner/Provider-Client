@@ -30,7 +30,7 @@
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="637" VerticalAlignment="Top" Width="1009" ButtonBase.Click="SortSupplierInformation" Margin="130,22,0,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding owner}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
                         <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding noteText}">

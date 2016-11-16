@@ -36,61 +36,41 @@ using System.ComponentModel.DataAnnotations;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// Information about the user
+    /// Page containing information about a supplier
     /// </summary>
     [DataContract]
-    public partial class User :  IEquatable<User>, IValidatableObject
+    public partial class Page :  IEquatable<Page>, IValidatableObject
     {
         /// <summary>
-        /// The rights of the user
+        /// Initializes a new instance of the <see cref="Page" /> class.
         /// </summary>
-        /// <value>The rights of the user</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum RightsEnum
+        /// <param name="Owner">The owner of the page &#x3D;&gt; The supplier.</param>
+        /// <param name="Products">The suppliers products.</param>
+        /// <param name="Note">Note.</param>
+        public Page(string Owner = null, List<Product> Products = null, Note Note = null)
         {
-            
-            /// <summary>
-            /// Enum Admin for "Admin"
-            /// </summary>
-            [EnumMember(Value = "Admin")]
-            Admin,
-            
-            /// <summary>
-            /// Enum Provia for "Provia"
-            /// </summary>
-            [EnumMember(Value = "Provia")]
-            Provia,
-            
-            /// <summary>
-            /// Enum Supplier for "Supplier"
-            /// </summary>
-            [EnumMember(Value = "Supplier")]
-            Supplier
-        }
-
-        /// <summary>
-        /// The rights of the user
-        /// </summary>
-        /// <value>The rights of the user</value>
-        [DataMember(Name="rights", EmitDefaultValue=false)]
-        public RightsEnum? Rights { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="User" /> class.
-        /// </summary>
-        /// <param name="Username">The username of the user.</param>
-        /// <param name="Rights">The rights of the user.</param>
-        public User(string Username = null, RightsEnum? Rights = null)
-        {
-            this.Username = Username;
-            this.Rights = Rights;
+            this.Owner = Owner;
+            this.Products = Products;
+            this.Note = Note;
         }
         
         /// <summary>
-        /// The username of the user
+        /// The owner of the page &#x3D;&gt; The supplier
         /// </summary>
-        /// <value>The username of the user</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
-        public string Username { get; set; }
+        /// <value>The owner of the page &#x3D;&gt; The supplier</value>
+        [DataMember(Name="owner", EmitDefaultValue=false)]
+        public string Owner { get; set; }
+        /// <summary>
+        /// The suppliers products
+        /// </summary>
+        /// <value>The suppliers products</value>
+        [DataMember(Name="products", EmitDefaultValue=false)]
+        public List<Product> Products { get; set; }
+        /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name="note", EmitDefaultValue=false)]
+        public Note Note { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -98,9 +78,10 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class User {\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Rights: ").Append(Rights).Append("\n");
+            sb.Append("class Page {\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
+            sb.Append("  Products: ").Append(Products).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,15 +103,15 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as User);
+            return this.Equals(obj as Page);
         }
 
         /// <summary>
-        /// Returns true if User instances are equal
+        /// Returns true if Page instances are equal
         /// </summary>
-        /// <param name="other">Instance of User to be compared</param>
+        /// <param name="other">Instance of Page to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(User other)
+        public bool Equals(Page other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -138,14 +119,19 @@ namespace IO.Swagger.Model
 
             return 
                 (
-                    this.Username == other.Username ||
-                    this.Username != null &&
-                    this.Username.Equals(other.Username)
+                    this.Owner == other.Owner ||
+                    this.Owner != null &&
+                    this.Owner.Equals(other.Owner)
                 ) && 
                 (
-                    this.Rights == other.Rights ||
-                    this.Rights != null &&
-                    this.Rights.Equals(other.Rights)
+                    this.Products == other.Products ||
+                    this.Products != null &&
+                    this.Products.SequenceEqual(other.Products)
+                ) && 
+                (
+                    this.Note == other.Note ||
+                    this.Note != null &&
+                    this.Note.Equals(other.Note)
                 );
         }
 
@@ -160,10 +146,12 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Username != null)
-                    hash = hash * 59 + this.Username.GetHashCode();
-                if (this.Rights != null)
-                    hash = hash * 59 + this.Rights.GetHashCode();
+                if (this.Owner != null)
+                    hash = hash * 59 + this.Owner.GetHashCode();
+                if (this.Products != null)
+                    hash = hash * 59 + this.Products.GetHashCode();
+                if (this.Note != null)
+                    hash = hash * 59 + this.Note.GetHashCode();
                 return hash;
             }
         }

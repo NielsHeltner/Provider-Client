@@ -36,61 +36,32 @@ using System.ComponentModel.DataAnnotations;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// Information about the user
+    /// A note on the supplier page
     /// </summary>
     [DataContract]
-    public partial class User :  IEquatable<User>, IValidatableObject
+    public partial class Note :  IEquatable<Note>, IValidatableObject
     {
         /// <summary>
-        /// The rights of the user
+        /// Initializes a new instance of the <see cref="Note" /> class.
         /// </summary>
-        /// <value>The rights of the user</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum RightsEnum
+        /// <param name="Text">Text.</param>
+        /// <param name="CreationDate">CreationDate.</param>
+        public Note(string Text = null, DateTime? CreationDate = null)
         {
-            
-            /// <summary>
-            /// Enum Admin for "Admin"
-            /// </summary>
-            [EnumMember(Value = "Admin")]
-            Admin,
-            
-            /// <summary>
-            /// Enum Provia for "Provia"
-            /// </summary>
-            [EnumMember(Value = "Provia")]
-            Provia,
-            
-            /// <summary>
-            /// Enum Supplier for "Supplier"
-            /// </summary>
-            [EnumMember(Value = "Supplier")]
-            Supplier
-        }
-
-        /// <summary>
-        /// The rights of the user
-        /// </summary>
-        /// <value>The rights of the user</value>
-        [DataMember(Name="rights", EmitDefaultValue=false)]
-        public RightsEnum? Rights { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="User" /> class.
-        /// </summary>
-        /// <param name="Username">The username of the user.</param>
-        /// <param name="Rights">The rights of the user.</param>
-        public User(string Username = null, RightsEnum? Rights = null)
-        {
-            this.Username = Username;
-            this.Rights = Rights;
+            this.Text = Text;
+            this.CreationDate = CreationDate;
         }
         
         /// <summary>
-        /// The username of the user
+        /// Gets or Sets Text
         /// </summary>
-        /// <value>The username of the user</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
-        public string Username { get; set; }
+        [DataMember(Name="text", EmitDefaultValue=false)]
+        public string Text { get; set; }
+        /// <summary>
+        /// Gets or Sets CreationDate
+        /// </summary>
+        [DataMember(Name="creationDate", EmitDefaultValue=false)]
+        public DateTime? CreationDate { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -98,9 +69,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class User {\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Rights: ").Append(Rights).Append("\n");
+            sb.Append("class Note {\n");
+            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,15 +93,15 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as User);
+            return this.Equals(obj as Note);
         }
 
         /// <summary>
-        /// Returns true if User instances are equal
+        /// Returns true if Note instances are equal
         /// </summary>
-        /// <param name="other">Instance of User to be compared</param>
+        /// <param name="other">Instance of Note to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(User other)
+        public bool Equals(Note other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -138,14 +109,14 @@ namespace IO.Swagger.Model
 
             return 
                 (
-                    this.Username == other.Username ||
-                    this.Username != null &&
-                    this.Username.Equals(other.Username)
+                    this.Text == other.Text ||
+                    this.Text != null &&
+                    this.Text.Equals(other.Text)
                 ) && 
                 (
-                    this.Rights == other.Rights ||
-                    this.Rights != null &&
-                    this.Rights.Equals(other.Rights)
+                    this.CreationDate == other.CreationDate ||
+                    this.CreationDate != null &&
+                    this.CreationDate.Equals(other.CreationDate)
                 );
         }
 
@@ -160,10 +131,10 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Username != null)
-                    hash = hash * 59 + this.Username.GetHashCode();
-                if (this.Rights != null)
-                    hash = hash * 59 + this.Rights.GetHashCode();
+                if (this.Text != null)
+                    hash = hash * 59 + this.Text.GetHashCode();
+                if (this.CreationDate != null)
+                    hash = hash * 59 + this.CreationDate.GetHashCode();
                 return hash;
             }
         }

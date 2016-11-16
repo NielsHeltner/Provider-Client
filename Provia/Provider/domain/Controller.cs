@@ -14,6 +14,7 @@ namespace Provider.domain
         private UserManager userManager;
         private PageManager pageManager;
         private Bulletinboard bulletinboard;
+        private ControllerApi api;
 
         public static IController instance
         {
@@ -32,20 +33,19 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
+            api = new ControllerApi("http://192.168.87.103:8080");
+            //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             //userManager.loggedInUser;
         }
 
-        public List<Page> GetPages()
+        public List<IO.Swagger.Model.Page> GetPages()
         {
-            return pageManager.pages;
+            return api.GetSupplier();
+            //return pageManager.pages;
         }
         
         public bool LogIn(string userName, string password)
         {
-
-            //LoginApi api = new LoginApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            LoginApi api = new LoginApi("http://127.0.0.1:8080");
-            //IO.Swagger.Model.User user = api.LogIn("Niclas", "Antonio");
 
             try
             {
@@ -55,7 +55,10 @@ namespace Provider.domain
                     userManager.loggedInUser = new User(user.Username, password, User.Rights.Admin);
                     return true;
                 }
-                return false;
+                else
+                {
+                    return false;
+                }
             }
             catch (ApiException e)
             {

@@ -12,6 +12,7 @@ namespace Provider.gui
     {
         private Frame mainWindow;
         private List<Provider.domain.page.Page> listToShow;
+        private List<IO.Swagger.Model.Page> listToShow2;
         private ICollectionView dataView;
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
@@ -24,6 +25,20 @@ namespace Provider.gui
             listView.ItemsSource = this.listToShow;
             dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
         }
+
+        public SupplierList(Frame mainWindow, List<IO.Swagger.Model.Page> listToShow)
+        {
+            InitializeComponent();
+            this.mainWindow = mainWindow;
+            this.listToShow2 = listToShow;
+            listView.ItemsSource = this.listToShow2;
+            foreach(IO.Swagger.Model.Page p in this.listToShow2)
+            {
+                System.Diagnostics.Debug.WriteLine(p.Owner);
+            }
+            dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
+        }
+
 
         private void ViewSupplierInformation(object sender, MouseButtonEventArgs e)
         {

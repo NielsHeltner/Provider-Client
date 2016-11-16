@@ -8,7 +8,7 @@ namespace Provider.domain
 {
     public interface IController
     {
-        List<Page> GetPages();
+        List<IO.Swagger.Model.Page> GetPages();
 
         void EditPost(Post post, string newDescription, string newTitle);
 
