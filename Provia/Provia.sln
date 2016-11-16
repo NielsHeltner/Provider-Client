@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provider", "Provider\Provid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestClass", "UnitTestClass\UnitTestClass.csproj", "{ECD9C166-19D0-4252-ADD8-31743584B40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger", "..\..\Provider-Client\src\IO.Swagger\IO.Swagger.csproj", "{D98D8F24-8492-48D4-A286-3A89DF9FAF82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger", "IO.Swagger\IO.Swagger.csproj", "{D98D8F24-8492-48D4-A286-3A89DF9FAF82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
