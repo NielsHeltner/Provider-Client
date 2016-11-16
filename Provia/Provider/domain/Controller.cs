@@ -44,7 +44,7 @@ namespace Provider.domain
         {
 
             //LoginApi api = new LoginApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            //LoginApi api = new LoginApi("http://10.126.13.145:8080");
+            LoginApi api = new LoginApi("http://127.0.0.1:8080");
             //IO.Swagger.Model.User user = api.LogIn("Niclas", "Antonio");
 
             try
@@ -55,10 +55,7 @@ namespace Provider.domain
                     userManager.loggedInUser = new User(user.Username, password, User.Rights.Admin);
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
             catch (ApiException e)
             {
