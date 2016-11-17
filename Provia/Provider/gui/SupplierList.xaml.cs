@@ -43,7 +43,8 @@ namespace Provider.gui
 
         private void ViewSupplierInformation(object sender, MouseButtonEventArgs e)
         {
-            mainWindow.Content = new SupplierInformation((Provider.domain.page.Page) listView.SelectedItem);
+            //mainWindow.Content = new SupplierInformation((Provider.domain.page.Page) listView.SelectedItem);
+            mainWindow.Content = new SupplierInformation((IO.Swagger.Model.Page) listView.SelectedItem);
         }
 
         private void SortSupplierInformation(object sender, RoutedEventArgs e)

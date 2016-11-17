@@ -13,8 +13,9 @@ namespace Provider.gui
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
         private List<Product> products;
+        private List<IO.Swagger.Model.Product> products2;
 
-        public SupplierInformation(Provider.domain.page.Page page)
+        public SupplierInformation(domain.page.Page page)
         {
             InitializeComponent();
             products = new List<Product>();
@@ -22,6 +23,16 @@ namespace Provider.gui
             frame.Content = new SupplierGroupBox(page);
             products = page.products;
             listView.ItemsSource = products;
+        }
+
+        public SupplierInformation(IO.Swagger.Model.Page page)
+        {
+            InitializeComponent();
+            products2 = new List<IO.Swagger.Model.Product>();
+            groupBox.Header = page.Owner;
+            frame.Content = new SupplierGroupBox(page);
+            products2 = page.Products;
+            listView.ItemsSource = products2;
         }
 
         private void SortProductInformation(object sender, RoutedEventArgs e)
