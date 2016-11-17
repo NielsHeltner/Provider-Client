@@ -30,6 +30,7 @@ namespace Provider.gui
             if(page2.Note != null)
             {
                 noteTextBox.Text = page2.Note.Text;
+                lastEdited.Text = ((DateTime) page2.Note.CreationDate).ToLongDateString();
             }
         }
 
