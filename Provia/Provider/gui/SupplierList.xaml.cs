@@ -35,6 +35,7 @@ namespace Provider.gui
             foreach(IO.Swagger.Model.Page p in this.listToShow2)
             {
                 System.Diagnostics.Debug.WriteLine(p.Owner);
+                //System.Diagnostics.Debug.WriteLine(p.Note.Text);
             }
             dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
         }
