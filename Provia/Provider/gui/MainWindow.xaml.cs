@@ -63,10 +63,12 @@ namespace Provider.gui
             searchTermTextBox.Opacity = 0;
             searchTermTextBox.IsEnabled = false;
             showSuppliersButton.IsEnabled = false;
-            homeButton.IsEnabled = false;
+            //homeButton.IsEnabled = false;
+            homeButton.Visibility = Visibility.Hidden;
             loggedIn.IsEnabled = false;
             logout.IsEnabled = false;
             searchTermTextBox.IsEnabled = false;
+            searchButton.Visibility = Visibility.Hidden;
         }
         public void AnimateHeaderLogin()
         {
@@ -113,6 +115,8 @@ namespace Provider.gui
             loggedIn.IsEnabled = true;
             logout.IsEnabled = true;
             searchTermTextBox.IsEnabled = true;
+            searchButton.Visibility = Visibility.Visible;
+            homeButton.Visibility = Visibility.Visible;
         }
 
         private void AnimateHeaderLogout()
