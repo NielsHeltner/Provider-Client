@@ -96,11 +96,11 @@ namespace Provider.gui
             dataView.SortDescriptions.Clear();
             if(sortBy.Equals("Navn"))
             {
-                sortBy = "owner";
+                sortBy = "Owner";
             }
             else if(sortBy.Equals("Note"))
             {
-                sortBy = "noteText";
+                sortBy = "Note.Text";
             }
             SortDescription sortDesc = new SortDescription(sortBy, direction);
             dataView.SortDescriptions.Add(sortDesc);
