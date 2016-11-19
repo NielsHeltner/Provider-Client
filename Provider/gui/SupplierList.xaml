@@ -9,12 +9,76 @@
       d:DesignHeight="659" d:DesignWidth="1275"
       Title="Page">
     <Page.Resources>
+        <DataTemplate x:Key="Header">
+            <StackPanel Orientation="Horizontal" Margin="-5" Height="40" Width="504">
+                <TextBlock Text="{Binding}" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="#0C4A63"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid SnapsToDevicePixels="True">
+                            <Border BorderThickness="0,1,1,1" BorderBrush="{TemplateBinding Border.BorderBrush}" 
+                 Background="{TemplateBinding Panel.Background}" Name="HeaderBorder">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition MaxHeight="7" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Rectangle Fill="#FFE3F7FF" Name="UpperHighlight" Visibility="Collapsed" />
+                                    <Border Padding="{TemplateBinding Control.Padding}" Grid.RowSpan="2">
+                                        <ContentPresenter RecognizesAccessKey="True" Content="{TemplateBinding ContentControl.Content}" 
+                         ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                         ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                         Name="HeaderContent" Margin="0,0,0,1" 
+                         HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                         VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                         SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                </Trigger>
+            </Style.Triggers>
+            
+        </Style>
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1.000001"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="{x:Type ListViewItem}">
             <EventSetter Event="Control.MouseDoubleClick" Handler="ViewSupplierInformation"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="0"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                            <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
 
             <Style.Triggers>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="0">
@@ -26,10 +90,11 @@
 
                 <Trigger Property="IsMouseOver" Value="true">
                     <Setter Property="Background" Value="#e0e0e0"/>
+                    <Setter Property="Margin" Value="0"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}">
+                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
                                     <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
                                 </Border>
 
@@ -57,12 +122,12 @@
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="637" VerticalAlignment="Top" Width="1009" ButtonBase.Click="SortSupplierInformation" Margin="130,22,0,0" AlternationCount="2">
 
             <ListView.View>
-                <GridView>
+                <GridView  ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
                     <GridViewColumn DisplayMemberBinding="{Binding Owner}">
-                        <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
+                        <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="300"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Note.Text}">
-                        <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="150"/>
+                        <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="290"/>
                     </GridViewColumn>
 
                 </GridView>
