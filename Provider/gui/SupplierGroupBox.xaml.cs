@@ -31,6 +31,7 @@ namespace Provider.gui
             {
                 noteTextBox.Text = page2.Note.Text;
                 lastEdited.Text = ((DateTime) page2.Note.CreationDate).ToLongDateString();
+                lastEditor.Text = page2.Owner;
             }
         }
 
@@ -46,6 +47,7 @@ namespace Provider.gui
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
                 lastEdited.Text = DateTime.Today.ToLongDateString();
+                lastEditor.Text = "Niclas";
                 Controller.instance.AddNoteToSupplier(page2.Owner, noteTextBox.Text);
             }
         }
