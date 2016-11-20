@@ -52,7 +52,7 @@ namespace Provider.domain
                 IO.Swagger.Model.User user = api.Validate(userName, password);
                 if (user != null)
                 {
-                    userManager.loggedInUser = new User(user.Username, password, User.Rights.Admin);
+                    userManager.loggedInUser = user;
                     return true;
                 }
                 else
@@ -73,7 +73,7 @@ namespace Provider.domain
             userManager.LogOut();
         }
 
-        public User GetLoggedInUser()
+        public IO.Swagger.Model.User GetLoggedInUser()
         {
             return userManager.loggedInUser;
         }
@@ -111,10 +111,10 @@ namespace Provider.domain
             bulletinboard.EditPost(post, newDescription, newTitle);
         }
 
-        public void AddNoteToSupplier(string supplierName, string text)
+        public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
             //pageManager.AddNoteToSupplier(supplierName, text);
-            api.AddNoteToSupplier(supplierName, text);
+            api.AddNoteToSupplier(supplierName, editor, text);
         }
 
         public List<Page> Search(string searchTerm)

@@ -57,7 +57,7 @@ namespace Provider.gui
             List<Post> myPosts = new List<Post>();
             foreach (Post post in Controller.instance.ViewAllPosts())
             {
-                if (post.owner.Equals(Controller.instance.GetLoggedInUser().userName))
+                if (post.owner.Equals(Controller.instance.GetLoggedInUser().Username))
                 {
                     myPosts.Add(post);
                 }

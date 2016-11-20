@@ -20,7 +20,7 @@ namespace Provider.domain
 
         void LogOut();
 
-        User GetLoggedInUser();
+        IO.Swagger.Model.User GetLoggedInUser();
 
         /// Retuns a list of posts.
         /// If type = "0" all posts are returned
@@ -35,7 +35,7 @@ namespace Provider.domain
 
         List<Post> ViewOfferPosts();
 
-        void AddNoteToSupplier(string supplierName, string text);
+        void AddNoteToSupplier(string supplierName, string editor, string text);
 
         List<Page> Search(string searchTerm);
     }

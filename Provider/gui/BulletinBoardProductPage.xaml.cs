@@ -37,7 +37,7 @@ namespace Provider.gui
             postDesciption.Cursor = Cursors.Arrow;
             postTitel.Cursor = Cursors.Arrow;
             postDesciption.Background = Brushes.GhostWhite;
-            if (!Controller.instance.GetLoggedInUser().userName.Equals(selectedItem.owner))
+            if (!Controller.instance.GetLoggedInUser().Username.Equals(selectedItem.owner))
             {
                 editPostButton.Visibility = Visibility.Hidden;
             }

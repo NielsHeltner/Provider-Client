@@ -17,7 +17,7 @@ namespace Provider.gui
             InitializeComponent();
             bulletinBoardPage = bulletinboard;
             CreationDateTextBlock.Text = DateTime.Today.ToShortDateString();
-            OwnerTextBlock.Text = Controller.instance.GetLoggedInUser().userName;
+            OwnerTextBlock.Text = Controller.instance.GetLoggedInUser().Username;
         }
 
         private void CreateNewPost(object sender, RoutedEventArgs e)
@@ -61,7 +61,7 @@ namespace Provider.gui
             {
                 typeOfPost = Post.Types.NotAvailabe;
             }
-                Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().userName, postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+                Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().Username, postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
                 bulletinBoardPage.RefreshPage(true);
         }
 

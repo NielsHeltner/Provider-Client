@@ -19,7 +19,7 @@ namespace Provider.gui
             if(page.note != null)
             {
                 noteTextBox.Text = page.note.text;
-                lastEdited.Text = page.note.creationDate.ToLongDateString();
+                lastEdited.Text = page.note.creationDate.ToLongDateString() + ".";
             }
         }
 
@@ -30,8 +30,8 @@ namespace Provider.gui
             if(page2.Note != null)
             {
                 noteTextBox.Text = page2.Note.Text;
-                lastEdited.Text = ((DateTime) page2.Note.CreationDate).ToLongDateString();
-                lastEditor.Text = page2.Owner;
+                lastEdited.Text = ((DateTime) page2.Note.CreationDate).ToLongDateString() + ".";
+                lastEditor.Text = page2.Note.Editor;
             }
         }
 
@@ -46,9 +46,9 @@ namespace Provider.gui
             {
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
-                lastEdited.Text = DateTime.Today.ToLongDateString();
-                lastEditor.Text = "Niclas";
-                Controller.instance.AddNoteToSupplier(page2.Owner, noteTextBox.Text);
+                lastEdited.Text = DateTime.Today.ToLongDateString() + ".";
+                lastEditor.Text = Controller.instance.GetLoggedInUser().Username;
+                Controller.instance.AddNoteToSupplier(page2.Owner, Controller.instance.GetLoggedInUser().Username, noteTextBox.Text);
             }
         }
     }
