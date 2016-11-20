@@ -113,7 +113,8 @@ namespace Provider.domain
 
         public void AddNoteToSupplier(string supplierName, string text)
         {
-            pageManager.AddNoteToSupplier(supplierName, text);
+            //pageManager.AddNoteToSupplier(supplierName, text);
+            api.AddNoteToSupplier(supplierName, text);
         }
 
         public List<Page> Search(string searchTerm)

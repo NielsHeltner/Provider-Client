@@ -46,7 +46,7 @@ namespace Provider.gui
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
                 lastEdited.Text = DateTime.Today.ToLongDateString();
-                Controller.instance.AddNoteToSupplier(page.owner, noteTextBox.Text);
+                Controller.instance.AddNoteToSupplier(page2.Owner, noteTextBox.Text);
             }
         }
     }

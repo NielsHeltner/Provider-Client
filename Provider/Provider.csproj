@@ -182,8 +182,8 @@
     <Resource Include="resources\provider2.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IO.Swagger\IO.Swagger.csproj">
-      <Project>{D98D8F24-8492-48D4-A286-3A89DF9FAF82}</Project>
+    <ProjectReference Include="..\..\Provider-Client\src\IO.Swagger\IO.Swagger.csproj">
+      <Project>{4FFB4D2E-CF32-4E55-85C2-53971ACBD7ED}</Project>
       <Name>IO.Swagger</Name>
     </ProjectReference>
   </ItemGroup>
