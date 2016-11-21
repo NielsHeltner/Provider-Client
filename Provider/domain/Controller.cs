@@ -50,7 +50,7 @@ namespace Provider.domain
 
             try
             {
-                IO.Swagger.Model.User user = api.Validate(userName, password);
+                User user = api.Validate(userName, password);
                 if (user != null)
                 {
                     userManager.loggedInUser = user;
