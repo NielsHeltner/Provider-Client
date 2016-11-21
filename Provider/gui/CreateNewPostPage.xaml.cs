@@ -47,7 +47,7 @@ namespace Provider.gui
             IO.Swagger.Model.Post.TypesEnum typeOfPost;
             if (WarningRB.IsChecked.Value)
             {
-                typeOfPost = IO.Swagger.Model.Post.TypesEnum.AdminWarning;
+                typeOfPost = IO.Swagger.Model.Post.TypesEnum.Warning;
             }
             else if (requestRB.IsChecked.Value)
             {

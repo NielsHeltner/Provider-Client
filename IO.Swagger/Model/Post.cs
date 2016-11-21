@@ -49,10 +49,10 @@ namespace IO.Swagger.Model
         {
             
             /// <summary>
-            /// Enum AdminWarning for "AdminWarning"
+            /// Enum Warning for "Warning"
             /// </summary>
-            [EnumMember(Value = "AdminWarning")]
-            AdminWarning,
+            [EnumMember(Value = "Warning")]
+            Warning,
             
             /// <summary>
             /// Enum Request for "Request"

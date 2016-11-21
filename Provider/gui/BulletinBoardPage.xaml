@@ -36,22 +36,22 @@
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="470" Margin="50,64,0,0" VerticalAlignment="Top" Width="670">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding title}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding type}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Type}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Type" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding creationDate}">
+                    <GridViewColumn DisplayMemberBinding="{Binding CreationDate}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Oprettet den" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding description}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="150"/>
                         </GridViewColumn.Header>

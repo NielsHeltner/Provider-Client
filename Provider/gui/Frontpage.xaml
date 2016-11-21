@@ -62,19 +62,19 @@
         <ListView x:Name="WarningListView" HorizontalAlignment="Left" Height="142" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
-                    <GridViewColumn DisplayMemberBinding="{Binding owner}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Producent" HorizontalContentAlignment="Left" Width="150"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding description}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="260"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding creationDate}">
+                    <GridViewColumn DisplayMemberBinding="{Binding CreationDate}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="125"/>
                         </GridViewColumn.Header>

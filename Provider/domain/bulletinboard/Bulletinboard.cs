@@ -5,7 +5,7 @@ namespace Provider.domain.bulletinboard
 {
     public class Bulletinboard
     {
-        public List<Post> posts { get; }
+        public List<Post> posts { get; set; }
 
         public Bulletinboard()
         {
@@ -60,7 +60,7 @@ namespace Provider.domain.bulletinboard
 
         public List<Post> ViewWarningPosts()
         {
-            return GetPosts(Post.TypesEnum.AdminWarning);
+            return GetPosts(Post.TypesEnum.Warning);
         }
         public List<Post> ViewRequestPosts()
         {
