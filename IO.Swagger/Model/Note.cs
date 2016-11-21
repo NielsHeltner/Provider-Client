@@ -45,10 +45,12 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="Note" /> class.
         /// </summary>
         /// <param name="Text">Text.</param>
+        /// <param name="Editor">Editor.</param>
         /// <param name="CreationDate">CreationDate.</param>
-        public Note(string Text = null, DateTime? CreationDate = null)
+        public Note(string Text = null, string Editor = null, DateTime? CreationDate = null)
         {
             this.Text = Text;
+            this.Editor = Editor;
             this.CreationDate = CreationDate;
         }
         
@@ -57,6 +59,11 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="text", EmitDefaultValue=false)]
         public string Text { get; set; }
+        /// <summary>
+        /// Gets or Sets Editor
+        /// </summary>
+        [DataMember(Name="editor", EmitDefaultValue=false)]
+        public string Editor { get; set; }
         /// <summary>
         /// Gets or Sets CreationDate
         /// </summary>
@@ -71,6 +78,7 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class Note {\n");
             sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  Editor: ").Append(Editor).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -114,6 +122,11 @@ namespace IO.Swagger.Model
                     this.Text.Equals(other.Text)
                 ) && 
                 (
+                    this.Editor == other.Editor ||
+                    this.Editor != null &&
+                    this.Editor.Equals(other.Editor)
+                ) && 
+                (
                     this.CreationDate == other.CreationDate ||
                     this.CreationDate != null &&
                     this.CreationDate.Equals(other.CreationDate)
@@ -133,6 +146,8 @@ namespace IO.Swagger.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Text != null)
                     hash = hash * 59 + this.Text.GetHashCode();
+                if (this.Editor != null)
+                    hash = hash * 59 + this.Editor.GetHashCode();
                 if (this.CreationDate != null)
                     hash = hash * 59 + this.CreationDate.GetHashCode();
                 return hash;

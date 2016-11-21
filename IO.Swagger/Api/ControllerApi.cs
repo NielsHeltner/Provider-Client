@@ -37,6 +37,31 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Tilføjer en note til en supplier
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        void AddNoteToSupplier (string supplierName, string editor, string text);
+
+        /// <summary>
+        /// Tilføjer en note til en supplier
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text);
+        /// <summary>
         /// Henter suppliers
         /// </summary>
         /// <remarks>
@@ -80,6 +105,31 @@ namespace IO.Swagger.Api
         ApiResponse<User> ValidateWithHttpInfo (string username, string password);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Tilføjer en note til en supplier
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text);
+
+        /// <summary>
+        /// Tilføjer en note til en supplier
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text);
         /// <summary>
         /// Henter suppliers
         /// </summary>
@@ -232,6 +282,173 @@ namespace IO.Swagger.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Tilføjer en note til en supplier 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public void AddNoteToSupplier (string supplierName, string editor, string text)
+        {
+             AddNoteToSupplierWithHttpInfo(supplierName, editor, text);
+        }
+
+        /// <summary>
+        /// Tilføjer en note til en supplier 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text)
+        {
+            // verify the required parameter 'supplierName' is set
+            if (supplierName == null)
+                throw new ApiException(400, "Missing required parameter 'supplierName' when calling ControllerApi->AddNoteToSupplier");
+            // verify the required parameter 'editor' is set
+            if (editor == null)
+                throw new ApiException(400, "Missing required parameter 'editor' when calling ControllerApi->AddNoteToSupplier");
+            // verify the required parameter 'text' is set
+            if (text == null)
+                throw new ApiException(400, "Missing required parameter 'text' when calling ControllerApi->AddNoteToSupplier");
+
+            var localVarPath = "/Controller/AddNoteToSupplier";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (supplierName != null) localVarQueryParams.Add("supplierName", Configuration.ApiClient.ParameterToString(supplierName)); // query parameter
+            if (editor != null) localVarQueryParams.Add("editor", Configuration.ApiClient.ParameterToString(editor)); // query parameter
+            if (text != null) localVarQueryParams.Add("text", Configuration.ApiClient.ParameterToString(text)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddNoteToSupplier", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Tilføjer en note til en supplier 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text)
+        {
+             await AddNoteToSupplierAsyncWithHttpInfo(supplierName, editor, text);
+
+        }
+
+        /// <summary>
+        /// Tilføjer en note til en supplier 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="supplierName"></param>
+        /// <param name="editor"></param>
+        /// <param name="text"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text)
+        {
+            // verify the required parameter 'supplierName' is set
+            if (supplierName == null)
+                throw new ApiException(400, "Missing required parameter 'supplierName' when calling ControllerApi->AddNoteToSupplier");
+            // verify the required parameter 'editor' is set
+            if (editor == null)
+                throw new ApiException(400, "Missing required parameter 'editor' when calling ControllerApi->AddNoteToSupplier");
+            // verify the required parameter 'text' is set
+            if (text == null)
+                throw new ApiException(400, "Missing required parameter 'text' when calling ControllerApi->AddNoteToSupplier");
+
+            var localVarPath = "/Controller/AddNoteToSupplier";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (supplierName != null) localVarQueryParams.Add("supplierName", Configuration.ApiClient.ParameterToString(supplierName)); // query parameter
+            if (editor != null) localVarQueryParams.Add("editor", Configuration.ApiClient.ParameterToString(editor)); // query parameter
+            if (text != null) localVarQueryParams.Add("text", Configuration.ApiClient.ParameterToString(text)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddNoteToSupplier", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
