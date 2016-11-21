@@ -37,7 +37,6 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.14.20:8080");
             api = new ControllerApi("http://192.168.87.103:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            //userManager.loggedInUser;
             pageManager.pages = api.GetSupplier();
         }
 
@@ -65,9 +64,7 @@ namespace Provider.domain
             catch (ApiException e)
             {
                 return false;
-                //e.printStackTrace();
             }
-            //return userManager.Validate(userName, password);
         }
 
         public void LogOut()
@@ -75,7 +72,7 @@ namespace Provider.domain
             userManager.LogOut();
         }
 
-        public IO.Swagger.Model.User GetLoggedInUser()
+        public User GetLoggedInUser()
         {
             return userManager.loggedInUser;
         }
@@ -115,7 +112,6 @@ namespace Provider.domain
 
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
-            //pageManager.AddNoteToSupplier(supplierName, text);
             api.AddNoteToSupplier(supplierName, editor, text);
         }
 

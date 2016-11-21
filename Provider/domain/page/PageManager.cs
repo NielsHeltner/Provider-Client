@@ -6,7 +6,7 @@ namespace Provider.domain.page
 {
     public class PageManager
     {
-        public List<IO.Swagger.Model.Page> pages { get; set; }
+        public List<Page> pages { get; set; }
 
         public PageManager()
         {
