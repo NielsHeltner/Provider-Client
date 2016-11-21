@@ -37,7 +37,7 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Tilføjer en note til en supplier
+        /// TilfÃ¸jer en note til en supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -50,7 +50,7 @@ namespace IO.Swagger.Api
         void AddNoteToSupplier (string supplierName, string editor, string text);
 
         /// <summary>
-        /// Tilføjer en note til en supplier
+        /// TilfÃ¸jer en note til en supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -61,6 +61,31 @@ namespace IO.Swagger.Api
         /// <param name="text"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text);
+        /// <summary>
+        /// Ændrer en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns></returns>
+        void EditPost (Post post, string newDescription, string newTitle);
+
+        /// <summary>
+        /// Ændrer en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> EditPostWithHttpInfo (Post post, string newDescription, string newTitle);
         /// <summary>
         /// Henter suppliers
         /// </summary>
@@ -106,7 +131,7 @@ namespace IO.Swagger.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Tilføjer en note til en supplier
+        /// TilfÃ¸jer en note til en supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -119,7 +144,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text);
 
         /// <summary>
-        /// Tilføjer en note til en supplier
+        /// TilfÃ¸jer en note til en supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -130,6 +155,31 @@ namespace IO.Swagger.Api
         /// <param name="text"></param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text);
+        /// <summary>
+        /// Ændrer en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task EditPostAsync (Post post, string newDescription, string newTitle);
+
+        /// <summary>
+        /// Ændrer en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> EditPostAsyncWithHttpInfo (Post post, string newDescription, string newTitle);
         /// <summary>
         /// Henter suppliers
         /// </summary>
@@ -285,7 +335,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Tilføjer en note til en supplier 
+        /// TilfÃ¸jer en note til en supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -298,7 +348,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Tilføjer en note til en supplier 
+        /// TilfÃ¸jer en note til en supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -368,7 +418,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Tilføjer en note til en supplier 
+        /// TilfÃ¸jer en note til en supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -382,7 +432,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Tilføjer en note til en supplier 
+        /// TilfÃ¸jer en note til en supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -442,6 +492,187 @@ namespace IO.Swagger.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("AddNoteToSupplier", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Ændrer en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns></returns>
+        public void EditPost (Post post, string newDescription, string newTitle)
+        {
+             EditPostWithHttpInfo(post, newDescription, newTitle);
+        }
+
+        /// <summary>
+        /// Ændrer en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> EditPostWithHttpInfo (Post post, string newDescription, string newTitle)
+        {
+            // verify the required parameter 'post' is set
+            if (post == null)
+                throw new ApiException(400, "Missing required parameter 'post' when calling ControllerApi->EditPost");
+            // verify the required parameter 'newDescription' is set
+            if (newDescription == null)
+                throw new ApiException(400, "Missing required parameter 'newDescription' when calling ControllerApi->EditPost");
+            // verify the required parameter 'newTitle' is set
+            if (newTitle == null)
+                throw new ApiException(400, "Missing required parameter 'newTitle' when calling ControllerApi->EditPost");
+
+            var localVarPath = "/Controller/EditPost";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (newDescription != null) localVarQueryParams.Add("newDescription", Configuration.ApiClient.ParameterToString(newDescription)); // query parameter
+            if (newTitle != null) localVarQueryParams.Add("newTitle", Configuration.ApiClient.ParameterToString(newTitle)); // query parameter
+            if (post != null && post.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(post); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = post; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EditPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Ændrer en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task EditPostAsync (Post post, string newDescription, string newTitle)
+        {
+             await EditPostAsyncWithHttpInfo(post, newDescription, newTitle);
+
+        }
+
+        /// <summary>
+        /// Ændrer en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newTitle"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditPostAsyncWithHttpInfo (Post post, string newDescription, string newTitle)
+        {
+            // verify the required parameter 'post' is set
+            if (post == null)
+                throw new ApiException(400, "Missing required parameter 'post' when calling ControllerApi->EditPost");
+            // verify the required parameter 'newDescription' is set
+            if (newDescription == null)
+                throw new ApiException(400, "Missing required parameter 'newDescription' when calling ControllerApi->EditPost");
+            // verify the required parameter 'newTitle' is set
+            if (newTitle == null)
+                throw new ApiException(400, "Missing required parameter 'newTitle' when calling ControllerApi->EditPost");
+
+            var localVarPath = "/Controller/EditPost";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (newDescription != null) localVarQueryParams.Add("newDescription", Configuration.ApiClient.ParameterToString(newDescription)); // query parameter
+            if (newTitle != null) localVarQueryParams.Add("newTitle", Configuration.ApiClient.ParameterToString(newTitle)); // query parameter
+            if (post != null && post.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(post); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = post; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EditPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
