@@ -14,17 +14,17 @@ namespace Provider.gui
     /// </summary>
     public partial class BulletinBoardProductPage : Page
     {
-        private Post selectedItem;
+        private IO.Swagger.Model.Post selectedItem;
         private BulletinBoardPage bulletinBoard;
-        public BulletinBoardProductPage(Post selectedItem, BulletinBoardPage bulletinBoard)
+        public BulletinBoardProductPage(IO.Swagger.Model.Post selectedItem, BulletinBoardPage bulletinBoard)
         {
             InitializeComponent();
             this.selectedItem = selectedItem;
-            postTitel.Text = selectedItem.title;
-            postDesciption.Text = selectedItem.description;
-            postOwner.Text = selectedItem.owner;
-            postDateLabel.Text = selectedItem.creationDate.ToShortDateString();
-            typeOfPost.Text = selectedItem.type.ToString();
+            postTitel.Text = selectedItem.Title;
+            postDesciption.Text = selectedItem.Description;
+            postOwner.Text = selectedItem.Owner;
+            postDateLabel.Text = selectedItem.CreationDate.ToString();
+            typeOfPost.Text = selectedItem.Types.ToString();
             this.bulletinBoard = bulletinBoard;
             HideButtons();
         }
@@ -37,7 +37,7 @@ namespace Provider.gui
             postDesciption.Cursor = Cursors.Arrow;
             postTitel.Cursor = Cursors.Arrow;
             postDesciption.Background = Brushes.GhostWhite;
-            if (!Controller.instance.GetLoggedInUser().Username.Equals(selectedItem.owner))
+            if (!Controller.instance.GetLoggedInUser().Username.Equals(selectedItem.Owner))
             {
                 editPostButton.Visibility = Visibility.Hidden;
             }

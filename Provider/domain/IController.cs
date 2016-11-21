@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Provider.domain.page;
 using Provider.domain.bulletinboard;
 using Provider.domain.users;
+using IO.Swagger.Model;
 
 namespace Provider.domain
 {
@@ -14,7 +15,7 @@ namespace Provider.domain
 
         void DeletePost(Post post);
 
-        void CreatePost(String owner, string title, string description, Post.Types type);
+        void CreatePost(String owner, string title, string description, Post.TypesEnum type);
 
         bool LogIn(string userName, string password);
 

@@ -90,13 +90,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="db\Database.cs" />
-    <Compile Include="db\IDatabase.cs" />
     <Compile Include="domain\bulletinboard\Bulletinboard.cs" />
-    <Compile Include="domain\bulletinboard\Post.cs" />
     <Compile Include="domain\Controller.cs" />
     <Compile Include="domain\IController.cs" />
-    <Compile Include="domain\page\Page.cs" />
     <Compile Include="domain\page\PageManager.cs" />
     <Compile Include="domain\page\Product.cs" />
     <Compile Include="domain\users\User.cs" />

@@ -44,22 +44,22 @@ namespace Provider.gui
 
         private void CreatePost()
         {
-            Post.Types typeOfPost;
+            IO.Swagger.Model.Post.TypesEnum typeOfPost;
             if (WarningRB.IsChecked.Value)
             {
-                typeOfPost = Post.Types.Warning;
+                typeOfPost = IO.Swagger.Model.Post.TypesEnum.AdminWarning;
             }
             else if (requestRB.IsChecked.Value)
             {
-                typeOfPost = Post.Types.Request;
+                typeOfPost = IO.Swagger.Model.Post.TypesEnum.Request;
             }
             else if (OfferRB.IsChecked.Value)
             {
-                typeOfPost = Post.Types.Offer;
+                typeOfPost = IO.Swagger.Model.Post.TypesEnum.Offer;
             }
             else
             {
-                typeOfPost = Post.Types.NotAvailabe;
+                typeOfPost = IO.Swagger.Model.Post.TypesEnum.NotAvailabe;
             }
                 Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().Username, postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
                 bulletinBoardPage.RefreshPage(true);

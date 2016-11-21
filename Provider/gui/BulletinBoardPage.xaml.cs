@@ -20,7 +20,7 @@ namespace Provider.gui
             listView.ItemsSource = Controller.instance.ViewAllPosts();
         }
 
-        public void SetPostInformation(Post selectedItem)
+        public void SetPostInformation(IO.Swagger.Model.Post selectedItem)
             {
             frame.Content = new BulletinBoardProductPage(selectedItem, this);
             }
@@ -28,7 +28,7 @@ namespace Provider.gui
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {
             groupBox.Header = "Opslag information";
-            frame.Content = new BulletinBoardProductPage((Post) listView.SelectedItem, this);
+            frame.Content = new BulletinBoardProductPage((IO.Swagger.Model.Post) listView.SelectedItem, this);
         }
 
         private void CreateNewPost(object sender, RoutedEventArgs e)
@@ -54,10 +54,10 @@ namespace Provider.gui
         //TODO foreach uden for if?
         private void ListMyPosts(object sender, RoutedEventArgs e)
         {
-            List<Post> myPosts = new List<Post>();
-            foreach (Post post in Controller.instance.ViewAllPosts())
+            List<IO.Swagger.Model.Post> myPosts = new List<IO.Swagger.Model.Post>();
+            foreach (IO.Swagger.Model.Post post in Controller.instance.ViewAllPosts())
             {
-                if (post.owner.Equals(Controller.instance.GetLoggedInUser().Username))
+                if (post.Owner.Equals(Controller.instance.GetLoggedInUser().Username))
                 {
                     myPosts.Add(post);
                 }

@@ -15,16 +15,6 @@ namespace Provider.gui
         private List<Product> products;
         private List<IO.Swagger.Model.Product> products2;
 
-        public SupplierInformation(domain.page.Page page)
-        {
-            InitializeComponent();
-            products = new List<Product>();
-            groupBox.Header = page.owner;
-            frame.Content = new SupplierGroupBox(page);
-            products = page.products;
-            listView.ItemsSource = products;
-        }
-
         public SupplierInformation(IO.Swagger.Model.Page page)
         {
             InitializeComponent();

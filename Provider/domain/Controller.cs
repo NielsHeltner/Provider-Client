@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Provider.domain.bulletinboard;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Provider.domain
 {
@@ -33,7 +34,7 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            api = new ControllerApi("10.126.14.20:8080");
+            api = new ControllerApi("http://10.126.14.20:8080");
             //api = new ControllerApi("http://192.168.87.103:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             //userManager.loggedInUser;
@@ -41,8 +42,7 @@ namespace Provider.domain
 
         public List<IO.Swagger.Model.Page> GetPages()
         {
-            return api.GetSupplier();
-            //return pageManager.pages;
+            return pageManager.pages = api.GetSupplier();
         }
         
         public bool LogIn(string userName, string password)
@@ -97,7 +97,7 @@ namespace Provider.domain
             return bulletinboard.ViewOfferPosts();
         }
 
-        public void CreatePost(String owner, string title, string description, Post.Types type)
+        public void CreatePost(String owner, string title, string description, Post.TypesEnum type)
         {
             bulletinboard.CreatePost(owner, title, description, type);
         }

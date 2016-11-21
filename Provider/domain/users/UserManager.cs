@@ -1,5 +1,4 @@
-﻿using Provider.db;
-
+﻿
 namespace Provider.domain.users
 {
     public class UserManager

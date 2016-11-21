@@ -55,7 +55,7 @@ namespace Provider.gui
 
         private void ViewWarningPost(object sender, MouseButtonEventArgs e)
         {
-            bulletinBoard.SetPostInformation((Post)WarningListView.SelectedItem);
+            bulletinBoard.SetPostInformation((IO.Swagger.Model.Post)WarningListView.SelectedItem);
             bulletinBoard.SetListToWarning();
             frame.Content = bulletinBoard;
         }
