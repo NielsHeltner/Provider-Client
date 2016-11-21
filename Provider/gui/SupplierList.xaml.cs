@@ -11,7 +11,7 @@ namespace Provider.gui
     public partial class SupplierList : Page
     {
         private Frame mainWindow;
-        private List<IO.Swagger.Model.Page> listToShow2;
+        private List<IO.Swagger.Model.Page> listToShow;
         private ICollectionView dataView;
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
@@ -20,13 +20,8 @@ namespace Provider.gui
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            this.listToShow2 = listToShow;
-            listView.ItemsSource = this.listToShow2;
-            foreach(IO.Swagger.Model.Page p in this.listToShow2)
-            {
-                System.Diagnostics.Debug.WriteLine(p.Owner);
-                //System.Diagnostics.Debug.WriteLine(p.Note.Text);
-            }
+            this.listToShow = listToShow;
+            listView.ItemsSource = this.listToShow;
             dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
         }
 

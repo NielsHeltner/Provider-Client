@@ -35,7 +35,7 @@ namespace Provider.domain
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
             //api = new ControllerApi("http://10.126.14.20:8080");
-            api = new ControllerApi("http://192.168.87.103:8080");
+            api = new ControllerApi("http://192.168.1.237:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             pageManager.pages = api.GetSupplier();
         }
