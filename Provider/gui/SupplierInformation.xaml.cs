@@ -12,7 +12,6 @@ namespace Provider.gui
     {
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
-        private List<Product> products;
         private List<IO.Swagger.Model.Product> products2;
 
         public SupplierInformation(IO.Swagger.Model.Page page)
