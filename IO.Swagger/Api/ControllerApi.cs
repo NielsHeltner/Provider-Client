@@ -69,11 +69,12 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>Post</returns>
-        Post CreatePost (string owner, string title, string description, PostType type);
+        Post CreatePost (string owner, DateTime? date, string title, string description, PostType type);
 
         /// <summary>
         /// Opretter en post.
@@ -83,11 +84,12 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>ApiResponse of Post</returns>
-        ApiResponse<Post> CreatePostWithHttpInfo (string owner, string title, string description, PostType type);
+        ApiResponse<Post> CreatePostWithHttpInfo (string owner, DateTime? date, string title, string description, PostType type);
         /// <summary>
         /// Ændrer en eksisterende post.
         /// </summary>
@@ -113,6 +115,25 @@ namespace IO.Swagger.Api
         /// <param name="newTitle"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> EditPostWithHttpInfo (Post post, string newDescription, string newTitle);
+        /// <summary>
+        /// Henter all posts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Post&gt;</returns>
+        List<Post> GetAllPosts ();
+
+        /// <summary>
+        /// Henter all posts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;Post&gt;</returns>
+        ApiResponse<List<Post>> GetAllPostsWithHttpInfo ();
         /// <summary>
         /// Henter suppliers
         /// </summary>
@@ -190,11 +211,12 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>Task of Post</returns>
-        System.Threading.Tasks.Task<Post> CreatePostAsync (string owner, string title, string description, PostType type);
+        System.Threading.Tasks.Task<Post> CreatePostAsync (string owner, DateTime? date, string title, string description, PostType type);
 
         /// <summary>
         /// Opretter en post.
@@ -204,11 +226,12 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>Task of ApiResponse (Post)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Post>> CreatePostAsyncWithHttpInfo (string owner, string title, string description, PostType type);
+        System.Threading.Tasks.Task<ApiResponse<Post>> CreatePostAsyncWithHttpInfo (string owner, DateTime? date, string title, string description, PostType type);
         /// <summary>
         /// Ændrer en eksisterende post.
         /// </summary>
@@ -234,6 +257,25 @@ namespace IO.Swagger.Api
         /// <param name="newTitle"></param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> EditPostAsyncWithHttpInfo (Post post, string newDescription, string newTitle);
+        /// <summary>
+        /// Henter all posts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;Post&gt;</returns>
+        System.Threading.Tasks.Task<List<Post>> GetAllPostsAsync ();
+
+        /// <summary>
+        /// Henter all posts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;Post&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Post>>> GetAllPostsAsyncWithHttpInfo ();
         /// <summary>
         /// Henter suppliers
         /// </summary>
@@ -560,13 +602,14 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>Post</returns>
-        public Post CreatePost (string owner, string title, string description, PostType type)
+        public Post CreatePost (string owner, DateTime? date, string title, string description, PostType type)
         {
-             ApiResponse<Post> localVarResponse = CreatePostWithHttpInfo(owner, title, description, type);
+             ApiResponse<Post> localVarResponse = CreatePostWithHttpInfo(owner, date, title, description, type);
              return localVarResponse.Data;
         }
 
@@ -575,15 +618,19 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>ApiResponse of Post</returns>
-        public ApiResponse< Post > CreatePostWithHttpInfo (string owner, string title, string description, PostType type)
+        public ApiResponse< Post > CreatePostWithHttpInfo (string owner, DateTime? date, string title, string description, PostType type)
         {
             // verify the required parameter 'owner' is set
             if (owner == null)
                 throw new ApiException(400, "Missing required parameter 'owner' when calling ControllerApi->CreatePost");
+            // verify the required parameter 'date' is set
+            if (date == null)
+                throw new ApiException(400, "Missing required parameter 'date' when calling ControllerApi->CreatePost");
             // verify the required parameter 'title' is set
             if (title == null)
                 throw new ApiException(400, "Missing required parameter 'title' when calling ControllerApi->CreatePost");
@@ -621,6 +668,7 @@ namespace IO.Swagger.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
             if (owner != null) localVarQueryParams.Add("owner", Configuration.ApiClient.ParameterToString(owner)); // query parameter
+            if (date != null) localVarQueryParams.Add("date", Configuration.ApiClient.ParameterToString(date)); // query parameter
             if (title != null) localVarQueryParams.Add("title", Configuration.ApiClient.ParameterToString(title)); // query parameter
             if (description != null) localVarQueryParams.Add("description", Configuration.ApiClient.ParameterToString(description)); // query parameter
             if (type != null && type.GetType() != typeof(byte[]))
@@ -657,13 +705,14 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>Task of Post</returns>
-        public async System.Threading.Tasks.Task<Post> CreatePostAsync (string owner, string title, string description, PostType type)
+        public async System.Threading.Tasks.Task<Post> CreatePostAsync (string owner, DateTime? date, string title, string description, PostType type)
         {
-             ApiResponse<Post> localVarResponse = await CreatePostAsyncWithHttpInfo(owner, title, description, type);
+             ApiResponse<Post> localVarResponse = await CreatePostAsyncWithHttpInfo(owner, date, title, description, type);
              return localVarResponse.Data;
 
         }
@@ -673,15 +722,19 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
+        /// <param name="date"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <param name="type"></param>
         /// <returns>Task of ApiResponse (Post)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Post>> CreatePostAsyncWithHttpInfo (string owner, string title, string description, PostType type)
+        public async System.Threading.Tasks.Task<ApiResponse<Post>> CreatePostAsyncWithHttpInfo (string owner, DateTime? date, string title, string description, PostType type)
         {
             // verify the required parameter 'owner' is set
             if (owner == null)
                 throw new ApiException(400, "Missing required parameter 'owner' when calling ControllerApi->CreatePost");
+            // verify the required parameter 'date' is set
+            if (date == null)
+                throw new ApiException(400, "Missing required parameter 'date' when calling ControllerApi->CreatePost");
             // verify the required parameter 'title' is set
             if (title == null)
                 throw new ApiException(400, "Missing required parameter 'title' when calling ControllerApi->CreatePost");
@@ -719,6 +772,7 @@ namespace IO.Swagger.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
             if (owner != null) localVarQueryParams.Add("owner", Configuration.ApiClient.ParameterToString(owner)); // query parameter
+            if (date != null) localVarQueryParams.Add("date", Configuration.ApiClient.ParameterToString(date)); // query parameter
             if (title != null) localVarQueryParams.Add("title", Configuration.ApiClient.ParameterToString(title)); // query parameter
             if (description != null) localVarQueryParams.Add("description", Configuration.ApiClient.ParameterToString(description)); // query parameter
             if (type != null && type.GetType() != typeof(byte[]))
@@ -929,6 +983,139 @@ namespace IO.Swagger.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+
+        /// <summary>
+        /// Henter all posts 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Post&gt;</returns>
+        public List<Post> GetAllPosts ()
+        {
+             ApiResponse<List<Post>> localVarResponse = GetAllPostsWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Henter all posts 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;Post&gt;</returns>
+        public ApiResponse< List<Post> > GetAllPostsWithHttpInfo ()
+        {
+
+            var localVarPath = "/Controller/GetAllPosts";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAllPosts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Post>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Post>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Post>)));
+            
+        }
+
+        /// <summary>
+        /// Henter all posts 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;Post&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Post>> GetAllPostsAsync ()
+        {
+             ApiResponse<List<Post>> localVarResponse = await GetAllPostsAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Henter all posts 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;Post&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Post>>> GetAllPostsAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/Controller/GetAllPosts";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAllPosts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Post>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Post>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Post>)));
+            
         }
 
         /// <summary>

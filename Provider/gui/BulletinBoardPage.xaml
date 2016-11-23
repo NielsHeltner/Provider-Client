@@ -46,7 +46,7 @@
                             <GridViewColumnHeader Content="Type" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding CreationDate}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Oprettet den" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>

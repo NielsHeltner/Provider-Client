@@ -46,15 +46,15 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="Id">Id.</param>
         /// <param name="Owner">Owner.</param>
-        /// <param name="CreationDate">CreationDate.</param>
+        /// <param name="Date">Date.</param>
         /// <param name="Description">Description.</param>
         /// <param name="Type">Type.</param>
         /// <param name="Title">Title.</param>
-        public Post(int? Id = null, string Owner = null, DateTime? CreationDate = null, string Description = null, PostType Type = default(PostType), string Title = null)
+        public Post(int? Id = null, string Owner = null, DateTime? Date = null, string Description = null, PostType Type = default(PostType), string Title = null)
         {
             this.Id = Id;
             this.Owner = Owner;
-            this.CreationDate = CreationDate;
+            this.Date = Date;
             this.Description = Description;
             this.Type = Type;
             this.Title = Title;
@@ -71,10 +71,10 @@ namespace IO.Swagger.Model
         [DataMember(Name="owner", EmitDefaultValue=false)]
         public string Owner { get; set; }
         /// <summary>
-        /// Gets or Sets CreationDate
+        /// Gets or Sets Date
         /// </summary>
-        [DataMember(Name="creationDate", EmitDefaultValue=false)]
-        public DateTime? CreationDate { get; set; }
+        [DataMember(Name="date", EmitDefaultValue=false)]
+        public DateTime? Date { get; set; }
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
@@ -100,7 +100,7 @@ namespace IO.Swagger.Model
             sb.Append("class Post {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  Date: ").Append(Date).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
@@ -151,9 +151,9 @@ namespace IO.Swagger.Model
                     this.Owner.Equals(other.Owner)
                 ) && 
                 (
-                    this.CreationDate == other.CreationDate ||
-                    this.CreationDate != null &&
-                    this.CreationDate.Equals(other.CreationDate)
+                    this.Date == other.Date ||
+                    this.Date != null &&
+                    this.Date.Equals(other.Date)
                 ) && 
                 (
                     this.Description == other.Description ||
@@ -187,8 +187,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.Id.GetHashCode();
                 if (this.Owner != null)
                     hash = hash * 59 + this.Owner.GetHashCode();
-                if (this.CreationDate != null)
-                    hash = hash * 59 + this.CreationDate.GetHashCode();
+                if (this.Date != null)
+                    hash = hash * 59 + this.Date.GetHashCode();
                 if (this.Description != null)
                     hash = hash * 59 + this.Description.GetHashCode();
                 if (this.Type != null)

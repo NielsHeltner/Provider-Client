@@ -97,9 +97,9 @@ namespace Provider.domain
             return bulletinboard.ViewOfferPosts();
         }
 
-        public void CreatePost(string owner, string title, string description, PostType type)
+        public void CreatePost(string owner, DateTime date, string title, string description, PostType type)
         {
-            bulletinboard.AddPost(api.CreatePost(owner, title, description, type));
+            bulletinboard.AddPost(api.CreatePost(owner, date, title, description, type));
         }
 
         public void DeletePost(Post post)

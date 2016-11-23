@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
+using IO.Swagger.Model;
 using Provider.domain;
 using Provider.domain.bulletinboard;
+using Page = System.Windows.Controls.Page;
 
 namespace Provider.gui
 {
@@ -44,24 +45,24 @@ namespace Provider.gui
 
         private void CreatePost()
         {
-            IO.Swagger.Model.Post.TypesEnum typeOfPost;
+            PostType typeOfPost;
             if (WarningRB.IsChecked.Value)
             {
-                typeOfPost = IO.Swagger.Model.Post.TypesEnum.Warning;
+                typeOfPost = PostType.Warning;
             }
             else if (requestRB.IsChecked.Value)
             {
-                typeOfPost = IO.Swagger.Model.Post.TypesEnum.Request;
+                typeOfPost = PostType.Request;
             }
             else if (OfferRB.IsChecked.Value)
             {
-                typeOfPost = IO.Swagger.Model.Post.TypesEnum.Offer;
+                typeOfPost = PostType.Offer;
             }
             else
             {
-                typeOfPost = IO.Swagger.Model.Post.TypesEnum.NotAvailabe;
+                typeOfPost = PostType.NotAvailable;
             }
-                Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().Username, postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+                Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().Username, new DateTime(), postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
                 bulletinBoardPage.RefreshPage(true);
         }
 
