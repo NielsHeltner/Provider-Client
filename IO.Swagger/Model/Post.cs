@@ -50,7 +50,7 @@ namespace IO.Swagger.Model
         /// <param name="Description">Description.</param>
         /// <param name="Type">Type.</param>
         /// <param name="Title">Title.</param>
-        public Post(int? Id = null, string Owner = null, DateTime? Date = null, string Description = null, PostType Type = default(PostType), string Title = null)
+        public Post(int? Id = null, string Owner = null, DateTime? Date = null, string Description = null, PostType Type = PostType.NotAvailable, string Title = null)
         {
             this.Id = Id;
             this.Owner = Owner;

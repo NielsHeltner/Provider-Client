@@ -62,7 +62,7 @@ namespace Provider.gui
             {
                 typeOfPost = PostType.NotAvailable;
             }
-                Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().Username, new DateTime(), postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
+                Controller.instance.CreatePost(Controller.instance.GetLoggedInUser().Username, DateTime.Now.Date, postTitleTextBox.Text, PostDescriptionTextBox.Text, typeOfPost);
                 bulletinBoardPage.RefreshPage(true);
         }
 
