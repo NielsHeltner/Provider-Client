@@ -42,58 +42,21 @@ namespace IO.Swagger.Model
     public partial class Post :  IEquatable<Post>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Types
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum TypesEnum
-        {
-            
-            /// <summary>
-            /// Enum Warning for "Warning"
-            /// </summary>
-            [EnumMember(Value = "Warning")]
-            Warning,
-            
-            /// <summary>
-            /// Enum Request for "Request"
-            /// </summary>
-            [EnumMember(Value = "Request")]
-            Request,
-            
-            /// <summary>
-            /// Enum Offer for "Offer"
-            /// </summary>
-            [EnumMember(Value = "Offer")]
-            Offer,
-            
-            /// <summary>
-            /// Enum NotAvailabe for "NotAvailabe"
-            /// </summary>
-            [EnumMember(Value = "NotAvailabe")]
-            NotAvailabe
-        }
-
-        /// <summary>
-        /// Gets or Sets Types
-        /// </summary>
-        [DataMember(Name="types", EmitDefaultValue=false)]
-        public TypesEnum? Types { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="Post" /> class.
         /// </summary>
         /// <param name="Id">Id.</param>
         /// <param name="Owner">Owner.</param>
         /// <param name="CreationDate">CreationDate.</param>
         /// <param name="Description">Description.</param>
-        /// <param name="Types">Types.</param>
+        /// <param name="Type">Type.</param>
         /// <param name="Title">Title.</param>
-        public Post(int? Id = null, string Owner = null, DateTime? CreationDate = null, string Description = null, TypesEnum? Types = null, string Title = null)
+        public Post(int? Id = null, string Owner = null, DateTime? CreationDate = null, string Description = null, PostType Type = default(PostType), string Title = null)
         {
             this.Id = Id;
             this.Owner = Owner;
             this.CreationDate = CreationDate;
             this.Description = Description;
-            this.Types = Types;
+            this.Type = Type;
             this.Title = Title;
         }
         
@@ -118,6 +81,11 @@ namespace IO.Swagger.Model
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
         /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public PostType Type { get; set; }
+        /// <summary>
         /// Gets or Sets Title
         /// </summary>
         [DataMember(Name="title", EmitDefaultValue=false)]
@@ -134,7 +102,7 @@ namespace IO.Swagger.Model
             sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Types: ").Append(Types).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -193,9 +161,9 @@ namespace IO.Swagger.Model
                     this.Description.Equals(other.Description)
                 ) && 
                 (
-                    this.Types == other.Types ||
-                    this.Types != null &&
-                    this.Types.Equals(other.Types)
+                    this.Type == other.Type ||
+                    this.Type != null &&
+                    this.Type.Equals(other.Type)
                 ) && 
                 (
                     this.Title == other.Title ||
@@ -223,8 +191,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.CreationDate.GetHashCode();
                 if (this.Description != null)
                     hash = hash * 59 + this.Description.GetHashCode();
-                if (this.Types != null)
-                    hash = hash * 59 + this.Types.GetHashCode();
+                if (this.Type != null)
+                    hash = hash * 59 + this.Type.GetHashCode();
                 if (this.Title != null)
                     hash = hash * 59 + this.Title.GetHashCode();
                 return hash;

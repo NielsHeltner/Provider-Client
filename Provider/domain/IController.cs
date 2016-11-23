@@ -15,7 +15,7 @@ namespace Provider.domain
 
         void DeletePost(Post post);
 
-        void CreatePost(String owner, string title, string description, Post.TypesEnum type);
+        void CreatePost(String owner, string title, string description, PostType type);
 
         bool LogIn(string userName, string password);
 

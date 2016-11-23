@@ -20,11 +20,9 @@ namespace Provider.domain.bulletinboard
         /// "2" is requestPost
         /// "3" is offerPost
         /// </param>
-        public void CreatePost(string owner, string title, string description, Post.TypesEnum type)
+        public void AddPost(Post post)
         {
-            //Post post = new Post(owner, title, description, type);
-            //post.id = Database.instance.AddPost(owner, post);
-            //posts.Add(post);
+            posts.Add(post);
         }
 
         public void DeletePost(Post post)
@@ -41,7 +39,7 @@ namespace Provider.domain.bulletinboard
             //Database.instance.UpdatePost(post.owner, post);
         }
 
-        private List<Post> GetPosts(Post.TypesEnum type)
+        private List<Post> GetPosts(PostType type)
         {
             List<Post> postResults = new List<Post>();
             /*foreach (Post post in posts)
@@ -60,15 +58,15 @@ namespace Provider.domain.bulletinboard
 
         public List<Post> ViewWarningPosts()
         {
-            return GetPosts(Post.TypesEnum.Warning);
+            return GetPosts(PostType.Warning);
         }
         public List<Post> ViewRequestPosts()
         {
-            return GetPosts(Post.TypesEnum.Request);
+            return GetPosts(PostType.Request);
         }
         public List<Post> ViewOfferPosts()
         {
-            return GetPosts(Post.TypesEnum.Offer);
+            return GetPosts(PostType.Offer);
         }
     }
 }
