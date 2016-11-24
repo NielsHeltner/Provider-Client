@@ -34,8 +34,8 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            api = new ControllerApi("http://10.126.12.113:8080");
-            //api = new ControllerApi("http://127.0.0.1:8080");
+            //api = new ControllerApi("http://10.126.12.113:8080");
+            api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             pageManager.pages = api.GetSupplier();
             ViewAllPosts();
@@ -48,7 +48,6 @@ namespace Provider.domain
         
         public bool LogIn(string userName, string password)
         {
-
             try
             {
                 User user = api.Validate(userName, password);
@@ -57,14 +56,11 @@ namespace Provider.domain
                     userManager.loggedInUser = user;
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
             catch (ApiException e)
             {
-                return false;
+                throw new Exception(e.ToString());
             }
         }
 

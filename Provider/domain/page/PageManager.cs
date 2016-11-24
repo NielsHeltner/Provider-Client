@@ -14,7 +14,7 @@ namespace Provider.domain.page
             HashSet<Page> results = new HashSet<Page>();
             pages.AsParallel().ForAll(page =>
             {
-                if (page.Owner.ToLower().Contains(searchTerm.ToLower()))
+                if (page.Owner.ToLower().Contains(searchTerm))
                 {
                     results.Add(page);
                 }
