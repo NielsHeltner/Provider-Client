@@ -50,7 +50,7 @@ namespace IO.Swagger.Model
         /// <param name="Description">Description.</param>
         /// <param name="Type">Type.</param>
         /// <param name="Title">Title.</param>
-        public Post(int? Id = null, string Owner = null, DateTime? Date = null, string Description = null, PostType Type = PostType.NotAvailable, string Title = null)
+        public Post(int? Id = null, string Owner = null, string Date = null, string Description = null, PostType Type = PostType.NotAvailable, string Title = null)
         {
             this.Id = Id;
             this.Owner = Owner;
@@ -74,7 +74,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Date
         /// </summary>
         [DataMember(Name="date", EmitDefaultValue=false)]
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
         /// <summary>
         /// Gets or Sets Description
         /// </summary>

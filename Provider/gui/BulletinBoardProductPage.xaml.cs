@@ -23,7 +23,7 @@ namespace Provider.gui
             postTitel.Text = selectedItem.Title;
             postDesciption.Text = selectedItem.Description;
             postOwner.Text = selectedItem.Owner;
-            postDateLabel.Text = selectedItem.Date.ToString();
+            postDateLabel.Text = selectedItem.Date;
             typeOfPost.Text = selectedItem.Type.ToString();
             this.bulletinBoard = bulletinBoard;
             HideButtons();

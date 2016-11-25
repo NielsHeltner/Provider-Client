@@ -37,9 +37,7 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.12.113:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://10.126.28.1:8080");
-            pageManager.pages = api.GetSupplier();
-            ViewAllPosts();
+            api = new ControllerApi("http://10.126.12.113:8080");
         }
 
         public List<Page> GetPages()
@@ -55,6 +53,8 @@ namespace Provider.domain
                 if (user != null)
                 {
                     userManager.loggedInUser = user;
+                    GetSuppliers();
+                    ViewAllPosts();
                     return true;
                 }
                 return false;
@@ -73,6 +73,11 @@ namespace Provider.domain
         public User GetLoggedInUser()
         {
             return userManager.loggedInUser;
+        }
+
+        public void GetSuppliers()
+        {
+            pageManager.pages = api.GetSupplier();
         }
 
         public List<Post> ViewAllPosts()
@@ -94,7 +99,7 @@ namespace Provider.domain
             return bulletinboard.ViewOfferPosts();
         }
 
-        public void CreatePost(string owner, DateTime date, string title, string description, PostType type)
+        public void CreatePost(string owner, string title, string description, PostType type)
         {
             bulletinboard.AddPost(api.CreatePost(owner, title, description, type));
         }
@@ -107,7 +112,7 @@ namespace Provider.domain
 
         public void EditPost(Post post, string newDescription, string newTitle)
         {
-            bulletinboard.EditPost(post, newDescription, newTitle);
+            api.EditPost(post, newDescription, newTitle);
         }
 
         public void AddNoteToSupplier(string supplierName, string editor, string text)

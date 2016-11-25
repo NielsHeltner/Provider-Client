@@ -38,22 +38,27 @@
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Title}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"/>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Type}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Type" HorizontalContentAlignment="Left" MinWidth="100"/>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Oprettet den" HorizontalContentAlignment="Left" MinWidth="100"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Description}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Note" HorizontalContentAlignment="Left" MinWidth="150"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" MinWidth="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Type}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Type" HorizontalContentAlignment="Left" MinWidth="70"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Oprettet af" HorizontalContentAlignment="Left" MinWidth="100"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Oprettet den" HorizontalContentAlignment="Left" MinWidth="80"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
