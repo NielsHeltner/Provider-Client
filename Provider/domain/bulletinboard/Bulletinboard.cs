@@ -30,42 +30,22 @@ namespace Provider.domain.bulletinboard
             posts.Remove(post);
         }
 
-        public void EditPost(Post post, string newDescription, string newTitle)
-        {
-            //Post postFound = posts.Find(p => p == post);
-            //postFound.description = newDescription;
-            //postFound.title = newTitle;
-            //Database.instance.UpdatePost(post.owner, post);
-        }
-
-        private List<Post> GetPosts(PostType type)
+        public List<Post> GetPosts(PostType type)
         {
             List<Post> postResults = new List<Post>();
-            /*foreach (Post post in posts)
+            foreach (Post post in posts)
             {
-                if (post.type == type)
+                if (post.Type == type)
                 {
                     postResults.Add(post);
                 }
-            }*/
+            }
             return postResults;
         }
+
         public List<Post> ViewAllPosts()
         {
             return posts;
-        }
-
-        public List<Post> ViewWarningPosts()
-        {
-            return GetPosts(PostType.Warning);
-        }
-        public List<Post> ViewRequestPosts()
-        {
-            return GetPosts(PostType.Request);
-        }
-        public List<Post> ViewOfferPosts()
-        {
-            return GetPosts(PostType.Offer);
         }
     }
 }

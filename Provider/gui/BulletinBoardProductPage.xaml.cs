@@ -60,7 +60,8 @@ namespace Provider.gui
                 postTitel.Cursor = Cursors.IBeam;
                 postDesciption.Cursor = Cursors.IBeam;
                 editPostButton.Content = "Gem";
-            } else
+            }
+            else
             {
                 Controller.instance.EditPost(selectedItem, postDesciption.Text, postTitel.Text);
                 HideButtons();

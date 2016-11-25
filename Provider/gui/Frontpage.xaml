@@ -33,24 +33,30 @@
 
     <Grid Background="White">
         <Label x:Name="label" Content="Velkommen til Provider" Margin="40,42,0,0" VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
-        <ListView x:Name="offersListView" HorizontalAlignment="Left" Height="395" Margin="67,133,0,0" VerticalAlignment="Top" Width="530">
+        <ListView x:Name="OfferListView" HorizontalAlignment="Left" Height="395" Margin="67,133,0,0" VerticalAlignment="Top" Width="530">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Leverandører" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" Width="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Produkt" HorizontalContentAlignment="Left" Width="200"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="150"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Pris" HorizontalContentAlignment="Left" Width="100"/>
+                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Left" Width="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
@@ -58,25 +64,31 @@
         </ListView>
         <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="64,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
         <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="64,523,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="0" HorizontalAlignment="Left" Margin="136,524,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumberOfOfferPosts" Content="0" HorizontalAlignment="Left" Margin="136,524,0,0" VerticalAlignment="Top"/>
         <ListView x:Name="WarningListView" HorizontalAlignment="Left" Height="142" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
-                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Producent" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" Width="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
                     <GridViewColumn DisplayMemberBinding="{Binding Description}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="260"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="150"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding CreationDate}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="125"/>
+                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Left" Width="150"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
@@ -85,15 +97,21 @@
         <ListView x:Name="RequestListView" HorizontalAlignment="Left" Height="181" Margin="627,347,0,0" VerticalAlignment="Top" Width="555">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Forespørgsel" HorizontalContentAlignment="Left" Width="300"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" Width="150"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Pickups" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="250"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
@@ -102,12 +120,12 @@
         <Label x:Name="label1_Copy" Content="Advarsler" HorizontalAlignment="Left" Margin="624,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
         <Label x:Name="label1_Copy1" Content="Provias forespørgsler" HorizontalAlignment="Left" Margin="623,315,0,0" VerticalAlignment="Top" Width="184" FontSize="18" FontFamily="Yu Gothic UI"/>
         <Label x:Name="label2_Copy" Content="Antal opslag: " HorizontalAlignment="Left" Margin="623,523,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3_Copy" Content="0" HorizontalAlignment="Left" Margin="695,524,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumberOfRequestPosts" Content="0" HorizontalAlignment="Left" Margin="695,524,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="626,269,0,0" VerticalAlignment="Top"/>
         <Label x:Name="numberOfWarningPostLabel" Content="0" HorizontalAlignment="Left" Margin="698,270,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1131,277,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,529,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand" Foreground="#FF0C4A63"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1131,277,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand" Foreground="#FF0C4A63"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,529,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand" Foreground="#FF0C4A63"/>
         <Button x:Name="viewAllPostButton" Content="Se alle opslag" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="89" Click="ViewAllPost" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
 
     </Grid>

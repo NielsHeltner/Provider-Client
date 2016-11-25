@@ -34,8 +34,8 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            //api = new ControllerApi("http://10.126.12.113:8080");
-            api = new ControllerApi("http://127.0.0.1:8080");
+            api = new ControllerApi("http://10.126.12.113:8080");
+            //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
         }
 
@@ -87,15 +87,15 @@ namespace Provider.domain
 
         public List<Post> ViewWarningPosts()
         {
-            return bulletinboard.ViewWarningPosts();
+            return bulletinboard.GetPosts(PostType.Warning);
         }
         public List<Post> ViewRequestPosts()
         {
-            return bulletinboard.ViewRequestPosts();
+            return bulletinboard.GetPosts(PostType.Request);
         }
         public List<Post> ViewOfferPosts()
         {
-            return bulletinboard.ViewOfferPosts();
+            return bulletinboard.GetPosts(PostType.Offer);
         }
 
         public void CreatePost(string owner, string title, string description, PostType type)
