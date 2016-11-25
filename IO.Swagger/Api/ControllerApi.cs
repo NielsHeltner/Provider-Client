@@ -37,7 +37,7 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier
+        /// Adds a note to a supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -50,7 +50,7 @@ namespace IO.Swagger.Api
         void AddNoteToSupplier (string supplierName, string editor, string text);
 
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier
+        /// Adds a note to a supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -62,7 +62,7 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text);
         /// <summary>
-        /// Opretter en post.
+        /// Creates a post
         /// </summary>
         /// <remarks>
         /// 
@@ -76,7 +76,7 @@ namespace IO.Swagger.Api
         Post CreatePost (string owner, string title, string description, PostType type);
 
         /// <summary>
-        /// Opretter en post.
+        /// Creates a post
         /// </summary>
         /// <remarks>
         /// 
@@ -89,7 +89,7 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Post</returns>
         ApiResponse<Post> CreatePostWithHttpInfo (string owner, string title, string description, PostType type);
         /// <summary>
-        /// Sletter en eksisterende post.
+        /// Deletes a post
         /// </summary>
         /// <remarks>
         /// 
@@ -100,7 +100,7 @@ namespace IO.Swagger.Api
         void DeletePost (Post post);
 
         /// <summary>
-        /// Sletter en eksisterende post.
+        /// Deletes a post
         /// </summary>
         /// <remarks>
         /// 
@@ -110,7 +110,7 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePostWithHttpInfo (Post post);
         /// <summary>
-        /// Ændrer en eksisterende post.
+        /// Edits a posts
         /// </summary>
         /// <remarks>
         /// 
@@ -123,7 +123,7 @@ namespace IO.Swagger.Api
         void EditPost (Post post, string newDescription, string newTitle);
 
         /// <summary>
-        /// Ændrer en eksisterende post.
+        /// Edits a posts
         /// </summary>
         /// <remarks>
         /// 
@@ -135,7 +135,7 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> EditPostWithHttpInfo (Post post, string newDescription, string newTitle);
         /// <summary>
-        /// Henter all posts
+        /// Gets all posts
         /// </summary>
         /// <remarks>
         /// 
@@ -145,7 +145,7 @@ namespace IO.Swagger.Api
         List<Post> GetAllPosts ();
 
         /// <summary>
-        /// Henter all posts
+        /// Gets all posts
         /// </summary>
         /// <remarks>
         /// 
@@ -154,29 +154,50 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of List&lt;Post&gt;</returns>
         ApiResponse<List<Post>> GetAllPostsWithHttpInfo ();
         /// <summary>
-        /// Henter suppliers
+        /// Gets post by type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"> (optional)</param>
+        /// <returns>List&lt;Post&gt;</returns>
+        List<Post> GetPostById (PostType type = null);
+
+        /// <summary>
+        /// Gets post by type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"> (optional)</param>
+        /// <returns>ApiResponse of List&lt;Post&gt;</returns>
+        ApiResponse<List<Post>> GetPostByIdWithHttpInfo (PostType type = null);
+        /// <summary>
+        /// Gets all suppliers
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Page&gt;</returns>
-        List<Page> GetSupplier ();
+        List<Page> GetSuppliers ();
 
         /// <summary>
-        /// Henter suppliers
+        /// Gets all suppliers
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Page&gt;</returns>
-        ApiResponse<List<Page>> GetSupplierWithHttpInfo ();
+        ApiResponse<List<Page>> GetSuppliersWithHttpInfo ();
         /// <summary>
         /// Validate information
         /// </summary>
         /// <remarks>
-        /// Validate the users information
+        /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>
@@ -188,7 +209,7 @@ namespace IO.Swagger.Api
         /// Validate information
         /// </summary>
         /// <remarks>
-        /// Validate the users information
+        /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>
@@ -198,7 +219,7 @@ namespace IO.Swagger.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier
+        /// Adds a note to a supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -211,7 +232,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text);
 
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier
+        /// Adds a note to a supplier
         /// </summary>
         /// <remarks>
         /// 
@@ -223,7 +244,7 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text);
         /// <summary>
-        /// Opretter en post.
+        /// Creates a post
         /// </summary>
         /// <remarks>
         /// 
@@ -237,7 +258,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task<Post> CreatePostAsync (string owner, string title, string description, PostType type);
 
         /// <summary>
-        /// Opretter en post.
+        /// Creates a post
         /// </summary>
         /// <remarks>
         /// 
@@ -250,7 +271,7 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse (Post)</returns>
         System.Threading.Tasks.Task<ApiResponse<Post>> CreatePostAsyncWithHttpInfo (string owner, string title, string description, PostType type);
         /// <summary>
-        /// Sletter en eksisterende post.
+        /// Deletes a post
         /// </summary>
         /// <remarks>
         /// 
@@ -261,7 +282,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task DeletePostAsync (Post post);
 
         /// <summary>
-        /// Sletter en eksisterende post.
+        /// Deletes a post
         /// </summary>
         /// <remarks>
         /// 
@@ -271,7 +292,7 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeletePostAsyncWithHttpInfo (Post post);
         /// <summary>
-        /// Ændrer en eksisterende post.
+        /// Edits a posts
         /// </summary>
         /// <remarks>
         /// 
@@ -284,7 +305,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task EditPostAsync (Post post, string newDescription, string newTitle);
 
         /// <summary>
-        /// Ændrer en eksisterende post.
+        /// Edits a posts
         /// </summary>
         /// <remarks>
         /// 
@@ -296,7 +317,7 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> EditPostAsyncWithHttpInfo (Post post, string newDescription, string newTitle);
         /// <summary>
-        /// Henter all posts
+        /// Gets all posts
         /// </summary>
         /// <remarks>
         /// 
@@ -306,7 +327,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task<List<Post>> GetAllPostsAsync ();
 
         /// <summary>
-        /// Henter all posts
+        /// Gets all posts
         /// </summary>
         /// <remarks>
         /// 
@@ -315,29 +336,50 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse (List&lt;Post&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Post>>> GetAllPostsAsyncWithHttpInfo ();
         /// <summary>
-        /// Henter suppliers
+        /// Gets post by type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"> (optional)</param>
+        /// <returns>Task of List&lt;Post&gt;</returns>
+        System.Threading.Tasks.Task<List<Post>> GetPostByIdAsync (PostType type = null);
+
+        /// <summary>
+        /// Gets post by type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"> (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;Post&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Post>>> GetPostByIdAsyncWithHttpInfo (PostType type = null);
+        /// <summary>
+        /// Gets all suppliers
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Page&gt;</returns>
-        System.Threading.Tasks.Task<List<Page>> GetSupplierAsync ();
+        System.Threading.Tasks.Task<List<Page>> GetSuppliersAsync ();
 
         /// <summary>
-        /// Henter suppliers
+        /// Gets all suppliers
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Page&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSupplierAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSuppliersAsyncWithHttpInfo ();
         /// <summary>
         /// Validate information
         /// </summary>
         /// <remarks>
-        /// Validate the users information
+        /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>
@@ -349,7 +391,7 @@ namespace IO.Swagger.Api
         /// Validate information
         /// </summary>
         /// <remarks>
-        /// Validate the users information
+        /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>
@@ -469,7 +511,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier 
+        /// Adds a note to a supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -482,7 +524,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier 
+        /// Adds a note to a supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -552,7 +594,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier 
+        /// Adds a note to a supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -566,7 +608,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// TilfÃ¸jer en note til en supplier 
+        /// Adds a note to a supplier 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="supplierName"></param>
@@ -636,7 +678,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Opretter en post. 
+        /// Creates a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
@@ -651,7 +693,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Opretter en post. 
+        /// Creates a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
@@ -733,7 +775,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Opretter en post. 
+        /// Creates a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
@@ -749,7 +791,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Opretter en post. 
+        /// Creates a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="owner"></param>
@@ -831,7 +873,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Sletter en eksisterende post. 
+        /// Deletes a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -842,7 +884,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Sletter en eksisterende post. 
+        /// Deletes a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -909,7 +951,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Sletter en eksisterende post. 
+        /// Deletes a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -921,7 +963,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Sletter en eksisterende post. 
+        /// Deletes a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -988,7 +1030,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Ændrer en eksisterende post. 
+        /// Edits a posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -1001,7 +1043,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Ændrer en eksisterende post. 
+        /// Edits a posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -1078,7 +1120,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Ændrer en eksisterende post. 
+        /// Edits a posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -1092,7 +1134,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Ændrer en eksisterende post. 
+        /// Edits a posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="post"></param>
@@ -1169,7 +1211,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Henter all posts 
+        /// Gets all posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Post&gt;</returns>
@@ -1180,7 +1222,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Henter all posts 
+        /// Gets all posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Post&gt;</returns>
@@ -1235,7 +1277,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Henter all posts 
+        /// Gets all posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Post&gt;</returns>
@@ -1247,7 +1289,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Henter all posts 
+        /// Gets all posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Post&gt;)</returns>
@@ -1302,22 +1344,181 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Henter suppliers 
+        /// Gets post by type 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;Page&gt;</returns>
-        public List<Page> GetSupplier ()
+        /// <param name="type"> (optional)</param>
+        /// <returns>List&lt;Post&gt;</returns>
+        public List<Post> GetPostById (PostType type = null)
         {
-             ApiResponse<List<Page>> localVarResponse = GetSupplierWithHttpInfo();
+             ApiResponse<List<Post>> localVarResponse = GetPostByIdWithHttpInfo(type);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Henter suppliers 
+        /// Gets post by type 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"> (optional)</param>
+        /// <returns>ApiResponse of List&lt;Post&gt;</returns>
+        public ApiResponse< List<Post> > GetPostByIdWithHttpInfo (PostType type = null)
+        {
+
+            var localVarPath = "/Controller/GetPostByType";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (type != null && type.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(type); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = type; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetPostById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Post>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Post>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Post>)));
+            
+        }
+
+        /// <summary>
+        /// Gets post by type 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"> (optional)</param>
+        /// <returns>Task of List&lt;Post&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Post>> GetPostByIdAsync (PostType type = null)
+        {
+             ApiResponse<List<Post>> localVarResponse = await GetPostByIdAsyncWithHttpInfo(type);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets post by type 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"> (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;Post&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Post>>> GetPostByIdAsyncWithHttpInfo (PostType type = null)
+        {
+
+            var localVarPath = "/Controller/GetPostByType";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (type != null && type.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(type); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = type; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetPostById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Post>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Post>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Post>)));
+            
+        }
+
+        /// <summary>
+        /// Gets all suppliers 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Page&gt;</returns>
+        public List<Page> GetSuppliers ()
+        {
+             ApiResponse<List<Page>> localVarResponse = GetSuppliersWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets all suppliers 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Page&gt;</returns>
-        public ApiResponse< List<Page> > GetSupplierWithHttpInfo ()
+        public ApiResponse< List<Page> > GetSuppliersWithHttpInfo ()
         {
 
             var localVarPath = "/Controller/GetSuppliers";
@@ -1357,7 +1558,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetSupplier", localVarResponse);
+                Exception exception = ExceptionFactory("GetSuppliers", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1368,23 +1569,23 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Henter suppliers 
+        /// Gets all suppliers 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Page&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Page>> GetSupplierAsync ()
+        public async System.Threading.Tasks.Task<List<Page>> GetSuppliersAsync ()
         {
-             ApiResponse<List<Page>> localVarResponse = await GetSupplierAsyncWithHttpInfo();
+             ApiResponse<List<Page>> localVarResponse = await GetSuppliersAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Henter suppliers 
+        /// Gets all suppliers 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Page&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSupplierAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSuppliersAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/Controller/GetSuppliers";
@@ -1424,7 +1625,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetSupplier", localVarResponse);
+                Exception exception = ExceptionFactory("GetSuppliers", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1435,7 +1636,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Validate information Validate the users information
+        /// Validate information 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>
@@ -1448,7 +1649,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Validate information Validate the users information
+        /// Validate information 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>
@@ -1516,7 +1717,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Validate information Validate the users information
+        /// Validate information 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>
@@ -1530,7 +1731,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Validate information Validate the users information
+        /// Validate information 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="username">Username to login</param>

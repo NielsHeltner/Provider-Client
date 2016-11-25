@@ -77,7 +77,7 @@ namespace Provider.domain
 
         public void GetSuppliers()
         {
-            pageManager.pages = api.GetSupplier();
+            pageManager.pages = api.GetSuppliers();
         }
 
         public List<Post> ViewAllPosts()
