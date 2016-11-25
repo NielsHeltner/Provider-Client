@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using IO.Swagger.Model;
 
@@ -11,18 +12,18 @@ namespace Provider.domain.page
         public List<Page> Search(string searchTerm)
         {
             searchTerm = searchTerm.ToLower();
-            HashSet<Page> results = new HashSet<Page>();
+            ConcurrentDictionary<Page, byte> results = new ConcurrentDictionary<Page, byte>();
             pages.AsParallel().ForAll(page =>
             {
                 if (page.Owner.ToLower().Contains(searchTerm))
                 {
-                    results.Add(page);
+                    results.GetOrAdd(page, new byte());
                 }
                 page.Products.AsParallel().ForAll(product =>
                 {
                     if (product.ProductName.ToLower().Contains(searchTerm))
                     {
-                        results.Add(page);
+                        results.GetOrAdd(page, new byte());
                     }
                 });
             });
@@ -30,7 +31,7 @@ namespace Provider.domain.page
                                     .Where(page => page.Owner.ToLower().Contains(searchTerm))
                                     .ForAll(page => page.Products.AsParallel()
                                                                 .Where(product => product.ProductName.ToLower().Contains(searchTerm)));*/
-            return results.ToList();
+            return results.Keys.ToList();
         }
     }
 }
