@@ -89,6 +89,27 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Post</returns>
         ApiResponse<Post> CreatePostWithHttpInfo (string owner, string title, string description, PostType type);
         /// <summary>
+        /// Sletter en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        void DeletePost (Post post);
+
+        /// <summary>
+        /// Sletter en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeletePostWithHttpInfo (Post post);
+        /// <summary>
         /// Ændrer en eksisterende post.
         /// </summary>
         /// <remarks>
@@ -228,6 +249,27 @@ namespace IO.Swagger.Api
         /// <param name="type"></param>
         /// <returns>Task of ApiResponse (Post)</returns>
         System.Threading.Tasks.Task<ApiResponse<Post>> CreatePostAsyncWithHttpInfo (string owner, string title, string description, PostType type);
+        /// <summary>
+        /// Sletter en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeletePostAsync (Post post);
+
+        /// <summary>
+        /// Sletter en eksisterende post.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeletePostAsyncWithHttpInfo (Post post);
         /// <summary>
         /// Ændrer en eksisterende post.
         /// </summary>
@@ -650,9 +692,6 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain", 
-                "application/json", 
-                "text/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -751,9 +790,6 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain", 
-                "application/json", 
-                "text/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -792,6 +828,163 @@ namespace IO.Swagger.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Post) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Post)));
             
+        }
+
+        /// <summary>
+        /// Sletter en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        public void DeletePost (Post post)
+        {
+             DeletePostWithHttpInfo(post);
+        }
+
+        /// <summary>
+        /// Sletter en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeletePostWithHttpInfo (Post post)
+        {
+            // verify the required parameter 'post' is set
+            if (post == null)
+                throw new ApiException(400, "Missing required parameter 'post' when calling ControllerApi->DeletePost");
+
+            var localVarPath = "/Controller/DeletePost";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (post != null && post.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(post); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = post; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeletePost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Sletter en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeletePostAsync (Post post)
+        {
+             await DeletePostAsyncWithHttpInfo(post);
+
+        }
+
+        /// <summary>
+        /// Sletter en eksisterende post. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="post"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeletePostAsyncWithHttpInfo (Post post)
+        {
+            // verify the required parameter 'post' is set
+            if (post == null)
+                throw new ApiException(400, "Missing required parameter 'post' when calling ControllerApi->DeletePost");
+
+            var localVarPath = "/Controller/DeletePost";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (post != null && post.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(post); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = post; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeletePost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>

@@ -27,8 +27,7 @@ namespace Provider.domain.bulletinboard
 
         public void DeletePost(Post post)
         {
-            //Database.instance.DeletePost(post);
-            //posts.Remove(post);
+            posts.Remove(post);
         }
 
         public void EditPost(Post post, string newDescription, string newTitle)

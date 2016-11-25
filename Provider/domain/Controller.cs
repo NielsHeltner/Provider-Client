@@ -100,6 +100,7 @@ namespace Provider.domain
 
         public void DeletePost(Post post)
         {
+            api.DeletePost(post);
             bulletinboard.DeletePost(post);
         }
 
