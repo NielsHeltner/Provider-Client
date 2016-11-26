@@ -7,9 +7,6 @@
       mc:Ignorable="d"
       Title="BulletinBoardPage" Height="644" Width="1286">
     <Page.Resources>
-        <Style TargetType="ListViewItem">
-            <EventSetter Event="MouseDoubleClick" Handler="ViewPostInformation"/>
-        </Style>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
         <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>
         <Style TargetType="{x:Type Button}">
@@ -31,34 +28,127 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <DataTemplate x:Key="Header">
+            <StackPanel Orientation="Horizontal" Margin="-5" Height="30" Width="504">
+                <TextBlock Text="{Binding}" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            
+            <Setter Property="Background" Value="#0C4A63"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid SnapsToDevicePixels="True">
+                            <Border BorderThickness="0,1,1,1" BorderBrush="{TemplateBinding Border.BorderBrush}" 
+                 Background="{TemplateBinding Panel.Background}" Name="HeaderBorder">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition MaxHeight="7" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Rectangle Fill="#FFE3F7FF" Name="UpperHighlight" Visibility="Collapsed" />
+                                    <Border Padding="{TemplateBinding Control.Padding}" Grid.RowSpan="2">
+                                        <ContentPresenter RecognizesAccessKey="True" Content="{TemplateBinding ContentControl.Content}" 
+                         ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                         ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                         Name="HeaderContent" Margin="0,0,0,1" 
+                         HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                         VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                         SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1.000001"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type ListViewItem}">
+            <EventSetter Event="MouseDoubleClick" Handler="ViewPostInformation"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                            <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#eeeeee"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#e8e8e8"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#e0e0e0"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                                    <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                </Border>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
     <Grid  Background="White">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="470" Margin="50,64,0,0" VerticalAlignment="Top" Width="670">
+        <ListView x:Name="listView" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="470" Margin="50,64,0,0" VerticalAlignment="Top" Width="670" AlternationCount="2">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
+                <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" MinWidth="100"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="250">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" MinWidth="150"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Type}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Type}" Width="70">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Type" HorizontalContentAlignment="Left" MinWidth="70"/>
+                            <GridViewColumnHeader Content="Type" HorizontalContentAlignment="Left"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}" Width="100">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Oprettet af" HorizontalContentAlignment="Left" MinWidth="100"/>
+                            <GridViewColumnHeader Content="Oprettet af" HorizontalContentAlignment="Left"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Oprettet den" HorizontalContentAlignment="Left" MinWidth="80"/>
+                            <GridViewColumnHeader Content="Oprettet den" HorizontalContentAlignment="Left"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>

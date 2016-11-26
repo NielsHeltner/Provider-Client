@@ -29,103 +29,199 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <DataTemplate x:Key="Header">
+            <StackPanel Orientation="Horizontal" Margin="-5" Height="30" Width="504">
+                <TextBlock Text="{Binding}" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="#0C4A63"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid SnapsToDevicePixels="True">
+                            <Border BorderThickness="0,1,1,1" BorderBrush="{TemplateBinding Border.BorderBrush}" 
+                 Background="{TemplateBinding Panel.Background}" Name="HeaderBorder">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition MaxHeight="7" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Rectangle Fill="#FFE3F7FF" Name="UpperHighlight" Visibility="Collapsed" />
+                                    <Border Padding="{TemplateBinding Control.Padding}" Grid.RowSpan="2">
+                                        <ContentPresenter RecognizesAccessKey="True" Content="{TemplateBinding ContentControl.Content}" 
+                         ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                         ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                         Name="HeaderContent" Margin="0,0,0,1" 
+                         HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                         VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                         SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1.000001"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                            <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#eeeeee"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#e8e8e8"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#e0e0e0"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                                    <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                </Border>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Grid Background="White">
         <Label x:Name="label" Content="Velkommen til Provider" Margin="40,42,0,0" VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
-        <ListView x:Name="OfferListView" HorizontalAlignment="Left" Height="395" Margin="67,133,0,0" VerticalAlignment="Top" Width="530">
+        <ListView x:Name="OfferListView" HorizontalAlignment="Left" Height="395" Margin="47,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
+                <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" Width="100"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="100"/>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="64,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
-        <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="64,523,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="NumberOfOfferPosts" Content="0" HorizontalAlignment="Left" Margin="136,524,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="WarningListView" HorizontalAlignment="Left" Height="142" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost">
+        <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="44,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
+        <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="156,109,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumberOfOfferPosts" Content="0" HorizontalAlignment="Left" Margin="228,109,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="WarningListView" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="180" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost" AlternationCount="2">
             <ListView.View>
-                <GridView AllowsColumnReorder="False">
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
+                <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" Width="100"/>
+                            <GridViewColumnHeader Content="Titel"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Besked" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Owner}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}"  Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Leverandør"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}"  Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="100"/>
+                            <GridViewColumnHeader Content="Dato"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="RequestListView" HorizontalAlignment="Left" Height="181" Margin="627,347,0,0" VerticalAlignment="Top" Width="555">
+        <ListView x:Name="RequestListView" HorizontalAlignment="Left" Height="180" Margin="627,347,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}">
+                <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" Width="150"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}"  Width="250">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" Width="250"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" Width="100"/>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
         <Label x:Name="label1_Copy" Content="Advarsler" HorizontalAlignment="Left" Margin="624,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
-        <Label x:Name="label1_Copy1" Content="Provias forespørgsler" HorizontalAlignment="Left" Margin="623,315,0,0" VerticalAlignment="Top" Width="184" FontSize="18" FontFamily="Yu Gothic UI"/>
-        <Label x:Name="label2_Copy" Content="Antal opslag: " HorizontalAlignment="Left" Margin="623,523,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="NumberOfRequestPosts" Content="0" HorizontalAlignment="Left" Margin="695,524,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="626,269,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="numberOfWarningPostLabel" Content="0" HorizontalAlignment="Left" Margin="698,270,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="546,528,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand" Foreground="#FF0C4A63"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1131,277,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand" Foreground="#FF0C4A63"/>
-        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,529,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand" Foreground="#FF0C4A63"/>
+        <Label x:Name="label1_Copy1" Content="Provias forespørgsler" HorizontalAlignment="Left" Margin="625,319,0,0" VerticalAlignment="Top" Width="184" FontSize="18" FontFamily="Yu Gothic UI"/>
+        <Label x:Name="label2_Copy" Content="Antal opslag: " HorizontalAlignment="Left" Margin="804,325,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumberOfRequestPosts" Content="0" HorizontalAlignment="Left" Margin="877,325,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="713,109,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="numberOfWarningPostLabel" Content="0" HorizontalAlignment="Left" Margin="786,109,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="551,117,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand" Foreground="#FF0C4A63"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1130,117,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand" Foreground="#FF0C4A63"/>
+        <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,331,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand" Foreground="#FF0C4A63"/>
         <Button x:Name="viewAllPostButton" Content="Se alle opslag" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="89" Click="ViewAllPost" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
 
     </Grid>
