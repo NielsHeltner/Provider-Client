@@ -62,20 +62,19 @@ namespace Provider.gui
             searchText.Opacity = 0;
             searchTermTextBox.Opacity = 0;
             searchTermTextBox.IsEnabled = false;
+            searchButton.IsEnabled = false;
             showSuppliersButton.IsEnabled = false;
-            //homeButton.IsEnabled = false;
-            homeButton.Visibility = Visibility.Hidden;
+            homeButton.IsEnabled = false;
             loggedIn.IsEnabled = false;
             logout.IsEnabled = false;
             searchTermTextBox.IsEnabled = false;
-            searchButton.Visibility = Visibility.Hidden;
         }
         public void AnimateHeaderLogin()
         {
             //AnimateAfterImageCompleted();
 
             // Animate image logo 
-            DoubleAnimation imageAnimate = new DoubleAnimation(122, 0, new TimeSpan(0, 0, 2));
+            DoubleAnimation imageAnimate = new DoubleAnimation(150, 0, new TimeSpan(0, 0, 2));
             ElasticEase ease = new ElasticEase
             {
                 Springiness = 10,
@@ -115,13 +114,12 @@ namespace Provider.gui
             loggedIn.IsEnabled = true;
             logout.IsEnabled = true;
             searchTermTextBox.IsEnabled = true;
-            searchButton.Visibility = Visibility.Visible;
-            homeButton.Visibility = Visibility.Visible;
+            searchButton.IsEnabled = true;
         }
 
         private void AnimateHeaderLogout()
         {
-            DoubleAnimation da = new DoubleAnimation(0,122, new TimeSpan(0, 0, 2));
+            DoubleAnimation da = new DoubleAnimation(0,150, new TimeSpan(0, 0, 2));
             ElasticEase ease = new ElasticEase
             {
                 Springiness = 10,
