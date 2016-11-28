@@ -5,6 +5,8 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using Provider.domain;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Provider.gui
 {
@@ -150,6 +152,15 @@ namespace Provider.gui
         private void Search(object sender, RoutedEventArgs e)
         {
             _Search(searchTermTextBox.Text);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+           if(Controller.instance.GetLoggedInUser() != null) 
+            if (e.NewSize.Width < 1125)
+                image.Source = new BitmapImage(new Uri("../resources/P.png", UriKind.Relative));
+            else 
+                image.Source = new BitmapImage(new Uri("../resources/provider2.png", UriKind.Relative));
         }
     }
 }
