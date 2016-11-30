@@ -44,24 +44,50 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Product" /> class.
         /// </summary>
+        /// <param name="Producer">The producer of the product.</param>
         /// <param name="ProductName">The name of the product.</param>
+        /// <param name="ChemicalName">The chemical name of the product.</param>
+        /// <param name="MolWeight">The mol weight of the product.</param>
         /// <param name="Description">The description about the product.</param>
         /// <param name="Price">The price of the product.</param>
         /// <param name="Packaging">The packaging of the product.</param>
-        public Product(string ProductName = null, string Description = null, string Price = null, string Packaging = null)
+        /// <param name="DeliveryTime">The delivery time of the product.</param>
+        public Product(string Producer = null, string ProductName = null, string ChemicalName = null, string MolWeight = null, string Description = null, string Price = null, string Packaging = null, string DeliveryTime = null)
         {
+            this.Producer = Producer;
             this.ProductName = ProductName;
+            this.ChemicalName = ChemicalName;
+            this.MolWeight = MolWeight;
             this.Description = Description;
             this.Price = Price;
             this.Packaging = Packaging;
+            this.DeliveryTime = DeliveryTime;
         }
         
+        /// <summary>
+        /// The producer of the product
+        /// </summary>
+        /// <value>The producer of the product</value>
+        [DataMember(Name="producer", EmitDefaultValue=false)]
+        public string Producer { get; set; }
         /// <summary>
         /// The name of the product
         /// </summary>
         /// <value>The name of the product</value>
         [DataMember(Name="productName", EmitDefaultValue=false)]
         public string ProductName { get; set; }
+        /// <summary>
+        /// The chemical name of the product
+        /// </summary>
+        /// <value>The chemical name of the product</value>
+        [DataMember(Name="chemicalName", EmitDefaultValue=false)]
+        public string ChemicalName { get; set; }
+        /// <summary>
+        /// The mol weight of the product
+        /// </summary>
+        /// <value>The mol weight of the product</value>
+        [DataMember(Name="molWeight", EmitDefaultValue=false)]
+        public string MolWeight { get; set; }
         /// <summary>
         /// The description about the product
         /// </summary>
@@ -81,6 +107,12 @@ namespace IO.Swagger.Model
         [DataMember(Name="packaging", EmitDefaultValue=false)]
         public string Packaging { get; set; }
         /// <summary>
+        /// The delivery time of the product
+        /// </summary>
+        /// <value>The delivery time of the product</value>
+        [DataMember(Name="deliveryTime", EmitDefaultValue=false)]
+        public string DeliveryTime { get; set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -88,10 +120,14 @@ namespace IO.Swagger.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Product {\n");
+            sb.Append("  Producer: ").Append(Producer).Append("\n");
             sb.Append("  ProductName: ").Append(ProductName).Append("\n");
+            sb.Append("  ChemicalName: ").Append(ChemicalName).Append("\n");
+            sb.Append("  MolWeight: ").Append(MolWeight).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  Packaging: ").Append(Packaging).Append("\n");
+            sb.Append("  DeliveryTime: ").Append(DeliveryTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -129,9 +165,24 @@ namespace IO.Swagger.Model
 
             return 
                 (
+                    this.Producer == other.Producer ||
+                    this.Producer != null &&
+                    this.Producer.Equals(other.Producer)
+                ) && 
+                (
                     this.ProductName == other.ProductName ||
                     this.ProductName != null &&
                     this.ProductName.Equals(other.ProductName)
+                ) && 
+                (
+                    this.ChemicalName == other.ChemicalName ||
+                    this.ChemicalName != null &&
+                    this.ChemicalName.Equals(other.ChemicalName)
+                ) && 
+                (
+                    this.MolWeight == other.MolWeight ||
+                    this.MolWeight != null &&
+                    this.MolWeight.Equals(other.MolWeight)
                 ) && 
                 (
                     this.Description == other.Description ||
@@ -147,6 +198,11 @@ namespace IO.Swagger.Model
                     this.Packaging == other.Packaging ||
                     this.Packaging != null &&
                     this.Packaging.Equals(other.Packaging)
+                ) && 
+                (
+                    this.DeliveryTime == other.DeliveryTime ||
+                    this.DeliveryTime != null &&
+                    this.DeliveryTime.Equals(other.DeliveryTime)
                 );
         }
 
@@ -161,14 +217,22 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.Producer != null)
+                    hash = hash * 59 + this.Producer.GetHashCode();
                 if (this.ProductName != null)
                     hash = hash * 59 + this.ProductName.GetHashCode();
+                if (this.ChemicalName != null)
+                    hash = hash * 59 + this.ChemicalName.GetHashCode();
+                if (this.MolWeight != null)
+                    hash = hash * 59 + this.MolWeight.GetHashCode();
                 if (this.Description != null)
                     hash = hash * 59 + this.Description.GetHashCode();
                 if (this.Price != null)
                     hash = hash * 59 + this.Price.GetHashCode();
                 if (this.Packaging != null)
                     hash = hash * 59 + this.Packaging.GetHashCode();
+                if (this.DeliveryTime != null)
+                    hash = hash * 59 + this.DeliveryTime.GetHashCode();
                 return hash;
             }
         }
