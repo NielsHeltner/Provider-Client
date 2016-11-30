@@ -45,11 +45,17 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="Page" /> class.
         /// </summary>
         /// <param name="Owner">The owner of the page &#x3D;&gt; The supplier.</param>
+        /// <param name="Description">The description of the page owner.</param>
+        /// <param name="ContactInformation">The contactinformation of the page owner.</param>
+        /// <param name="Location">The location of the page owner.</param>
         /// <param name="Products">The suppliers products.</param>
         /// <param name="Note">Note.</param>
-        public Page(string Owner = null, List<Product> Products = null, Note Note = null)
+        public Page(string Owner = null, string Description = null, string ContactInformation = null, string Location = null, List<Product> Products = null, Note Note = null)
         {
             this.Owner = Owner;
+            this.Description = Description;
+            this.ContactInformation = ContactInformation;
+            this.Location = Location;
             this.Products = Products;
             this.Note = Note;
         }
@@ -60,6 +66,24 @@ namespace IO.Swagger.Model
         /// <value>The owner of the page &#x3D;&gt; The supplier</value>
         [DataMember(Name="owner", EmitDefaultValue=false)]
         public string Owner { get; set; }
+        /// <summary>
+        /// The description of the page owner
+        /// </summary>
+        /// <value>The description of the page owner</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
+        /// <summary>
+        /// The contactinformation of the page owner
+        /// </summary>
+        /// <value>The contactinformation of the page owner</value>
+        [DataMember(Name="contactInformation", EmitDefaultValue=false)]
+        public string ContactInformation { get; set; }
+        /// <summary>
+        /// The location of the page owner
+        /// </summary>
+        /// <value>The location of the page owner</value>
+        [DataMember(Name="location", EmitDefaultValue=false)]
+        public string Location { get; set; }
         /// <summary>
         /// The suppliers products
         /// </summary>
@@ -80,6 +104,9 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class Page {\n");
             sb.Append("  Owner: ").Append(Owner).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ContactInformation: ").Append(ContactInformation).Append("\n");
+            sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  Products: ").Append(Products).Append("\n");
             sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
@@ -124,6 +151,21 @@ namespace IO.Swagger.Model
                     this.Owner.Equals(other.Owner)
                 ) && 
                 (
+                    this.Description == other.Description ||
+                    this.Description != null &&
+                    this.Description.Equals(other.Description)
+                ) && 
+                (
+                    this.ContactInformation == other.ContactInformation ||
+                    this.ContactInformation != null &&
+                    this.ContactInformation.Equals(other.ContactInformation)
+                ) && 
+                (
+                    this.Location == other.Location ||
+                    this.Location != null &&
+                    this.Location.Equals(other.Location)
+                ) && 
+                (
                     this.Products == other.Products ||
                     this.Products != null &&
                     this.Products.SequenceEqual(other.Products)
@@ -148,6 +190,12 @@ namespace IO.Swagger.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Owner != null)
                     hash = hash * 59 + this.Owner.GetHashCode();
+                if (this.Description != null)
+                    hash = hash * 59 + this.Description.GetHashCode();
+                if (this.ContactInformation != null)
+                    hash = hash * 59 + this.ContactInformation.GetHashCode();
+                if (this.Location != null)
+                    hash = hash * 59 + this.Location.GetHashCode();
                 if (this.Products != null)
                     hash = hash * 59 + this.Products.GetHashCode();
                 if (this.Note != null)
