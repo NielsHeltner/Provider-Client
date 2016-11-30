@@ -142,10 +142,7 @@ namespace Provider.domain
 
         public void CreateProduct(string name, string description, string price, string package)
         {
-            pageManager.pages.Find(page.owner== GetLoggedInUser().Username);
-            pageManager.pages.Find(Page.);
-            GetLoggedInUser();
-            new Product(name, description, price, package);
+            pageManager.pages.Find(page => page.Owner == GetLoggedInUser().Username).Products.Add(new Product(name, description, price, package));
         }
 
         public void DeleteProduct(Product product)
