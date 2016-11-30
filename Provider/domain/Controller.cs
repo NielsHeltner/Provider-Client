@@ -125,12 +125,13 @@ namespace Provider.domain
             return pageManager.Search(searchTerm);
         }
 
-        public void EditProduct(Product product)
+        public void EditProduct(Product product, string newProductName, string newChemicalName, string newMolWeight,
+            string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
         {
 
             if ((GetLoggedInUser().Username == product.Producer) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
             {
-
+                //api.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime));
             }
             else
             {
@@ -143,13 +144,14 @@ namespace Provider.domain
 
         public void CreateProduct(string ProductName, string ChemicalName, string MolWeight, string Description, string Price, string Packaging, string DeliveryTime)
         {
-            pageManager.pages.Find(page => page.Owner == GetLoggedInUser().Username).Products.Add(new Product(ProductName, ChemicalName, MolWeight, Description, Price, Packaging, DeliveryTime));
+            //pageManager.pages.Find(page => page.Owner == GetLoggedInUser().Username).Products.Add(api.CreateProduct(ProductName, ChemicalName, MolWeight, Description, Price, Packaging, DeliveryTime));
         }
 
         public void DeleteProduct(Product product)
         {
             if ((GetLoggedInUser().Username == product.Producer) || (GetLoggedInUser().Rights == User.RightsEnum.Admin))
             {
+                //api.DeleteProduct(product);
                 pageManager.pages.Find(page => page.Owner == product.Producer).Products.Remove(product);
             }
             else
