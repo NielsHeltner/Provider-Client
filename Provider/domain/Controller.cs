@@ -124,5 +124,42 @@ namespace Provider.domain
         {
             return pageManager.Search(searchTerm);
         }
+
+        public void EditProduct(Product product)
+        {
+
+            if ((GetLoggedInUser() == GetLoggedInUser() /*product.producer*/) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
+            {
+
+            }
+            else
+            {
+                //Some error since user not allowed to use this function
+            }
+
+
+        }
+
+        public void CreateProduct(string name, string description, string price, string package)
+        {
+            pageManager.pages.Find(page.owner== GetLoggedInUser().Username);
+            pageManager.pages.Find(Page.);
+            GetLoggedInUser();
+            new Product(name, description, price, package);
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            if ((GetLoggedInUser() == GetLoggedInUser() /*product.producer*/) || (GetLoggedInUser().Rights == User.RightsEnum.Admin))
+            {
+
+            }
+            else
+            {
+                //Some error since user not allowed to use this function
+            }
+
+        }
+
     }
 }
