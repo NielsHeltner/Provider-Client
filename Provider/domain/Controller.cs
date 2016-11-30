@@ -128,7 +128,7 @@ namespace Provider.domain
         public void EditProduct(Product product)
         {
 
-            if ((GetLoggedInUser() == GetLoggedInUser() /*product.producer*/) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
+            if ((GetLoggedInUser().Username == product.Producer) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
             {
 
             }
@@ -139,15 +139,16 @@ namespace Provider.domain
 
 
         }
+        
 
-        public void CreateProduct(string name, string description, string price, string package)
+        public void CreateProduct(string ProductName, string ChemicalName, string MolWeight, string Description, string Price, string Packaging, string DeliveryTime)
         {
-            pageManager.pages.Find(page => page.Owner == GetLoggedInUser().Username).Products.Add(new Product(name, description, price, package));
+            pageManager.pages.Find(page => page.Owner == GetLoggedInUser().Username).Products.Add(new Product(ProductName, ChemicalName, MolWeight, Description, Price, Packaging, DeliveryTime));
         }
 
         public void DeleteProduct(Product product)
         {
-            if ((GetLoggedInUser() == GetLoggedInUser() /*product.producer*/) || (GetLoggedInUser().Rights == User.RightsEnum.Admin))
+            if ((GetLoggedInUser().Username == product.Producer) || (GetLoggedInUser().Rights == User.RightsEnum.Admin))
             {
 
             }
