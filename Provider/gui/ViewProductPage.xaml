@@ -1,0 +1,21 @@
+﻿<Page x:Class="Provider.gui.ViewProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Provider.gui"
+      mc:Ignorable="d" 
+      d:DesignHeight="540" d:DesignWidth="540"
+      Title="ViewProductPage" Width="421">
+
+    <Grid Width="421" Height="540" Background="White">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="31,68,0,0" TextWrapping="Wrap" Text="Produkt Navn:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="31,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"><Run Text="Kemiske "/><Run Text="Navn:"/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="31,165,0,0" TextWrapping="Wrap" Text="Mol Vægt:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="31,216,0,0" TextWrapping="Wrap" Text="Pris:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="31,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Text="Emballage:"/>
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="31,313,0,0" TextWrapping="Wrap" Text="Beskrivelse:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Rectangle Fill="#FFD8D8D8" HorizontalAlignment="Left" Height="264" Margin="146,68,0,0" VerticalAlignment="Top" Width="4"/>
+
+    </Grid>
+</Page>

@@ -46,9 +46,11 @@
 
                 </GridView>
             </ListView.View>
+            <Frame x:Name="frame1" Content="Frame" Height="100" Width="100"/>
         </ListView>
         <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Height="564" Width="659" FontSize="36">
             <Frame x:Name="frame" HorizontalAlignment="Left" Height="499" Margin="10,0,0,0" VerticalAlignment="Top" Width="626" FontFamily="Yu Gothic UI"/>
         </GroupBox>
+        <Frame x:Name="frame2" Content="Frame" HorizontalAlignment="Left" Height="540" Margin="763,24,0,0" VerticalAlignment="Top" Width="421"/>
     </Grid>
 </Page>

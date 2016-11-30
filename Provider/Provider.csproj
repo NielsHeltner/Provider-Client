@@ -130,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="gui\ViewProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gui\SupplierGroupBox.xaml.cs">
@@ -140,6 +144,9 @@
     </Compile>
     <Compile Include="gui\SupplierInformation.xaml.cs">
       <DependentUpon>SupplierInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="gui\ViewProductPage.xaml.cs">
+      <DependentUpon>ViewProductPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
