@@ -26,19 +26,19 @@
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="763,24,0,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding productName}">
+                    <GridViewColumn DisplayMemberBinding="{Binding ProductName}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Produkt" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding deliveryTime}">
+                    <GridViewColumn DisplayMemberBinding="{Binding DeliveryTime}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Leveringstid" HorizontalContentAlignment="Left" MinWidth="140"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding packaging}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Packaging}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Emballage" HorizontalContentAlignment="Left" MinWidth="100"/>
                         </GridViewColumn.Header>
