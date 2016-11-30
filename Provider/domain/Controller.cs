@@ -150,7 +150,7 @@ namespace Provider.domain
         {
             if ((GetLoggedInUser().Username == product.Producer) || (GetLoggedInUser().Rights == User.RightsEnum.Admin))
             {
-
+                pageManager.pages.Find(page => page.Owner == product.Producer).Products.Remove(product);
             }
             else
             {
