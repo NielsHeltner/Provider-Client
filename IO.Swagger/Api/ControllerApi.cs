@@ -246,9 +246,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns></returns>
-        void GetPDF (int? productId, System.IO.Stream file);
+        /// <returns>System.IO.Stream</returns>
+        System.IO.Stream GetPDF (int? productId);
 
         /// <summary>
         /// Get the specific PDF for the product
@@ -258,9 +257,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetPDFWithHttpInfo (int? productId, System.IO.Stream file);
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        ApiResponse<System.IO.Stream> GetPDFWithHttpInfo (int? productId);
         /// <summary>
         /// Gets all suppliers
         /// </summary>
@@ -515,9 +513,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetPDFAsync (int? productId, System.IO.Stream file);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetPDFAsync (int? productId);
 
         /// <summary>
         /// Get the specific PDF for the product
@@ -527,9 +524,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetPDFAsyncWithHttpInfo (int? productId, System.IO.Stream file);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPDFAsyncWithHttpInfo (int? productId);
         /// <summary>
         /// Gets all suppliers
         /// </summary>
@@ -2111,11 +2107,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns></returns>
-        public void GetPDF (int? productId, System.IO.Stream file)
+        /// <returns>System.IO.Stream</returns>
+        public System.IO.Stream GetPDF (int? productId)
         {
-             GetPDFWithHttpInfo(productId, file);
+             ApiResponse<System.IO.Stream> localVarResponse = GetPDFWithHttpInfo(productId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2123,16 +2119,12 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetPDFWithHttpInfo (int? productId, System.IO.Stream file)
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        public ApiResponse< System.IO.Stream > GetPDFWithHttpInfo (int? productId)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
                 throw new ApiException(400, "Missing required parameter 'productId' when calling ControllerApi->GetPDF");
-            // verify the required parameter 'file' is set
-            if (file == null)
-                throw new ApiException(400, "Missing required parameter 'file' when calling ControllerApi->GetPDF");
 
             var localVarPath = "/Controller/GetPDF";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2165,7 +2157,6 @@ namespace IO.Swagger.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
             if (productId != null) localVarQueryParams.Add("productId", Configuration.ApiClient.ParameterToString(productId)); // query parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
 
 
             // make the HTTP request
@@ -2181,10 +2172,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<System.IO.Stream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (System.IO.Stream) Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
+            
         }
 
         /// <summary>
@@ -2192,11 +2183,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetPDFAsync (int? productId, System.IO.Stream file)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetPDFAsync (int? productId)
         {
-             await GetPDFAsyncWithHttpInfo(productId, file);
+             ApiResponse<System.IO.Stream> localVarResponse = await GetPDFAsyncWithHttpInfo(productId);
+             return localVarResponse.Data;
 
         }
 
@@ -2205,16 +2196,12 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
-        /// <param name="file">PDF file that&#39;s returned</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetPDFAsyncWithHttpInfo (int? productId, System.IO.Stream file)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPDFAsyncWithHttpInfo (int? productId)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
                 throw new ApiException(400, "Missing required parameter 'productId' when calling ControllerApi->GetPDF");
-            // verify the required parameter 'file' is set
-            if (file == null)
-                throw new ApiException(400, "Missing required parameter 'file' when calling ControllerApi->GetPDF");
 
             var localVarPath = "/Controller/GetPDF";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2247,7 +2234,6 @@ namespace IO.Swagger.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
             if (productId != null) localVarQueryParams.Add("productId", Configuration.ApiClient.ParameterToString(productId)); // query parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
 
 
             // make the HTTP request
@@ -2263,10 +2249,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<System.IO.Stream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (System.IO.Stream) Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
+            
         }
 
         /// <summary>
