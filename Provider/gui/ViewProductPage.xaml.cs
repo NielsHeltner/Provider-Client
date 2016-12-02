@@ -21,7 +21,8 @@ namespace Provider.gui
     /// </summary>
     public partial class ViewProductPage : Page
     {
-        public ViewProductPage(Product p)
+        private SupplierInformation supplierInformationPage;
+        public ViewProductPage(Product p, SupplierInformation supplierInformationPage)
         {
             InitializeComponent();
             productNameTextBox.Text = p.ProductName;
@@ -30,11 +31,12 @@ namespace Provider.gui
             PriceTextBox.Text = p.Price;
             PacketingTextBox.Text = p.Packaging;
             discriptionTextBox.Text = p.Description;
+            this.supplierInformationPage = supplierInformationPage;
         }
 
         private void BackToListView(object sender, RoutedEventArgs e)
         {
-
+            supplierInformationPage.Reloadpage();
         }
 
         private void OpenPDFBotton(object sender, RoutedEventArgs e)

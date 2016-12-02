@@ -8,6 +8,9 @@
       d:DesignHeight="659" d:DesignWidth="1275"
       Title="Page">
     <Page.Resources>
+        <Style TargetType="{x:Type ListView}" >
+            <EventSetter Event="MouseDoubleClick" Handler="GoToProduct"/>
+        </Style>
         <DataTemplate x:Key="HeaderTemplateArrowUp">
             <DockPanel LastChildFill="True" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GridViewColumnHeader}}}">
                 <Path x:Name="arrowUp" StrokeThickness="1" Fill="Gray" Data="M 5,10 L 15,10 L 10,5 L 5,10" DockPanel.Dock="Right" Width="20" HorizontalAlignment="Right" Margin="5,0,5,0" SnapsToDevicePixels="True" />
@@ -23,7 +26,7 @@
     </Page.Resources>
 
     <Grid Background="White">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="763,24,0,0" SelectionChanged="listView_SelectionChanged" MouseDoubleClick="GoToProduct">
+        <ListView x:Name="ProductsListView" HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="421" GridViewColumnHeader.Click="SortProductInformation" Margin="763,24,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding ProductName}">
@@ -50,6 +53,8 @@
         <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Height="564" Width="659" FontSize="36">
             <Frame x:Name="frame" HorizontalAlignment="Left" Height="499" Margin="10,0,0,0" VerticalAlignment="Top" Width="626" FontFamily="Yu Gothic UI"/>
         </GroupBox>
-        <Frame x:Name="productFrame" Content="Frame" HorizontalAlignment="Left" Height="540" Margin="781,72,0,0" VerticalAlignment="Top" Width="421" Navigated="frame2_Navigated"/>
+        <Frame x:Name="productFrame" Content="Frame" HorizontalAlignment="Left" Height="555" Margin="763,14,0,0" VerticalAlignment="Top" Width="421" />
     </Grid>
+
+
 </Page>

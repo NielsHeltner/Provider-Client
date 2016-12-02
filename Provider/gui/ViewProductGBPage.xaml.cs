@@ -21,10 +21,10 @@ namespace Provider.gui
     /// </summary>
     public partial class ViewProductGBPage : Page
     {
-        public ViewProductGBPage(Product p)
+        public ViewProductGBPage(Product product, SupplierInformation supplierInformationPage)
         {
             InitializeComponent();
-            frame.Content = new ViewProductPage(p);
+            frame.Content = new ViewProductPage(product, supplierInformationPage);
         }
     }
 }

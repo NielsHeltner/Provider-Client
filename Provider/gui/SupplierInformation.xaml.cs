@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.ComponentModel;
+using System.Windows.Input;
 using IO.Swagger.Model;
 using Provider.domain.page;
 using Page = System.Windows.Controls.Page;
@@ -22,7 +23,8 @@ namespace Provider.gui
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
             products2 = page.Products;
-            listView.ItemsSource = products2;
+            ProductsListView.ItemsSource = products2;
+            productFrame.Visibility = Visibility.Collapsed;
         }
 
         private void SortProductInformation(object sender, RoutedEventArgs e)
@@ -71,7 +73,7 @@ namespace Provider.gui
 
         private void Sort(string sortBy, ListSortDirection direction)
         {
-            ICollectionView dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
+            ICollectionView dataView = CollectionViewSource.GetDefaultView(ProductsListView.ItemsSource);
             dataView.SortDescriptions.Clear();
             if (sortBy.Equals("Produkt"))
             {
@@ -90,9 +92,15 @@ namespace Provider.gui
             dataView.Refresh();
         }
 
-        private void GoToProduct(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void GoToProduct(object sender, MouseButtonEventArgs e)
         {
-            productFrame.Content = new ViewProductGBPage((Product)listView.SelectedItem);
+            productFrame.Visibility = Visibility.Visible;
+            productFrame.Content = new ViewProductGBPage((Product)ProductsListView.SelectedItem, this);
+        }
+
+        public void Reloadpage()
+        {
+            productFrame.Visibility = Visibility.Collapsed;
         }
     }
 }
