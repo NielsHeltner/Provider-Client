@@ -8,7 +8,7 @@
       d:DesignHeight="540" d:DesignWidth="540"
       Title="ViewProductPage" Width="421">
 
-    <Grid Width="421" Height="540" Background="White">
+    <Grid Width="421" Background="White" Margin="0,0,0,-16">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="31,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"><Run Text="Produkt "/><Run Text="n"/><Run Text="avn:"/></TextBlock>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="31,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"><Run Text="Kemiske "/><Run Text="n"/><Run Text="avn:"/></TextBlock>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="31,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"><Run Text="Mol "/><Run Text="v"/><Run Text="ægt:"/></TextBlock>

@@ -41,6 +41,7 @@ namespace Provider.gui
 
         private void OpenPDFBotton(object sender, RoutedEventArgs e)
         {
+            //TODO finde ud af hvordan vi hånter pdf...
 
         }
     }
