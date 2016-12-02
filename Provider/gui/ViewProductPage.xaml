@@ -15,15 +15,14 @@
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="31,216,0,0" TextWrapping="Wrap" Text="Pris:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="31,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Text="Emballage:"/>
         <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="31,313,0,0" TextWrapping="Wrap" Text="Beskrivelse:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="264" Margin="146,68,0,0" VerticalAlignment="Top" Width="4"/>
         <Button x:Name="BackButton" Content="Tilbage" HorizontalAlignment="Left" Margin="31,458,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="BackToListView"/>
         <Button Content="Åbn PDF" HorizontalAlignment="Left" Margin="123,458,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="OpenPDFBotton"/>
-        <TextBox x:Name="productNameTextBox" HorizontalAlignment="Left" Height="23" Margin="174,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="chemicalNameTextBox" HorizontalAlignment="Left" Height="23" Margin="174,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="MolValueTextBox" HorizontalAlignment="Left" Height="23" Margin="174,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="174,215,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="PacketingTextBox" HorizontalAlignment="Left" Height="23" Margin="174,264,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="discriptionTextBox" HorizontalAlignment="Left" Height="23" Margin="174,312,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <TextBox x:Name="productNameTextBox" Height="23" Margin="174,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="{x:Null}" FontSize="14" HorizontalAlignment="Left" Width="237" IsReadOnly="True"/>
+        <TextBox x:Name="chemicalNameTextBox" HorizontalAlignment="Left" Height="23" Margin="174,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="MolValueTextBox" HorizontalAlignment="Left" Height="23" Margin="174,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="174,215,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="PacketingTextBox" HorizontalAlignment="Left" Height="23" Margin="174,264,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="discriptionTextBox" HorizontalAlignment="Left" Height="92" Margin="174,312,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
 
     </Grid>
 </Page>
