@@ -5,7 +5,6 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using Provider.domain;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Provider.gui
@@ -15,152 +14,181 @@ namespace Provider.gui
     /// </summary>
     public partial class MainWindow : Window
     {
-        private BulletinBoardPage bulletinBoardPage;
-        private Frontpage frontpage;
-        private LogIn logIn;
+        private BulletinBoardPage BulletinBoardPage;
+        private Frontpage Frontpage;
+        private LogIn LogIn;
         
         public MainWindow()
         {  
             InitializeComponent();
             Refresh();
-            frame.Content = logIn;
+            Frame.Content = LogIn;
             SetVisibilityToHidden();
-            frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            Frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
         public void Refresh()
         {
-            bulletinBoardPage = new BulletinBoardPage();
-            frontpage = new Frontpage(frame, bulletinBoardPage);
-            logIn = new LogIn(frame, this, frontpage);
+            BulletinBoardPage = new BulletinBoardPage();
+            Frontpage = new Frontpage(Frame, BulletinBoardPage);
+            LogIn = new LogIn(Frame, this, Frontpage);
         }
 
         private void GoToFrontpage(object sender, RoutedEventArgs e)
         {
-            frame.Content = frontpage;
-            frontpage.RefreshFrontPage();
+            Frame.Content = Frontpage;
+            Frontpage.RefreshFrontPage();
         }
 
         private void GetSupplierPages(object sender, RoutedEventArgs e)
         {
-            frame.Content = new SupplierList(frame, Controller.instance.GetPages());
+            Frame.Content = new SupplierList(Frame, Controller.instance.GetPages());
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
             Controller.instance.LogOut();
-            frame.Content = logIn;
+            Frame.Content = LogIn;
             SetVisibilityToHidden();
             AnimateHeaderLogout();
         }
 
         private void SetVisibilityToHidden()
         {
-            showSuppliersButton.Opacity = 0;
-            searchButton.Opacity = 0;
-            homeButton.Opacity = 0;
-            loggedIn.Opacity = 0;
-            logout.Opacity = 0;
-            searchText.Opacity = 0;
-            searchTermTextBox.Opacity = 0;
-            searchTermTextBox.IsEnabled = false;
-            searchButton.IsEnabled = false;
-            showSuppliersButton.IsEnabled = false;
-            homeButton.IsEnabled = false;
-            loggedIn.IsEnabled = false;
-            logout.IsEnabled = false;
-            searchTermTextBox.IsEnabled = false;
+            ShowSuppliersButton.Opacity = 0;
+            ShowSupplierButton.Opacity = 0;
+            SearchButton.Opacity = 0;
+            HomeButton.Opacity = 0;
+            LoggedIn.Opacity = 0;
+            Logout.Opacity = 0;
+            SearchText.Opacity = 0;
+            SearchTermTextBox.Opacity = 0;
+            SearchTermTextBox.IsEnabled = false;
+            SearchButton.IsEnabled = false;
+            ShowSuppliersButton.IsEnabled = false;
+            ShowSupplierButton.IsEnabled = false;
+            HomeButton.IsEnabled = false;
+            LoggedIn.IsEnabled = false;
+            Logout.IsEnabled = false;
         }
         public void AnimateHeaderLogin()
         {
             //AnimateAfterImageCompleted();
 
             // Animate image logo 
-            DoubleAnimation imageAnimate = new DoubleAnimation(150, 0, new TimeSpan(0, 0, 2));
-            ElasticEase ease = new ElasticEase
+            DoubleAnimation ImageAnimate = new DoubleAnimation(150, 0, new TimeSpan(0, 0, 2));
+            ElasticEase Ease = new ElasticEase
             {
                 Springiness = 10,
                 Oscillations = 0,
                 EasingMode = EasingMode.EaseOut
             };
-            imageAnimate.EasingFunction = ease;
-            image.BeginAnimation(Canvas.LeftProperty, imageAnimate);
+            ImageAnimate.EasingFunction = Ease;
+            Image.BeginAnimation(Canvas.LeftProperty, ImageAnimate);
 
             // Animate Search bar
-            DoubleAnimation searchbarAnimate = new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop);
-            searchbarAnimate.Completed += AnimateControlsCompleted;
-            searchTermTextBox.BeginAnimation(OpacityProperty, searchbarAnimate);
+            DoubleAnimation SearchbarAnimate = new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop);
+            SearchbarAnimate.Completed += AnimateControlsCompleted;
+            SearchTermTextBox.BeginAnimation(OpacityProperty, SearchbarAnimate);
 
             // Animate Search bar text
-            searchText.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            SearchText.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
 
             // Animate buttons
-            homeButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            showSuppliersButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            searchButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            logout.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
-            loggedIn.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            HomeButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            SearchButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            Logout.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            LoggedIn.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+
+            // Animate button according to logged in rights
+            if(Controller.instance.GetLoggedInUser().Rights == IO.Swagger.Model.User.RightsEnum.Supplier)
+            {
+                ShowSupplierButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            }
+            else 
+            {
+                ShowSuppliersButton.BeginAnimation(OpacityProperty, new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 500), FillBehavior.Stop));
+            }
         }
         private void AnimateControlsCompleted(object sender, EventArgs e)
         {
-            searchText.Opacity = 1;
-            searchTermTextBox.Opacity = 1;
-            homeButton.Opacity = 1;
-            showSuppliersButton.Opacity = 1;
-            searchButton.Opacity = 1;
-            logout.Opacity = 1;
-            loggedIn.Opacity = 1;
-            searchTermTextBox.IsEnabled = true;
-            showSuppliersButton.IsEnabled = true;
-            homeButton.IsEnabled = true;
-            loggedIn.IsEnabled = true;
-            logout.IsEnabled = true;
-            searchTermTextBox.IsEnabled = true;
-            searchButton.IsEnabled = true;
+            // Show controls after animation
+            SearchText.Opacity = 1;
+            SearchTermTextBox.Opacity = 1;
+            HomeButton.Opacity = 1;
+            SearchButton.Opacity = 1;
+            Logout.Opacity = 1;
+            LoggedIn.Opacity = 1;
+            SearchTermTextBox.IsEnabled = true;
+            HomeButton.IsEnabled = true;
+            LoggedIn.IsEnabled = true;
+            Logout.IsEnabled = true;
+            SearchButton.IsEnabled = true;
+
+            // Show correct control according to logged in rights
+            if(Controller.instance.GetLoggedInUser().Rights == IO.Swagger.Model.User.RightsEnum.Supplier)
+            {
+                ShowSupplierButton.Opacity = 1;
+                ShowSupplierButton.IsEnabled = true;
+                ShowSupplierButton.Visibility = Visibility.Visible;
+                ShowSuppliersButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ShowSuppliersButton.Opacity = 1;
+                ShowSuppliersButton.IsEnabled = true;
+                ShowSuppliersButton.Visibility = Visibility.Visible;
+                ShowSupplierButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void AnimateHeaderLogout()
         {
-            DoubleAnimation da = new DoubleAnimation(0,150, new TimeSpan(0, 0, 2));
+            DoubleAnimation DoubleAnimation = new DoubleAnimation(0,150, new TimeSpan(0, 0, 2));
             ElasticEase ease = new ElasticEase
             {
                 Springiness = 10,
                 Oscillations = 0,
                 EasingMode = EasingMode.EaseOut
             };
-            da.EasingFunction = ease;
-            image.BeginAnimation(Canvas.LeftProperty, da);
+            DoubleAnimation.EasingFunction = ease;
+            Image.BeginAnimation(Canvas.LeftProperty, DoubleAnimation);
         }
 
         private void _Search(string searchTerm)
         {
-            if (string.IsNullOrWhiteSpace(searchTermTextBox.Text))
+            if (string.IsNullOrWhiteSpace(SearchTermTextBox.Text) || Controller.instance.GetLoggedInUser().Rights == IO.Swagger.Model.User.RightsEnum.Supplier)
             {
-                frame.Content = frontpage;
+                Frame.Content = Frontpage;
             }
             else
             {
-                frame.Content = new SupplierList(frame, Controller.instance.Search(searchTerm));
+                Frame.Content = new SupplierList(Frame, Controller.instance.Search(searchTerm));
             }
         }
 
         private void Search(object sender, KeyEventArgs e)
         {
-            _Search(searchTermTextBox.Text);
+            _Search(SearchTermTextBox.Text);
         }
 
         private void Search(object sender, RoutedEventArgs e)
         {
-            _Search(searchTermTextBox.Text);
+            _Search(SearchTermTextBox.Text);
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
            if(Controller.instance.GetLoggedInUser() != null) 
             if (e.NewSize.Width < 1125)
-                image.Source = new BitmapImage(new Uri("../resources/P.png", UriKind.Relative));
+                Image.Source = new BitmapImage(new Uri("../resources/P.png", UriKind.Relative));
             else 
-                image.Source = new BitmapImage(new Uri("../resources/provider2.png", UriKind.Relative));
+                Image.Source = new BitmapImage(new Uri("../resources/provider2.png", UriKind.Relative));
+        }
+
+        private void GetSupplierPage(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new SupplierInformation(Controller.instance.GetPages().Find(SupplierPage => SupplierPage.Owner.Equals(Controller.instance.GetLoggedInUser().Username)));
         }
     }
 }

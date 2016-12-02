@@ -29,13 +29,23 @@ namespace Provider.gui
 
             if (Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Provia)
             {
+                LocationBox.Height = 60;
+                ContactInfoBox.Height = 60;
                 editPage.Visibility = Visibility.Collapsed;
             }
             else if (Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Supplier)
             {
+                LocationBox.Height = 240;
+                ContactInfoBox.Height = 240;
                 noteTextBox.Visibility = Visibility.Collapsed;
                 editNote.Visibility = Visibility.Collapsed;
                 editerBox.Visibility = Visibility.Collapsed;
+                noteGroup.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                LocationBox.Height = 60;
+                ContactInfoBox.Height = 60;
             }
         }
 

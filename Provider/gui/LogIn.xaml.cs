@@ -34,7 +34,7 @@ namespace Provider.gui
                 mainwindow.AnimateHeaderLogin();
                 mainwindow.Refresh();
                 frame.Content = frontpage;
-                mainwindow.loggedIn.Content = Controller.instance.GetLoggedInUser().Username + " logget ind";
+                mainwindow.LoggedIn.Content = Controller.instance.GetLoggedInUser().Username + " logget ind";
             }
             else
             {
