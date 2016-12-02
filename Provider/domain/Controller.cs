@@ -118,7 +118,7 @@ namespace Provider.domain
 
         public void ManageSupplerPage(Page page)
         {
-
+            api.UpdatePage(page.Owner, page.Description, page.Location, page.ContactInformation);
         }
 
         public void AddNoteToSupplier(string supplierName, string editor, string text)

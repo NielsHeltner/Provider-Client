@@ -89,6 +89,35 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Post</returns>
         ApiResponse<Post> CreatePostWithHttpInfo (string owner, string title, string description, PostType type);
         /// <summary>
+        /// Creates a product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns></returns>
+        void CreateProduct (string productName, string chemicalName, string molWeight, string description, string price);
+
+        /// <summary>
+        /// Creates a product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price);
+        /// <summary>
         /// Deletes a post
         /// </summary>
         /// <remarks>
@@ -109,6 +138,27 @@ namespace IO.Swagger.Api
         /// <param name="post"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePostWithHttpInfo (Post post);
+        /// <summary>
+        /// Deletes an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        void DeleteProduct (Product product);
+
+        /// <summary>
+        /// Deletes an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteProductWithHttpInfo (Product product);
         /// <summary>
         /// Edits a posts
         /// </summary>
@@ -135,6 +185,41 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> EditPostWithHttpInfo (Post post, string newDescription, string newTitle);
         /// <summary>
+        /// Edits an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns></returns>
+        void EditProduct (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+
+        /// <summary>
+        /// Edits an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> EditProductWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+        /// <summary>
         /// Gets all posts
         /// </summary>
         /// <remarks>
@@ -154,6 +239,27 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of List&lt;Post&gt;</returns>
         ApiResponse<List<Post>> GetAllPostsWithHttpInfo ();
         /// <summary>
+        /// Get the specific PDF for the product
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>System.IO.Stream</returns>
+        System.IO.Stream GetPDF (int? productId);
+
+        /// <summary>
+        /// Get the specific PDF for the product
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        ApiResponse<System.IO.Stream> GetPDFWithHttpInfo (int? productId);
+        /// <summary>
         /// Gets all suppliers
         /// </summary>
         /// <remarks>
@@ -172,6 +278,33 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Page&gt;</returns>
         ApiResponse<List<Page>> GetSuppliersWithHttpInfo ();
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns></returns>
+        void UpdatePage (string page, string description, string location, string contactInformation);
+
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdatePageWithHttpInfo (string page, string description, string location, string contactInformation);
         /// <summary>
         /// Validate information
         /// </summary>
@@ -250,6 +383,35 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse (Post)</returns>
         System.Threading.Tasks.Task<ApiResponse<Post>> CreatePostAsyncWithHttpInfo (string owner, string title, string description, PostType type);
         /// <summary>
+        /// Creates a product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price);
+
+        /// <summary>
+        /// Creates a product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price);
+        /// <summary>
         /// Deletes a post
         /// </summary>
         /// <remarks>
@@ -270,6 +432,27 @@ namespace IO.Swagger.Api
         /// <param name="post"></param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeletePostAsyncWithHttpInfo (Post post);
+        /// <summary>
+        /// Deletes an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteProductAsync (Product product);
+
+        /// <summary>
+        /// Deletes an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteProductAsyncWithHttpInfo (Product product);
         /// <summary>
         /// Edits a posts
         /// </summary>
@@ -296,6 +479,41 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> EditPostAsyncWithHttpInfo (Post post, string newDescription, string newTitle);
         /// <summary>
+        /// Edits an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task EditProductAsync (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+
+        /// <summary>
+        /// Edits an existing product.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> EditProductAsyncWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+        /// <summary>
         /// Gets all posts
         /// </summary>
         /// <remarks>
@@ -315,6 +533,27 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse (List&lt;Post&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Post>>> GetAllPostsAsyncWithHttpInfo ();
         /// <summary>
+        /// Get the specific PDF for the product
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetPDFAsync (int? productId);
+
+        /// <summary>
+        /// Get the specific PDF for the product
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPDFAsyncWithHttpInfo (int? productId);
+        /// <summary>
         /// Gets all suppliers
         /// </summary>
         /// <remarks>
@@ -333,6 +572,33 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Page&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSuppliersAsyncWithHttpInfo ();
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdatePageAsync (string page, string description, string location, string contactInformation);
+
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePageAsyncWithHttpInfo (string page, string description, string location, string contactInformation);
         /// <summary>
         /// Validate information
         /// </summary>
@@ -831,6 +1097,197 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
+        /// Creates a product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns></returns>
+        public void CreateProduct (string productName, string chemicalName, string molWeight, string description, string price)
+        {
+             CreateProductWithHttpInfo(productName, chemicalName, molWeight, description, price);
+        }
+
+        /// <summary>
+        /// Creates a product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price)
+        {
+            // verify the required parameter 'productName' is set
+            if (productName == null)
+                throw new ApiException(400, "Missing required parameter 'productName' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'chemicalName' is set
+            if (chemicalName == null)
+                throw new ApiException(400, "Missing required parameter 'chemicalName' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'molWeight' is set
+            if (molWeight == null)
+                throw new ApiException(400, "Missing required parameter 'molWeight' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'description' is set
+            if (description == null)
+                throw new ApiException(400, "Missing required parameter 'description' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'price' is set
+            if (price == null)
+                throw new ApiException(400, "Missing required parameter 'price' when calling ControllerApi->CreateProduct");
+
+            var localVarPath = "/Controller/CreateProduct";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (productName != null) localVarQueryParams.Add("ProductName", Configuration.ApiClient.ParameterToString(productName)); // query parameter
+            if (chemicalName != null) localVarQueryParams.Add("ChemicalName", Configuration.ApiClient.ParameterToString(chemicalName)); // query parameter
+            if (molWeight != null) localVarQueryParams.Add("MolWeight", Configuration.ApiClient.ParameterToString(molWeight)); // query parameter
+            if (description != null) localVarQueryParams.Add("Description", Configuration.ApiClient.ParameterToString(description)); // query parameter
+            if (price != null) localVarQueryParams.Add("Price", Configuration.ApiClient.ParameterToString(price)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateProduct", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Creates a product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price)
+        {
+             await CreateProductAsyncWithHttpInfo(productName, chemicalName, molWeight, description, price);
+
+        }
+
+        /// <summary>
+        /// Creates a product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productName"></param>
+        /// <param name="chemicalName"></param>
+        /// <param name="molWeight"></param>
+        /// <param name="description"></param>
+        /// <param name="price"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price)
+        {
+            // verify the required parameter 'productName' is set
+            if (productName == null)
+                throw new ApiException(400, "Missing required parameter 'productName' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'chemicalName' is set
+            if (chemicalName == null)
+                throw new ApiException(400, "Missing required parameter 'chemicalName' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'molWeight' is set
+            if (molWeight == null)
+                throw new ApiException(400, "Missing required parameter 'molWeight' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'description' is set
+            if (description == null)
+                throw new ApiException(400, "Missing required parameter 'description' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'price' is set
+            if (price == null)
+                throw new ApiException(400, "Missing required parameter 'price' when calling ControllerApi->CreateProduct");
+
+            var localVarPath = "/Controller/CreateProduct";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (productName != null) localVarQueryParams.Add("ProductName", Configuration.ApiClient.ParameterToString(productName)); // query parameter
+            if (chemicalName != null) localVarQueryParams.Add("ChemicalName", Configuration.ApiClient.ParameterToString(chemicalName)); // query parameter
+            if (molWeight != null) localVarQueryParams.Add("MolWeight", Configuration.ApiClient.ParameterToString(molWeight)); // query parameter
+            if (description != null) localVarQueryParams.Add("Description", Configuration.ApiClient.ParameterToString(description)); // query parameter
+            if (price != null) localVarQueryParams.Add("Price", Configuration.ApiClient.ParameterToString(price)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateProduct", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
         /// Deletes a post 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
@@ -978,6 +1435,163 @@ namespace IO.Swagger.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("DeletePost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Deletes an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public void DeleteProduct (Product product)
+        {
+             DeleteProductWithHttpInfo(product);
+        }
+
+        /// <summary>
+        /// Deletes an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteProductWithHttpInfo (Product product)
+        {
+            // verify the required parameter 'product' is set
+            if (product == null)
+                throw new ApiException(400, "Missing required parameter 'product' when calling ControllerApi->DeleteProduct");
+
+            var localVarPath = "/Controller/DeleteProduct";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (product != null && product.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(product); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = product; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteProduct", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Deletes an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteProductAsync (Product product)
+        {
+             await DeleteProductAsyncWithHttpInfo(product);
+
+        }
+
+        /// <summary>
+        /// Deletes an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteProductAsyncWithHttpInfo (Product product)
+        {
+            // verify the required parameter 'product' is set
+            if (product == null)
+                throw new ApiException(400, "Missing required parameter 'product' when calling ControllerApi->DeleteProduct");
+
+            var localVarPath = "/Controller/DeleteProduct";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (product != null && product.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(product); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = product; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteProduct", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1169,6 +1783,247 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
+        /// Edits an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns></returns>
+        public void EditProduct (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        {
+             EditProductWithHttpInfo(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
+        }
+
+        /// <summary>
+        /// Edits an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> EditProductWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        {
+            // verify the required parameter 'product' is set
+            if (product == null)
+                throw new ApiException(400, "Missing required parameter 'product' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newProductName' is set
+            if (newProductName == null)
+                throw new ApiException(400, "Missing required parameter 'newProductName' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newChemicalName' is set
+            if (newChemicalName == null)
+                throw new ApiException(400, "Missing required parameter 'newChemicalName' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newMolWeight' is set
+            if (newMolWeight == null)
+                throw new ApiException(400, "Missing required parameter 'newMolWeight' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newDescription' is set
+            if (newDescription == null)
+                throw new ApiException(400, "Missing required parameter 'newDescription' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newPrice' is set
+            if (newPrice == null)
+                throw new ApiException(400, "Missing required parameter 'newPrice' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newPackaging' is set
+            if (newPackaging == null)
+                throw new ApiException(400, "Missing required parameter 'newPackaging' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newDeliveryTime' is set
+            if (newDeliveryTime == null)
+                throw new ApiException(400, "Missing required parameter 'newDeliveryTime' when calling ControllerApi->EditProduct");
+
+            var localVarPath = "/Controller/EditProduct";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (newProductName != null) localVarQueryParams.Add("newProductName", Configuration.ApiClient.ParameterToString(newProductName)); // query parameter
+            if (newChemicalName != null) localVarQueryParams.Add("newChemicalName", Configuration.ApiClient.ParameterToString(newChemicalName)); // query parameter
+            if (newMolWeight != null) localVarQueryParams.Add("newMolWeight", Configuration.ApiClient.ParameterToString(newMolWeight)); // query parameter
+            if (newDescription != null) localVarQueryParams.Add("newDescription", Configuration.ApiClient.ParameterToString(newDescription)); // query parameter
+            if (newPrice != null) localVarQueryParams.Add("newPrice", Configuration.ApiClient.ParameterToString(newPrice)); // query parameter
+            if (newPackaging != null) localVarQueryParams.Add("newPackaging", Configuration.ApiClient.ParameterToString(newPackaging)); // query parameter
+            if (newDeliveryTime != null) localVarQueryParams.Add("newDeliveryTime", Configuration.ApiClient.ParameterToString(newDeliveryTime)); // query parameter
+            if (product != null && product.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(product); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = product; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EditProduct", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Edits an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task EditProductAsync (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        {
+             await EditProductAsyncWithHttpInfo(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
+
+        }
+
+        /// <summary>
+        /// Edits an existing product. 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="product"></param>
+        /// <param name="newProductName"></param>
+        /// <param name="newChemicalName"></param>
+        /// <param name="newMolWeight"></param>
+        /// <param name="newDescription"></param>
+        /// <param name="newPrice"></param>
+        /// <param name="newPackaging"></param>
+        /// <param name="newDeliveryTime"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditProductAsyncWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        {
+            // verify the required parameter 'product' is set
+            if (product == null)
+                throw new ApiException(400, "Missing required parameter 'product' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newProductName' is set
+            if (newProductName == null)
+                throw new ApiException(400, "Missing required parameter 'newProductName' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newChemicalName' is set
+            if (newChemicalName == null)
+                throw new ApiException(400, "Missing required parameter 'newChemicalName' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newMolWeight' is set
+            if (newMolWeight == null)
+                throw new ApiException(400, "Missing required parameter 'newMolWeight' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newDescription' is set
+            if (newDescription == null)
+                throw new ApiException(400, "Missing required parameter 'newDescription' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newPrice' is set
+            if (newPrice == null)
+                throw new ApiException(400, "Missing required parameter 'newPrice' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newPackaging' is set
+            if (newPackaging == null)
+                throw new ApiException(400, "Missing required parameter 'newPackaging' when calling ControllerApi->EditProduct");
+            // verify the required parameter 'newDeliveryTime' is set
+            if (newDeliveryTime == null)
+                throw new ApiException(400, "Missing required parameter 'newDeliveryTime' when calling ControllerApi->EditProduct");
+
+            var localVarPath = "/Controller/EditProduct";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (newProductName != null) localVarQueryParams.Add("newProductName", Configuration.ApiClient.ParameterToString(newProductName)); // query parameter
+            if (newChemicalName != null) localVarQueryParams.Add("newChemicalName", Configuration.ApiClient.ParameterToString(newChemicalName)); // query parameter
+            if (newMolWeight != null) localVarQueryParams.Add("newMolWeight", Configuration.ApiClient.ParameterToString(newMolWeight)); // query parameter
+            if (newDescription != null) localVarQueryParams.Add("newDescription", Configuration.ApiClient.ParameterToString(newDescription)); // query parameter
+            if (newPrice != null) localVarQueryParams.Add("newPrice", Configuration.ApiClient.ParameterToString(newPrice)); // query parameter
+            if (newPackaging != null) localVarQueryParams.Add("newPackaging", Configuration.ApiClient.ParameterToString(newPackaging)); // query parameter
+            if (newDeliveryTime != null) localVarQueryParams.Add("newDeliveryTime", Configuration.ApiClient.ParameterToString(newDeliveryTime)); // query parameter
+            if (product != null && product.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(product); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = product; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EditProduct", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
         /// Gets all posts 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1298,6 +2153,159 @@ namespace IO.Swagger.Api
             return new ApiResponse<List<Post>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Post>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Post>)));
+            
+        }
+
+        /// <summary>
+        /// Get the specific PDF for the product 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>System.IO.Stream</returns>
+        public System.IO.Stream GetPDF (int? productId)
+        {
+             ApiResponse<System.IO.Stream> localVarResponse = GetPDFWithHttpInfo(productId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the specific PDF for the product 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        public ApiResponse< System.IO.Stream > GetPDFWithHttpInfo (int? productId)
+        {
+            // verify the required parameter 'productId' is set
+            if (productId == null)
+                throw new ApiException(400, "Missing required parameter 'productId' when calling ControllerApi->GetPDF");
+
+            var localVarPath = "/Controller/GetPDF";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (productId != null) localVarQueryParams.Add("productId", Configuration.ApiClient.ParameterToString(productId)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetPDF", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<System.IO.Stream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (System.IO.Stream) Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
+            
+        }
+
+        /// <summary>
+        /// Get the specific PDF for the product 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetPDFAsync (int? productId)
+        {
+             ApiResponse<System.IO.Stream> localVarResponse = await GetPDFAsyncWithHttpInfo(productId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the specific PDF for the product 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId"></param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPDFAsyncWithHttpInfo (int? productId)
+        {
+            // verify the required parameter 'productId' is set
+            if (productId == null)
+                throw new ApiException(400, "Missing required parameter 'productId' when calling ControllerApi->GetPDF");
+
+            var localVarPath = "/Controller/GetPDF";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (productId != null) localVarQueryParams.Add("productId", Configuration.ApiClient.ParameterToString(productId)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetPDF", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<System.IO.Stream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (System.IO.Stream) Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
             
         }
 
@@ -1432,6 +2440,185 @@ namespace IO.Swagger.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Page>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Page>)));
             
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns></returns>
+        public void UpdatePage (string page, string description, string location, string contactInformation)
+        {
+             UpdatePageWithHttpInfo(page, description, location, contactInformation);
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UpdatePageWithHttpInfo (string page, string description, string location, string contactInformation)
+        {
+            // verify the required parameter 'page' is set
+            if (page == null)
+                throw new ApiException(400, "Missing required parameter 'page' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'description' is set
+            if (description == null)
+                throw new ApiException(400, "Missing required parameter 'description' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'location' is set
+            if (location == null)
+                throw new ApiException(400, "Missing required parameter 'location' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'contactInformation' is set
+            if (contactInformation == null)
+                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling ControllerApi->UpdatePage");
+
+            var localVarPath = "/Controller/UpdatePage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
+            if (description != null) localVarQueryParams.Add("description", Configuration.ApiClient.ParameterToString(description)); // query parameter
+            if (location != null) localVarQueryParams.Add("location", Configuration.ApiClient.ParameterToString(location)); // query parameter
+            if (contactInformation != null) localVarQueryParams.Add("contactInformation", Configuration.ApiClient.ParameterToString(contactInformation)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdatePage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdatePageAsync (string page, string description, string location, string contactInformation)
+        {
+             await UpdatePageAsyncWithHttpInfo(page, description, location, contactInformation);
+
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePageAsyncWithHttpInfo (string page, string description, string location, string contactInformation)
+        {
+            // verify the required parameter 'page' is set
+            if (page == null)
+                throw new ApiException(400, "Missing required parameter 'page' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'description' is set
+            if (description == null)
+                throw new ApiException(400, "Missing required parameter 'description' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'location' is set
+            if (location == null)
+                throw new ApiException(400, "Missing required parameter 'location' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'contactInformation' is set
+            if (contactInformation == null)
+                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling ControllerApi->UpdatePage");
+
+            var localVarPath = "/Controller/UpdatePage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
+            if (description != null) localVarQueryParams.Add("description", Configuration.ApiClient.ParameterToString(description)); // query parameter
+            if (location != null) localVarQueryParams.Add("location", Configuration.ApiClient.ParameterToString(location)); // query parameter
+            if (contactInformation != null) localVarQueryParams.Add("contactInformation", Configuration.ApiClient.ParameterToString(contactInformation)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdatePage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>

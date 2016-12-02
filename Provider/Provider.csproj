@@ -78,6 +78,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="gui\SupplierFrontpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="gui\Frontpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +111,9 @@
     </Compile>
     <Compile Include="gui\CreateNewPostPage.xaml.cs">
       <DependentUpon>CreateNewPostPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="gui\SupplierFrontpage.xaml.cs">
+      <DependentUpon>SupplierFrontpage.xaml</DependentUpon>
     </Compile>
     <Compile Include="gui\Frontpage.xaml.cs">
       <DependentUpon>Frontpage.xaml</DependentUpon>
