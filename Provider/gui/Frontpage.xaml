@@ -31,7 +31,7 @@
         </Style>
 
         <DataTemplate x:Key="Header">
-            <StackPanel Orientation="Horizontal" Margin="-5" Height="30" Width="504">
+            <StackPanel Orientation="Horizontal" Margin="-10,0,0,0" Height="30" Width="504">
                 <TextBlock Text="{Binding}" Margin="10" VerticalAlignment="Center" Foreground="White"/>
             </StackPanel>
         </DataTemplate>
@@ -125,11 +125,91 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="WarningList" TargetType="{x:Type ListViewItem}">
+            <Setter Property="Foreground" Value="#FF092B64"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                            <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FFFDABAB"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FFFFBFBF"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#FFFBACAC"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                                    <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                </Border>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="OfferList" TargetType="{x:Type ListViewItem}">
+            <Setter Property="Foreground" Value="#FF092B64"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                            <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FF8DBFF0"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FF94C3F1"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#FF65ACF1"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                                    <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                </Border>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Grid Background="White">
         <Label x:Name="label" Content="Velkommen til Provider" Margin="40,42,0,0" VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
-        <ListView x:Name="OfferListView" HorizontalAlignment="Left" Height="395" Margin="47,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
+        <ListView x:Name="OfferListView" ItemContainerStyle="{StaticResource OfferList}" HorizontalAlignment="Left" Height="395" Margin="47,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
@@ -161,30 +241,30 @@
         <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="44,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
         <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="156,109,0,0" VerticalAlignment="Top"/>
         <Label x:Name="NumberOfOfferPosts" Content="0" HorizontalAlignment="Left" Margin="228,109,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="WarningListView" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="180" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost" AlternationCount="2">
+        <ListView x:Name="WarningListView" ItemContainerStyle="{StaticResource WarningList}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="180" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost" AlternationCount="2">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Titel"/>
+                            <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Right"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
                     <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" />
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Right"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
                     <GridViewColumn DisplayMemberBinding="{Binding Owner}"  Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Leverandør"/>
+                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Right"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
                     <GridViewColumn DisplayMemberBinding="{Binding Date}"  Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Dato"/>
+                            <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Right"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
