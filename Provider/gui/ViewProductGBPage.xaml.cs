@@ -24,6 +24,7 @@ namespace Provider.gui
         public ViewProductGBPage(Product p)
         {
             InitializeComponent();
+            frame.Content = new ViewProductPage(p);
         }
     }
 }

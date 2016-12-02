@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.ComponentModel;
+using IO.Swagger.Model;
 using Provider.domain.page;
 using Page = System.Windows.Controls.Page;
 
@@ -89,6 +90,9 @@ namespace Provider.gui
             dataView.Refresh();
         }
 
-        
+        private void GoToProduct(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            productFrame.Content = new ViewProductGBPage((Product)listView.SelectedItem);
+        }
     }
 }

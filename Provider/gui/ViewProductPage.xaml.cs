@@ -24,7 +24,12 @@ namespace Provider.gui
         public ViewProductPage(Product p)
         {
             InitializeComponent();
-
+            productNameTextBox.Text = p.ProductName;
+            chemicalNameTextBox.Text = p.ChemicalName;
+            MolValueTextBox.Text = p.MolWeight;
+            PriceTextBox.Text = p.Price;
+            PacketingTextBox.Text = p.Packaging;
+            discriptionTextBox.Text = p.Description;
         }
 
         private void BackToListView(object sender, RoutedEventArgs e)
