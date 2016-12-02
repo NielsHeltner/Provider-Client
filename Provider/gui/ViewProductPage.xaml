@@ -16,14 +16,14 @@
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="31,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Text="Emballage:"/>
         <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="31,313,0,0" TextWrapping="Wrap" Text="Beskrivelse:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="264" Margin="146,68,0,0" VerticalAlignment="Top" Width="4"/>
-        <Button x:Name="button" Content="Tilbage" HorizontalAlignment="Left" Margin="31,458,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White"/>
-        <Button x:Name="button_Copy" Content="Åbn PDF" HorizontalAlignment="Left" Margin="123,458,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="174,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="174,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="174,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="textBox_Copy2" HorizontalAlignment="Left" Height="23" Margin="174,215,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="174,264,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
-        <TextBox x:Name="textBox_Copy4" HorizontalAlignment="Left" Height="23" Margin="174,312,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <Button x:Name="BackButton" Content="Tilbage" HorizontalAlignment="Left" Margin="31,458,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="BackToListView"/>
+        <Button Content="Åbn PDF" HorizontalAlignment="Left" Margin="123,458,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="OpenPDFBotton"/>
+        <TextBox x:Name="productNameTextBox" HorizontalAlignment="Left" Height="23" Margin="174,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <TextBox x:Name="chemicalNameTextBox" HorizontalAlignment="Left" Height="23" Margin="174,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <TextBox x:Name="MolValueTextBox" HorizontalAlignment="Left" Height="23" Margin="174,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="174,215,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <TextBox x:Name="PacketingTextBox" HorizontalAlignment="Left" Height="23" Margin="174,264,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <TextBox x:Name="discriptionTextBox" HorizontalAlignment="Left" Height="23" Margin="174,312,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
 
     </Grid>
 </Page>

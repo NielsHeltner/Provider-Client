@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -12,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IO.Swagger.Model;
+using Page = System.Windows.Controls.Page;
 
 namespace Provider.gui
 {
@@ -20,7 +21,7 @@ namespace Provider.gui
     /// </summary>
     public partial class ViewProductGBPage : Page
     {
-        public ViewProductGBPage()
+        public ViewProductGBPage(Product p)
         {
             InitializeComponent();
         }
