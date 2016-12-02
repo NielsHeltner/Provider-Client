@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using Provider.domain;
 
 namespace Provider.gui
@@ -22,17 +24,22 @@ namespace Provider.gui
                 lastEdited.Text = ((DateTime) page2.Note.CreationDate).ToLongDateString() + ".";
                 lastEditor.Text = page2.Note.Editor;
             }
+            noteTextBox.Cursor = Cursors.Arrow;
         }
 
         private void EditNote(object sender, RoutedEventArgs e)
         {
             if (noteTextBox.IsReadOnly)
             {
-                noteTextBox.IsReadOnly = false;
+                noteTextBox.AcceptsReturn = true;
+                noteTextBox.Cursor = Cursors.IBeam;
+                noteTextBox.IsReadOnly = false;          
                 editNote.Content = "Gem";
+
             }
             else
             {
+                noteTextBox.Cursor = Cursors.Arrow;
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
                 lastEdited.Text = DateTime.Today.ToLongDateString() + ".";

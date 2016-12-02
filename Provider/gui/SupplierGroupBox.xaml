@@ -42,7 +42,7 @@
             <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." VerticalAlignment="Top" FontSize="12" TextTrimming="CharacterEllipsis" Width="256"/>
         </GroupBox>
         <GroupBox x:Name="groupBox_Copy" Header="Note" HorizontalAlignment="Left" Margin="20,256,0,0" VerticalAlignment="Top" Height="154" Width="586" FontFamily="Yu Gothic UI" FontSize="16">
-            <TextBox x:Name="noteTextBox" HorizontalAlignment="Left" Height="129" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="576" Margin="0,0,-2,-3" BorderBrush="{x:Null}" FontSize="12" IsReadOnly="True"/>
+            <TextBox x:Name="noteTextBox" HorizontalAlignment="Left" Height="129" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="576" Margin="0,0,-2,-3" BorderBrush="{x:Null}" FontSize="12" IsReadOnly="True" SpellCheck.IsEnabled="True" BorderThickness="0"/>
         </GroupBox>
         <Button x:Name="editNote" Content="Rediger Notater" HorizontalAlignment="Left" Margin="20,424,0,0" VerticalAlignment="Top" Width="112" Click="EditNote" Background="#FF0E5774" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="20" Margin="146,426,0,0" VerticalAlignment="Top" Width="304">
