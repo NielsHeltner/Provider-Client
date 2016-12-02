@@ -149,16 +149,11 @@ namespace Provider.domain
 
         public void DeleteProduct(Product product)
         {
-            if ((GetLoggedInUser().Username == product.Producer) || (GetLoggedInUser().Rights == User.RightsEnum.Admin))
+            if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                //api.DeleteProduct(product);
-                pageManager.pages.Find(page => page.Owner == product.Producer).Products.Remove(product);
+                api.DeleteProduct(product);
+                pageManager.pages.Find(page => page.Owner.Equals(product.Producer)).Products.Remove(product);
             }
-            else
-            {
-                //Some error since user not allowed to use this function
-            }
-
         }
 
     }

@@ -44,6 +44,7 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Product" /> class.
         /// </summary>
+        /// <param name="Id">ID of the product.</param>
         /// <param name="Producer">The producer of the product.</param>
         /// <param name="ProductName">The name of the product.</param>
         /// <param name="ChemicalName">The chemical name of the product.</param>
@@ -52,8 +53,9 @@ namespace IO.Swagger.Model
         /// <param name="Price">The price of the product.</param>
         /// <param name="Packaging">The packaging of the product.</param>
         /// <param name="DeliveryTime">The delivery time of the product.</param>
-        public Product(string Producer = null, string ProductName = null, string ChemicalName = null, string MolWeight = null, string Description = null, string Price = null, string Packaging = null, string DeliveryTime = null)
+        public Product(int? Id = null, string Producer = null, string ProductName = null, string ChemicalName = null, string MolWeight = null, string Description = null, string Price = null, string Packaging = null, string DeliveryTime = null)
         {
+            this.Id = Id;
             this.Producer = Producer;
             this.ProductName = ProductName;
             this.ChemicalName = ChemicalName;
@@ -64,6 +66,12 @@ namespace IO.Swagger.Model
             this.DeliveryTime = DeliveryTime;
         }
         
+        /// <summary>
+        /// ID of the product
+        /// </summary>
+        /// <value>ID of the product</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public int? Id { get; set; }
         /// <summary>
         /// The producer of the product
         /// </summary>
@@ -120,6 +128,7 @@ namespace IO.Swagger.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Product {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Producer: ").Append(Producer).Append("\n");
             sb.Append("  ProductName: ").Append(ProductName).Append("\n");
             sb.Append("  ChemicalName: ").Append(ChemicalName).Append("\n");
@@ -164,6 +173,11 @@ namespace IO.Swagger.Model
                 return false;
 
             return 
+                (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
                 (
                     this.Producer == other.Producer ||
                     this.Producer != null &&
@@ -217,6 +231,8 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
                 if (this.Producer != null)
                     hash = hash * 59 + this.Producer.GetHashCode();
                 if (this.ProductName != null)
