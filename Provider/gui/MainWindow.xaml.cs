@@ -16,28 +16,42 @@ namespace Provider.gui
     {
         private BulletinBoardPage BulletinBoardPage;
         private Frontpage Frontpage;
+        private SupplierFrontpage SupplierFrontpage;
         private LogIn LogIn;
         
         public MainWindow()
         {  
             InitializeComponent();
-            Refresh();
+            LogIn = new LogIn(Frame, this, Frontpage);
             Frame.Content = LogIn;
             SetVisibilityToHidden();
             Frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
-        public void Refresh()
+        public Frontpage LoginProvia()
         {
             BulletinBoardPage = new BulletinBoardPage();
-            Frontpage = new Frontpage(Frame, BulletinBoardPage);
-            LogIn = new LogIn(Frame, this, Frontpage);
+            return Frontpage = new Frontpage(Frame, BulletinBoardPage);        
+        }
+
+        public SupplierFrontpage LoginSupplier()
+        {
+            BulletinBoardPage = new BulletinBoardPage();
+            return SupplierFrontpage = new SupplierFrontpage(Frame, BulletinBoardPage);
         }
 
         private void GoToFrontpage(object sender, RoutedEventArgs e)
         {
-            Frame.Content = Frontpage;
-            Frontpage.RefreshFrontPage();
+            if(Controller.instance.GetLoggedInUser().Rights.Value == IO.Swagger.Model.User.RightsEnum.Supplier)
+            {
+                Frame.Content = SupplierFrontpage;
+                SupplierFrontpage.RefreshFrontPage();
+            }
+            else
+            {
+                Frame.Content = Frontpage;
+                Frontpage.RefreshFrontPage();
+            }
         }
 
         private void GetSupplierPages(object sender, RoutedEventArgs e)

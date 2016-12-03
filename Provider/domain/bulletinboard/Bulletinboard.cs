@@ -43,6 +43,19 @@ namespace Provider.domain.bulletinboard
             return postResults;
         }
 
+        public List<Post> GetPosts(PostType type, string Supplier)
+        {
+            List<Post> PostResults = new List<Post>();
+            foreach (Post post in posts)
+            {
+                if(post.Type == type && post.Owner.Equals(Supplier))
+                {
+                    PostResults.Add(post);
+                }
+            }
+            return PostResults;
+        }
+
         public List<Post> ViewAllPosts()
         {
             return posts;

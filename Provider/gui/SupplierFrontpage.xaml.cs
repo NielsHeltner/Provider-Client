@@ -1,4 +1,5 @@
 ﻿using IO.Swagger.Model;
+using Provider.domain;
 using Provider.domain.bulletinboard;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,8 +55,8 @@ namespace Provider.gui
             numberOfWarningPostLabel.Content = domain.Controller.instance.ViewWarningPosts().Count;
 
             OfferListView.ItemsSource = null;
-            OfferListView.ItemsSource = domain.Controller.instance.ViewOfferPosts();
-            NumberOfOfferPosts.Content = domain.Controller.instance.ViewOfferPosts().Count;
+            OfferListView.ItemsSource = domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username);
+            NumberOfOfferPosts.Content = domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username).Count;
 
             RequestListView.ItemsSource = null;
             RequestListView.ItemsSource = domain.Controller.instance.ViewRequestPosts();
