@@ -36,9 +36,12 @@ namespace Provider.domain
 
         List<Post> ViewOfferPosts();
 
+        List<Post> ViewOfferPosts(String Supplier);
+
         void AddNoteToSupplier(string supplierName, string editor, string text);
 
         List<Page> Search(string searchTerm);
+        void ManageSupplerPage(Page page);
     }
 }
     

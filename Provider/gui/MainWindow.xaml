@@ -30,7 +30,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="95"/>
             <RowDefinition Height="90*"/>
@@ -47,13 +47,14 @@
         
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Stretch" Height="95" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
 
-        <Button x:Name="showSuppliersButton" Content="Hent leverandører" Grid.Column="0" HorizontalAlignment="Right" Margin="0,35,40,0" VerticalAlignment="Top" MinWidth="114" MaxWidth ="114"  Click="GetSupplierPages" Background="#FF0C4A63" Foreground="White"/>
-        <Button x:Name="logout" Content="Log ud" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Right" Margin="0,35,30,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut"/>
-        <Label x:Name="loggedIn" Content="Provia logget ind" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Margin="0,32,110,0" VerticalAlignment="Top"/>
-        <Button x:Name="searchButton" Content="Søg" Grid.Column="2" HorizontalAlignment="Right" Margin="0,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White" Click="Search"/>
-        <Button x:Name="homeButton" Content="Forside" HorizontalAlignment="Right" Grid.Column="0" Margin="0,35,180,0" VerticalAlignment="Top" Width="75" Click="GoToFrontpage" Background="#FF0C4A63" Foreground="White"/>
-        <TextBox x:Name="searchTermTextBox" Width="169" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,35,90,0" Height="20 " Opacity="1" KeyUp="Search" ToolTip="Begynd at skrive i søgefeltet for at søge.&#x0a;Du kan søge på enten leverandørnavne eller produktnavne."/>
-        <TextBlock x:Name="searchText" IsHitTestVisible="False" Grid.Column="2" Text="Søg..." HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,37,220,0" Foreground="DarkGray" Opacity="1">
+        <Button x:Name="ShowSupplierButton" Content="Min side" Grid.Column="0" HorizontalAlignment="Right" Margin="0,35,75,0" VerticalAlignment="Top" MinWidth="80" MaxWidth ="80"  Click="GetSupplierPage" Background="#FF0C4A63" Foreground="White"/>
+        <Button x:Name="ShowSuppliersButton" Content="Hent leverandører" Grid.Column="0" HorizontalAlignment="Right" Margin="0,35,40,0" VerticalAlignment="Top" MinWidth="114" MaxWidth ="114"  Click="GetSupplierPages" Background="#FF0C4A63" Foreground="White"/>
+        <Button x:Name="Logout" Content="Log ud" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Right" Margin="0,35,30,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="LogOut"/>
+        <Label x:Name="LoggedIn" Content="Provia logget ind" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Margin="0,32,110,0" VerticalAlignment="Top"/>
+        <Button x:Name="SearchButton" Content="Søg" Grid.Column="2" HorizontalAlignment="Right" Margin="0,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White" Click="Search"/>
+        <Button x:Name="HomeButton" Content="Forside" HorizontalAlignment="Right" Grid.Column="0" Margin="0,35,180,0" VerticalAlignment="Top" Width="75" Click="GoToFrontpage" Background="#FF0C4A63" Foreground="White"/>
+        <TextBox x:Name="SearchTermTextBox" Width="169" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,35,90,0" Height="20 " Opacity="1" KeyUp="Search" ToolTip="Begynd at skrive i søgefeltet for at søge.&#x0a;Du kan søge på enten leverandørnavne eller produktnavne."/>
+        <TextBlock x:Name="SearchText" IsHitTestVisible="False" Grid.Column="2" Text="Søg..." HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,37,90,0" Foreground="DarkGray" Opacity="1">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -66,12 +67,12 @@
             </TextBlock.Style>
         </TextBlock>
         <Canvas Height="95" Margin="0,0,0,0" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Width="455">
-            <Image x:Name="image"  Height="76" VerticalAlignment="Top" Width="300" Source="../resources/provider2.png" Canvas.Left="150" Canvas.Top="10"/>
+            <Image x:Name="Image"  Height="76" VerticalAlignment="Top" Width="300" Source="../resources/provider2.png" Canvas.Left="150" Canvas.Top="10"/>
         </Canvas>
 
         
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
-            <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="681" Margin="0,0,0,0" VerticalAlignment="Top" Width="1275"/>
+            <Frame x:Name="Frame" Content="" HorizontalAlignment="Left" Height="681" Margin="0,0,0,0" VerticalAlignment="Top" Width="1275"/>
         </Grid>
 
     </Grid>
