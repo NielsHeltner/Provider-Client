@@ -103,17 +103,6 @@ namespace Provider.gui
             productFrame.Visibility = Visibility.Collapsed;
         }
 
-        public void RefreshPage(bool refreshFrameToo)
-        {
-            /*listView.ItemsSource = null;
-            listView.ItemsSource = Controller.instance.ViewAllPosts();
-            groupBox.Header = "Opslag information";
-            typeOfList.Text = "Alle opslag";
-            if (refreshFrameToo)
-                frame.Content = null;
-                */
-        }
-
         private void button_Click(object sender, RoutedEventArgs e)
         {
             productFrame.Content = new ViewProductGBPage(this);

@@ -15,6 +15,7 @@ using IO.Swagger.Model;
 using Page = System.Windows.Controls.Page;
 using Provider.domain;
 using System.IO;
+using System.Windows.Media.Animation;
 
 namespace Provider.gui
 {
@@ -112,12 +113,14 @@ namespace Provider.gui
             {
                 Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
                     molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text, deliveryTimeTextBox.Text);
+                product.ProductName = productNameTextBox.Text; product.ChemicalName = chemicalNameTextBox.Text; product.MolWeight = molValueTextBox.Text;
+                product.Description = descriptionTextBox.Text; product.Price = priceTextBox.Text; product.Packaging = packetingTextBox.Text; product.DeliveryTime = deliveryTimeTextBox.Text;
                 HideButtons();
                 editProduct.Content = "Redigér";
-                RefreshPage(false);
-                /*savedPostTextBlock.Visibility = Visibility.Visible;
+                
+                savedPostTextBlock.Visibility = Visibility.Visible;
                 savedPostTextBlock.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
-                */
+                
             }
         }
 
@@ -139,10 +142,10 @@ namespace Provider.gui
             descriptionTextBox.IsReadOnly = true;
             descriptionTextBox.Cursor = Cursors.Arrow;
             descriptionTextBox.Background = Brushes.GhostWhite;
-            /*if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights != User.RightsEnum.Admin)
+            if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
                 editProduct.Visibility = Visibility.Hidden;
-            } */
+            }
 
         }
 
