@@ -102,7 +102,6 @@ namespace Provider.gui
                 deliveryTimeTextBox.Cursor = Cursors.IBeam;
                 editProduct.Content = "Gem";
             }
-            
             else
             {
                 Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
