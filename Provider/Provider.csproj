@@ -205,6 +205,12 @@
   <ItemGroup>
     <Resource Include="resources\P.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IO.Swagger\IO.Swagger.csproj">
+      <Project>{47864115-776D-447A-91DE-7C71010B01EE}</Project>
+      <Name>IO.Swagger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
