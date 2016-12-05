@@ -144,7 +144,7 @@ namespace Provider.domain
 
         public void CreateProduct(string ProductName, string ChemicalName, string MolWeight, string Description, string Price, string Packaging, string DeliveryTime, string Producer)
         {
-            //pageManager.pages.Find(page => page.Owner == GetLoggedInUser().Username).Products.Add(api.CreateProduct(ProductName, ChemicalName, MolWeight, Description, Price, Packaging, DeliveryTime, Producer));
+            pageManager.pages.Find(page => page.Owner.Equals(GetLoggedInUser().Username)).Products.Add(api.CreateProduct(ProductName, ChemicalName, MolWeight, Description, Price, Packaging, DeliveryTime, Producer));
         }
 
         public void DeleteProduct(Product product)
