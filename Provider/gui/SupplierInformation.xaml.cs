@@ -102,5 +102,10 @@ namespace Provider.gui
         {
             productFrame.Visibility = Visibility.Collapsed;
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            productFrame.Content = new ViewProductGBPage(this);
+        }
     }
 }

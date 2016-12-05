@@ -26,5 +26,10 @@ namespace Provider.gui
             InitializeComponent();
             frame.Content = new ViewProductPage(product, supplierInformationPage);
         }
+
+        public ViewProductGBPage(SupplierInformation supplierPage)
+        {
+            frame.Content = new CreateNewProductPage();
+        }
     }
 }
