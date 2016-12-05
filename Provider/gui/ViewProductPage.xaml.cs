@@ -75,31 +75,37 @@ namespace Provider.gui
                 chemicalNameTextBox.AcceptsReturn = true;
                 chemicalNameTextBox.IsUndoEnabled = true;
                 chemicalNameTextBox.Cursor = Cursors.IBeam;
+                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
                 molValueTextBox.Background = null;
                 molValueTextBox.IsReadOnly = false;
                 molValueTextBox.AcceptsReturn = true;
                 molValueTextBox.IsUndoEnabled = true;
                 molValueTextBox.Cursor = Cursors.IBeam;
+                molValueTextBox.ToolTip = "Write the MOL value of your product";
                 priceTextBox.Background = null;
                 priceTextBox.IsReadOnly = false;
                 priceTextBox.AcceptsReturn = true;
                 priceTextBox.IsUndoEnabled = true;
                 priceTextBox.Cursor = Cursors.IBeam;
+                priceTextBox.ToolTip = "Write the price of your product";
                 packetingTextBox.Background = null;
                 packetingTextBox.IsReadOnly = false;
                 packetingTextBox.AcceptsReturn = true;
                 packetingTextBox.IsUndoEnabled = true;
                 packetingTextBox.Cursor = Cursors.IBeam;
+                packetingTextBox.ToolTip = "Write the chemicalname of your product";
                 descriptionTextBox.Background = null;
                 descriptionTextBox.IsReadOnly = false;
                 descriptionTextBox.AcceptsReturn = true;
                 descriptionTextBox.IsUndoEnabled = true;
                 descriptionTextBox.Cursor = Cursors.IBeam;
+                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
                 deliveryTimeTextBox.Background = null;
                 deliveryTimeTextBox.IsReadOnly = false;
                 deliveryTimeTextBox.AcceptsReturn = true;
                 deliveryTimeTextBox.IsUndoEnabled = true;
                 deliveryTimeTextBox.Cursor = Cursors.IBeam;
+                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
                 editProduct.Content = "Gem";
             }
             else
@@ -108,7 +114,7 @@ namespace Provider.gui
                     molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text, deliveryTimeTextBox.Text);
                 HideButtons();
                 editProduct.Content = "Redigér";
-                supplierInformationPage.Reloadpage();
+                RefreshPage(false);
                 /*savedPostTextBlock.Visibility = Visibility.Visible;
                 savedPostTextBlock.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
                 */

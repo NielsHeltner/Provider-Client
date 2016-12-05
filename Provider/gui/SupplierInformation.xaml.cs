@@ -14,16 +14,16 @@ namespace Provider.gui
     {
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
-        private List<IO.Swagger.Model.Product> products2;
+        private List<Product> products;
 
         public SupplierInformation(IO.Swagger.Model.Page page)
         {
             InitializeComponent();
-            products2 = new List<IO.Swagger.Model.Product>();
+            products = new List<Product>();
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
-            products2 = page.Products;
-            ProductsListView.ItemsSource = products2;
+            products = page.Products;
+            ProductsListView.ItemsSource = products;
             productFrame.Visibility = Visibility.Collapsed;
         }
 
@@ -101,6 +101,17 @@ namespace Provider.gui
         public void Reloadpage()
         {
             productFrame.Visibility = Visibility.Collapsed;
+        }
+
+        public void RefreshPage(bool refreshFrameToo)
+        {
+            /*listView.ItemsSource = null;
+            listView.ItemsSource = Controller.instance.ViewAllPosts();
+            groupBox.Header = "Opslag information";
+            typeOfList.Text = "Alle opslag";
+            if (refreshFrameToo)
+                frame.Content = null;
+                */
         }
 
         private void button_Click(object sender, RoutedEventArgs e)

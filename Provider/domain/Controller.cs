@@ -147,10 +147,11 @@ namespace Provider.domain
             if ((GetLoggedInUser().Username.Equals(product.Producer)) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
             {
                 api.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
+                
             }
             else
             {
-                //Some error since user not allowed to use this function
+                throw new Exception(); // Some error to show something went wrong
             }
 
 
