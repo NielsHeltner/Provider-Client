@@ -3,6 +3,7 @@ using Provider.domain.users;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using Provider.domain.bulletinboard;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
@@ -39,7 +40,7 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.12.113:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://10.126.16.242:8080");
+            api = new ControllerApi("http://LocalHost:8080");
         }
 
         public List<Page> GetPages()
@@ -129,30 +130,37 @@ namespace Provider.domain
 
         public void GetPDF(int? id)
         {
+            new Thread(() =>
+            {
+                var finalString = new String(GetRandomCharArray(10)) + ".pdf";
+                string filePath = Path.GetTempPath() + "Provider/";
+                FileInfo FileInfo = new FileInfo(filePath);
+                FileInfo.Directory.Create();
+                var file = File.Create(filePath + finalString);
+
+                api.GetPDF(id).CopyTo(file);
+
+                file.Close();
+                System.Diagnostics.Process.Start(filePath + finalString);
+            }).Start();
+        }
+
+        public void DeleteTempFiles()
+        {
+            Directory.Delete(Path.GetTempPath() + "Provider", true);
+        }
+
+        private char[] GetRandomCharArray(int size)
+        {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[10];
+            var stringChars = new char[size];
             var random = new Random();
 
             for (int i = 0; i < stringChars.Length; i++)
             {
                 stringChars[i] = chars[random.Next(chars.Length)];
             }
-
-            var finalString = new String(stringChars) + ".pdf";
-
-            string filePath = Path.GetTempPath() + "Provider/";
-            FileInfo FileInfo = new FileInfo(filePath);
-            FileInfo.Directory.Create();
-            var file = File.Create(filePath + finalString);
-            api.GetPDF(id).CopyTo(file);
-            file.Close();
-            System.Diagnostics.Process.Start(filePath + finalString);
-
-        }
-
-        public void DeleteTempFiles()
-        {
-            Directory.Delete(Path.GetTempPath() + "Provider", true);
+            return stringChars;
         }
     }
 }
