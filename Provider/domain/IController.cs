@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Provider.domain.page;
 using Provider.domain.bulletinboard;
 using Provider.domain.users;
@@ -39,6 +40,10 @@ namespace Provider.domain
         void AddNoteToSupplier(string supplierName, string editor, string text);
 
         List<Page> Search(string searchTerm);
+
+        void GetPDF(int? id);
+
+        void DeleteTempFiles();
     }
 }
     

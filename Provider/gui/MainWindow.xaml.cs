@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -161,6 +162,11 @@ namespace Provider.gui
                 image.Source = new BitmapImage(new Uri("../resources/P.png", UriKind.Relative));
             else 
                 image.Source = new BitmapImage(new Uri("../resources/provider2.png", UriKind.Relative));
+        }
+
+        private void OnClosing(object sender, CancelEventArgs e)
+        {
+            Controller.instance.DeleteTempFiles();
         }
     }
 }

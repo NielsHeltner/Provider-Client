@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IO.Swagger.Model;
 using Page = System.Windows.Controls.Page;
+using Provider.domain;
+using System.IO;
 
 namespace Provider.gui
 {
@@ -22,6 +24,8 @@ namespace Provider.gui
     public partial class ViewProductPage : Page
     {
         private SupplierInformation supplierInformationPage;
+        private Product product;
+
         public ViewProductPage(Product p, SupplierInformation supplierInformationPage)
         {
             InitializeComponent();
@@ -32,6 +36,7 @@ namespace Provider.gui
             PacketingTextBox.Text = p.Packaging;
             discriptionTextBox.Text = p.Description;
             this.supplierInformationPage = supplierInformationPage;
+            product = p;
         }
 
         private void BackToListView(object sender, RoutedEventArgs e)
@@ -41,14 +46,13 @@ namespace Provider.gui
 
         private void OpenPDFBotton(object sender, RoutedEventArgs e)
         {
-            //TODO finde ud af hvordan vi hånter pdf...
             try
             {
-                System.Diagnostics.Process.Start(@"c:\egen fil\test1.pdf");
+                Controller.instance.GetPDF(product.Id);
             }
             catch (Exception exception)
             {
-                   
+                MessageBox.Show("Fejl ved indlæsning af PDF", "Fejl", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Provider.gui"
         mc:Ignorable="d"
         Title="Provider" Height="800" Width="1280" MinWidth="800"
-        SizeChanged="Window_SizeChanged">
+        SizeChanged="Window_SizeChanged"
+        Closing ="OnClosing">
     <Window.Resources>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
         <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>

@@ -23,6 +23,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using RestSharp;
 using IO.Swagger.Client;
@@ -238,16 +239,16 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Post&gt;</returns>
         ApiResponse<List<Post>> GetAllPostsWithHttpInfo ();
+
         /// <summary>
         /// Get the specific PDF for the product
         /// </summary>
         /// <remarks>
-        /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
         /// <returns>System.IO.Stream</returns>
-        System.IO.Stream GetPDF (int? productId);
+        Stream GetPDF (int? productId);
 
         /// <summary>
         /// Get the specific PDF for the product
@@ -2108,7 +2109,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
         /// <returns>System.IO.Stream</returns>
-        public System.IO.Stream GetPDF (int? productId)
+        public Stream GetPDF (int? productId)
         {
              ApiResponse<System.IO.Stream> localVarResponse = GetPDFWithHttpInfo(productId);
              return localVarResponse.Data;
