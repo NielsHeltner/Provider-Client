@@ -15,10 +15,10 @@
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="31,216,0,0" TextWrapping="Wrap" Text="Pris:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="31,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Text="Emballage:"/>
         <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="31,363,0,0" TextWrapping="Wrap" Text="Beskrivelse:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Button x:Name="editProduct" Content="Rediger" HorizontalAlignment="Left" Margin="31,516,0,0" VerticalAlignment="Top" Width="75" Click="EditProduct" Background="#FF0C4A63" BorderBrush="{x:Null}" Foreground="White"/>
-        <Button x:Name="deleteProduct" Content="Slet" HorizontalAlignment="Left" Margin="123,516,0,0" VerticalAlignment="Top" Width="75" Click="DeleteProduct" Background="#FFC53333" BorderBrush="{x:Null}" Foreground="White"/>
-        <Button x:Name="BackButton" Content="Tilbage" HorizontalAlignment="Left" Margin="31,475,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="BackToListView"/>
-        <Button Content="Åbn PDF" HorizontalAlignment="Left" Margin="123,475,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="OpenPDFBotton"/>
+        <Button x:Name="editProduct" Content="Rediger" HorizontalAlignment="Left" Margin="31,500,0,0" VerticalAlignment="Top" Width="75" Click="EditProduct" Background="#FF0C4A63" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button x:Name="deleteProduct" Content="Slet" HorizontalAlignment="Left" Margin="123,500,0,0" VerticalAlignment="Top" Width="75" Click="DeleteProduct" Background="#FFC53333" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button x:Name="BackButton" Content="Tilbage" HorizontalAlignment="Left" Margin="31,459,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="BackToListView"/>
+        <Button Content="Åbn PDF" HorizontalAlignment="Left" Margin="123,459,0,0" VerticalAlignment="Top" Width="75" Background="#FF0C4A63" Foreground="White" Click="OpenPDFBotton"/>
         <TextBox x:Name="productNameTextBox" Height="23" Margin="174,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="{x:Null}" FontSize="14" HorizontalAlignment="Left" Width="237" IsReadOnly="True"/>
         <TextBox x:Name="chemicalNameTextBox" HorizontalAlignment="Left" Height="23" Margin="174,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
         <TextBox x:Name="molValueTextBox" HorizontalAlignment="Left" Height="23" Margin="174,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>

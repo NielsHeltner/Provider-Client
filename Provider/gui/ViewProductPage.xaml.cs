@@ -29,7 +29,7 @@ namespace Provider.gui
         public ViewProductPage(Product product, SupplierInformation supplierInformationPage)
         {
             InitializeComponent();
-            productNameTextBox.Text = product.ProductName;
+            producerNameTextBox.Text = product.ProductName;
             chemicalNameTextBox.Text = product.ChemicalName;
             molValueTextBox.Text = product.MolWeight;
             priceTextBox.Text = product.Price;
@@ -134,10 +134,10 @@ namespace Provider.gui
             descriptionTextBox.IsReadOnly = true;
             descriptionTextBox.Cursor = Cursors.Arrow;
             descriptionTextBox.Background = Brushes.GhostWhite;
-            if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights != User.RightsEnum.Admin)
+            /*if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights != User.RightsEnum.Admin)
             {
                 editProduct.Visibility = Visibility.Hidden;
-            }
+            } */
 
         }
 
