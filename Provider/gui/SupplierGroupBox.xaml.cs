@@ -18,6 +18,7 @@ namespace Provider.gui
         public SupplierGroupBox(IO.Swagger.Model.Page Page)
         {
             InitializeComponent();
+            HideBorderandSetArrow();
             this.Page = Page;
             ContactInformation.Text = Page.ContactInformation;
             Location.Text = Page.Location;
@@ -58,13 +59,15 @@ namespace Provider.gui
             {
                 noteTextBox.AcceptsReturn = true;
                 noteTextBox.Cursor = Cursors.IBeam;
-                noteTextBox.IsReadOnly = false;          
+                noteTextBox.IsReadOnly = false;
+                noteTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
                 editNote.Content = "Gem";
 
             }
             else
             {
                 noteTextBox.Cursor = Cursors.Arrow;
+                noteTextBox.BorderThickness = new Thickness(0, 0, 0, 0);
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
                 lastEdited.Text = DateTime.Today.ToLongDateString() + ".";
@@ -80,6 +83,12 @@ namespace Provider.gui
                 Description.IsReadOnly = false;
                 ContactInformation.IsReadOnly = false;
                 Location.IsReadOnly = false;
+                Description.BorderThickness = new Thickness(1, 1, 1, 1);
+                ContactInformation.BorderThickness = new Thickness(1, 1, 1, 1);
+                Location.BorderThickness = new Thickness(1, 1, 1, 1);
+                Description.Cursor = Cursors.IBeam;
+                Location.Cursor = Cursors.IBeam;
+                ContactInformation.Cursor = Cursors.IBeam;
                 editPage.Content = "Gem";
             }
             else
@@ -87,12 +96,26 @@ namespace Provider.gui
                 Description.IsReadOnly = true;
                 ContactInformation.IsReadOnly = true;
                 Location.IsReadOnly = true;
+                HideBorderandSetArrow();
                 editPage.Content = "Rediger informationer";
                 Page.Description = Description.Text;
                 Page.ContactInformation = ContactInformation.Text;
                 Page.Location = Location.Text;
                 Controller.instance.ManageSupplerPage(Page);
             }
+
+        }
+
+        private void HideBorderandSetArrow()
+        {
+            Description.Cursor = Cursors.Arrow;
+            ContactInformation.Cursor = Cursors.Arrow;
+            Location.Cursor = Cursors.Arrow;
+            noteTextBox.Cursor = Cursors.Arrow;
+            Description.BorderThickness = new Thickness(0, 0, 0, 0);
+            ContactInformation.BorderThickness = new Thickness(0, 0, 0, 0);
+            Location.BorderThickness = new Thickness(0, 0, 0, 0);
+            noteTextBox.BorderThickness = new Thickness(0, 0, 0, 0);
         }
     }
 }
