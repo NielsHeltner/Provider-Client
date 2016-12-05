@@ -2,6 +2,8 @@
 using Provider.domain.users;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
 using Provider.domain.bulletinboard;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
@@ -16,6 +18,7 @@ namespace Provider.domain
         private PageManager pageManager;
         private Bulletinboard bulletinboard;
         private ControllerApi api;
+        private List<string> files = new List<string>();
 
         public static IController instance
         {
@@ -134,6 +137,41 @@ namespace Provider.domain
         public List<Page> Search(string searchTerm)
         {
             return pageManager.Search(searchTerm);
+        }
+
+        public void GetPDF(int? id)
+        {
+            new Thread(() =>
+            {
+                var finalString = new String(GetRandomCharArray(10)) + ".pdf";
+                string filePath = Path.GetTempPath() + "Provider/";
+                FileInfo FileInfo = new FileInfo(filePath);
+                FileInfo.Directory.Create();
+                var file = File.Create(filePath + finalString);
+
+                api.GetPDF(id).CopyTo(file);
+
+                file.Close();
+                System.Diagnostics.Process.Start(filePath + finalString);
+            }).Start();
+        }
+
+        public void DeleteTempFiles()
+        {
+            Directory.Delete(Path.GetTempPath() + "Provider", true);
+        }
+
+        private char[] GetRandomCharArray(int size)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[size];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            return stringChars;
         }
     }
 }

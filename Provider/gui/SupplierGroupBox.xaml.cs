@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using Provider.domain;
 using IO.Swagger.Model;
 
@@ -47,17 +49,22 @@ namespace Provider.gui
                 LocationBox.Height = 60;
                 ContactInfoBox.Height = 60;
             }
+            noteTextBox.Cursor = Cursors.Arrow;
         }
 
         private void EditNote(object sender, RoutedEventArgs e)
         {
             if (noteTextBox.IsReadOnly)
             {
-                noteTextBox.IsReadOnly = false;
+                noteTextBox.AcceptsReturn = true;
+                noteTextBox.Cursor = Cursors.IBeam;
+                noteTextBox.IsReadOnly = false;          
                 editNote.Content = "Gem";
+
             }
             else
             {
+                noteTextBox.Cursor = Cursors.Arrow;
                 noteTextBox.IsReadOnly = true;
                 editNote.Content = "Rediger notater";
                 lastEdited.Text = DateTime.Today.ToLongDateString() + ".";

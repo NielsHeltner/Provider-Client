@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -203,6 +204,11 @@ namespace Provider.gui
         private void GetSupplierPage(object sender, RoutedEventArgs e)
         {
             Frame.Content = new SupplierInformation(Controller.instance.GetPages().Find(SupplierPage => SupplierPage.Owner.Equals(Controller.instance.GetLoggedInUser().Username)));
+        }
+
+        private void OnClosing(object sender, CancelEventArgs e)
+        {
+            Controller.instance.DeleteTempFiles();
         }
     }
 }
