@@ -40,7 +40,7 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.12.113:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://LocalHost:8080");
+            api = new ControllerApi("http://192.168.87.103:8080");
         }
 
         public List<Page> GetPages()
@@ -102,6 +102,11 @@ namespace Provider.domain
             return bulletinboard.GetPosts(PostType.Offer);
         }
 
+        public List<Post> ViewOfferPosts(String Supplier)
+        {
+            return bulletinboard.GetPosts(PostType.Offer, Supplier);
+        }
+
         public void CreatePost(string owner, string title, string description, PostType type)
         {
             bulletinboard.AddPost(api.CreatePost(owner, title, description, type));
@@ -116,6 +121,12 @@ namespace Provider.domain
         public void EditPost(Post post, string newDescription, string newTitle)
         {
             api.EditPost(post, newDescription, newTitle);
+        }
+
+
+        public void ManageSupplerPage(Page page)
+        {
+            api.UpdatePage(page.Owner, page.Description, page.Location, page.ContactInformation);
         }
 
         public void AddNoteToSupplier(string supplierName, string editor, string text)

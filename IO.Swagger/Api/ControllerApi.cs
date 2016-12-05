@@ -23,7 +23,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using RestSharp;
 using IO.Swagger.Client;
@@ -239,16 +238,16 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Post&gt;</returns>
         ApiResponse<List<Post>> GetAllPostsWithHttpInfo ();
-
         /// <summary>
         /// Get the specific PDF for the product
         /// </summary>
         /// <remarks>
+        /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
         /// <returns>System.IO.Stream</returns>
-        Stream GetPDF (int? productId);
+        System.IO.Stream GetPDF (int? productId);
 
         /// <summary>
         /// Get the specific PDF for the product
@@ -279,6 +278,33 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Page&gt;</returns>
         ApiResponse<List<Page>> GetSuppliersWithHttpInfo ();
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns></returns>
+        void UpdatePage (string page, string description, string location, string contactInformation);
+
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdatePageWithHttpInfo (string page, string description, string location, string contactInformation);
         /// <summary>
         /// Validate information
         /// </summary>
@@ -546,6 +572,33 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Page&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSuppliersAsyncWithHttpInfo ();
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdatePageAsync (string page, string description, string location, string contactInformation);
+
+        /// <summary>
+        /// Update a supplier page
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePageAsyncWithHttpInfo (string page, string description, string location, string contactInformation);
         /// <summary>
         /// Validate information
         /// </summary>
@@ -2109,7 +2162,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="productId"></param>
         /// <returns>System.IO.Stream</returns>
-        public Stream GetPDF (int? productId)
+        public System.IO.Stream GetPDF (int? productId)
         {
              ApiResponse<System.IO.Stream> localVarResponse = GetPDFWithHttpInfo(productId);
              return localVarResponse.Data;
@@ -2387,6 +2440,185 @@ namespace IO.Swagger.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Page>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Page>)));
             
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns></returns>
+        public void UpdatePage (string page, string description, string location, string contactInformation)
+        {
+             UpdatePageWithHttpInfo(page, description, location, contactInformation);
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UpdatePageWithHttpInfo (string page, string description, string location, string contactInformation)
+        {
+            // verify the required parameter 'page' is set
+            if (page == null)
+                throw new ApiException(400, "Missing required parameter 'page' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'description' is set
+            if (description == null)
+                throw new ApiException(400, "Missing required parameter 'description' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'location' is set
+            if (location == null)
+                throw new ApiException(400, "Missing required parameter 'location' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'contactInformation' is set
+            if (contactInformation == null)
+                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling ControllerApi->UpdatePage");
+
+            var localVarPath = "/Controller/UpdatePage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
+            if (description != null) localVarQueryParams.Add("description", Configuration.ApiClient.ParameterToString(description)); // query parameter
+            if (location != null) localVarQueryParams.Add("location", Configuration.ApiClient.ParameterToString(location)); // query parameter
+            if (contactInformation != null) localVarQueryParams.Add("contactInformation", Configuration.ApiClient.ParameterToString(contactInformation)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdatePage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdatePageAsync (string page, string description, string location, string contactInformation)
+        {
+             await UpdatePageAsyncWithHttpInfo(page, description, location, contactInformation);
+
+        }
+
+        /// <summary>
+        /// Update a supplier page 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"></param>
+        /// <param name="description"></param>
+        /// <param name="location"></param>
+        /// <param name="contactInformation"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePageAsyncWithHttpInfo (string page, string description, string location, string contactInformation)
+        {
+            // verify the required parameter 'page' is set
+            if (page == null)
+                throw new ApiException(400, "Missing required parameter 'page' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'description' is set
+            if (description == null)
+                throw new ApiException(400, "Missing required parameter 'description' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'location' is set
+            if (location == null)
+                throw new ApiException(400, "Missing required parameter 'location' when calling ControllerApi->UpdatePage");
+            // verify the required parameter 'contactInformation' is set
+            if (contactInformation == null)
+                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling ControllerApi->UpdatePage");
+
+            var localVarPath = "/Controller/UpdatePage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "text/plain", 
+                "application/json", 
+                "text/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
+            if (description != null) localVarQueryParams.Add("description", Configuration.ApiClient.ParameterToString(description)); // query parameter
+            if (location != null) localVarQueryParams.Add("location", Configuration.ApiClient.ParameterToString(location)); // query parameter
+            if (contactInformation != null) localVarQueryParams.Add("contactInformation", Configuration.ApiClient.ParameterToString(contactInformation)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdatePage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>

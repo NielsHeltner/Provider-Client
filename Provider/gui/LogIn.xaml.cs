@@ -32,9 +32,15 @@ namespace Provider.gui
             {
                 wrongUsernameOrPassword.Visibility = Visibility.Hidden;
                 mainwindow.AnimateHeaderLogin();
-                mainwindow.Refresh();
-                frame.Content = frontpage;
-                mainwindow.loggedIn.Content = Controller.instance.GetLoggedInUser().Username + " logget ind";
+                mainwindow.LoggedIn.Content = Controller.instance.GetLoggedInUser().Username + " logget ind";
+                if(Controller.instance.GetLoggedInUser().Rights.Value == IO.Swagger.Model.User.RightsEnum.Supplier)
+                {
+                    frame.Content = mainwindow.LoginSupplier();
+                }
+                else
+                {
+                    frame.Content = mainwindow.LoginProvia();
+                }
             }
             else
             {

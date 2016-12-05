@@ -1,4 +1,4 @@
-﻿<Page x:Class="Provider.gui.Frontpage"
+﻿<Page x:Class="Provider.gui.SupplierFrontpage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -209,24 +209,18 @@
 
     <Grid Background="White">
         <Label x:Name="label" Content="Velkommen til Provider" Margin="40,42,0,0" VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
-        <ListView x:Name="OfferListView" ItemContainerStyle="{StaticResource OfferList}" HorizontalAlignment="Left" Height="395" Margin="47,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
+        <ListView x:Name="RequestListView" ItemContainerStyle="{StaticResource OfferList}" HorizontalAlignment="Left" Height="395" Margin="47,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="150">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="150">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}"  Width="250">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" />
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-
-                    <GridViewColumn DisplayMemberBinding="{Binding Owner}" Width="150">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Left" />
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left"/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
@@ -235,12 +229,13 @@
                             <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
+                    
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label1" Content="Nyeste tilbud" HorizontalAlignment="Left" Margin="44,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
-        <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="156,109,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="NumberOfOfferPosts" Content="0" HorizontalAlignment="Left" Margin="228,109,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Provias forespørgsler" HorizontalAlignment="Left" Margin="44,103,0,0" VerticalAlignment="Top" Width="181" FontSize="18" FontFamily="Yu Gothic UI"/>
+        <Label x:Name="label2" Content="Antal opslag: " HorizontalAlignment="Left" Margin="222,109,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumberOfRequestPosts" Content="0" HorizontalAlignment="Left" Margin="294,110,0,0" VerticalAlignment="Top"/>
         <ListView x:Name="WarningListView" ItemContainerStyle="{StaticResource WarningList}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="180" Margin="627,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="ViewWarningPost" AlternationCount="2">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
@@ -270,18 +265,24 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="RequestListView" HorizontalAlignment="Left" Height="180" Margin="627,347,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
+        <ListView x:Name="OfferListView" HorizontalAlignment="Left" Height="180" Margin="627,347,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="150">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Titel" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}"  Width="250">
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left"/>
+                            <GridViewColumnHeader Content="Besked" HorizontalContentAlignment="Left" />
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Owner}" Width="150">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Leverandør" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
@@ -289,14 +290,14 @@
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Content="Dato" HorizontalContentAlignment="Left" />
                         </GridViewColumn.Header>
-                    </GridViewColumn>
+                    </GridViewColumn>    
                 </GridView>
             </ListView.View>
         </ListView>
         <Label x:Name="label1_Copy" Content="Advarsler" HorizontalAlignment="Left" Margin="624,103,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Yu Gothic UI"/>
-        <Label x:Name="label1_Copy1" Content="Provias forespørgsler" HorizontalAlignment="Left" Margin="625,319,0,0" VerticalAlignment="Top" Width="184" FontSize="18" FontFamily="Yu Gothic UI"/>
-        <Label x:Name="label2_Copy" Content="Antal opslag: " HorizontalAlignment="Left" Margin="804,325,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="NumberOfRequestPosts" Content="0" HorizontalAlignment="Left" Margin="877,325,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="Vores tilbud" HorizontalAlignment="Left" Margin="625,319,0,0" VerticalAlignment="Top" Width="105" FontSize="18" FontFamily="Yu Gothic UI"/>
+        <Label x:Name="label2_Copy" Content="Antal opslag: " HorizontalAlignment="Left" Margin="735,323,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumberOfOfferPosts" Content="0" HorizontalAlignment="Left" Margin="808,324,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2_Copy1" Content="Antal opslag: " HorizontalAlignment="Left" Margin="713,109,0,0" VerticalAlignment="Top"/>
         <Label x:Name="numberOfWarningPostLabel" Content="0" HorizontalAlignment="Left" Margin="786,109,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="551,117,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand" Foreground="#FF0C4A63"/>
