@@ -1,0 +1,17 @@
+﻿<Page x:Class="Provider.gui.ViewProductGBPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Provider.gui"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="540"
+      Title="ViewProductGBPage" Width="421">
+
+    <Grid Width="421" Height="550" Background="White">
+        <GroupBox x:Name="groupBox" Header="Produkt Information" HorizontalAlignment="Left" VerticalAlignment="Top" Height="540" Width="421">
+            <Frame x:Name="frame" Content="Frame" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="411" Margin="0,0,-2,-2"/>
+        </GroupBox>
+
+    </Grid>
+</Page>
