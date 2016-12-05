@@ -27,7 +27,7 @@
         <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Height="92" Margin="174,362,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
         <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="31,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Text="Leveringstid:"/>
         <TextBox x:Name="deliveryTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="174,313,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True"/>
-        <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="30,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Text="Producent"/>
+        <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="30,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"><Run Text="Produc"/><Run Text="je"/><Run Text="nt"/></TextBlock>
         <TextBox x:Name="producerNameTextBox" Height="23" Margin="174,19,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="{x:Null}" FontSize="14" HorizontalAlignment="Left" Width="237" IsReadOnly="True" TextChanged="productNameTextBox_Copy_TextChanged"/>
 
     </Grid>

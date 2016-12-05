@@ -134,7 +134,7 @@ namespace Provider.gui
             descriptionTextBox.IsReadOnly = true;
             descriptionTextBox.Cursor = Cursors.Arrow;
             descriptionTextBox.Background = Brushes.GhostWhite;
-            if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer))
+            if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights != User.RightsEnum.Admin)
             {
                 editProduct.Visibility = Visibility.Hidden;
             }
