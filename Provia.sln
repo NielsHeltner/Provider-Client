@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provider", "Provider\Provider.csproj", "{88646897-7989-484C-9DC3-D87B6E186ACD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47864115-776D-447A-91DE-7C71010B01EE} = {47864115-776D-447A-91DE-7C71010B01EE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{88C30AC9-97DE-4BAA-BF3B-58D9CF5D8D11}"
 EndProject
