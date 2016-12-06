@@ -37,10 +37,10 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            //api = new ControllerApi("http://10.126.12.113:8080");
+            api = new ControllerApi("http://10.126.12.179:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://192.168.87.103:8080");
+            //api = new ControllerApi("http://192.168.87.103:8080");
         }
 
         public List<Page> GetPages()
@@ -48,24 +48,24 @@ namespace Provider.domain
             return pageManager.pages;
         }
         
+        /// <summary>
+        /// Skal logge brugeren ind. Kontrollerer først med Validate() metoden, som returnerer en bruger. 
+        /// Den bruger bliver så sat til loggedInUser, og så indlæses alle leverandører og opslag.
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool LogIn(string userName, string password)
         {
-            try
+            User user = api.Validate(userName, password);
+            if (user != null)
             {
-                User user = api.Validate(userName, password);
-                if (user != null)
-                {
-                    userManager.loggedInUser = user;
-                    GetSuppliers();
-                    ViewAllPosts();
-                    return true;
-                }
-                return false;
+                userManager.loggedInUser = user;
+                GetSuppliers();
+                ViewAllPosts();
+                return true;
             }
-            catch (ApiException e)
-            {
-                throw new Exception(e.ToString());
-            }
+            return false;
         }
 
         public void LogOut()
@@ -158,7 +158,14 @@ namespace Provider.domain
 
         public void DeleteTempFiles()
         {
-            Directory.Delete(Path.GetTempPath() + "Provider", true);
+            try
+            {
+                Directory.Delete(Path.GetTempPath() + "Provider", true);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                Environment.Exit(0);
+            }
         }
 
         private char[] GetRandomCharArray(int size)
