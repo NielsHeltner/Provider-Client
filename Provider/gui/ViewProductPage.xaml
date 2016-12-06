@@ -30,6 +30,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="30,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"><Run Text="Produce"/><Run Text="nt"/></TextBlock>
         <TextBox x:Name="producerNameTextBox" Height="23" Margin="174,19,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="{x:Null}" FontSize="14" HorizontalAlignment="Left" Width="237" IsReadOnly="True"/>
         <TextBlock x:Name="savedPostTextBlock" HorizontalAlignment="Left" Margin="118,492,0,0" TextWrapping="Wrap" Text="Opslaget er gemt" VerticalAlignment="Top" Foreground="#FF10AC00" Visibility="Hidden" Width="102"/>
+        <TextBox x:Name="wrongInput" HorizontalAlignment="Left" Height="23" Margin="199,489,0,0" TextWrapping="Wrap" Text="WRONG INPUT" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" FontSize="14" IsReadOnly="True" Visibility="Hidden"/>
 
     </Grid>
 </Page>

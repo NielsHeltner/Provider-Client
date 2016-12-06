@@ -111,16 +111,37 @@ namespace Provider.gui
             }
             else
             {
-                Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
-                    molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text, deliveryTimeTextBox.Text);
-                product.ProductName = productNameTextBox.Text; product.ChemicalName = chemicalNameTextBox.Text; product.MolWeight = molValueTextBox.Text;
-                product.Description = descriptionTextBox.Text; product.Price = priceTextBox.Text; product.Packaging = packetingTextBox.Text; product.DeliveryTime = deliveryTimeTextBox.Text;
-                HideButtons();
-                editProduct.Content = "Redigér";
-                
-                savedPostTextBlock.Visibility = Visibility.Visible;
-                savedPostTextBlock.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
-                
+                bool passedChecked = true;
+                try
+                {
+                    int price = Int32.Parse(priceTextBox.Text);
+                    double molWeight = Double.Parse(molValueTextBox.Text);
+                }
+                catch (FormatException exeception)
+                {
+                    wrongInput.Visibility = Visibility.Visible;
+                    passedChecked = false;
+                }
+                if (passedChecked)
+                {
+                    wrongInput.Visibility = Visibility.Hidden;
+                    Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
+                        molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text,
+                        deliveryTimeTextBox.Text);
+                    product.ProductName = productNameTextBox.Text;
+                    product.ChemicalName = chemicalNameTextBox.Text;
+                    product.MolWeight = molValueTextBox.Text;
+                    product.Description = descriptionTextBox.Text;
+                    product.Price = priceTextBox.Text;
+                    product.Packaging = packetingTextBox.Text;
+                    product.DeliveryTime = deliveryTimeTextBox.Text;
+                    HideButtons();
+                    editProduct.Content = "Redigér";
+
+                    savedPostTextBlock.Visibility = Visibility.Visible;
+                    savedPostTextBlock.BeginAnimation(OpacityProperty,
+                        new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
+                }
             }
         }
 
@@ -143,8 +164,9 @@ namespace Provider.gui
             descriptionTextBox.Cursor = Cursors.Arrow;
             editProduct.Visibility = Visibility.Hidden;
             descriptionTextBox.Background = Brushes.GhostWhite;
-            if (Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
-                {
+            if (Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) ||
+                Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
+            {
                 editProduct.Visibility = Visibility.Visible;
             }
             /*else if (Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
@@ -156,7 +178,8 @@ namespace Provider.gui
 
         private void DeleteProduct(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult confirmation = MessageBox.Show("Are you sure you want to delete this Product", "Confirm action?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult confirmation = MessageBox.Show("Are you sure you want to delete this Product",
+                "Confirm action?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (confirmation)
             {
                 case MessageBoxResult.Yes:
@@ -166,9 +189,5 @@ namespace Provider.gui
             }
         }
 
-        private void productNameTextBox_Copy_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
-        }
     }
 }
