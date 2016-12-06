@@ -209,7 +209,7 @@
 
     <Grid Background="White">
         <Label x:Name="label" Content="Velkommen til Provider" Margin="40,42,0,0" VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Left" Width="1147" FontFamily="Yu Gothic UI"/>
-        <ListView x:Name="OfferListView" ItemContainerStyle="{StaticResource OfferList}" HorizontalAlignment="Left" Height="395" Margin="47,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
+        <ListView x:Name="OfferListView" ItemContainerStyle="{StaticResource OfferList}" HorizontalAlignment="Left" Height="395" Margin="47,133,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" MouseDoubleClick="ViewOfferPost">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
@@ -270,7 +270,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="RequestListView" HorizontalAlignment="Left" Height="180" Margin="627,347,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
+        <ListView x:Name="RequestListView" HorizontalAlignment="Left" Height="180" Margin="627,347,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" MouseDoubleClick="ViewRequestPost">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="150">
