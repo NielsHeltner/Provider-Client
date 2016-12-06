@@ -24,7 +24,21 @@ namespace Provider.gui
         public ViewProductGBPage(Product product, SupplierInformation supplierInformationPage)
         {
             InitializeComponent();
+            groupBox.Header = "Produkt Information";
             frame.Content = new ViewProductPage(product, supplierInformationPage);
+        }
+
+        public ViewProductGBPage(SupplierInformation supplierPage)
+        {
+            InitializeComponent();
+            groupBox.Header = "Opret nyt produkt";
+            frame.Content = new CreateNewProductPage(supplierPage);
+
+        }
+
+        private void frame_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }

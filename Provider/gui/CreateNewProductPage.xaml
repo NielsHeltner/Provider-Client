@@ -1,0 +1,49 @@
+﻿<Page x:Class="Provider.gui.CreateNewProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Provider.gui"
+      mc:Ignorable="d"
+      Title="CreateNewPost" Height="400" Width="488">
+    <Page.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="White" Margin="0,-62,0,-75">
+
+        <TextBlock x:Name="OwnerTextBlock" HorizontalAlignment="Left" Margin="86,16,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="CreationDateTextBlock" HorizontalAlignment="Left" Margin="96,37,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,16,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,37,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
+        <TextBox x:Name="ProductName" HorizontalAlignment="Left" Height="23" Margin="19,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv navnet på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" TextChanged="ProductName_TextChanged" Text="Produkt navn"/>
+        <TextBox x:Name="ProductChemName" HorizontalAlignment="Left" Height="23" Margin="19,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv det kemiske navn på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Kemisk navn" />
+        <TextBox x:Name="ProductPrice" HorizontalAlignment="Left" Height="23" Margin="19,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv prisen på dit prodkt her " SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Pris" />
+        <TextBox x:Name="ProductDescription" HorizontalAlignment="Left" Height="115" Margin="19,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv beskrivelsen af dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Beskrivelse" />
+        <TextBox x:Name="ProductDensity" HorizontalAlignment="Left" Height="23" Margin="19,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv molvægten på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Molvægt" />
+        <TextBox x:Name="ProductPackaging" HorizontalAlignment="Left" Height="23" Margin="19,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Beskriv emballagen på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Emballage"/>
+        <TextBox x:Name="ProductDeliveryTime" HorizontalAlignment="Left" Height="23" Margin="19,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv forsendelsestiden på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Leveringstid" />
+        <Button x:Name="button" Content="Opret" HorizontalAlignment="Left" Margin="20,480,0,0" VerticalAlignment="Top" Width="75" Click="CreateProduct" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/> 
+
+    </Grid>
+</Page>

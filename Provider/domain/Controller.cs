@@ -41,6 +41,7 @@ namespace Provider.domain
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             //api = new ControllerApi("http://192.168.87.103:8080");
+            api = new ControllerApi("http://10.126.12.179:8080");
         }
 
         public List<Page> GetPages()
@@ -57,15 +58,20 @@ namespace Provider.domain
         /// <returns></returns>
         public bool LogIn(string userName, string password)
         {
-            User user = api.Validate(userName, password);
-            if (user != null)
-            {
-                userManager.loggedInUser = user;
-                GetSuppliers();
-                ViewAllPosts();
-                return true;
+                User user = api.Validate(userName, password);
+                if (user != null)
+                {
+                    userManager.loggedInUser = user;
+                    GetSuppliers();
+                    ViewAllPosts();
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (ApiException e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
 
         public void LogOut()
@@ -139,6 +145,38 @@ namespace Provider.domain
             return pageManager.Search(searchTerm);
         }
 
+        public void EditProduct(Product product, string newProductName, string newChemicalName, string newMolWeight,
+            string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        {
+
+            if ((GetLoggedInUser().Username.Equals(product.Producer)) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
+            {
+                api.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
+            }
+            else
+            {
+                //Some error since user not allowed to use this function
+            }
+
+
+        }
+        
+
+        public void CreateProduct(string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
+        {
+            pageManager.pages.Find(page => page.Owner.Equals(producer)).Products.Add(api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer));
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
+            {
+                api.DeleteProduct(product);
+                pageManager.pages.Find(page => page.Owner.Equals(product.Producer)).Products.Remove(product);
+            }
+        }
+
+
         public void GetPDF(int? id)
         {
             new Thread(() =>
@@ -160,8 +198,8 @@ namespace Provider.domain
         {
             try
             {
-                Directory.Delete(Path.GetTempPath() + "Provider", true);
-            }
+            Directory.Delete(Path.GetTempPath() + "Provider", true);
+        }
             catch (DirectoryNotFoundException e)
             {
                 Environment.Exit(0);
