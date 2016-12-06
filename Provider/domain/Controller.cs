@@ -50,7 +50,7 @@ namespace Provider.domain
         
         /// <summary>
         /// Skal logge brugeren ind. Kontrollerer først med Validate() metoden, som returnerer en bruger. 
-        /// Den bruger bliver så sat til loggedInUser, og så indlæses alle leverandører og opslag.
+        /// Den bruger bliver sat til loggedInUser, og så indlæses alle leverandører og opslag.
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="password"></param>
