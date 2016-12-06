@@ -36,7 +36,7 @@
         <Button x:Name="button" Content="Log ind" HorizontalAlignment="Left" Margin="466,210,0,0" VerticalAlignment="Top" Width="312" Background="#FF063749" Foreground="White" BorderBrush="{x:Null}" Click="LogUserIn" Height="63" FontSize="22" FontFamily="Yu Gothic UI" Style="{DynamicResource loginButton}">
 
         </Button>
-        <TextBlock x:Name="wrongUsernameOrPassword" IsHitTestVisible="False" Text="Forkert brugernavn eller password" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="484,47,0,0" Foreground="#FFC91A1A" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
+        <TextBlock x:Name="wrongUsernameOrPassword" IsHitTestVisible="False" Text="Forkert brugernavn eller password" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="484,29,0,0" Foreground="#FFC91A1A" Opacity="1" FontSize="18" FontFamily="Yu Gothic UI">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using IO.Swagger.Client;
 using Provider.domain;
 
 namespace Provider.gui
@@ -28,39 +30,56 @@ namespace Provider.gui
 
         private void LogUserIn(object sender, RoutedEventArgs e)
         {
-            if (Controller.instance.LogIn(usernameBox.Text, passwordBox.Password))
+            new Thread(() =>
             {
-                wrongUsernameOrPassword.Visibility = Visibility.Hidden;
-                mainwindow.AnimateHeaderLogin();
-                mainwindow.LoggedIn.Content = Controller.instance.GetLoggedInUser().Username + " logget ind";
-                if(Controller.instance.GetLoggedInUser().Rights.Value == IO.Swagger.Model.User.RightsEnum.Supplier)
+                Dispatcher.Invoke((ThreadStart)delegate
                 {
-                    frame.Content = mainwindow.LoginSupplier();
-                }
-                else
-                {
-                    frame.Content = mainwindow.LoginProvia();
-                }
-            }
-            else
-            {
-                wrongUsernameOrPassword.Visibility = Visibility.Visible;
-                DoubleAnimationUsingKeyFrames animationKeyFrames = new DoubleAnimationUsingKeyFrames();
-                DoubleKeyFrameCollection frameCollection = new DoubleKeyFrameCollection
-                {
-                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 50)),
-                    new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 100)),
-                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 150)),
-                    new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 200)),
-                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 250)),
-                    new EasingDoubleKeyFrame(56, new TimeSpan(0, 0, 0, 0, 300))
-                };
-                animationKeyFrames.KeyFrames = frameCollection;
-                usernameBox.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
-                usernameText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
-                passwordBox.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
-                passwordText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
-            }
+                    try
+                    {
+                        if (Controller.instance.LogIn(usernameBox.Text, passwordBox.Password))
+                        {
+                            wrongUsernameOrPassword.Visibility = Visibility.Hidden;
+                            mainwindow.AnimateHeaderLogin();
+                            mainwindow.LoggedIn.Content = Controller.instance.GetLoggedInUser().Username +
+                                                            " logget ind";
+                            if (Controller.instance.GetLoggedInUser().Rights.Value ==
+                                IO.Swagger.Model.User.RightsEnum.Supplier)
+                            {
+                                frame.Content = mainwindow.LoginSupplier();
+                            }
+                            else
+                            {
+                                frame.Content = mainwindow.LoginProvia();
+                            }
+                        }
+                        else
+                        {
+                            wrongUsernameOrPassword.Visibility = Visibility.Visible;
+                            DoubleAnimationUsingKeyFrames animationKeyFrames =
+                                new DoubleAnimationUsingKeyFrames();
+                            DoubleKeyFrameCollection frameCollection = new DoubleKeyFrameCollection
+                                {
+                                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 50)),
+                                    new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 100)),
+                                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 150)),
+                                    new EasingDoubleKeyFrame(70, new TimeSpan(0, 0, 0, 0, 200)),
+                                    new EasingDoubleKeyFrame(40, new TimeSpan(0, 0, 0, 0, 250)),
+                                    new EasingDoubleKeyFrame(56, new TimeSpan(0, 0, 0, 0, 300))
+                                };
+                            animationKeyFrames.KeyFrames = frameCollection;
+                            usernameBox.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
+                            usernameText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
+                            passwordBox.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
+                            passwordText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
+                        }
+                    }
+                    catch (ApiException ex)
+                    {
+                        wrongUsernameOrPassword.Visibility = Visibility.Visible;
+                        wrongUsernameOrPassword.Text = "Kunne ikke oprette forbindelse\ntil serveren. Prøv igen.";
+                    }
+                });
+            }).Start();
         }
 
         private void UsernameGotFocus(object sender, RoutedEventArgs e)
