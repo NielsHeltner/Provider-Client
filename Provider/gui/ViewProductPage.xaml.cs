@@ -44,7 +44,7 @@ namespace Provider.gui
 
         private void BackToListView(object sender, RoutedEventArgs e)
         {
-            supplierInformationPage.Reloadpage();
+            supplierInformationPage.Reloadpage(false);
         }
 
         private void OpenPDFBotton(object sender, RoutedEventArgs e)
@@ -109,7 +109,7 @@ namespace Provider.gui
                     molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text, deliveryTimeTextBox.Text);
                 HideButtons();
                 editProduct.Content = "Redigér";
-                supplierInformationPage.Reloadpage();
+                supplierInformationPage.Reloadpage(false);
                 /*savedPostTextBlock.Visibility = Visibility.Visible;
                 savedPostTextBlock.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
                 */
@@ -148,7 +148,7 @@ namespace Provider.gui
             {
                 case MessageBoxResult.Yes:
                     Controller.instance.DeleteProduct(product);
-                    supplierInformationPage.Reloadpage();
+                    supplierInformationPage.Reloadpage(true);
                     break;
             }
         }

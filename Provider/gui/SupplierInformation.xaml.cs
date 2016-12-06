@@ -15,10 +15,11 @@ namespace Provider.gui
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
         private List<IO.Swagger.Model.Product> products2;
-
+        private IO.Swagger.Model.Page page;
         public SupplierInformation(IO.Swagger.Model.Page page)
         {
             InitializeComponent();
+            this.page = page;
             products2 = new List<IO.Swagger.Model.Product>();
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
@@ -98,14 +99,26 @@ namespace Provider.gui
             productFrame.Content = new ViewProductGBPage((Product)ProductsListView.SelectedItem, this);
         }
 
-        public void Reloadpage()
+        public void Reloadpage(bool loadProductsToo)
         {
+            if (loadProductsToo)
+            {
+
+                products2 = page.Products;
+                ProductsListView.ItemsSource = null;
+                ProductsListView.ItemsSource = products2;
+
+            }
             productFrame.Visibility = Visibility.Collapsed;
+            button.Visibility = Visibility.Visible;
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            productFrame.Visibility = Visibility.Visible;
             productFrame.Content = new ViewProductGBPage(this);
+            button.Visibility = Visibility.Hidden;
         }
     }
 }

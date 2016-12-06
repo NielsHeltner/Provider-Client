@@ -54,7 +54,7 @@
             <Frame x:Name="frame" HorizontalAlignment="Left" Height="499" Margin="10,0,0,0" VerticalAlignment="Top" Width="626" FontFamily="Yu Gothic UI"/>
         </GroupBox>
         <Frame x:Name="productFrame" Content="Frame" HorizontalAlignment="Left" Height="555" Margin="763,14,0,0" VerticalAlignment="Top" Width="421" />
-        <Button x:Name="button" Content="Opret produkt" HorizontalAlignment="Left" Margin="775,589,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="button" Content="Opret produkt" HorizontalAlignment="Left" Margin="775,589,0,0" VerticalAlignment="Top" Width="92" Click="button_Click" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
     </Grid>
 
 

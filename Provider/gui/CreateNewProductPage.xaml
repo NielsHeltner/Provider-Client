@@ -30,17 +30,20 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="White" Margin="0,0,0,0">
-        <TextBox x:Name="postTitleTextBox" HorizontalAlignment="Left" Height="23" Margin="20,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her"/>
-      
+    <Grid Background="White" Margin="0,-62,0,-75">
+
         <TextBlock x:Name="OwnerTextBlock" HorizontalAlignment="Left" Margin="86,16,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <TextBlock x:Name="CreationDateTextBlock" HorizontalAlignment="Left" Margin="96,37,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,16,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="20,37,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
-        <TextBox x:Name="postTitleTextBox_Copy" HorizontalAlignment="Left" Height="23" Margin="20,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" />
-        <TextBox x:Name="postTitleTextBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="20,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" />
-        <TextBox x:Name="postTitleTextBox_Copy2" HorizontalAlignment="Left" Height="23" Margin="20,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" />
-        <TextBox x:Name="postTitleTextBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="20,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her"/>
-        <TextBox x:Name="postTitleTextBox_Copy4" HorizontalAlignment="Left" Height="23" Margin="20,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv titlen på dit opslag her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" />
+        <TextBlock HorizontalAlignment="Left" Margin="20,16,0,0" TextWrapping="Wrap" Text="Oprettet af:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,37,0,0" TextWrapping="Wrap" Text="Oprettet den:" VerticalAlignment="Top"/>
+        <TextBox x:Name="ProductName" HorizontalAlignment="Left" Height="23" Margin="19,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv navnet på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" TextChanged="ProductName_TextChanged" Text="Produkt navn"/>
+        <TextBox x:Name="ProductChemName" HorizontalAlignment="Left" Height="23" Margin="19,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv det kemiske navn på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Kemisk navn" />
+        <TextBox x:Name="ProductPrice" HorizontalAlignment="Left" Height="23" Margin="19,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv prisen på dit prodkt her " SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Pris" />
+        <TextBox x:Name="ProductDescription" HorizontalAlignment="Left" Height="115" Margin="19,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv beskrivelsen af dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Beskrivelse" />
+        <TextBox x:Name="ProductDensity" HorizontalAlignment="Left" Height="23" Margin="19,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv molvægten på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Molvægt" />
+        <TextBox x:Name="ProductPackaging" HorizontalAlignment="Left" Height="23" Margin="19,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Beskriv emballagen på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Emballage"/>
+        <TextBox x:Name="ProductDeliveryTime" HorizontalAlignment="Left" Height="23" Margin="19,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv forsendelsestiden på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Leveringstid" />
+        <Button x:Name="button" Content="Opret" HorizontalAlignment="Left" Margin="20,480,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/> 
+
     </Grid>
 </Page>

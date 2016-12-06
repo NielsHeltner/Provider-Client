@@ -40,7 +40,8 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.12.113:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://192.168.87.103:8080");
+            //api = new ControllerApi("http://192.168.87.103:8080");
+            api = new ControllerApi("http://10.126.12.179:8080");
         }
 
         public List<Page> GetPages()
@@ -156,9 +157,9 @@ namespace Provider.domain
         }
         
 
-        public void CreateProduct(string ProductName, string ChemicalName, string MolWeight, string Description, string Price, string Packaging, string DeliveryTime, string Producer)
+        public void CreateProduct(string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
         {
-            pageManager.pages.Find(page => page.Owner.Equals(GetLoggedInUser().Username)).Products.Add(api.CreateProduct(ProductName, ChemicalName, MolWeight, Description, Price, Packaging, DeliveryTime, Producer));
+            pageManager.pages.Find(page => page.Owner.Equals(producer)).Products.Add(api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer));
         }
 
         public void DeleteProduct(Product product)
@@ -190,7 +191,13 @@ namespace Provider.domain
 
         public void DeleteTempFiles()
         {
-            Directory.Delete(Path.GetTempPath() + "Provider", true);
+            try {
+                Directory.Delete(Path.GetTempPath() + "Provider", true);
+            }
+            catch (DirectoryNotFoundException)
+            {
+
+            }
         }
 
         private char[] GetRandomCharArray(int size)
