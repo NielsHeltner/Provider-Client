@@ -103,7 +103,7 @@ namespace Provider.domain
             return bulletinboard.GetPosts(PostType.Offer);
         }
 
-        public List<Post> ViewOfferPosts(String Supplier)
+        public List<Post> ViewOfferPosts(string Supplier)
         {
             return bulletinboard.GetPosts(PostType.Offer, Supplier);
         }
