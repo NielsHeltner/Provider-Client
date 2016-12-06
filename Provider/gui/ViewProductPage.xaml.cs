@@ -45,7 +45,7 @@ namespace Provider.gui
 
         private void BackToListView(object sender, RoutedEventArgs e)
         {
-            supplierInformationPage.Reloadpage();
+            supplierInformationPage.Reloadpage(false);
         }
 
         private void OpenPDFBotton(object sender, RoutedEventArgs e)
@@ -184,7 +184,7 @@ namespace Provider.gui
             {
                 case MessageBoxResult.Yes:
                     Controller.instance.DeleteProduct(product);
-                    supplierInformationPage.Reloadpage();
+                    supplierInformationPage.Reloadpage(true);
                     break;
             }
         }
