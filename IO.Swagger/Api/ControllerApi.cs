@@ -100,8 +100,11 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns></returns>
-        void CreateProduct (string productName, string chemicalName, string molWeight, string description, string price);
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>Product</returns>
+        Product CreateProduct (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
 
         /// <summary>
         /// Creates a product.
@@ -115,8 +118,11 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price);
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>ApiResponse of Product</returns>
+        ApiResponse<Product> CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
         /// <summary>
         /// Deletes a post
         /// </summary>
@@ -394,8 +400,11 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price);
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>Task of Product</returns>
+        System.Threading.Tasks.Task<Product> CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
 
         /// <summary>
         /// Creates a product.
@@ -409,8 +418,11 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price);
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>Task of ApiResponse (Product)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Product>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
         /// <summary>
         /// Deletes a post
         /// </summary>
@@ -1105,10 +1117,14 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns></returns>
-        public void CreateProduct (string productName, string chemicalName, string molWeight, string description, string price)
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>Product</returns>
+        public Product CreateProduct (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
         {
-             CreateProductWithHttpInfo(productName, chemicalName, molWeight, description, price);
+             ApiResponse<Product> localVarResponse = CreateProductWithHttpInfo(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1120,8 +1136,11 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price)
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>ApiResponse of Product</returns>
+        public ApiResponse< Product > CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
         {
             // verify the required parameter 'productName' is set
             if (productName == null)
@@ -1138,6 +1157,15 @@ namespace IO.Swagger.Api
             // verify the required parameter 'price' is set
             if (price == null)
                 throw new ApiException(400, "Missing required parameter 'price' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'packaging' is set
+            if (packaging == null)
+                throw new ApiException(400, "Missing required parameter 'packaging' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'deliveryTime' is set
+            if (deliveryTime == null)
+                throw new ApiException(400, "Missing required parameter 'deliveryTime' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'producer' is set
+            if (producer == null)
+                throw new ApiException(400, "Missing required parameter 'producer' when calling ControllerApi->CreateProduct");
 
             var localVarPath = "/Controller/CreateProduct";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1170,6 +1198,9 @@ namespace IO.Swagger.Api
             if (molWeight != null) localVarQueryParams.Add("MolWeight", Configuration.ApiClient.ParameterToString(molWeight)); // query parameter
             if (description != null) localVarQueryParams.Add("Description", Configuration.ApiClient.ParameterToString(description)); // query parameter
             if (price != null) localVarQueryParams.Add("Price", Configuration.ApiClient.ParameterToString(price)); // query parameter
+            if (packaging != null) localVarQueryParams.Add("Packaging", Configuration.ApiClient.ParameterToString(packaging)); // query parameter
+            if (deliveryTime != null) localVarQueryParams.Add("DeliveryTime", Configuration.ApiClient.ParameterToString(deliveryTime)); // query parameter
+            if (producer != null) localVarQueryParams.Add("Producer", Configuration.ApiClient.ParameterToString(producer)); // query parameter
 
 
             // make the HTTP request
@@ -1185,10 +1216,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Product>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Product) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Product)));
+            
         }
 
         /// <summary>
@@ -1200,10 +1231,14 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price)
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>Task of Product</returns>
+        public async System.Threading.Tasks.Task<Product> CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
         {
-             await CreateProductAsyncWithHttpInfo(productName, chemicalName, molWeight, description, price);
+             ApiResponse<Product> localVarResponse = await CreateProductAsyncWithHttpInfo(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+             return localVarResponse.Data;
 
         }
 
@@ -1216,8 +1251,11 @@ namespace IO.Swagger.Api
         /// <param name="molWeight"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price)
+        /// <param name="packaging"></param>
+        /// <param name="deliveryTime"></param>
+        /// <param name="producer"></param>
+        /// <returns>Task of ApiResponse (Product)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Product>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
         {
             // verify the required parameter 'productName' is set
             if (productName == null)
@@ -1234,6 +1272,15 @@ namespace IO.Swagger.Api
             // verify the required parameter 'price' is set
             if (price == null)
                 throw new ApiException(400, "Missing required parameter 'price' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'packaging' is set
+            if (packaging == null)
+                throw new ApiException(400, "Missing required parameter 'packaging' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'deliveryTime' is set
+            if (deliveryTime == null)
+                throw new ApiException(400, "Missing required parameter 'deliveryTime' when calling ControllerApi->CreateProduct");
+            // verify the required parameter 'producer' is set
+            if (producer == null)
+                throw new ApiException(400, "Missing required parameter 'producer' when calling ControllerApi->CreateProduct");
 
             var localVarPath = "/Controller/CreateProduct";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1266,6 +1313,9 @@ namespace IO.Swagger.Api
             if (molWeight != null) localVarQueryParams.Add("MolWeight", Configuration.ApiClient.ParameterToString(molWeight)); // query parameter
             if (description != null) localVarQueryParams.Add("Description", Configuration.ApiClient.ParameterToString(description)); // query parameter
             if (price != null) localVarQueryParams.Add("Price", Configuration.ApiClient.ParameterToString(price)); // query parameter
+            if (packaging != null) localVarQueryParams.Add("Packaging", Configuration.ApiClient.ParameterToString(packaging)); // query parameter
+            if (deliveryTime != null) localVarQueryParams.Add("DeliveryTime", Configuration.ApiClient.ParameterToString(deliveryTime)); // query parameter
+            if (producer != null) localVarQueryParams.Add("Producer", Configuration.ApiClient.ParameterToString(producer)); // query parameter
 
 
             // make the HTTP request
@@ -1281,10 +1331,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Product>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Product) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Product)));
+            
         }
 
         /// <summary>
