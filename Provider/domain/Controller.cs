@@ -37,11 +37,11 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            api = new ControllerApi("http://10.126.12.179:8080");
+            //api = new ControllerApi("http://10.126.12.179:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             //api = new ControllerApi("http://192.168.87.103:8080");
-            api = new ControllerApi("http://10.126.12.179:8080");
+            api = new ControllerApi("http://192.168.1.234:8080");
         }
 
         public List<Page> GetPages()
@@ -176,7 +176,7 @@ namespace Provider.domain
         {
             new Thread(() =>
             {
-                var finalString = new String(GetRandomCharArray(10)) + ".pdf";
+                string finalString = new String(GetRandomCharArray(10)) + ".pdf";
                 string filePath = Path.GetTempPath() + "Provider/";
                 FileInfo FileInfo = new FileInfo(filePath);
                 FileInfo.Directory.Create();
@@ -193,8 +193,8 @@ namespace Provider.domain
         {
             try
             {
-            Directory.Delete(Path.GetTempPath() + "Provider", true);
-        }
+                Directory.Delete(Path.GetTempPath() + "Provider", true);
+            }
             catch (DirectoryNotFoundException e)
             {
                 Environment.Exit(0);
@@ -203,15 +203,13 @@ namespace Provider.domain
 
         private char[] GetRandomCharArray(int size)
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[size];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
+            char[] chars = new char[size];
+            Random random = new Random();
+            for (int i = 0; i < size; i++)
             {
-                stringChars[i] = chars[random.Next(chars.Length)];
+                chars[i] = (char) (random.Next(26) + 97);
             }
-            return stringChars;
+            return chars;
         }
     }
 }

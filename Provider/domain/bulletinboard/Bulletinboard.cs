@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using IO.Swagger.Model;
+using System.Linq;
 
 namespace Provider.domain.bulletinboard
 {
@@ -32,28 +33,12 @@ namespace Provider.domain.bulletinboard
 
         public List<Post> GetPosts(PostType type)
         {
-            List<Post> postResults = new List<Post>();
-            foreach (Post post in posts)
-            {
-                if (post.Type == type)
-                {
-                    postResults.Add(post);
-                }
-            }
-            return postResults;
+            return posts.AsParallel().Where(post => post.Type == type).ToList();
         }
 
         public List<Post> GetPosts(PostType type, string Supplier)
         {
-            List<Post> PostResults = new List<Post>();
-            foreach (Post post in posts)
-            {
-                if(post.Type == type && post.Owner.Equals(Supplier))
-                {
-                    PostResults.Add(post);
-                }
-            }
-            return PostResults;
+            return GetPosts(type).AsParallel().Where(post => post.Owner.Equals(Supplier)).ToList();
         }
 
         public List<Post> ViewAllPosts()
