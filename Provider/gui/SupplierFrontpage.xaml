@@ -150,7 +150,7 @@
                     <Setter Property="Background" Value="#FFFFBFBF"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Background" Value="#FFFBACAC"/>
+                    <Setter Property="Background" Value="#FFFF8C8C"/>
                     <Setter Property="Margin" Value="0"/>
                     <Setter Property="Template">
                         <Setter.Value>
