@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows;
-using IO.Swagger.Model;
 using Provider.domain;
-using Provider.domain.bulletinboard;
 using Page = System.Windows.Controls.Page;
 
 namespace Provider.gui
@@ -21,28 +19,19 @@ namespace Provider.gui
             this.viewSupplierInformation = viewSupplierInformation;
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void CreateProduct(object sender, RoutedEventArgs e)
         {
-            bool passedParseCheck = true;
             try
             {
                 double density = Double.Parse(ProductDensity.Text);
-                int price = Int32.Parse(ProductPrice.Text);
-            } catch (FormatException exception)
-            {
-                passedParseCheck = false;
-                MessageBox.Show("Fejl i molvægt og/eller pris");
-            }
-            if (passedParseCheck)
-            {
-                Controller.instance.CreateProduct(ProductName.Text,ProductChemName.Text,ProductDensity.Text,ProductDescription.Text,ProductPrice.Text,ProductPackaging.Text,ProductDeliveryTime.Text,OwnerTextBlock.Text);
+                double price = Double.Parse(ProductPrice.Text);
+                Controller.instance.CreateProduct(ProductName.Text, ProductChemName.Text, ProductDensity.Text, ProductDescription.Text, ProductPrice.Text, ProductPackaging.Text, ProductDeliveryTime.Text, OwnerTextBlock.Text);
                 viewSupplierInformation.Reloadpage(true);
             }
-        }
-
-        private void ProductName_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
+            catch (FormatException exception)
+            {
+                MessageBox.Show("Fejl i molvægt og/eller pris´. Det skal være et tal.");
+            }
         }
     }
 }

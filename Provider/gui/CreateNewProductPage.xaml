@@ -43,7 +43,7 @@
         <TextBox x:Name="ProductDensity" HorizontalAlignment="Left" Height="23" Margin="19,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv molvægten på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Molvægt" />
         <TextBox x:Name="ProductPackaging" HorizontalAlignment="Left" Height="23" Margin="19,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Beskriv emballagen på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Emballage"/>
         <TextBox x:Name="ProductDeliveryTime" HorizontalAlignment="Left" Height="23" Margin="19,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" ToolTip="Skriv forsendelsestiden på dit produkt her" SpellCheck.IsEnabled="True" AutomationProperties.HelpText="Skriv titlen her" Text="Leveringstid" />
-        <Button x:Name="button" Content="Opret" HorizontalAlignment="Left" Margin="20,480,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/> 
+        <Button x:Name="button" Content="Opret" HorizontalAlignment="Left" Margin="20,480,0,0" VerticalAlignment="Top" Width="75" Click="CreateProduct" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/> 
 
     </Grid>
 </Page>
