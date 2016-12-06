@@ -30,7 +30,9 @@ namespace Provider.gui
         public ViewProductPage(Product product, SupplierInformation supplierInformationPage)
         {
             InitializeComponent();
-            producerNameTextBox.Text = product.ProductName;
+            this.supplierInformationPage = supplierInformationPage;
+            this.product = product;
+            productNameTextBox.Text = product.ProductName;
             chemicalNameTextBox.Text = product.ChemicalName;
             molValueTextBox.Text = product.MolWeight;
             priceTextBox.Text = product.Price;
@@ -38,8 +40,6 @@ namespace Provider.gui
             deliveryTimeTextBox.Text = product.DeliveryTime;
             descriptionTextBox.Text = product.Description;
             producerNameTextBox.Text = product.Producer;
-            this.supplierInformationPage = supplierInformationPage;
-            this.product = product;
             HideButtons();
         }
 
@@ -141,11 +141,16 @@ namespace Provider.gui
             deliveryTimeTextBox.Cursor = Cursors.Arrow;
             descriptionTextBox.IsReadOnly = true;
             descriptionTextBox.Cursor = Cursors.Arrow;
+            editProduct.Visibility = Visibility.Hidden;
             descriptionTextBox.Background = Brushes.GhostWhite;
-            if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
-            {
-                editProduct.Visibility = Visibility.Hidden;
+            if (Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) || Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
+                {
+                editProduct.Visibility = Visibility.Visible;
             }
+            /*else if (Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
+            {
+                editProduct.Visibility = Visibility.Visible;
+            }*/
 
         }
 
