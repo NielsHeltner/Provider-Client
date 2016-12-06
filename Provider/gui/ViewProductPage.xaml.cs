@@ -15,6 +15,7 @@ using IO.Swagger.Model;
 using Page = System.Windows.Controls.Page;
 using Provider.domain;
 using System.IO;
+using System.Windows.Media.Animation;
 
 namespace Provider.gui
 {
@@ -29,6 +30,8 @@ namespace Provider.gui
         public ViewProductPage(Product product, SupplierInformation supplierInformationPage)
         {
             InitializeComponent();
+            this.supplierInformationPage = supplierInformationPage;
+            this.product = product;
             productNameTextBox.Text = product.ProductName;
             chemicalNameTextBox.Text = product.ChemicalName;
             molValueTextBox.Text = product.MolWeight;
@@ -37,14 +40,12 @@ namespace Provider.gui
             deliveryTimeTextBox.Text = product.DeliveryTime;
             descriptionTextBox.Text = product.Description;
             producerNameTextBox.Text = product.Producer;
-            this.supplierInformationPage = supplierInformationPage;
-            this.product = product;
             HideButtons();
         }
 
         private void BackToListView(object sender, RoutedEventArgs e)
         {
-            supplierInformationPage.Reloadpage(false);
+            supplierInformationPage.Reloadpage();
         }
 
         private void OpenPDFBotton(object sender, RoutedEventArgs e)
@@ -75,44 +76,72 @@ namespace Provider.gui
                 chemicalNameTextBox.AcceptsReturn = true;
                 chemicalNameTextBox.IsUndoEnabled = true;
                 chemicalNameTextBox.Cursor = Cursors.IBeam;
+                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
                 molValueTextBox.Background = null;
                 molValueTextBox.IsReadOnly = false;
                 molValueTextBox.AcceptsReturn = true;
                 molValueTextBox.IsUndoEnabled = true;
                 molValueTextBox.Cursor = Cursors.IBeam;
+                molValueTextBox.ToolTip = "Write the MOL value of your product";
                 priceTextBox.Background = null;
                 priceTextBox.IsReadOnly = false;
                 priceTextBox.AcceptsReturn = true;
                 priceTextBox.IsUndoEnabled = true;
                 priceTextBox.Cursor = Cursors.IBeam;
+                priceTextBox.ToolTip = "Write the price of your product";
                 packetingTextBox.Background = null;
                 packetingTextBox.IsReadOnly = false;
                 packetingTextBox.AcceptsReturn = true;
                 packetingTextBox.IsUndoEnabled = true;
                 packetingTextBox.Cursor = Cursors.IBeam;
+                packetingTextBox.ToolTip = "Write the chemicalname of your product";
                 descriptionTextBox.Background = null;
                 descriptionTextBox.IsReadOnly = false;
                 descriptionTextBox.AcceptsReturn = true;
                 descriptionTextBox.IsUndoEnabled = true;
                 descriptionTextBox.Cursor = Cursors.IBeam;
+                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
                 deliveryTimeTextBox.Background = null;
                 deliveryTimeTextBox.IsReadOnly = false;
                 deliveryTimeTextBox.AcceptsReturn = true;
                 deliveryTimeTextBox.IsUndoEnabled = true;
                 deliveryTimeTextBox.Cursor = Cursors.IBeam;
+                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
                 editProduct.Content = "Gem";
             }
-            
             else
             {
-                Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
-                    molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text, deliveryTimeTextBox.Text);
-                HideButtons();
-                editProduct.Content = "Redigér";
-                supplierInformationPage.Reloadpage(false);
-                /*savedPostTextBlock.Visibility = Visibility.Visible;
-                savedPostTextBlock.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
-                */
+                bool passedChecked = true;
+                try
+                {
+                    int price = Int32.Parse(priceTextBox.Text);
+                    double molWeight = Double.Parse(molValueTextBox.Text);
+                }
+                catch (FormatException exeception)
+                {
+                    wrongInput.Visibility = Visibility.Visible;
+                    passedChecked = false;
+                }
+                if (passedChecked)
+                {
+                    wrongInput.Visibility = Visibility.Hidden;
+                    Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
+                        molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text,
+                        deliveryTimeTextBox.Text);
+                    product.ProductName = productNameTextBox.Text;
+                    product.ChemicalName = chemicalNameTextBox.Text;
+                    product.MolWeight = molValueTextBox.Text;
+                    product.Description = descriptionTextBox.Text;
+                    product.Price = priceTextBox.Text;
+                    product.Packaging = packetingTextBox.Text;
+                    product.DeliveryTime = deliveryTimeTextBox.Text;
+                    HideButtons();
+                    editProduct.Content = "Redigér";
+
+                    savedPostTextBlock.Visibility = Visibility.Visible;
+                    savedPostTextBlock.BeginAnimation(OpacityProperty,
+                        new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
+                }
             }
         }
 
@@ -133,29 +162,32 @@ namespace Provider.gui
             deliveryTimeTextBox.Cursor = Cursors.Arrow;
             descriptionTextBox.IsReadOnly = true;
             descriptionTextBox.Cursor = Cursors.Arrow;
+            editProduct.Visibility = Visibility.Hidden;
             descriptionTextBox.Background = Brushes.GhostWhite;
-            if (!Controller.instance.GetLoggedInUser().Username.Equals(product.Producer))
+            if (Controller.instance.GetLoggedInUser().Username.Equals(product.Producer) ||
+                Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                editProduct.Visibility = Visibility.Hidden;
+                editProduct.Visibility = Visibility.Visible;
             }
+            /*else if (Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Admin)
+            {
+                editProduct.Visibility = Visibility.Visible;
+            }*/
 
         }
 
         private void DeleteProduct(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult confirmation = MessageBox.Show("Are you sure you want to delete this Product", "Confirm action?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult confirmation = MessageBox.Show("Are you sure you want to delete this Product",
+                "Confirm action?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (confirmation)
             {
                 case MessageBoxResult.Yes:
                     Controller.instance.DeleteProduct(product);
-                    supplierInformationPage.Reloadpage(true);
+                    supplierInformationPage.Reloadpage();
                     break;
             }
         }
 
-        private void productNameTextBox_Copy_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
-        }
     }
 }
