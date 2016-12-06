@@ -58,20 +58,15 @@ namespace Provider.domain
         /// <returns></returns>
         public bool LogIn(string userName, string password)
         {
-                User user = api.Validate(userName, password);
-                if (user != null)
-                {
-                    userManager.loggedInUser = user;
-                    GetSuppliers();
-                    ViewAllPosts();
-                    return true;
-                }
-                return false;
-            }
-            catch (ApiException e)
+            User user = api.Validate(userName, password);
+            if (user != null)
             {
-                throw new Exception(e.ToString());
+                userManager.loggedInUser = user;
+                GetSuppliers();
+                ViewAllPosts();
+                return true;
             }
+            return false;
         }
 
         public void LogOut()
