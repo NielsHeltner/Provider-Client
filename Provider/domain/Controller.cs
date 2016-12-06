@@ -148,11 +148,8 @@ namespace Provider.domain
                 FileInfo FileInfo = new FileInfo(filePath);
                 FileInfo.Directory.Create();
                 var file = File.Create(filePath + finalString);
-
                 api.GetPDF(id).CopyTo(file);
-
                 file.Close();
-                System.Diagnostics.Process.Start(filePath + finalString);
             }).Start();
         }
 
