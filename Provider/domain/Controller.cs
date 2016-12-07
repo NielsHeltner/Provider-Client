@@ -304,9 +304,9 @@ namespace Provider.domain
             try {
                 Directory.Delete(Path.GetTempPath() + "Provider", true);
             }
-            catch (DirectoryNotFoundException)
+            catch (DirectoryNotFoundException e)
             {
-
+                Environment.Exit(0);
             }
         }
 
