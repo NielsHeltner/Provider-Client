@@ -22,7 +22,7 @@ namespace Provider.gui
         {
             InitializeComponent();
             this.page = page;
-            products = new List<IO.Swagger.Model.Product>();
+            products = new List<Product>();
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
             products = page.Products;

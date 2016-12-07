@@ -56,9 +56,8 @@ namespace Provider.domain
                     {
                         lock (updateLock)
                         {
-                            //GetSuppliers();
-                            //ViewAllPosts();
-                            bulletinboard.posts = api.GetAllPosts();
+                            GetSuppliers();
+                            GetPosts();
                             Monitor.PulseAll(updateLock);
                         }
                     }
