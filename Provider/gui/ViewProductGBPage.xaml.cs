@@ -26,6 +26,7 @@ namespace Provider.gui
             InitializeComponent();
             groupBox.Header = "Produkt Information";
             frame.Content = new ViewProductPage(product, supplierInformationPage);
+            frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
         public ViewProductGBPage(SupplierInformation supplierPage)
