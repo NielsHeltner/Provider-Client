@@ -15,6 +15,7 @@ using IO.Swagger.Model;
 using Page = System.Windows.Controls.Page;
 using Provider.domain;
 using System.IO;
+using System.Threading;
 using System.Windows.Media.Animation;
 
 namespace Provider.gui
@@ -32,15 +33,43 @@ namespace Provider.gui
             InitializeComponent();
             this.supplierInformationPage = supplierInformationPage;
             this.product = product;
-            productNameTextBox.Text = product.ProductName;
-            chemicalNameTextBox.Text = product.ChemicalName;
-            molValueTextBox.Text = product.MolWeight.Value.ToString();
-            priceTextBox.Text = product.Price.Value.ToString();
-            packetingTextBox.Text = product.Packaging;
-            deliveryTimeTextBox.Text = product.DeliveryTime;
-            descriptionTextBox.Text = product.Description;
-            producerNameTextBox.Text = product.Producer;
+            Refresh();
             HideButtons();
+            Update();
+        }
+
+        private void Update()
+        {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    lock (Controller.instance.GetUpdateLock())
+                    {
+                        Monitor.Wait(Controller.instance.GetUpdateLock());
+                        Refresh();
+                    }
+                }
+            }).Start();
+        }
+
+        private void Refresh()
+        {
+            Dispatcher.Invoke((ThreadStart) delegate
+            {
+                product =
+                    Controller.instance.GetPages()
+                        .Find(p => p.Owner.Equals(product.Producer))
+                        .Products.Find(prod => prod.Id.Equals(product.Id));
+                productNameTextBox.Text = product.ProductName;
+                chemicalNameTextBox.Text = product.ChemicalName;
+                molValueTextBox.Text = product.MolWeight.Value.ToString();
+                priceTextBox.Text = product.Price.Value.ToString();
+                packetingTextBox.Text = product.Packaging;
+                deliveryTimeTextBox.Text = product.DeliveryTime;
+                descriptionTextBox.Text = product.Description;
+                producerNameTextBox.Text = product.Producer;
+            });
         }
 
         private void BackToListView(object sender, RoutedEventArgs e)
@@ -178,14 +207,12 @@ namespace Provider.gui
 
         private void DeleteProduct(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult confirmation = MessageBox.Show("Are you sure you want to delete this Product",
-                "Confirm action?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            switch (confirmation)
+            MessageBoxResult confirmation = MessageBox.Show("Er du sikker på du vil slette dette produkt?",
+                "Slet produkt?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (confirmation == MessageBoxResult.Yes)
             {
-                case MessageBoxResult.Yes:
-                    Controller.instance.DeleteProduct(product);
-                    supplierInformationPage.Reloadpage(true);
-                    break;
+                Controller.instance.DeleteProduct(product);
+                supplierInformationPage.Reloadpage(true);
             }
         }
 
