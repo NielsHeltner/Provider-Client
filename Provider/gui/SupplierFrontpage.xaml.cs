@@ -70,18 +70,16 @@ namespace Provider.gui
             Dispatcher.Invoke((ThreadStart) delegate
             {
                 WarningListView.ItemsSource = null;
-                WarningListView.ItemsSource = domain.Controller.instance.ViewWarningPosts();
-                numberOfWarningPostLabel.Content = domain.Controller.instance.ViewWarningPosts().Count;
+                WarningListView.ItemsSource = Controller.instance.ViewWarningPosts().Count > 6 ? Controller.instance.ViewWarningPosts().GetRange(0, 5) : Controller.instance.ViewWarningPosts();
+                numberOfWarningPostLabel.Content = WarningListView.Items.Count;
 
                 OfferListView.ItemsSource = null;
-                OfferListView.ItemsSource =
-                    domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username);
-                NumberOfOfferPosts.Content =
-                    domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username).Count;
+                OfferListView.ItemsSource = Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username).Count > 6 ? Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username).GetRange(0, 5) : Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username);
+                NumberOfOfferPosts.Content = OfferListView.Items.Count;
 
                 RequestListView.ItemsSource = null;
-                RequestListView.ItemsSource = domain.Controller.instance.ViewRequestPosts();
-                NumberOfRequestPosts.Content = domain.Controller.instance.ViewRequestPosts().Count;
+                RequestListView.ItemsSource = Controller.instance.ViewRequestPosts().Count > 13 ? Controller.instance.ViewRequestPosts().GetRange(0, 12) : Controller.instance.ViewRequestPosts();
+                NumberOfRequestPosts.Content = RequestListView.Items.Count;
             });
         }
 
