@@ -53,6 +53,7 @@ namespace Provider.gui
                 postDesciption.IsReadOnly = false;
                 postDesciption.AcceptsReturn = true;
                 postDesciption.IsUndoEnabled = true;
+                postTitel.BorderThickness = new Thickness(1,1,1,1);
                 postDesciption.ToolTip = "Uddyb dit opslag her";
                 postTitel.ToolTip = "Skriv titlen på det opsalg her";
                 postTitel.IsReadOnly = false;
@@ -66,6 +67,7 @@ namespace Provider.gui
                 Controller.instance.EditPost(selectedItem, postDesciption.Text, postTitel.Text);
                 HideButtons();
                 editPostButton.Content = "Redigér";
+                postTitel.BorderThickness = new Thickness(0, 0, 0, 0);
                 bulletinBoard.RefreshPage(false);
                 savedPostTextBlock.Visibility = Visibility.Visible;
                 savedPostTextBlock.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
