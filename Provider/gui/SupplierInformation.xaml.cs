@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Windows.Input;
+using System.Windows.Threading;
 using IO.Swagger.Model;
 using Provider.domain;
 using Provider.domain.page;
@@ -121,12 +122,14 @@ namespace Provider.gui
 
         public void Reloadpage(bool loadProductsToo)
         {
-            Dispatcher.BeginInvoke((ThreadStart) delegate
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart) delegate
             {
+
                 if (loadProductsToo)
                 {
                     ProductsListView.ItemsSource = null;
-                    ProductsListView.ItemsSource = Controller.instance.GetPages().Find(p => p.Owner.Equals(page.Owner)).Products;
+                    ProductsListView.ItemsSource =
+                        Controller.instance.GetPages().Find(p => p.Owner.Equals(page.Owner)).Products;
                 }
                 productFrame.Visibility = Visibility.Collapsed;
                 button.Visibility = Visibility.Visible;
