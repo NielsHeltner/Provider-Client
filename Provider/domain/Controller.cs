@@ -42,11 +42,19 @@ namespace Provider.domain
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             api = new ControllerApi("http://192.168.1.234:8080");
             //api = new ControllerApi("http://192.168.1.234:8080");
+            Update();
         }
 
-        public List<Page> GetPages()
+        private void Update()
         {
-            return pageManager.pages;
+            new Thread(() =>
+            {
+                while ((bool) api.RequestUpdate())
+                {
+                    GetSuppliers();
+                    ViewAllPosts();
+                }
+            }).Start();
         }
         
         /// <summary>
@@ -82,6 +90,11 @@ namespace Provider.domain
         public void GetSuppliers()
         {
             pageManager.pages = api.GetSuppliers();
+        }
+
+        public List<Page> GetPages()
+        {
+            return pageManager.pages;
         }
 
         public List<Post> ViewAllPosts()
