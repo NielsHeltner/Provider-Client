@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using IO.Swagger.Model;
+using System.Linq;
 
 namespace Provider.domain.bulletinboard
 {
@@ -33,15 +34,7 @@ namespace Provider.domain.bulletinboard
         /// <returns> A list of posts with the given post type </returns>
         public List<Post> GetPosts(PostType type)
         {
-            List<Post> postResults = new List<Post>();
-            foreach (Post post in posts)
-            {
-                if (post.Type == type)
-                {
-                    postResults.Add(post);
-                }
-            }
-            return postResults;
+            return posts.AsParallel().Where(post => post.Type == type).ToList();
         }
         /// <summary>
         /// Gets all post with a given post type and name of supplier. 
@@ -51,15 +44,7 @@ namespace Provider.domain.bulletinboard
         /// <returns> A list of posts with the given post type and name of the supplier</returns>
         public List<Post> GetPosts(PostType type, string Supplier)
         {
-            List<Post> PostResults = new List<Post>();
-            foreach (Post post in posts)
-            {
-                if(post.Type == type && post.Owner.Equals(Supplier))
-                {
-                    PostResults.Add(post);
-                }
-            }
-            return PostResults;
+            return GetPosts(type).AsParallel().Where(post => post.Owner.Equals(Supplier)).ToList();
         }
         /// <summary>
         /// Lists all the posts. 

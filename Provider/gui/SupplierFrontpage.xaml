@@ -150,7 +150,7 @@
                     <Setter Property="Background" Value="#FFFFBFBF"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Background" Value="#FFFBACAC"/>
+                    <Setter Property="Background" Value="#FFFF8C8C"/>
                     <Setter Property="Margin" Value="0"/>
                     <Setter Property="Template">
                         <Setter.Value>
@@ -265,7 +265,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="OfferListView" HorizontalAlignment="Left" Height="180" Margin="627,347,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
+        <ListView x:Name="OfferListView" HorizontalAlignment="Left" Height="180" Margin="632,349,0,0" VerticalAlignment="Top" Width="555" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">

@@ -28,6 +28,13 @@ namespace Provider.gui
             usernameBox.Focus();
         }
 
+        /// <summary>
+        /// Anvender tekst strengene fra brugernavn og password boxene, til at kontrollere om LogIn() metoden returnerer true. 
+        /// Herfra skiftes vinduet alt efter om man er Provia eller leverandør. 
+        /// Metoden sørger også for animationer. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogUserIn(object sender, RoutedEventArgs e)
         {
             new Thread(() =>

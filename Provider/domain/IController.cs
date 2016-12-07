@@ -10,6 +10,7 @@ namespace Provider.domain
 {
     public interface IController
     {
+        Object GetUpdateLock();
         List<IO.Swagger.Model.Page> GetPages();
 
         void EditPost(Post post, string newDescription, string newTitle);
@@ -20,10 +21,10 @@ namespace Provider.domain
 
         void DeleteProduct(Product product);
 
-        void EditProduct(Product product, string newProductName, string newChemicalName, string newMolWeight,
-            string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+        void EditProduct(Product product, string newProductName, string newChemicalName, Double newMolWeight,
+            string newDescription, Double newPrice, string newPackaging, string newDeliveryTime);
 
-        void CreateProduct(string ProductName, string ChemicalName, string MolWeight, string Description, string Price,
+        void CreateProduct(string ProductName, string ChemicalName, Double MolWeight, string Description, Double Price,
             string Packaging, string DeliveryTime, string Producer);
 
         bool LogIn(string userName, string password);

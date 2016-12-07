@@ -19,6 +19,7 @@ namespace Provider.domain
         private Bulletinboard bulletinboard;
         private ControllerApi api;
         private List<string> files = new List<string>();
+        private Object updateLock = new Object();
 
         public static IController instance
         {
@@ -37,21 +38,47 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            //api = new ControllerApi("http://10.126.12.113:8080");
+            //api = new ControllerApi("http://10.126.12.179:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            //api = new ControllerApi("http://192.168.87.103:8080");
-            //api = new ControllerApi("http://10.126.12.179:8080");
-            api = new ControllerApi("http://10.126.4.68:8080");
+            api = new ControllerApi("http://192.168.1.234:8080");
+            //api = new ControllerApi("http://192.168.1.234:8080");
+            bulletinboard.posts = api.GetAllPosts();
+            Update();
         }
 
-        public List<Page> GetPages()
+        private void Update()
         {
-            return pageManager.pages;
+            new Thread(() =>
+            {
+                try
+                {
+                    while ((bool) api.RequestUpdate())
+                    {
+                        lock (updateLock)
+                        {
+                            //GetSuppliers();
+                            //ViewAllPosts();
+                            bulletinboard.posts = api.GetAllPosts();
+                            Monitor.PulseAll(updateLock);
+                        }
+                    }
+                }
+                catch (ApiException e)
+                {
+                    Update();
+                }
+            }).Start();
         }
+
+        public Object GetUpdateLock()
+        {
+            return updateLock;
+        }
+        
         /// <summary>
-        /// This method passes a username and a password through the validate method, and logs the user in
-        ///  if the user gets validated. 
+        /// Skal logge brugeren ind. Kontrollerer først med Validate() metoden, som returnerer en bruger. 
+        /// Den bruger bliver sat til loggedInUser, og så indlæses alle leverandører og opslag.
         /// </summary>
         /// <param name="userName">Username of the user</param>
         /// <param name="password">Password of the user</param>
@@ -60,22 +87,15 @@ namespace Provider.domain
         /// </returns>
         public bool LogIn(string userName, string password)
         {
-            try
+            User user = api.Validate(userName, password);
+            if (user != null)
             {
-                User user = api.Validate(userName, password);
-                if (user != null)
-                {
-                    userManager.loggedInUser = user;
-                    GetSuppliers();
-                    ViewAllPosts();
-                    return true;
-                }
-                return false;
+                userManager.loggedInUser = user;
+                GetSuppliers();
+                ViewAllPosts();
+                return true;
             }
-            catch (ApiException e)
-            {
-                throw new Exception(e.ToString());
-            }
+            return false;
         }
 
         /// <summary>
@@ -103,13 +123,17 @@ namespace Provider.domain
             pageManager.pages = api.GetSuppliers();
         }
 
+        public List<Page> GetPages()
+        {
+            return pageManager.pages;
+        }
+
         /// <summary>
         /// This method lists all the posts on the bulletinboard. 
         /// </summary>
         /// <returns> A list of all posts</returns>
         public List<Post> ViewAllPosts()
         {
-            bulletinboard.posts = api.GetAllPosts();
             return bulletinboard.ViewAllPosts();
         }
 
@@ -159,7 +183,7 @@ namespace Provider.domain
         /// <param name="type">The type of the post</param>
         public void CreatePost(string owner, string title, string description, PostType type)
         {
-            bulletinboard.AddPost(api.CreatePost(owner, title, description, type));
+            api.CreatePost(owner, title, description, type);
         }
 
         /// <summary>
@@ -226,8 +250,8 @@ namespace Provider.domain
         /// <param name="newPrice">The new price of the product</param>
         /// <param name="newPackaging">The new packaging of the product</param>
         /// <param name="newDeliveryTime">The new deliverytime of the product</param>
-        public void EditProduct(Product product, string newProductName, string newChemicalName, string newMolWeight,
-            string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        public void EditProduct(Product product, string newProductName, string newChemicalName, Double newMolWeight,
+            string newDescription, Double newPrice, string newPackaging, string newDeliveryTime)
         {
 
             if ((GetLoggedInUser().Username.Equals(product.Producer)) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
@@ -253,7 +277,7 @@ namespace Provider.domain
         /// <param name="packaging">The packaging of the product</param>
         /// <param name="deliveryTime">The deliverytime of the product</param>
         /// <param name="producer">The producer of the product</param>
-        public void CreateProduct(string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
+        public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer)
         {
            
             pageManager.pages.Find(page => page.Owner.Equals(producer)).Products.Add(api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer));
@@ -282,7 +306,7 @@ namespace Provider.domain
         {
             new Thread(() =>
             {
-                var finalString = new String(GetRandomCharArray(10)) + ".pdf";
+                string finalString = new String(GetRandomCharArray(10)) + ".pdf";
                 string filePath = Path.GetTempPath() + "Provider/";
                 FileInfo FileInfo = new FileInfo(filePath);
                 FileInfo.Directory.Create();
@@ -301,7 +325,8 @@ namespace Provider.domain
         /// </summary>
         public void DeleteTempFiles()
         {
-            try {
+            try
+            {
                 Directory.Delete(Path.GetTempPath() + "Provider", true);
             }
             catch (DirectoryNotFoundException e)
@@ -317,15 +342,13 @@ namespace Provider.domain
         /// <returns></returns>
         private char[] GetRandomCharArray(int size)
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[size];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
+            char[] chars = new char[size];
+            Random random = new Random();
+            for (int i = 0; i < size; i++)
             {
-                stringChars[i] = chars[random.Next(chars.Length)];
+                chars[i] = (char) (random.Next(26) + 97);
             }
-            return stringChars;
+            return chars;
         }
     }
 }
