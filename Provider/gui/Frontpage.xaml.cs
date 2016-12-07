@@ -70,16 +70,16 @@ namespace Provider.gui
             Dispatcher.Invoke((ThreadStart) delegate
             {
                 WarningListView.ItemsSource = null;
-                WarningListView.ItemsSource = domain.Controller.instance.ViewWarningPosts();
-                numberOfWarningPostLabel.Content = domain.Controller.instance.ViewWarningPosts().Count;
+                WarningListView.ItemsSource = Controller.instance.ViewWarningPosts();
+                numberOfWarningPostLabel.Content = Controller.instance.ViewWarningPosts().Count;
 
                 OfferListView.ItemsSource = null;
-                OfferListView.ItemsSource = domain.Controller.instance.ViewOfferPosts();
-                NumberOfOfferPosts.Content = domain.Controller.instance.ViewOfferPosts().Count;
+                OfferListView.ItemsSource = Controller.instance.ViewOfferPosts();
+                NumberOfOfferPosts.Content = Controller.instance.ViewOfferPosts().Count;
 
                 RequestListView.ItemsSource = null;
-                RequestListView.ItemsSource = domain.Controller.instance.ViewRequestPosts();
-                NumberOfRequestPosts.Content = domain.Controller.instance.ViewRequestPosts().Count;
+                RequestListView.ItemsSource = Controller.instance.ViewRequestPosts();
+                NumberOfRequestPosts.Content = Controller.instance.ViewRequestPosts().Count;
             });
         }
 

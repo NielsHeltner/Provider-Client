@@ -11,20 +11,6 @@ namespace Provider.domain.bulletinboard
         public Bulletinboard()
         {
         }
-        /// <summary>
-        /// create a post
-        /// </summary>
-        /// <param name="owner">the owner of the post</param>
-        /// <param name="description"> text in the post</param>
-        /// <param name="type">takes a integer
-        /// "1" is warningPost
-        /// "2" is requestPost
-        /// "3" is offerPost
-        /// </param>
-        public void AddPost(Post post)
-        {
-            posts.Add(post);
-        }
 
         public void DeletePost(Post post)
         {

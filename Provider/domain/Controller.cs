@@ -138,7 +138,7 @@ namespace Provider.domain
 
         public void CreatePost(string owner, string title, string description, PostType type)
         {
-            bulletinboard.AddPost(api.CreatePost(owner, title, description, type));
+            api.CreatePost(owner, title, description, type);
         }
 
         public void DeletePost(Post post)
