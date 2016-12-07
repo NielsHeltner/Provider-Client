@@ -53,7 +53,7 @@ namespace IO.Swagger.Model
         /// <param name="Price">The price of the product.</param>
         /// <param name="Packaging">The packaging of the product.</param>
         /// <param name="DeliveryTime">The delivery time of the product.</param>
-        public Product(int? Id = null, string Producer = null, string ProductName = null, string ChemicalName = null, string MolWeight = null, string Description = null, string Price = null, string Packaging = null, string DeliveryTime = null)
+        public Product(int? Id = null, string Producer = null, string ProductName = null, string ChemicalName = null, double? MolWeight = null, string Description = null, double? Price = null, string Packaging = null, string DeliveryTime = null)
         {
             this.Id = Id;
             this.Producer = Producer;
@@ -95,7 +95,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <value>The mol weight of the product</value>
         [DataMember(Name="molWeight", EmitDefaultValue=false)]
-        public string MolWeight { get; set; }
+        public double? MolWeight { get; set; }
         /// <summary>
         /// The description about the product
         /// </summary>
@@ -107,7 +107,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <value>The price of the product</value>
         [DataMember(Name="price", EmitDefaultValue=false)]
-        public string Price { get; set; }
+        public double? Price { get; set; }
         /// <summary>
         /// The packaging of the product
         /// </summary>

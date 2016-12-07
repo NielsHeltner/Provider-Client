@@ -104,7 +104,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>Product</returns>
-        Product CreateProduct (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
+        Product CreateProduct (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer);
 
         /// <summary>
         /// Creates a product.
@@ -122,7 +122,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>ApiResponse of Product</returns>
-        ApiResponse<Product> CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
+        ApiResponse<Product> CreateProductWithHttpInfo (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer);
         /// <summary>
         /// Deletes a post
         /// </summary>
@@ -206,7 +206,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns></returns>
-        void EditProduct (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+        void EditProduct (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime);
 
         /// <summary>
         /// Edits an existing product.
@@ -224,7 +224,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> EditProductWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+        ApiResponse<Object> EditProductWithHttpInfo (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime);
         /// <summary>
         /// Gets all posts
         /// </summary>
@@ -284,6 +284,25 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Page&gt;</returns>
         ApiResponse<List<Page>> GetSuppliersWithHttpInfo ();
+        /// <summary>
+        /// Send a request to the server to get any updates
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>bool?</returns>
+        bool? RequestUpdate ();
+
+        /// <summary>
+        /// Send a request to the server to get any updates
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of bool?</returns>
+        ApiResponse<bool?> RequestUpdateWithHttpInfo ();
         /// <summary>
         /// Update a supplier page
         /// </summary>
@@ -404,7 +423,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>Task of Product</returns>
-        System.Threading.Tasks.Task<Product> CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
+        System.Threading.Tasks.Task<Product> CreateProductAsync (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer);
 
         /// <summary>
         /// Creates a product.
@@ -422,7 +441,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>Task of ApiResponse (Product)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Product>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer);
+        System.Threading.Tasks.Task<ApiResponse<Product>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer);
         /// <summary>
         /// Deletes a post
         /// </summary>
@@ -506,7 +525,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task EditProductAsync (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+        System.Threading.Tasks.Task EditProductAsync (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime);
 
         /// <summary>
         /// Edits an existing product.
@@ -524,7 +543,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> EditProductAsyncWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime);
+        System.Threading.Tasks.Task<ApiResponse<Object>> EditProductAsyncWithHttpInfo (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime);
         /// <summary>
         /// Gets all posts
         /// </summary>
@@ -584,6 +603,25 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Page&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSuppliersAsyncWithHttpInfo ();
+        /// <summary>
+        /// Send a request to the server to get any updates
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of bool?</returns>
+        System.Threading.Tasks.Task<bool?> RequestUpdateAsync ();
+
+        /// <summary>
+        /// Send a request to the server to get any updates
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (bool?)</returns>
+        System.Threading.Tasks.Task<ApiResponse<bool?>> RequestUpdateAsyncWithHttpInfo ();
         /// <summary>
         /// Update a supplier page
         /// </summary>
@@ -1121,7 +1159,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>Product</returns>
-        public Product CreateProduct (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
+        public Product CreateProduct (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer)
         {
              ApiResponse<Product> localVarResponse = CreateProductWithHttpInfo(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
              return localVarResponse.Data;
@@ -1140,7 +1178,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>ApiResponse of Product</returns>
-        public ApiResponse< Product > CreateProductWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
+        public ApiResponse< Product > CreateProductWithHttpInfo (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer)
         {
             // verify the required parameter 'productName' is set
             if (productName == null)
@@ -1235,7 +1273,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>Task of Product</returns>
-        public async System.Threading.Tasks.Task<Product> CreateProductAsync (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
+        public async System.Threading.Tasks.Task<Product> CreateProductAsync (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer)
         {
              ApiResponse<Product> localVarResponse = await CreateProductAsyncWithHttpInfo(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
              return localVarResponse.Data;
@@ -1255,7 +1293,7 @@ namespace IO.Swagger.Api
         /// <param name="deliveryTime"></param>
         /// <param name="producer"></param>
         /// <returns>Task of ApiResponse (Product)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Product>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
+        public async System.Threading.Tasks.Task<ApiResponse<Product>> CreateProductAsyncWithHttpInfo (string productName, string chemicalName, double? molWeight, string description, double? price, string packaging, string deliveryTime, string producer)
         {
             // verify the required parameter 'productName' is set
             if (productName == null)
@@ -1845,7 +1883,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns></returns>
-        public void EditProduct (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        public void EditProduct (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime)
         {
              EditProductWithHttpInfo(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
         }
@@ -1863,7 +1901,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> EditProductWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        public ApiResponse<Object> EditProductWithHttpInfo (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime)
         {
             // verify the required parameter 'product' is set
             if (product == null)
@@ -1965,7 +2003,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task EditProductAsync (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        public async System.Threading.Tasks.Task EditProductAsync (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime)
         {
              await EditProductAsyncWithHttpInfo(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
 
@@ -1984,7 +2022,7 @@ namespace IO.Swagger.Api
         /// <param name="newPackaging"></param>
         /// <param name="newDeliveryTime"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditProductAsyncWithHttpInfo (Product product, string newProductName, string newChemicalName, string newMolWeight, string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> EditProductAsyncWithHttpInfo (Product product, string newProductName, string newChemicalName, double? newMolWeight, string newDescription, double? newPrice, string newPackaging, string newDeliveryTime)
         {
             // verify the required parameter 'product' is set
             if (product == null)
@@ -2489,6 +2527,139 @@ namespace IO.Swagger.Api
             return new ApiResponse<List<Page>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Page>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Page>)));
+            
+        }
+
+        /// <summary>
+        /// Send a request to the server to get any updates 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>bool?</returns>
+        public bool? RequestUpdate ()
+        {
+             ApiResponse<bool?> localVarResponse = RequestUpdateWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send a request to the server to get any updates 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of bool?</returns>
+        public ApiResponse< bool? > RequestUpdateWithHttpInfo ()
+        {
+
+            var localVarPath = "/Controller/RequestUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RequestUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<bool?>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (bool?) Configuration.ApiClient.Deserialize(localVarResponse, typeof(bool?)));
+            
+        }
+
+        /// <summary>
+        /// Send a request to the server to get any updates 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of bool?</returns>
+        public async System.Threading.Tasks.Task<bool?> RequestUpdateAsync ()
+        {
+             ApiResponse<bool?> localVarResponse = await RequestUpdateAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Send a request to the server to get any updates 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (bool?)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<bool?>> RequestUpdateAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/Controller/RequestUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RequestUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<bool?>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (bool?) Configuration.ApiClient.Deserialize(localVarResponse, typeof(bool?)));
             
         }
 
