@@ -4,6 +4,8 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.ComponentModel;
+using System.Threading;
+using Provider.domain;
 
 namespace Provider.gui
 {
@@ -23,12 +25,35 @@ namespace Provider.gui
             this.listToShow = listToShow;
             listView.ItemsSource = this.listToShow;
             dataView = CollectionViewSource.GetDefaultView(listView.ItemsSource);
+            Update();
         }
 
+        private void Update()
+        {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    lock (Controller.instance.GetUpdateLock())
+                    {
+                        Monitor.Wait(Controller.instance.GetUpdateLock());
+                        Refresh();
+                    }
+                }
+            }).Start();
+        }
+
+        private void Refresh()
+        {
+            Dispatcher.BeginInvoke((ThreadStart) delegate
+            {
+                listView.ItemsSource = null;
+                listView.ItemsSource = Controller.instance.GetPages();
+            });
+        }
 
         private void ViewSupplierInformation(object sender, MouseButtonEventArgs e)
         {
-            //mainWindow.Content = new SupplierInformation((Provider.domain.page.Page) listView.SelectedItem);
             mainWindow.Content = new SupplierInformation((IO.Swagger.Model.Page) listView.SelectedItem);
         }
 
