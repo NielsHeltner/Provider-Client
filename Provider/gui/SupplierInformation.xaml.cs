@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Windows.Input;
 using IO.Swagger.Model;
@@ -21,7 +22,8 @@ namespace Provider.gui
         public SupplierInformation(IO.Swagger.Model.Page page)
         {
             InitializeComponent();
-            this.page = page;
+            //this.page = page;
+            this.page = Controller.instance.GetPages().Find(p => p.Equals(page));
             products = new List<Product>();
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
@@ -123,7 +125,7 @@ namespace Provider.gui
             {
                 if (loadProductsToo)
                 {
-                    products = page.Products;
+                    products = Controller.instance.GetPages().Find(p => p.Owner.Equals(page.Owner)).Products;
                     ProductsListView.ItemsSource = null;
                     ProductsListView.ItemsSource = products;
                 }
