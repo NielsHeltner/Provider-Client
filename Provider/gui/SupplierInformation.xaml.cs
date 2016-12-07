@@ -3,8 +3,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.ComponentModel;
+using System.Threading;
 using System.Windows.Input;
 using IO.Swagger.Model;
+using Provider.domain;
 using Provider.domain.page;
 using Page = System.Windows.Controls.Page;
 
@@ -14,18 +16,34 @@ namespace Provider.gui
     {
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
-        private List<IO.Swagger.Model.Product> products2;
+        private List<IO.Swagger.Model.Product> products;
         private IO.Swagger.Model.Page page;
         public SupplierInformation(IO.Swagger.Model.Page page)
         {
             InitializeComponent();
             this.page = page;
-            products2 = new List<IO.Swagger.Model.Product>();
+            products = new List<IO.Swagger.Model.Product>();
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
-            products2 = page.Products;
-            ProductsListView.ItemsSource = products2;
+            products = page.Products;
+            ProductsListView.ItemsSource = products;
             productFrame.Visibility = Visibility.Collapsed;
+            Update();
+        }
+
+        private void Update()
+        {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    lock (Controller.instance.GetUpdateLock())
+                    {
+                        Monitor.Wait(Controller.instance.GetUpdateLock());
+                        Reloadpage(true);
+                    }
+                }
+            }).Start();
         }
 
         private void SortProductInformation(object sender, RoutedEventArgs e)
@@ -101,20 +119,20 @@ namespace Provider.gui
 
         public void Reloadpage(bool loadProductsToo)
         {
-            if (loadProductsToo)
+            Dispatcher.Invoke((ThreadStart) delegate
             {
-
-                products2 = page.Products;
-                ProductsListView.ItemsSource = null;
-                ProductsListView.ItemsSource = products2;
-
-            }
-            productFrame.Visibility = Visibility.Collapsed;
-            button.Visibility = Visibility.Visible;
-
+                if (loadProductsToo)
+                {
+                    products = page.Products;
+                    ProductsListView.ItemsSource = null;
+                    ProductsListView.ItemsSource = products;
+                }
+                productFrame.Visibility = Visibility.Collapsed;
+                button.Visibility = Visibility.Visible;
+            });
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void CreateProduct(object sender, RoutedEventArgs e)
         {
             productFrame.Visibility = Visibility.Visible;
             productFrame.Content = new ViewProductGBPage(this);
