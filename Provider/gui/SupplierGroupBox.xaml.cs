@@ -67,6 +67,7 @@ namespace Provider.gui
         {
             Dispatcher.Invoke((ThreadStart)delegate
             {
+                Page = Controller.instance.GetPages().Find(p => p.Owner.Equals(Page.Owner));
                 ContactInformation.Text = Page.ContactInformation;
                 Location.Text = Page.Location;
                 Description.Text = Page.Description;
