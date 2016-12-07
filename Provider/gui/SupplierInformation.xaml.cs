@@ -125,9 +125,8 @@ namespace Provider.gui
             {
                 if (loadProductsToo)
                 {
-                    products = Controller.instance.GetPages().Find(p => p.Owner.Equals(page.Owner)).Products;
                     ProductsListView.ItemsSource = null;
-                    ProductsListView.ItemsSource = products;
+                    ProductsListView.ItemsSource = Controller.instance.GetPages().Find(p => p.Owner.Equals(page.Owner)).Products;
                 }
                 productFrame.Visibility = Visibility.Collapsed;
                 button.Visibility = Visibility.Visible;

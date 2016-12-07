@@ -31,7 +31,6 @@ namespace Provider.domain.page
                     }
                 });
             });
-
             return results.Keys.ToList();
         }
     }

@@ -282,8 +282,7 @@ namespace Provider.domain
         /// <param name="producer">The producer of the product</param>
         public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer)
         {
-           
-            pageManager.pages.Find(page => page.Owner.Equals(producer)).Products.Add(api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer));
+            api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
         }
 
         /// <summary>
