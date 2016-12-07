@@ -23,14 +23,13 @@ namespace Provider.gui
         {
             try
             {
-                double density = Double.Parse(ProductDensity.Text);
-                double price = Double.Parse(ProductPrice.Text);
-                Controller.instance.CreateProduct(ProductName.Text, ProductChemName.Text, ProductDensity.Text, ProductDescription.Text, ProductPrice.Text, ProductPackaging.Text, ProductDeliveryTime.Text, OwnerTextBlock.Text);
+                
+                Controller.instance.CreateProduct(ProductName.Text, ProductChemName.Text, Double.Parse(ProductDensity.Text), ProductDescription.Text, Double.Parse(ProductPrice.Text), ProductPackaging.Text, ProductDeliveryTime.Text, OwnerTextBlock.Text);
                 viewSupplierInformation.Reloadpage(true);
             }
             catch (FormatException exception)
             {
-                MessageBox.Show("Fejl i molvægt og/eller pris´. Det skal være et tal.");
+                MessageBox.Show("Fejl i molvægt og/eller pris. Det skal være et tal.");
             }
         }
     }
