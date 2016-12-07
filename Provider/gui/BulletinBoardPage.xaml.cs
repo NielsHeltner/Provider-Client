@@ -62,14 +62,19 @@ namespace Provider.gui
         /// <param name="refreshFrameToo">bool</param>
         public void RefreshPage(bool refreshFrameToo)
         {
-            listView.ItemsSource = null;
-            listView.ItemsSource = Controller.instance.ViewAllPosts();
-            groupBox.Header = "Opslag information";
-            typeOfList.Text = "Alle opslag";
-            if (refreshFrameToo)
-                frame.Content = null;
+            Dispatcher.Invoke((ThreadStart) delegate
+            {
+                listView.ItemsSource = null;
+                listView.ItemsSource = Controller.instance.ViewAllPosts();
+                groupBox.Header = "Opslag information";
+                typeOfList.Text = "Alle opslag";
+                if (refreshFrameToo)
+                {
+                    frame.Content = null;
+                }
+            });
         }
-        //TODO foreach uden for if?
+
         private void ListMyPosts(object sender, RoutedEventArgs e)
         {
             List<IO.Swagger.Model.Post> myPosts = new List<IO.Swagger.Model.Post>();
