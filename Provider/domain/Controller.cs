@@ -19,6 +19,7 @@ namespace Provider.domain
         private Bulletinboard bulletinboard;
         private ControllerApi api;
         private List<string> files = new List<string>();
+        private Object updateLock = new Object();
 
         public static IController instance
         {
@@ -53,8 +54,7 @@ namespace Provider.domain
                 {
                     while ((bool) api.RequestUpdate())
                     {
-                        GetSuppliers();
-                        ViewAllPosts();
+                        Monitor.PulseAll(updateLock);
                     }
                 }
                 catch (ApiException e)
@@ -62,6 +62,11 @@ namespace Provider.domain
                     Update();
                 }
             }).Start();
+        }
+
+        public Object GetUpdateLock()
+        {
+            return updateLock;
         }
         
         /// <summary>

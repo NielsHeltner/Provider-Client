@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,16 +15,33 @@ namespace Provider.gui
     public partial class BulletinBoardPage : Page
     {
         private bool isItMyList; // false = its all the post, true = its the loggedin users posts OR a specifik group post, 'all warning post' ect.
+
         public BulletinBoardPage()
         {
             InitializeComponent();
             listView.ItemsSource = Controller.instance.ViewAllPosts();
+            Update();
+        }
+
+        private void Update()
+        {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    lock (Controller.instance.GetUpdateLock())
+                    {
+                        Monitor.Wait(Controller.instance.GetUpdateLock());
+                        RefreshPage(false);
+                    }
+                }
+            }).Start();
         }
 
         public void SetPostInformation(IO.Swagger.Model.Post selectedItem)
-            {
+        {
             frame.Content = new BulletinBoardProductPage(selectedItem, this);
-            }
+        }
 
         private void ViewPostInformation(object sender, MouseButtonEventArgs e)
         {

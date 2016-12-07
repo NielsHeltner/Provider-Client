@@ -10,6 +10,7 @@ namespace Provider.domain
 {
     public interface IController
     {
+        Object GetUpdateLock();
         List<IO.Swagger.Model.Page> GetPages();
 
         void EditPost(Post post, string newDescription, string newTitle);
