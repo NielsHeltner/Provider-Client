@@ -43,7 +43,6 @@ namespace Provider.domain
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
             api = new ControllerApi("http://192.168.1.234:8080");
             //api = new ControllerApi("http://192.168.1.234:8080");
-            bulletinboard.posts = api.GetAllPosts();
             Update();
         }
 
@@ -90,7 +89,7 @@ namespace Provider.domain
             {
                 userManager.loggedInUser = user;
                 GetSuppliers();
-                ViewAllPosts();
+                GetPosts();
                 return true;
             }
             return false;
@@ -114,6 +113,11 @@ namespace Provider.domain
         public List<Page> GetPages()
         {
             return pageManager.pages;
+        }
+
+        public void GetPosts()
+        {
+            bulletinboard.posts = api.GetAllPosts();
         }
 
         public List<Post> ViewAllPosts()

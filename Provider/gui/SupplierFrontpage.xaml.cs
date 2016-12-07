@@ -1,4 +1,5 @@
-﻿using IO.Swagger.Model;
+﻿using System.Threading;
+using IO.Swagger.Model;
 using Provider.domain;
 using Provider.domain.bulletinboard;
 using System.Windows;
@@ -23,6 +24,22 @@ namespace Provider.gui
             WarningListView.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
             WarningListView.SetValue(ScrollViewer.VerticalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
             RefreshFrontPage();
+            Update();
+        }
+
+        private void Update()
+        {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    lock (Controller.instance.GetUpdateLock())
+                    {
+                        Monitor.Wait(Controller.instance.GetUpdateLock());
+                        RefreshFrontPage();
+                    }
+                }
+            }).Start();
         }
 
         private void GoToBulletinBoardPageNews(object sender, MouseButtonEventArgs e)
@@ -50,17 +67,22 @@ namespace Provider.gui
         }
         public void RefreshFrontPage()
         {
-            WarningListView.ItemsSource = null;
-            WarningListView.ItemsSource = domain.Controller.instance.ViewWarningPosts();
-            numberOfWarningPostLabel.Content = domain.Controller.instance.ViewWarningPosts().Count;
+            Dispatcher.Invoke((ThreadStart) delegate
+            {
+                WarningListView.ItemsSource = null;
+                WarningListView.ItemsSource = domain.Controller.instance.ViewWarningPosts();
+                numberOfWarningPostLabel.Content = domain.Controller.instance.ViewWarningPosts().Count;
 
-            OfferListView.ItemsSource = null;
-            OfferListView.ItemsSource = domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username);
-            NumberOfOfferPosts.Content = domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username).Count;
+                OfferListView.ItemsSource = null;
+                OfferListView.ItemsSource =
+                    domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username);
+                NumberOfOfferPosts.Content =
+                    domain.Controller.instance.ViewOfferPosts(Controller.instance.GetLoggedInUser().Username).Count;
 
-            RequestListView.ItemsSource = null;
-            RequestListView.ItemsSource = domain.Controller.instance.ViewRequestPosts();
-            NumberOfRequestPosts.Content = domain.Controller.instance.ViewRequestPosts().Count;
+                RequestListView.ItemsSource = null;
+                RequestListView.ItemsSource = domain.Controller.instance.ViewRequestPosts();
+                NumberOfRequestPosts.Content = domain.Controller.instance.ViewRequestPosts().Count;
+            });
         }
 
         private void ViewWarningPost(object sender, MouseButtonEventArgs e)
