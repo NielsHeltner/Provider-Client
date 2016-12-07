@@ -18,7 +18,6 @@ namespace Provider.domain
         private PageManager pageManager;
         private Bulletinboard bulletinboard;
         private ControllerApi api;
-        private List<string> files = new List<string>();
         private Object updateLock = new Object();
 
         public static IController instance
