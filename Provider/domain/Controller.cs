@@ -49,10 +49,17 @@ namespace Provider.domain
         {
             new Thread(() =>
             {
-                while ((bool) api.RequestUpdate())
+                try
                 {
-                    GetSuppliers();
-                    ViewAllPosts();
+                    while ((bool) api.RequestUpdate())
+                    {
+                        GetSuppliers();
+                        ViewAllPosts();
+                    }
+                }
+                catch (ApiException e)
+                {
+                    Update();
                 }
             }).Start();
         }
