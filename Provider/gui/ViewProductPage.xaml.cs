@@ -34,8 +34,8 @@ namespace Provider.gui
             this.product = product;
             productNameTextBox.Text = product.ProductName;
             chemicalNameTextBox.Text = product.ChemicalName;
-            molValueTextBox.Text = product.MolWeight;
-            priceTextBox.Text = product.Price;
+            molValueTextBox.Text = product.MolWeight.Value.ToString();
+            priceTextBox.Text = product.Price.Value.ToString();
             packetingTextBox.Text = product.Packaging;
             deliveryTimeTextBox.Text = product.DeliveryTime;
             descriptionTextBox.Text = product.Description;
@@ -126,13 +126,13 @@ namespace Provider.gui
                 {
                     wrongInput.Visibility = Visibility.Hidden;
                     Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
-                        molValueTextBox.Text, descriptionTextBox.Text, priceTextBox.Text, packetingTextBox.Text,
+                        Double.Parse(molValueTextBox.Text), descriptionTextBox.Text, Double.Parse(priceTextBox.Text), packetingTextBox.Text,
                         deliveryTimeTextBox.Text);
                     product.ProductName = productNameTextBox.Text;
                     product.ChemicalName = chemicalNameTextBox.Text;
-                    product.MolWeight = molValueTextBox.Text;
+                    product.MolWeight = Double.Parse(molValueTextBox.Text);
                     product.Description = descriptionTextBox.Text;
-                    product.Price = priceTextBox.Text;
+                    product.Price = Double.Parse(priceTextBox.Text);
                     product.Packaging = packetingTextBox.Text;
                     product.DeliveryTime = deliveryTimeTextBox.Text;
                     HideButtons();

@@ -140,8 +140,8 @@ namespace Provider.domain
             return pageManager.Search(searchTerm);
         }
 
-        public void EditProduct(Product product, string newProductName, string newChemicalName, string newMolWeight,
-            string newDescription, string newPrice, string newPackaging, string newDeliveryTime)
+        public void EditProduct(Product product, string newProductName, string newChemicalName, Double newMolWeight,
+            string newDescription, Double newPrice, string newPackaging, string newDeliveryTime)
         {
 
             if ((GetLoggedInUser().Username.Equals(product.Producer)) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
@@ -157,7 +157,7 @@ namespace Provider.domain
         }
         
 
-        public void CreateProduct(string productName, string chemicalName, string molWeight, string description, string price, string packaging, string deliveryTime, string producer)
+        public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer)
         {
             pageManager.pages.Find(page => page.Owner.Equals(producer)).Products.Add(api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer));
         }
