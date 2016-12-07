@@ -54,7 +54,10 @@ namespace Provider.domain
                 {
                     while ((bool) api.RequestUpdate())
                     {
-                        Monitor.PulseAll(updateLock);
+                        lock (updateLock)
+                        {
+                            Monitor.PulseAll(updateLock);
+                        }
                     }
                 }
                 catch (ApiException e)
