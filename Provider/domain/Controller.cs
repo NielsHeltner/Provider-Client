@@ -120,14 +120,17 @@ namespace Provider.domain
 
         public List<Post> ViewWarningPosts()
         {
+            bulletinboard.posts = api.GetAllPosts();
             return bulletinboard.GetPosts(PostType.Warning);
         }
         public List<Post> ViewRequestPosts()
         {
+            bulletinboard.posts = api.GetAllPosts();
             return bulletinboard.GetPosts(PostType.Request);
         }
         public List<Post> ViewOfferPosts()
         {
+            bulletinboard.posts = api.GetAllPosts();
             return bulletinboard.GetPosts(PostType.Offer);
         }
 
