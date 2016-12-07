@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,16 +21,8 @@ namespace Provider.gui
         {
             InitializeComponent();
             HideBorderandSetArrow();
-            this.Page = Page;
-            ContactInformation.Text = Page.ContactInformation;
-            Location.Text = Page.Location;
-            Description.Text = Page.Description;
-            if(this.Page.Note != null)
-            {
-                noteTextBox.Text = this.Page.Note.Text;
-                lastEdited.Text = ((DateTime) this.Page.Note.CreationDate).ToLongDateString() + ".";
-                lastEditor.Text = this.Page.Note.Editor;
-            }
+            this.Page = Controller.instance.GetPages().Find(p => p.Equals(Page));
+            Refresh();
 
             if (Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Provia)
             {
@@ -51,6 +45,38 @@ namespace Provider.gui
                 ContactInfoBox.Height = 60;
             }
             noteTextBox.Cursor = Cursors.Arrow;
+            Update();
+        }
+
+        private void Update()
+        {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    lock (Controller.instance.GetUpdateLock())
+                    {
+                        Monitor.Wait(Controller.instance.GetUpdateLock());
+                        Refresh();
+                    }
+                }
+            }).Start();
+        }
+
+        private void Refresh()
+        {
+            Dispatcher.Invoke((ThreadStart)delegate
+            {
+                ContactInformation.Text = Page.ContactInformation;
+                Location.Text = Page.Location;
+                Description.Text = Page.Description;
+                if (Page.Note != null)
+                {
+                    noteTextBox.Text = Page.Note.Text;
+                    lastEdited.Text = ((DateTime) Page.Note.CreationDate).ToLongDateString() + ".";
+                    lastEditor.Text = Page.Note.Editor;
+                }
+            });
         }
 
         private void EditNote(object sender, RoutedEventArgs e)
@@ -62,7 +88,6 @@ namespace Provider.gui
                 noteTextBox.IsReadOnly = false;
                 noteTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
                 editNote.Content = "Gem";
-
             }
             else
             {
@@ -103,7 +128,6 @@ namespace Provider.gui
                 Page.Location = Location.Text;
                 Controller.instance.ManageSupplerPage(Page);
             }
-
         }
 
         private void HideBorderandSetArrow()
