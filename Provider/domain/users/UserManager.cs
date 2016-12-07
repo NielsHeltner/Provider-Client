@@ -12,7 +12,6 @@ namespace Provider.domain.users
         /// <param name="userName">The logging in users username</param>
         /// <param name="password">The logging in users password</param>
         /// <returns> True if username and password matches.  </returns>
-
         public bool Validate(string userName, string password)
         {
             //loggedInUser = Database.instance.GetLogin(userName, password);
@@ -20,7 +19,7 @@ namespace Provider.domain.users
         }
 
         /// <summary>
-        /// logs out the current logged in user.
+        /// The logged in user is being set to null, so the user will be logged out. 
         /// </summary>
         public void LogOut()
         {

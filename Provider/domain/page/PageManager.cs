@@ -8,7 +8,11 @@ namespace Provider.domain.page
     public class PageManager
     {
         public List<Page> pages { get; set; }  
-
+        /// <summary>
+        /// Searches through all suppliers and products with a given search term. 
+        /// </summary>
+        /// <param name="searchTerm">The term which is being searched on</param>
+        /// <returns> A list with searchresults </returns>
         public List<Page> Search(string searchTerm)
         {
             searchTerm = searchTerm.ToLower();
@@ -27,10 +31,7 @@ namespace Provider.domain.page
                     }
                 });
             });
-            /*List<Page> results = pages.AsParallel()
-                                    .Where(page => page.Owner.ToLower().Contains(searchTerm))
-                                    .ForAll(page => page.Products.AsParallel()
-                                                                .Where(product => product.ProductName.ToLower().Contains(searchTerm)));*/
+
             return results.Keys.ToList();
         }
     }
