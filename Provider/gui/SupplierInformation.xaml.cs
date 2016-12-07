@@ -121,7 +121,7 @@ namespace Provider.gui
 
         public void Reloadpage(bool loadProductsToo)
         {
-            Dispatcher.Invoke((ThreadStart) delegate
+            Dispatcher.BeginInvoke((ThreadStart) delegate
             {
                 if (loadProductsToo)
                 {
