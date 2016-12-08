@@ -167,16 +167,6 @@ namespace Provider.domain
         }
 
         /// <summary>
-        /// This method lists all the offer posts from a given supplier.
-        /// </summary>
-        /// <param name="Supplier"></param>
-        /// <returns> A list of offer posts from the given supplier </returns>
-        public List<Post> ViewOfferPosts(String Supplier)
-        {
-            return bulletinboard.GetPosts(PostType.Offer, Supplier);
-        }
-
-        /// <summary>
         /// This method creates a post with a title, description and a post type. 
         /// </summary>
         /// <param name="owner">The owner of the post</param>
