@@ -11,7 +11,7 @@ namespace Provider.domain
     public interface IController
     {
         Object GetUpdateLock();
-        List<IO.Swagger.Model.Page> GetPages();
+        List<Page> GetPages();
 
         void EditPost(Post post, string newDescription, string newTitle);
 
@@ -31,13 +31,8 @@ namespace Provider.domain
 
         void LogOut();
 
-        IO.Swagger.Model.User GetLoggedInUser();
+        User GetLoggedInUser();
 
-        /// Retuns a list of posts.
-        /// If type = "0" all posts are returned
-        /// If type = "1" warningPost are returned
-        /// If type = "2" requestPost are returned
-        /// If type = "3" offerPost are returned
         List<Post> ViewAllPosts();
 
         List<Post> ViewWarningPosts();
@@ -46,7 +41,7 @@ namespace Provider.domain
 
         List<Post> ViewOfferPosts();
 
-        List<Post> ViewOfferPosts(String Supplier);
+        List<Post> ViewOfferPosts(string Supplier);
 
         void AddNoteToSupplier(string supplierName, string editor, string text);
 
@@ -55,7 +50,7 @@ namespace Provider.domain
         void GetPDF(int? id);
 
         void DeleteTempFiles();
-        void ManageSupplerPage(Page page);
+        void ManageSupplierPage(Page page);
     }
 }
     

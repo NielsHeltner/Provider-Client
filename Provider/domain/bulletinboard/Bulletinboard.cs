@@ -4,29 +4,10 @@ using System.Linq;
 
 namespace Provider.domain.bulletinboard
 {
-    public class Bulletinboard
+    public class Bulletinboard : IBulletinboard
     {
         public List<Post> posts { get; set; }
 
-        public Bulletinboard()
-        {
-        }
-        /// <summary>
-        /// Adds a post to a list of posts.
-        /// </summary>
-        /// <param name="post">The post which is being added</param>
-        public void AddPost(Post post)
-        {
-            posts.Add(post);
-        }
-        /// <summary>
-        /// Deletes a post 
-        /// </summary>
-        /// <param name="post">The post which is being deleted </param>
-       public void DeletePost(Post post)
-        {
-            posts.Remove(post);
-        }
         /// <summary>
         /// Gets all post with a given post type. 
         /// </summary>
@@ -36,6 +17,7 @@ namespace Provider.domain.bulletinboard
         {
             return posts.AsParallel().Where(post => post.Type == type).ToList();
         }
+
         /// <summary>
         /// Gets all post with a given post type and name of supplier. 
         /// </summary>
@@ -46,13 +28,6 @@ namespace Provider.domain.bulletinboard
         {
             return GetPosts(type).AsParallel().Where(post => post.Owner.Equals(Supplier)).ToList();
         }
-        /// <summary>
-        /// Lists all the posts. 
-        /// </summary>
-        /// <returns> A list of all posts</returns>
-        public List<Post> ViewAllPosts()
-        {
-            return posts;
-        }
+
     }
 }
