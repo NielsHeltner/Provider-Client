@@ -40,7 +40,7 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.12.179:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://192.168.1.77:8080");
+            api = new ControllerApi("http://192.168.1.234:8080");
             //api = new ControllerApi("http://192.168.1.234:8080");
             Update();
         }
@@ -61,7 +61,7 @@ namespace Provider.domain
                         }
                     }
                 }
-                catch (ApiException e)
+                catch (ApiException)
                 {
                     Update();
                 }
@@ -320,7 +320,7 @@ namespace Provider.domain
             {
                 Directory.Delete(Path.GetTempPath() + "Provider", true);
             }
-            catch (DirectoryNotFoundException e)
+            catch (DirectoryNotFoundException)
             {
                 Environment.Exit(0);
             }

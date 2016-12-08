@@ -77,13 +77,13 @@ namespace Provider.gui
             supplierInformationPage.Reloadpage(false);
         }
 
-        private void OpenPDFBotton(object sender, RoutedEventArgs e)
+        private void OpenPDFButton(object sender, RoutedEventArgs e)
         {
             try
             {
                 Controller.instance.GetPDF(product.Id);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 MessageBox.Show("Fejl ved indlæsning af PDF", "Fejl", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -140,18 +140,7 @@ namespace Provider.gui
             }
             else
             {
-                bool passedChecked = true;
                 try
-                {
-                    int price = Int32.Parse(priceTextBox.Text);
-                    double molWeight = Double.Parse(molValueTextBox.Text);
-                }
-                catch (FormatException exeception)
-                {
-                    wrongInput.Visibility = Visibility.Visible;
-                    passedChecked = false;
-                }
-                if (passedChecked)
                 {
                     wrongInput.Visibility = Visibility.Hidden;
                     Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
@@ -170,6 +159,10 @@ namespace Provider.gui
                     savedPostTextBlock.Visibility = Visibility.Visible;
                     savedPostTextBlock.BeginAnimation(OpacityProperty,
                         new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
+                }
+                catch (FormatException)
+                {
+                    wrongInput.Visibility = Visibility.Visible;
                 }
             }
         }

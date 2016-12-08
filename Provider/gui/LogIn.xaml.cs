@@ -80,7 +80,7 @@ namespace Provider.gui
                             passwordText.BeginAnimation(Canvas.LeftProperty, animationKeyFrames);
                         }
                     }
-                    catch (ApiException ex)
+                    catch (ApiException)
                     {
                         wrongUsernameOrPassword.Visibility = Visibility.Visible;
                         wrongUsernameOrPassword.Text = "Kunne ikke oprette forbindelse\ntil serveren. Prøv igen.";
