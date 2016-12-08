@@ -123,19 +123,19 @@ namespace Provider.gui
                 packetingTextBox.AcceptsReturn = true;
                 packetingTextBox.IsUndoEnabled = true;
                 packetingTextBox.Cursor = Cursors.IBeam;
-                packetingTextBox.ToolTip = "Write the chemicalname of your product";
+                packetingTextBox.ToolTip = "Write what package your product will be send in";
                 descriptionTextBox.Background = null;
                 descriptionTextBox.IsReadOnly = false;
                 descriptionTextBox.AcceptsReturn = true;
                 descriptionTextBox.IsUndoEnabled = true;
                 descriptionTextBox.Cursor = Cursors.IBeam;
-                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
+                descriptionTextBox.ToolTip = "Write the description of your product";
                 deliveryTimeTextBox.Background = null;
                 deliveryTimeTextBox.IsReadOnly = false;
                 deliveryTimeTextBox.AcceptsReturn = true;
                 deliveryTimeTextBox.IsUndoEnabled = true;
                 deliveryTimeTextBox.Cursor = Cursors.IBeam;
-                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
+                deliveryTimeTextBox.ToolTip = "Write the expected delivertytime of your product";
                 editProduct.Content = "Gem";
             }
             else
