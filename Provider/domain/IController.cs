@@ -13,6 +13,9 @@ namespace Provider.domain
         Object GetUpdateLock();
         List<IO.Swagger.Model.Page> GetPages();
 
+        void GetPosts();
+        void GetSuppliers();
+
         void EditPost(Post post, string newDescription, string newTitle);
 
         void DeletePost(Post post);
