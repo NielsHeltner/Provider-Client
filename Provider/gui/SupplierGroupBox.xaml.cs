@@ -127,7 +127,7 @@ namespace Provider.gui
                 Page.Description = Description.Text;
                 Page.ContactInformation = ContactInformation.Text;
                 Page.Location = Location.Text;
-                Controller.instance.ManageSupplerPage(Page);
+                Controller.instance.ManageSupplierPage(Page);
             }
         }
 

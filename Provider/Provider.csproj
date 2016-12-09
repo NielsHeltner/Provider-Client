@@ -99,9 +99,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="domain\bulletinboard\Bulletinboard.cs" />
+    <Compile Include="domain\bulletinboard\IBulletinboard.cs" />
     <Compile Include="domain\Controller.cs" />
     <Compile Include="domain\IController.cs" />
+    <Compile Include="domain\page\IPageManager.cs" />
     <Compile Include="domain\page\PageManager.cs" />
+    <Compile Include="domain\users\IUserManager.cs" />
     <Compile Include="domain\users\UserManager.cs" />
     <Compile Include="gui\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

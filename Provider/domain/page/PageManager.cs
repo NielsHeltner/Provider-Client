@@ -5,9 +5,10 @@ using IO.Swagger.Model;
 
 namespace Provider.domain.page
 {
-    public class PageManager
+    public class PageManager : IPageManager
     {
-        public List<Page> pages { get; set; }  
+        public List<Page> pages { get; set; }
+
         /// <summary>
         /// Searches through all suppliers and products with a given search term. 
         /// </summary>

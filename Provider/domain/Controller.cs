@@ -14,9 +14,9 @@ namespace Provider.domain
     public class Controller : IController
     {
         private static IController _instance;
-        private UserManager userManager;
-        private PageManager pageManager;
-        private Bulletinboard bulletinboard;
+        private IUserManager userManager;
+        private IPageManager pageManager;
+        private IBulletinboard bulletinboard;
         private ControllerApi api;
         private Object updateLock = new Object();
 
@@ -61,7 +61,7 @@ namespace Provider.domain
                         }
                     }
                 }
-                catch (ApiException e)
+                catch (ApiException)
                 {
                     Update();
                 }
@@ -136,7 +136,7 @@ namespace Provider.domain
 
         public List<Post> ViewAllPosts()
         {
-            return bulletinboard.ViewAllPosts();
+            return bulletinboard.posts;
         }
 
         /// <summary>
@@ -185,7 +185,6 @@ namespace Provider.domain
         public void DeletePost(Post post)
         {
             api.DeletePost(post);
-            bulletinboard.DeletePost(post);
         }
 
         /// <summary>
@@ -203,11 +202,10 @@ namespace Provider.domain
         /// Edits the information on a supplierpage. 
         /// </summary>
         /// <param name="page">The page which is being edited</param>
-        public void ManageSupplerPage(Page page)
+        public void ManageSupplierPage(Page page)
         {
             api.UpdatePage(page.Owner, page.Description, page.Location, page.ContactInformation);
         }
-        // TODO - FIX metodenavn til ManageSupplierPage 
 
         /// <summary>
         /// Adds a note to a supplie.
@@ -245,17 +243,10 @@ namespace Provider.domain
         public void EditProduct(Product product, string newProductName, string newChemicalName, Double newMolWeight,
             string newDescription, Double newPrice, string newPackaging, string newDeliveryTime)
         {
-
-            if ((GetLoggedInUser().Username.Equals(product.Producer)) || (GetLoggedInUser().Rights==User.RightsEnum.Admin))
+            if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
                 api.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
             }
-            else
-            {
-                //Some error since user not allowed to use this function
-            }
-
-
         }
         
         /// <summary>
@@ -285,7 +276,6 @@ namespace Provider.domain
             if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
                 api.DeleteProduct(product);
-                pageManager.pages.Find(page => page.Owner.Equals(product.Producer)).Products.Remove(product);
             }
         }
 
@@ -320,7 +310,7 @@ namespace Provider.domain
             {
                 Directory.Delete(Path.GetTempPath() + "Provider", true);
             }
-            catch (DirectoryNotFoundException e)
+            catch (DirectoryNotFoundException)
             {
                 Environment.Exit(0);
             }

@@ -26,7 +26,7 @@ namespace Provider.gui
                 Controller.instance.CreateProduct(ProductName.Text, ProductChemName.Text, Double.Parse(ProductDensity.Text), ProductDescription.Text, Double.Parse(ProductPrice.Text), ProductPackaging.Text, ProductDeliveryTime.Text, OwnerTextBlock.Text);
                 viewSupplierInformation.Reloadpage(true);
             }
-            catch (FormatException exception)
+            catch (FormatException)
             {
                 MessageBox.Show("Fejl i molvægt og/eller pris. Det skal være et tal.");
             }

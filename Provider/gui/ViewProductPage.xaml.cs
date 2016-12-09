@@ -77,13 +77,13 @@ namespace Provider.gui
             supplierInformationPage.Reloadpage(false);
         }
 
-        private void OpenPDFBotton(object sender, RoutedEventArgs e)
+        private void OpenPDFButton(object sender, RoutedEventArgs e)
         {
             try
             {
                 Controller.instance.GetPDF(product.Id);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 MessageBox.Show("Fejl ved indlæsning af PDF", "Fejl", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -123,35 +123,24 @@ namespace Provider.gui
                 packetingTextBox.AcceptsReturn = true;
                 packetingTextBox.IsUndoEnabled = true;
                 packetingTextBox.Cursor = Cursors.IBeam;
-                packetingTextBox.ToolTip = "Write the chemicalname of your product";
+                packetingTextBox.ToolTip = "Write what package your product will be send in";
                 descriptionTextBox.Background = null;
                 descriptionTextBox.IsReadOnly = false;
                 descriptionTextBox.AcceptsReturn = true;
                 descriptionTextBox.IsUndoEnabled = true;
                 descriptionTextBox.Cursor = Cursors.IBeam;
-                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
+                descriptionTextBox.ToolTip = "Write the description of your product";
                 deliveryTimeTextBox.Background = null;
                 deliveryTimeTextBox.IsReadOnly = false;
                 deliveryTimeTextBox.AcceptsReturn = true;
                 deliveryTimeTextBox.IsUndoEnabled = true;
                 deliveryTimeTextBox.Cursor = Cursors.IBeam;
-                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
+                deliveryTimeTextBox.ToolTip = "Write the expected delivertytime of your product";
                 editProduct.Content = "Gem";
             }
             else
             {
-                bool passedChecked = true;
                 try
-                {
-                    int price = Int32.Parse(priceTextBox.Text);
-                    double molWeight = Double.Parse(molValueTextBox.Text);
-                }
-                catch (FormatException exeception)
-                {
-                    wrongInput.Visibility = Visibility.Visible;
-                    passedChecked = false;
-                }
-                if (passedChecked)
                 {
                     wrongInput.Visibility = Visibility.Hidden;
                     Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
@@ -170,6 +159,10 @@ namespace Provider.gui
                     savedPostTextBlock.Visibility = Visibility.Visible;
                     savedPostTextBlock.BeginAnimation(OpacityProperty,
                         new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
+                }
+                catch (FormatException)
+                {
+                    wrongInput.Visibility = Visibility.Visible;
                 }
             }
         }
