@@ -303,9 +303,7 @@
         <TextBlock x:Name="goToBulletinboardPageTextBlock" HorizontalAlignment="Left" Margin="551,117,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageNews" Cursor="Hand" Foreground="#FF0C4A63"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy" HorizontalAlignment="Left" Margin="1130,117,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageWarning" Cursor="Hand" Foreground="#FF0C4A63"/>
         <TextBlock x:Name="goToBulletinboardPageTextBlock_Copy1" HorizontalAlignment="Left" Margin="1130,331,0,0" TextWrapping="Wrap" Text="Se mere..." VerticalAlignment="Top" MouseLeftButtonUp="GoToBulletinBoardPageOffer" Cursor="Hand" Foreground="#FF0C4A63"/>
-        <Button x:Name="viewAllPostButton" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="89" Click="ViewAllPost" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}">
-            <Button x:Name="button" Content="Se alle opslag" Width="75" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
-        </Button>
+        <Button x:Name="viewAllPostButton" Content="Se alle opslag" HorizontalAlignment="Left" Margin="64,555,0,0" VerticalAlignment="Top" Width="89" Click="ViewAllPost" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}" />
 
     </Grid>
 </Page>
