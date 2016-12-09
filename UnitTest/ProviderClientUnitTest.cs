@@ -9,33 +9,26 @@ namespace UnitTest
     [TestClass]
     public class ProviderClientUnitTest
     {
-        [TestInitialize]
-        public void SetUp()
+        [ClassInitialize]
+        public static void SetUp(TestContext context)
         {
-            Controller.instance.LogIn("Provia", "123");
+            Controller.instance.LogIn("Test Supplier", "1");
         }
 
         [TestMethod]
         public void LoginTest()
         {
-            bool login = Controller.instance.LogIn("Niclas", "123");
+            bool login = Controller.instance.LogIn("Test Supplier", "1");
             Assert.IsTrue(login);
         }
 
         [TestMethod]
         public void GetLoggedInUserTest()
         {
-            User testUser = new User("Provia", User.RightsEnum.Provia);
+            User testUser = new User("Test Supplier", User.RightsEnum.Supplier);
 
             // Test if logged in user have the right parameters
             Assert.AreEqual(testUser, Controller.instance.GetLoggedInUser());
-        }
-
-        [TestMethod]
-        public void LogoutTest()
-        {
-            Controller.instance.LogOut();
-            Assert.IsNull(Controller.instance.GetLoggedInUser());
         }
 
         [TestMethod]
@@ -106,23 +99,23 @@ namespace UnitTest
         {
             Controller.instance.CreateProduct("Test Product", "Test Product", 1, "Test Product", 1, "Test Product", "Test Product", "Test Supplier");
             Controller.instance.GetSuppliers();
-            Assert.IsNull(Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier")).Products.Find(prod => prod.ProductName.Equals("Test Product")));
+            Assert.IsNotNull(Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier")).Products.Find(prod => prod.ProductName.Equals("Test Product")));
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void EditProductTest()
         {
-            Post testPost = Controller.instance.ViewRequestPosts().Find(p => p.Owner.Equals("Provia") && p.Title.Equals("Test Post") && p.Description.Equals("Test Post"));
-            Controller.instance.EditPost(testPost, "New Test Post", "New Test Post");
-            Controller.instance.GetPosts();
-            Assert.IsNotNull(Controller.instance.ViewRequestPosts().Find(p => p.Owner.Equals("Provia") && p.Title.Equals("New Test Post") && p.Description.Equals("New Test Post")));
+            Product testProduct = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier")).Products.Find(prod => prod.ProductName.Equals("Test Product"));
+            Controller.instance.EditProduct(testProduct, "New Test Product", "New Test Product", 2, "New Test Product", 2, "New Test Product", "New Test Product");
+            Controller.instance.GetSuppliers();
+            Assert.IsNotNull(Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier")).Products.Find(prod => prod.Id == testProduct.Id));
         }
 
         [TestMethod]
         public void DeleteProductTest()
         {
-            Product testProduct = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier")).Products.Find(prod => prod.ProductName.Equals("Test Product"));
-            Assert.IsNotNull(Controller.instance.ViewRequestPosts().Find(p => p.Id == testProduct.Id));
+            Product testProduct = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier")).Products.Find(prod => prod.ProductName.Equals("New Test Product"));
+            Assert.IsNotNull(testProduct);
             Controller.instance.DeleteProduct(testProduct);
             Controller.instance.GetSuppliers();
             Assert.IsNull(Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier")).Products.Find(prod => prod.Id == testProduct.Id));
@@ -135,6 +128,67 @@ namespace UnitTest
             Assert.AreEqual(1, testPage.Count);
 
             Assert.AreEqual("Chr. Olesen Nutrition A/S", testPage[0].Owner);
+        }
+
+        [TestMethod]
+        public void ManageSupplierPageTest()
+        {
+            Page testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
+            testPage.Description = "Test Description";
+            testPage.ContactInformation = "";
+            testPage.Note = null;
+            testPage.Location = "";
+            Controller.instance.ManageSupplerPage(testPage);
+            testPage = null;
+            Controller.instance.GetSuppliers();
+            testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
+            Assert.AreEqual("Test Description", testPage.Description);
+        }
+
+        [TestMethod]
+        public void AddNoteTest()
+        {
+            Page testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
+            Note testNote = testPage.Note;
+            if(testNote == null)
+            {
+                Controller.instance.AddNoteToSupplier("Test Supplier", "Test Supplier", "Test Text");
+                testPage = null;
+                Controller.instance.GetSuppliers();
+                testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
+                Assert.IsNotNull(testPage.Note);
+            }
+            else
+            {
+                Controller.instance.AddNoteToSupplier("Test Supplier", "Test Supplier", "More Test Text");
+                testPage = null;
+                testNote = null;
+                Controller.instance.GetSuppliers();
+                testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
+                testNote = testPage.Note;
+                Assert.AreEqual("More Test Text", testNote.Text);
+            }
+        }
+
+        [TestMethod]
+        public void LogoutTest()
+        {
+            Controller.instance.LogOut();
+            Assert.IsNull(Controller.instance.GetLoggedInUser());
+        }
+
+        [ClassCleanup]
+        public static void CleanupClass()
+        {
+            Controller.instance.LogIn("Test Supplier", "1");
+            Page testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
+            testPage.Description = "";
+            testPage.ContactInformation = "";
+            testPage.Note = null;
+            testPage.Location = "";
+            Controller.instance.ManageSupplerPage(testPage);
+            Controller.instance.AddNoteToSupplier("Test Supplier", "Test Supplier", "");
+            Controller.instance.LogOut();
         }
 
     }
