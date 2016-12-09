@@ -11,7 +11,5 @@ namespace Provider.domain.bulletinboard
 
         List<Post> GetPosts(PostType type);
 
-        List<Post> GetPosts(PostType type, string Supplier);
-
     }
 }

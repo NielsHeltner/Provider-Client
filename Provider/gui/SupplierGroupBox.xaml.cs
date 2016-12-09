@@ -15,13 +15,13 @@ namespace Provider.gui
     /// </summary>
     public partial class SupplierGroupBox : System.Windows.Controls.Page
     {
-        private IO.Swagger.Model.Page Page;
+        private IO.Swagger.Model.Page page;
 
-        public SupplierGroupBox(IO.Swagger.Model.Page Page)
+        public SupplierGroupBox(IO.Swagger.Model.Page page)
         {
             InitializeComponent();
             HideBorderandSetArrow();
-            this.Page = Controller.instance.GetPages().Find(p => p.Equals(Page));
+            this.page = Controller.instance.FindPage(page);
             Refresh();
 
             if (Controller.instance.GetLoggedInUser().Rights == User.RightsEnum.Provia)
@@ -67,15 +67,15 @@ namespace Provider.gui
         {
             Dispatcher.Invoke((ThreadStart)delegate
             {
-                Page = Controller.instance.GetPages().Find(p => p.Owner.Equals(Page.Owner));
-                ContactInformation.Text = Page.ContactInformation;
-                Location.Text = Page.Location;
-                Description.Text = Page.Description;
-                if (Page.Note != null)
+                page = Controller.instance.FindPageByName(page.Owner);
+                ContactInformation.Text = page.ContactInformation;
+                Location.Text = page.Location;
+                Description.Text = page.Description;
+                if (page.Note != null)
                 {
-                    noteTextBox.Text = Page.Note.Text;
-                    lastEdited.Text = ((DateTime) Page.Note.CreationDate).ToLongDateString() + ".";
-                    lastEditor.Text = Page.Note.Editor;
+                    noteTextBox.Text = page.Note.Text;
+                    lastEdited.Text = ((DateTime) page.Note.CreationDate).ToLongDateString() + ".";
+                    lastEditor.Text = page.Note.Editor;
                 }
             });
         }
@@ -98,7 +98,7 @@ namespace Provider.gui
                 editNote.Content = "Rediger notater";
                 lastEdited.Text = DateTime.Today.ToLongDateString() + ".";
                 lastEditor.Text = Controller.instance.GetLoggedInUser().Username;
-                Controller.instance.AddNoteToSupplier(Page.Owner, Controller.instance.GetLoggedInUser().Username, noteTextBox.Text);
+                Controller.instance.AddNoteToSupplier(page.Owner, Controller.instance.GetLoggedInUser().Username, noteTextBox.Text);
             }
         }
 
@@ -124,10 +124,10 @@ namespace Provider.gui
                 Location.IsReadOnly = true;
                 HideBorderandSetArrow();
                 editPage.Content = "Rediger informationer";
-                Page.Description = Description.Text;
-                Page.ContactInformation = ContactInformation.Text;
-                Page.Location = Location.Text;
-                Controller.instance.ManageSupplierPage(Page);
+                page.Description = Description.Text;
+                page.ContactInformation = ContactInformation.Text;
+                page.Location = Location.Text;
+                Controller.instance.ManageSupplierPage(page);
             }
         }
 

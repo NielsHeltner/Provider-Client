@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Provider.gui"
       mc:Ignorable="d" 
       d:DesignHeight="499" d:DesignWidth="626"
-      Title="Page">
+      Title="page">
     <Page.Resources>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF25718F"/>
         <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF2286AE"/>

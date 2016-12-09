@@ -203,7 +203,7 @@ namespace Provider.gui
 
         private void GetSupplierPage(object sender, RoutedEventArgs e)
         {
-            Frame.Content = new SupplierInformation(Controller.instance.GetPages().Find(SupplierPage => SupplierPage.Owner.Equals(Controller.instance.GetLoggedInUser().Username)));
+            Frame.Content = new SupplierInformation(Controller.instance.FindPageByName(Controller.instance.GetLoggedInUser().Username));
         }
 
         private void OnClosing(object sender, CancelEventArgs e)
