@@ -55,12 +55,12 @@
         <Button x:Name="SearchButton" Content="Søg" Grid.Column="2" HorizontalAlignment="Right" Margin="0,35,0,0" VerticalAlignment="Top" Width="76" Background="#FF0C4A63" Foreground="White" Click="Search"/>
         <Button x:Name="HomeButton" Content="Forside" HorizontalAlignment="Right" Grid.Column="0" Margin="0,35,180,0" VerticalAlignment="Top" Width="75" Click="GoToFrontpage" Background="#FF0C4A63" Foreground="White"/>
         <TextBox x:Name="SearchTermTextBox" Width="169" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,35,90,0" Height="20 " Opacity="1" KeyUp="Search" ToolTip="Begynd at skrive i søgefeltet for at søge.&#x0a;Du kan søge på enten leverandørnavne eller produktnavne."/>
-        <TextBlock x:Name="SearchText" IsHitTestVisible="False" Grid.Column="2" Text="Søg..." HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,37,90,0" Foreground="DarkGray" Opacity="1">
+        <TextBlock x:Name="SearchText" IsHitTestVisible="False" Grid.Column="2" Text="Søg..." HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,37,225,0" Foreground="DarkGray" Opacity="1">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=searchTermTextBox}" Value="">
+                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
