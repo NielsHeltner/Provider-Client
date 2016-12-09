@@ -138,7 +138,7 @@ namespace UnitTest
             testPage.ContactInformation = "";
             testPage.Note = null;
             testPage.Location = "";
-            Controller.instance.ManageSupplerPage(testPage);
+            Controller.instance.ManageSupplierPage(testPage);
             testPage = null;
             Controller.instance.GetSuppliers();
             testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
@@ -186,7 +186,7 @@ namespace UnitTest
             testPage.ContactInformation = "";
             testPage.Note = null;
             testPage.Location = "";
-            Controller.instance.ManageSupplerPage(testPage);
+            Controller.instance.ManageSupplierPage(testPage);
             Controller.instance.AddNoteToSupplier("Test Supplier", "Test Supplier", "");
             Controller.instance.LogOut();
         }
