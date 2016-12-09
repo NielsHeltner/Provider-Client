@@ -23,6 +23,26 @@
                 <TextBlock Text="{Binding }" />
             </DockPanel>
         </DataTemplate>
+
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF25718F"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF2286AE"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid Background="White">
@@ -54,7 +74,7 @@
             <Frame x:Name="frame" HorizontalAlignment="Left" Height="499" Margin="10,0,0,0" VerticalAlignment="Top" Width="626" FontFamily="Yu Gothic UI"/>
         </GroupBox>
         <Frame x:Name="productFrame" Content="Frame" HorizontalAlignment="Left" Height="555" Margin="763,14,0,0" VerticalAlignment="Top" Width="421" />
-        <Button x:Name="button" Content="Opret produkt" HorizontalAlignment="Left" Margin="775,589,0,0" VerticalAlignment="Top" Width="92" Click="CreateProduct" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle1}"/>
+        <Button x:Name="button" Content="Opret produkt" HorizontalAlignment="Left" Margin="775,589,0,0" VerticalAlignment="Top" Width="92" Click="CreateProduct" Background="#FF0C4A63" Foreground="White" Style="{DynamicResource ButtonStyle}"/>
     </Grid>
 
 

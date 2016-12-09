@@ -43,7 +43,7 @@
         <TextBlock x:Name="desriptionText" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="23,101,0,0" TextWrapping="Wrap" Text="Uddyb dit opslag her..." VerticalAlignment="Top" Foreground="DarkGray"/>
         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="20" Margin="20,291,0,0" VerticalAlignment="Top" Width="321">
             <RadioButton x:Name="WarningRB" Content="Advarsel" Margin="0, 0, 10, 0" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="TypeOfPost"/>
-            <RadioButton x:Name="requestRB" Content="Efterspørgsel" Margin="0, 0, 10, 0" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="TypeOfPost"/>
+            <RadioButton x:Name="requestRB" Content="Forespørgsel" Margin="0, 0, 10, 0" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="TypeOfPost"/>
             <RadioButton x:Name="OfferRB" Content="Tilbud" Margin="0, 0, 10, 0" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="TypeOfPost"/>
         </StackPanel>
     </Grid>
