@@ -13,6 +13,9 @@ namespace Provider.domain
         Object GetUpdateLock();
         List<Page> GetPages();
 
+        void GetPosts();
+        void GetSuppliers();
+
         void EditPost(Post post, string newDescription, string newTitle);
 
         void DeletePost(Post post);
@@ -40,8 +43,6 @@ namespace Provider.domain
         List<Post> ViewRequestPosts();
 
         List<Post> ViewOfferPosts();
-
-        List<Post> ViewOfferPosts(string Supplier);
 
         void AddNoteToSupplier(string supplierName, string editor, string text);
 

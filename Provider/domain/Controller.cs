@@ -40,7 +40,7 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.12.179:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://192.168.1.234:8080");
+            api = new ControllerApi("http://192.168.87.103:8080");
             //api = new ControllerApi("http://192.168.1.234:8080");
             Update();
         }
@@ -164,16 +164,6 @@ namespace Provider.domain
         public List<Post> ViewOfferPosts()
         {
             return bulletinboard.GetPosts(PostType.Offer);
-        }
-
-        /// <summary>
-        /// This method lists all the offer posts from a given supplier.
-        /// </summary>
-        /// <param name="Supplier"></param>
-        /// <returns> A list of offer posts from the given supplier </returns>
-        public List<Post> ViewOfferPosts(string Supplier)
-        {
-            return bulletinboard.GetPosts(PostType.Offer, Supplier);
         }
 
         /// <summary>

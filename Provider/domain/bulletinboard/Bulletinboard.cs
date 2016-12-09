@@ -17,7 +17,6 @@ namespace Provider.domain.bulletinboard
         {
             return posts.AsParallel().Where(post => post.Type == type).ToList();
         }
-
         /// <summary>
         /// Gets all post with a given post type and name of supplier. 
         /// </summary>
@@ -28,6 +27,13 @@ namespace Provider.domain.bulletinboard
         {
             return GetPosts(type).AsParallel().Where(post => post.Owner.Equals(Supplier)).ToList();
         }
-
+        /// <summary>
+        /// Lists all the posts. 
+        /// </summary>
+        /// <returns> A list of all posts</returns>
+        public List<Post> ViewAllPosts()
+        {
+            return posts;
+        }
     }
 }
