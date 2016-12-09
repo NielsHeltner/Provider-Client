@@ -20,6 +20,12 @@ namespace Provider.domain
 
         void DeletePost(Post post);
 
+        Page FindPage(Page page);
+
+        Page FindPageByName(string name);
+
+        Product FindProduct(string name, int? id);
+
         void CreatePost(string owner, string title, string description, PostType type);
 
         void DeleteProduct(Product product);

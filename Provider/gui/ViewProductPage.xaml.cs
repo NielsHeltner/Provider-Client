@@ -57,10 +57,7 @@ namespace Provider.gui
         {
             Dispatcher.Invoke((ThreadStart) delegate
             {
-                product =
-                    Controller.instance.GetPages()
-                        .Find(p => p.Owner.Equals(product.Producer))
-                        .Products.Find(prod => prod.Id.Equals(product.Id));
+                product = Controller.instance.FindProduct(product.Producer, product.Id);
                 productNameTextBox.Text = product.ProductName;
                 chemicalNameTextBox.Text = product.ChemicalName;
                 molValueTextBox.Text = product.MolWeight.Value.ToString();

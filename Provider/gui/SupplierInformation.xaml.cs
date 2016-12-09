@@ -23,8 +23,7 @@ namespace Provider.gui
         public SupplierInformation(IO.Swagger.Model.Page page)
         {
             InitializeComponent();
-            //this.page = page;
-            this.page = Controller.instance.GetPages().Find(p => p.Equals(page));
+            this.page = Controller.instance.FindPage(page);
             products = new List<Product>();
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
@@ -127,7 +126,7 @@ namespace Provider.gui
                 if (loadProductsToo)
                 {
                     ProductsListView.ItemsSource = null;
-                    ProductsListView.ItemsSource = Controller.instance.GetPages().Find(p => p.Owner.Equals(page.Owner)).Products;
+                    ProductsListView.ItemsSource = Controller.instance.FindPageByName(page.Owner).Products;
                 }
                 productFrame.Visibility = Visibility.Collapsed;
                 button.Visibility = Visibility.Visible;

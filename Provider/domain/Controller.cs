@@ -40,7 +40,7 @@ namespace Provider.domain
             //api = new ControllerApi("http://10.126.12.179:8080");
             //api = new ControllerApi("http://127.0.0.1:8080");
             //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:8080");
-            api = new ControllerApi("http://192.168.87.103:8080");
+            api = new ControllerApi("http://10.126.13.122:8080");
             //api = new ControllerApi("http://192.168.1.234:8080");
             Update();
         }
@@ -164,6 +164,21 @@ namespace Provider.domain
         public List<Post> ViewOfferPosts()
         {
             return bulletinboard.GetPosts(PostType.Offer);
+        }
+
+        public Page FindPage(Page page)
+        {
+            return GetPages().Find(p => p.Equals(page));
+        }
+
+        public Page FindPageByName(string name)
+        {
+            return GetPages().Find(p => p.Owner.Equals(name));
+        }
+
+        public Product FindProduct(string name, int? id)
+        {
+            return GetPages().Find(page => page.Owner.Equals(name)).Products.Find(product => product.Id.Equals(id));
         }
 
         /// <summary>

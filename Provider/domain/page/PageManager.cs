@@ -16,17 +16,17 @@ namespace Provider.domain.page
         /// <returns> A list with searchresults </returns>
         public List<Page> Search(string searchTerm)
         {
-            searchTerm = searchTerm.ToLower();
+            searchTerm = searchTerm.ToUpper();
             ConcurrentDictionary<Page, byte> results = new ConcurrentDictionary<Page, byte>();
             pages.AsParallel().ForAll(page =>
             {
-                if (page.Owner.ToLower().Contains(searchTerm))
+                if (page.Owner.ToUpper().Contains(searchTerm))
                 {
                     results.GetOrAdd(page, new byte());
                 }
                 page.Products.AsParallel().ForAll(product =>
                 {
-                    if (product.ProductName.ToLower().Contains(searchTerm))
+                    if (product.ProductName.ToUpper().Contains(searchTerm))
                     {
                         results.GetOrAdd(page, new byte());
                     }
