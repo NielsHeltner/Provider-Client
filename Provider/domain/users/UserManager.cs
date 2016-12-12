@@ -20,6 +20,7 @@ namespace Provider.domain.users
         /// </returns>
         public bool LogIn(string userName, string password, ControllerApi api)
         {
+            System.Diagnostics.Debug.WriteLine(GetHashedPassword("test"));
             User user = api.Validate(userName, password);
             if (user != null)
             {
@@ -37,10 +38,20 @@ namespace Provider.domain.users
             loggedInUser = null;
         }
 
-        public byte[] GetHashedPassword(string password)
+        private byte[] GetHash(string password)
         {
-            HashAlgorithm algorithm = SHA512.Create();
+            HashAlgorithm algorithm = SHA256.Create();
             return algorithm.ComputeHash(Encoding.UTF8.GetBytes(password));
+        }
+
+        public string GetHashedPassword(string password)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (byte b in GetHash(password))
+            {
+                builder.Append(b.ToString("X2"));
+            }
+            return builder.ToString();
         }
 
     }
