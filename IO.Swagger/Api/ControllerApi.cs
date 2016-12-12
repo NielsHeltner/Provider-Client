@@ -47,7 +47,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        void AddNoteToSupplier (string supplierName, string editor, string text);
+        void AddNoteToSupplier (string supplierName, string editor, byte[] text);
 
         /// <summary>
         /// Adds a note to a supplier
@@ -60,7 +60,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text);
+        ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, byte[] text);
         /// <summary>
         /// Creates a post
         /// </summary>
@@ -285,6 +285,25 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of List&lt;Page&gt;</returns>
         ApiResponse<List<Page>> GetSuppliersWithHttpInfo ();
         /// <summary>
+        /// Send the public key to a client
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>PublicKey</returns>
+        PublicKey RequestPublicKey ();
+
+        /// <summary>
+        /// Send the public key to a client
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of PublicKey</returns>
+        ApiResponse<PublicKey> RequestPublicKeyWithHttpInfo ();
+        /// <summary>
         /// Send a request to the server to get any updates
         /// </summary>
         /// <remarks>
@@ -366,7 +385,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text);
+        System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, byte[] text);
 
         /// <summary>
         /// Adds a note to a supplier
@@ -379,7 +398,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text);
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, byte[] text);
         /// <summary>
         /// Creates a post
         /// </summary>
@@ -604,6 +623,25 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse (List&lt;Page&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSuppliersAsyncWithHttpInfo ();
         /// <summary>
+        /// Send the public key to a client
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of PublicKey</returns>
+        System.Threading.Tasks.Task<PublicKey> RequestPublicKeyAsync ();
+
+        /// <summary>
+        /// Send the public key to a client
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (PublicKey)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PublicKey>> RequestPublicKeyAsyncWithHttpInfo ();
+        /// <summary>
         /// Send a request to the server to get any updates
         /// </summary>
         /// <remarks>
@@ -792,7 +830,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public void AddNoteToSupplier (string supplierName, string editor, string text)
+        public void AddNoteToSupplier (string supplierName, string editor, byte[] text)
         {
              AddNoteToSupplierWithHttpInfo(supplierName, editor, text);
         }
@@ -805,7 +843,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text)
+        public ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, byte[] text)
         {
             // verify the required parameter 'supplierName' is set
             if (supplierName == null)
@@ -875,7 +913,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text)
+        public async System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, byte[] text)
         {
              await AddNoteToSupplierAsyncWithHttpInfo(supplierName, editor, text);
 
@@ -889,7 +927,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, byte[] text)
         {
             // verify the required parameter 'supplierName' is set
             if (supplierName == null)
@@ -2527,6 +2565,139 @@ namespace IO.Swagger.Api
             return new ApiResponse<List<Page>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Page>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Page>)));
+            
+        }
+
+        /// <summary>
+        /// Send the public key to a client 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>PublicKey</returns>
+        public PublicKey RequestPublicKey ()
+        {
+             ApiResponse<PublicKey> localVarResponse = RequestPublicKeyWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send the public key to a client 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of PublicKey</returns>
+        public ApiResponse< PublicKey > RequestPublicKeyWithHttpInfo ()
+        {
+
+            var localVarPath = "/Controller/RequestPublicKey";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RequestPublicKey", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<PublicKey>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (PublicKey) Configuration.ApiClient.Deserialize(localVarResponse, typeof(PublicKey)));
+            
+        }
+
+        /// <summary>
+        /// Send the public key to a client 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of PublicKey</returns>
+        public async System.Threading.Tasks.Task<PublicKey> RequestPublicKeyAsync ()
+        {
+             ApiResponse<PublicKey> localVarResponse = await RequestPublicKeyAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Send the public key to a client 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (PublicKey)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<PublicKey>> RequestPublicKeyAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/Controller/RequestPublicKey";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/json-patch+json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RequestPublicKey", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<PublicKey>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (PublicKey) Configuration.ApiClient.Deserialize(localVarResponse, typeof(PublicKey)));
             
         }
 

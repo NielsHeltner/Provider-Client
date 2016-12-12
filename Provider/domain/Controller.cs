@@ -8,6 +8,8 @@ using Provider.domain.bulletinboard;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
+using Provider.domain.security;
+using System.Text;
 
 namespace Provider.domain
 {
@@ -18,6 +20,7 @@ namespace Provider.domain
         private IPageManager pageManager;
         private IBulletinboard bulletinboard;
         private ControllerApi api;
+        private RSA rsa;
         private Object updateLock = new Object();
 
         public static IController instance
@@ -42,7 +45,8 @@ namespace Provider.domain
             api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
             //api = new ControllerApi("http://10.126.13.122:16832");
             //api = new ControllerApi("http://192.168.1.234:8080");
-            Update();
+            //rsa = new RSA(api.RequestPublicKey());
+            //Update();
         }
 
         private void Update()
@@ -230,7 +234,13 @@ namespace Provider.domain
         /// <param name="text">The note which is being added to the supplier</param>
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
-            api.AddNoteToSupplier(supplierName, editor, text);
+            char[] charArray = text.ToCharArray();
+            byte[] bytes = new byte[charArray.Length];
+            for(int i = 0; i < charArray.Length; i++)
+            {
+                bytes[i] = Convert.ToByte(charArray[i]);
+            }
+            api.AddNoteToSupplier(supplierName, editor, rsa.Encrypt(bytes));
         }
 
         /// <summary>
