@@ -40,8 +40,6 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            //api = new ControllerApi("http://10.126.12.179:8080");
-            //api = new ControllerApi("http://127.0.0.1:8080");
             api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
             //api = new ControllerApi("http://10.126.13.122:16832");
             //api = new ControllerApi("http://192.168.1.234:8080");
@@ -76,27 +74,16 @@ namespace Provider.domain
         {
             return updateLock;
         }
-        
-        /// <summary>
-        /// Skal logge brugeren ind. Kontrollerer først med Validate() metoden, som returnerer en bruger. 
-        /// Den bruger bliver sat til loggedInUser, og så indlæses alle leverandører og opslag.
-        /// </summary>
-        /// <param name="userName">Username of the user</param>
-        /// <param name="password">Password of the user</param>
-        /// <returns> If the user gets validated the user will be set as the logged in user
-        /// and the boolean returns true. If the user is not validated, the boolean returns false. 
-        /// </returns>
+
         public bool LogIn(string userName, string password)
         {
-            User user = api.Validate(userName, password);
-            if (user != null)
+            bool validated = userManager.LogIn(userName, password, api);
+            if (validated)
             {
-                userManager.loggedInUser = user;
                 GetSuppliers();
                 GetPosts();
-                return true;
             }
-            return false;
+            return validated;
         }
 
         /// <summary>
@@ -121,7 +108,7 @@ namespace Provider.domain
         /// </summary>
         public void GetSuppliers()
         {
-            pageManager.pages = api.GetSuppliers();
+            pageManager.GetSuppliers(api);
         }
 
         public List<Page> GetPages()
@@ -135,7 +122,7 @@ namespace Provider.domain
         /// <returns> A list of all posts</returns>
         public void GetPosts()
         {
-            bulletinboard.posts = api.GetAllPosts();
+            bulletinboard.GetPosts(api);
         }
 
         public List<Post> ViewAllPosts()
@@ -194,7 +181,7 @@ namespace Provider.domain
         /// <param name="type">The type of the post</param>
         public void CreatePost(string owner, string title, string description, PostType type)
         {
-            api.CreatePost(owner, title, description, type);
+            bulletinboard.CreatePost(owner, title, description, type, api);
         }
 
         /// <summary>
@@ -203,7 +190,7 @@ namespace Provider.domain
         /// <param name="post">The post which is being deleted.</param>
         public void DeletePost(Post post)
         {
-            api.DeletePost(post);
+            bulletinboard.DeletePost(post, api);
         }
 
         /// <summary>
@@ -214,7 +201,7 @@ namespace Provider.domain
         /// <param name="newTitle"> The updated title of the post</param>
         public void EditPost(Post post, string newDescription, string newTitle)
         {
-            api.EditPost(post, newDescription, newTitle);
+            bulletinboard.EditPost(post, newDescription, newTitle, api);
         }
 
         /// <summary>
@@ -223,7 +210,7 @@ namespace Provider.domain
         /// <param name="page">The page which is being edited</param>
         public void ManageSupplierPage(Page page)
         {
-            api.UpdatePage(page.Owner, page.Description, page.Location, page.ContactInformation);
+            pageManager.ManageSupplierPage(page, api);
         }
 
         /// <summary>
@@ -241,6 +228,7 @@ namespace Provider.domain
                 bytes[i] = Convert.ToByte(charArray[i]);
             }
             api.AddNoteToSupplier(supplierName, editor, rsa.Encrypt(bytes));
+            pageManager.AddNoteToSupplier(supplierName, editor, text, api);
         }
 
         /// <summary>
@@ -270,7 +258,7 @@ namespace Provider.domain
         {
             if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                api.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
+                pageManager.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime, api);
             }
         }
         
@@ -287,7 +275,7 @@ namespace Provider.domain
         /// <param name="producer">The producer of the product</param>
         public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer)
         {
-            api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+            pageManager.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer, api);
         }
 
         /// <summary>
@@ -300,7 +288,7 @@ namespace Provider.domain
         {
             if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                api.DeleteProduct(product);
+                pageManager.DeleteProduct(product, api);
             }
         }
 

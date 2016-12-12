@@ -1,4 +1,5 @@
-﻿using IO.Swagger.Model;
+﻿using IO.Swagger.Api;
+using IO.Swagger.Model;
 
 namespace Provider.domain.users
 {
@@ -6,6 +7,8 @@ namespace Provider.domain.users
     {
 
         User loggedInUser { get; set; }
+
+        bool LogIn(string userName, string password, ControllerApi api);
 
         void LogOut();
 
