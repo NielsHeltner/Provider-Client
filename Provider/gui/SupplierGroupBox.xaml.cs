@@ -74,8 +74,8 @@ namespace Provider.gui
                 if (page.Note != null)
                 {
                     noteTextBox.Text = page.Note.Text;
-                    lastEdited.Text = ((DateTime) page.Note.CreationDate).ToLongDateString() + ".";
-                    lastEditor.Text = page.Note.Editor;
+                    lastEdited.Text = ((DateTime) page.Note.CreationDate).ToLongDateString();
+                    lastEditor.Text = page.Note.Editor + ".";
                 }
             });
         }
@@ -95,9 +95,9 @@ namespace Provider.gui
                 noteTextBox.Cursor = Cursors.Arrow;
                 noteTextBox.BorderThickness = new Thickness(0, 0, 0, 0);
                 noteTextBox.IsReadOnly = true;
-                editNote.Content = "Rediger notater";
-                lastEdited.Text = DateTime.Today.ToLongDateString() + ".";
-                lastEditor.Text = Controller.instance.GetLoggedInUser().Username;
+                editNote.Content = "Rediger note";
+                lastEdited.Text = DateTime.Today.ToLongDateString();
+                lastEditor.Text = Controller.instance.GetLoggedInUser().Username + ".";
                 Controller.instance.AddNoteToSupplier(page.Owner, Controller.instance.GetLoggedInUser().Username, noteTextBox.Text);
             }
         }

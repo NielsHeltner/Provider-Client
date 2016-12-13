@@ -21,7 +21,6 @@ namespace Provider.domain.users
         /// </returns>
         public bool LogIn(string userName, string password, ControllerApi api)
         {
-            System.Diagnostics.Debug.WriteLine(GetHashedPassword("test"));
             User user = api.Validate(userName, password);
             if (user != null)
             {
