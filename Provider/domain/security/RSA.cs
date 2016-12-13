@@ -1,6 +1,7 @@
 ﻿using IO.Swagger.Model;
 using System;
 using System.Numerics;
+using System.Text;
 
 namespace Provider.domain.security
 {
@@ -11,14 +12,27 @@ namespace Provider.domain.security
 
         public RSA(PublicKey publicKey)
         {
-            e = (BigInteger) publicKey.E;
-            n = (BigInteger) publicKey.N;
+            e = BigInteger.Parse(publicKey.E);
+            n = BigInteger.Parse(publicKey.N);
             
         }
 
-        public byte[] Encrypt(byte[] message)
-        {
-            return (BigInteger.ModPow(new BigInteger(message), e, n).ToByteArray());
+        public string Encrypt(string message)
+        {   
+            // Convert the message to a char array of the individual chars in the string
+            char[] charArray = message.ToCharArray();
+
+            // Convert the char array to its corresponding byte and put it into a byte array
+            byte[] byteArray = Encoding.UTF8.GetBytes(charArray);
+
+            // Reverses the byte array, because Java uses Big-Endian and C# uses Little-Endian
+            Array.Reverse(byteArray);
+
+            // Convert the byte array into a BigInteger to do the encrypt algorithm
+            BigInteger byteArrayAsBigInt = new BigInteger(byteArray);
+
+            // Returns the encrypted message as a string
+            return BigInteger.ModPow(byteArrayAsBigInt, e, n).ToString();
         }
         
     }

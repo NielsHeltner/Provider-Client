@@ -47,7 +47,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        void AddNoteToSupplier (string supplierName, string editor, byte[] text);
+        void AddNoteToSupplier (string supplierName, string editor, string text);
 
         /// <summary>
         /// Adds a note to a supplier
@@ -60,7 +60,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, byte[] text);
+        ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text);
         /// <summary>
         /// Creates a post
         /// </summary>
@@ -385,7 +385,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, byte[] text);
+        System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text);
 
         /// <summary>
         /// Adds a note to a supplier
@@ -398,7 +398,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, byte[] text);
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text);
         /// <summary>
         /// Creates a post
         /// </summary>
@@ -830,7 +830,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public void AddNoteToSupplier (string supplierName, string editor, byte[] text)
+        public void AddNoteToSupplier (string supplierName, string editor, string text)
         {
              AddNoteToSupplierWithHttpInfo(supplierName, editor, text);
         }
@@ -843,7 +843,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, byte[] text)
+        public ApiResponse<Object> AddNoteToSupplierWithHttpInfo (string supplierName, string editor, string text)
         {
             // verify the required parameter 'supplierName' is set
             if (supplierName == null)
@@ -913,7 +913,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, byte[] text)
+        public async System.Threading.Tasks.Task AddNoteToSupplierAsync (string supplierName, string editor, string text)
         {
              await AddNoteToSupplierAsyncWithHttpInfo(supplierName, editor, text);
 
@@ -927,7 +927,7 @@ namespace IO.Swagger.Api
         /// <param name="editor"></param>
         /// <param name="text"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, byte[] text)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddNoteToSupplierAsyncWithHttpInfo (string supplierName, string editor, string text)
         {
             // verify the required parameter 'supplierName' is set
             if (supplierName == null)

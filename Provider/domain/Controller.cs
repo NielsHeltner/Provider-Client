@@ -40,10 +40,10 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
-            //api = new ControllerApi("http://10.126.13.122:16832");
+            //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
+            api = new ControllerApi("http://192.168.1.77:16832");
             //api = new ControllerApi("http://192.168.1.234:8080");
-            //rsa = new RSA(api.RequestPublicKey());
+            rsa = new RSA(api.RequestPublicKey());
             //Update();
         }
 
@@ -221,14 +221,9 @@ namespace Provider.domain
         /// <param name="text">The note which is being added to the supplier</param>
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
-            char[] charArray = text.ToCharArray();
-            byte[] bytes = new byte[charArray.Length];
-            for(int i = 0; i < charArray.Length; i++)
-            {
-                bytes[i] = Convert.ToByte(charArray[i]);
-            }
-            api.AddNoteToSupplier(supplierName, editor, rsa.Encrypt(bytes));
-            pageManager.AddNoteToSupplier(supplierName, editor, text, api);
+            string encrypted = rsa.Encrypt(text);
+            api.AddNoteToSupplier(supplierName, editor, encrypted);
+            //pageManager.AddNoteToSupplier(supplierName, editor, text, api);
         }
 
         /// <summary>
