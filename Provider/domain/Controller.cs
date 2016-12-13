@@ -44,7 +44,7 @@ namespace Provider.domain
             api = new ControllerApi("http://192.168.1.77:16832");
             //api = new ControllerApi("http://192.168.1.234:8080");
             rsa = new RSA(api.RequestPublicKey());
-            //Update();
+            Update();
         }
 
         private void Update()
