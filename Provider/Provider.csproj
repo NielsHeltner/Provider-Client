@@ -120,7 +120,7 @@
     <Compile Include="domain\IController.cs" />
     <Compile Include="domain\page\IPageManager.cs" />
     <Compile Include="domain\page\PageManager.cs" />
-    <Compile Include="domain\security\RSA.cs" />
+    <Compile Include="domain\security2\RSA.cs" />
     <Compile Include="domain\users\IUserManager.cs" />
     <Compile Include="domain\users\UserManager.cs" />
     <Compile Include="gui\App.xaml.cs">
