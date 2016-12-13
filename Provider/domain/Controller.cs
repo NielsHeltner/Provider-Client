@@ -77,7 +77,7 @@ namespace Provider.domain
 
         public bool LogIn(string userName, string password)
         {
-            bool validated = userManager.LogIn(userName, password, api);
+            bool validated = userManager.LogIn(userName, rsa.Encrypt(password), api);
             if (validated)
             {
                 GetSuppliers();
@@ -222,8 +222,7 @@ namespace Provider.domain
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
             string encrypted = rsa.Encrypt(text);
-            api.AddNoteToSupplier(supplierName, editor, encrypted);
-            //pageManager.AddNoteToSupplier(supplierName, editor, text, api);
+            pageManager.AddNoteToSupplier(supplierName, editor, encrypted, api);
         }
 
         /// <summary>
