@@ -40,8 +40,8 @@ namespace Provider.domain
             userManager = new UserManager();
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
-            //api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
-            api = new ControllerApi("http://192.168.1.77:16832");
+            api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
+            //api = new ControllerApi("http://192.168.87.103:16832");
             //api = new ControllerApi("http://192.168.1.234:8080");
             rsa = new RSA(api.RequestPublicKey());
             Update();
