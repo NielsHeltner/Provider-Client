@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using IO.Swagger.Model;
 using Provider.domain;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace UnitTest
 {
@@ -12,13 +13,13 @@ namespace UnitTest
         [ClassInitialize]
         public static void SetUp(TestContext context)
         {
-            Controller.instance.LogIn("Test Supplier", "1");
+            Controller.instance.LogIn("Test Supplier", "123");
         }
 
         [TestMethod]
         public void LoginTest()
         {
-            bool login = Controller.instance.LogIn("Test Supplier", "1");
+            bool login = Controller.instance.LogIn("Test Supplier", "123");
             Assert.IsTrue(login);
         }
 
@@ -125,9 +126,7 @@ namespace UnitTest
         public void SearchTest()
         {
             List<Page> testPage = Controller.instance.Search("chr");
-            Assert.AreEqual(1, testPage.Count);
-
-            Assert.AreEqual("Chr. Olesen Nutrition A/S", testPage[0].Owner);
+            Assert.IsNotNull(testPage.Find(page => page.Owner.Contains("Chr")));
         }
 
         [TestMethod]
