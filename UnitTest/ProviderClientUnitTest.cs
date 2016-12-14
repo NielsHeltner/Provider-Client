@@ -154,7 +154,7 @@ namespace UnitTest
             {
                 Controller.instance.AddNoteToSupplier("Test Supplier", "Test Supplier", "Test Text");
                 testPage = null;
-                Controller.instance.GetSuppliers();
+                Controller.instance.GetSuppliers(); //update cache
                 testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
                 Assert.IsNotNull(testPage.Note);
             }
@@ -163,7 +163,7 @@ namespace UnitTest
                 Controller.instance.AddNoteToSupplier("Test Supplier", "Test Supplier", "More Test Text");
                 testPage = null;
                 testNote = null;
-                Controller.instance.GetSuppliers();
+                Controller.instance.GetSuppliers(); //update cache
                 testPage = Controller.instance.GetPages().Find(p => p.Owner.Equals("Test Supplier"));
                 testNote = testPage.Note;
                 Assert.AreEqual("More Test Text", testNote.Text);
