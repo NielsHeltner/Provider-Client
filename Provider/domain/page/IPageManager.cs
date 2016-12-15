@@ -12,19 +12,19 @@ namespace Provider.domain.page
 
         List<Page> Search(string searchTerm);
 
-        void GetSuppliers(ControllerApi api);
+        void GetSuppliers();
 
-        void ManageSupplierPage(Page page, ControllerApi api);
+        void ManageSupplierPage(Page page);
 
-        void AddNoteToSupplier(string supplierName, string editor, string text, ControllerApi api);
+        void AddNoteToSupplier(string supplierName, string editor, string text);
 
         void EditProduct(Product product, string newProductName, string newChemicalName, Double newMolWeight,
-            string newDescription, Double newPrice, string newPackaging, string newDeliveryTime, ControllerApi api);
+            string newDescription, Double newPrice, string newPackaging, string newDeliveryTime);
 
         void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price,
-            string packaging, string deliveryTime, string producer, ControllerApi api);
+            string packaging, string deliveryTime, string producer);
 
-        void DeleteProduct(Product product, ControllerApi api);
+        void DeleteProduct(Product product);
 
     }
 }

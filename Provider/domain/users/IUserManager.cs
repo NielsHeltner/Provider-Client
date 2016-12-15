@@ -8,7 +8,7 @@ namespace Provider.domain.users
 
         User loggedInUser { get; set; }
 
-        bool LogIn(string userName, string password, ControllerApi api);
+        bool LogIn(string userName, string password);
 
         void LogOut();
 

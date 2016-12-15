@@ -9,6 +9,12 @@ namespace Provider.domain.users
     public class UserManager : IUserManager
     {
         public User loggedInUser { get; set; }
+        private UsermanagerApi usermanagerApi;
+
+        public UserManager()
+        {
+            usermanagerApi = new UsermanagerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
+        }
 
         /// <summary>
         /// Skal logge brugeren ind. Kontrollerer først med Validate() metoden, som returnerer en bruger. 
@@ -19,9 +25,9 @@ namespace Provider.domain.users
         /// <returns> If the user gets validated the user will be set as the logged in user
         /// and the boolean returns true. If the user is not validated, the boolean returns false. 
         /// </returns>
-        public bool LogIn(string userName, string password, ControllerApi api)
+        public bool LogIn(string userName, string password)
         {
-            User user = api.Validate(userName, password);
+            User user = usermanagerApi.Validate(userName, password);
             if (user != null)
             {
                 loggedInUser = user;

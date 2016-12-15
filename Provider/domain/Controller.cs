@@ -108,7 +108,7 @@ namespace Provider.domain
         /// </summary>
         public void GetSuppliers()
         {
-            pageManager.GetSuppliers(api);
+            pageManager.GetSuppliers();
         }
 
         public List<Page> GetPages()
@@ -210,7 +210,7 @@ namespace Provider.domain
         /// <param name="page">The page which is being edited</param>
         public void ManageSupplierPage(Page page)
         {
-            pageManager.ManageSupplierPage(page, api);
+            pageManager.ManageSupplierPage(page);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Provider.domain
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
             string encrypted = rsa.Encrypt(text);
-            pageManager.AddNoteToSupplier(supplierName, editor, encrypted, api);
+            pageManager.AddNoteToSupplier(supplierName, editor, encrypted);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Provider.domain
         {
             if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                pageManager.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime, api);
+                pageManager.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
             }
         }
         
@@ -269,7 +269,7 @@ namespace Provider.domain
         /// <param name="producer">The producer of the product</param>
         public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer)
         {
-            pageManager.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer, api);
+            pageManager.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace Provider.domain
         {
             if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                pageManager.DeleteProduct(product, api);
+                pageManager.DeleteProduct(product);
             }
         }
 

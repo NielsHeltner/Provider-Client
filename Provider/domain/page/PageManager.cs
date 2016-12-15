@@ -10,6 +10,12 @@ namespace Provider.domain.page
     public class PageManager : IPageManager
     {
         public List<Page> pages { get; set; }
+        private PagemanagerApi pagemanagerApi;
+
+        public PageManager()
+        {
+            pagemanagerApi = new PagemanagerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
+        }
 
         /// <summary>
         /// Searches through all suppliers and products with a given search term. 
@@ -40,18 +46,18 @@ namespace Provider.domain.page
         /// <summary>
         /// Sets all the suppliers to the supplier list.
         /// </summary>
-        public void GetSuppliers(ControllerApi api)
+        public void GetSuppliers()
         {
-            pages = api.GetSuppliers();
+            pages = pagemanagerApi.GetSuppliers();
         }
 
         /// <summary>
         /// Edits the information on a supplierpage. 
         /// </summary>
         /// <param name="page">The page which is being edited</param>
-        public void ManageSupplierPage(Page page, ControllerApi api)
+        public void ManageSupplierPage(Page page)
         {
-            api.UpdatePage(page.Owner, page.Description, page.Location, page.ContactInformation);
+            pagemanagerApi.UpdatePage(page.Owner, page.Description, page.Location, page.ContactInformation);
         }
 
         /// <summary>
@@ -60,9 +66,9 @@ namespace Provider.domain.page
         /// <param name="supplierName">Name of the supplier</param>
         /// <param name="editor">Name of the person which is creating the note.</param>
         /// <param name="text">The note which is being added to the supplier</param>
-        public void AddNoteToSupplier(string supplierName, string editor, string text, ControllerApi api)
+        public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
-            api.AddNoteToSupplier(supplierName, editor, text);
+            pagemanagerApi.AddNoteToSupplier(supplierName, editor, text);
         }
 
         /// <summary>
@@ -78,9 +84,9 @@ namespace Provider.domain.page
         /// <param name="newPackaging">The new packaging of the product</param>
         /// <param name="newDeliveryTime">The new deliverytime of the product</param>
         public void EditProduct(Product product, string newProductName, string newChemicalName, Double newMolWeight,
-            string newDescription, Double newPrice, string newPackaging, string newDeliveryTime, ControllerApi api)
+            string newDescription, Double newPrice, string newPackaging, string newDeliveryTime)
         {
-            api.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
+            pagemanagerApi.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
         }
 
         /// <summary>
@@ -94,9 +100,9 @@ namespace Provider.domain.page
         /// <param name="packaging">The packaging of the product</param>
         /// <param name="deliveryTime">The deliverytime of the product</param>
         /// <param name="producer">The producer of the product</param>
-        public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer, ControllerApi api)
+        public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer)
         {
-            api.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+            pagemanagerApi.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
         }
 
         /// <summary>
@@ -105,9 +111,9 @@ namespace Provider.domain.page
         /// If the logged in user has the rights the product gets deleted.
         /// </summary>
         /// <param name="product">The product which is being deleted</param>
-        public void DeleteProduct(Product product, ControllerApi api)
+        public void DeleteProduct(Product product)
         {
-            api.DeleteProduct(product);
+            pagemanagerApi.DeleteProduct(product);
         }
 
     }
