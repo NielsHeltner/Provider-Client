@@ -9,11 +9,11 @@ namespace Provider.domain.users
     public class UserManager : IUserManager
     {
         public User loggedInUser { get; set; }
-        private UsermanagerApi usermanagerApi;
+        private UserManagerApi usermanagerApi;
 
         public UserManager()
         {
-            usermanagerApi = new UsermanagerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
+            usermanagerApi = new UserManagerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
         }
 
         /// <summary>

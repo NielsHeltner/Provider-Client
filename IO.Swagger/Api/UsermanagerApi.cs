@@ -33,7 +33,7 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IUsermanagerApi : IApiAccessor
+    public interface IUserManagerApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -90,15 +90,15 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class UsermanagerApi : IUsermanagerApi
+    public partial class UserManagerApi : IUserManagerApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UsermanagerApi"/> class.
+        /// Initializes a new instance of the <see cref="UserManagerApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public UsermanagerApi(String basePath)
+        public UserManagerApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -112,12 +112,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UsermanagerApi"/> class
+        /// Initializes a new instance of the <see cref="UserManagerApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public UsermanagerApi(Configuration configuration = null)
+        public UserManagerApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -220,12 +220,12 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'username' is set
             if (username == null)
-                throw new ApiException(400, "Missing required parameter 'username' when calling UsermanagerApi->Validate");
+                throw new ApiException(400, "Missing required parameter 'username' when calling UserManagerApi->Validate");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling UsermanagerApi->Validate");
+                throw new ApiException(400, "Missing required parameter 'password' when calling UserManagerApi->Validate");
 
-            var localVarPath = "/Usermanager/Validate";
+            var localVarPath = "/UserManager/Validate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -302,12 +302,12 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'username' is set
             if (username == null)
-                throw new ApiException(400, "Missing required parameter 'username' when calling UsermanagerApi->Validate");
+                throw new ApiException(400, "Missing required parameter 'username' when calling UserManagerApi->Validate");
             // verify the required parameter 'password' is set
             if (password == null)
-                throw new ApiException(400, "Missing required parameter 'password' when calling UsermanagerApi->Validate");
+                throw new ApiException(400, "Missing required parameter 'password' when calling UserManagerApi->Validate");
 
-            var localVarPath = "/Usermanager/Validate";
+            var localVarPath = "/UserManager/Validate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

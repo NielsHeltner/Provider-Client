@@ -33,7 +33,7 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IPagemanagerApi : IApiAccessor
+    public interface IPageManagerApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -368,15 +368,15 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class PagemanagerApi : IPagemanagerApi
+    public partial class PageManagerApi : IPageManagerApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PagemanagerApi"/> class.
+        /// Initializes a new instance of the <see cref="PageManagerApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public PagemanagerApi(String basePath)
+        public PageManagerApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -390,12 +390,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PagemanagerApi"/> class
+        /// Initializes a new instance of the <see cref="PageManagerApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public PagemanagerApi(Configuration configuration = null)
+        public PageManagerApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -499,15 +499,15 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'supplierName' is set
             if (supplierName == null)
-                throw new ApiException(400, "Missing required parameter 'supplierName' when calling PagemanagerApi->AddNoteToSupplier");
+                throw new ApiException(400, "Missing required parameter 'supplierName' when calling PageManagerApi->AddNoteToSupplier");
             // verify the required parameter 'editor' is set
             if (editor == null)
-                throw new ApiException(400, "Missing required parameter 'editor' when calling PagemanagerApi->AddNoteToSupplier");
+                throw new ApiException(400, "Missing required parameter 'editor' when calling PageManagerApi->AddNoteToSupplier");
             // verify the required parameter 'text' is set
             if (text == null)
-                throw new ApiException(400, "Missing required parameter 'text' when calling PagemanagerApi->AddNoteToSupplier");
+                throw new ApiException(400, "Missing required parameter 'text' when calling PageManagerApi->AddNoteToSupplier");
 
-            var localVarPath = "/Pagemanager/AddNoteToSupplier";
+            var localVarPath = "/PageManager/AddNoteToSupplier";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -583,15 +583,15 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'supplierName' is set
             if (supplierName == null)
-                throw new ApiException(400, "Missing required parameter 'supplierName' when calling PagemanagerApi->AddNoteToSupplier");
+                throw new ApiException(400, "Missing required parameter 'supplierName' when calling PageManagerApi->AddNoteToSupplier");
             // verify the required parameter 'editor' is set
             if (editor == null)
-                throw new ApiException(400, "Missing required parameter 'editor' when calling PagemanagerApi->AddNoteToSupplier");
+                throw new ApiException(400, "Missing required parameter 'editor' when calling PageManagerApi->AddNoteToSupplier");
             // verify the required parameter 'text' is set
             if (text == null)
-                throw new ApiException(400, "Missing required parameter 'text' when calling PagemanagerApi->AddNoteToSupplier");
+                throw new ApiException(400, "Missing required parameter 'text' when calling PageManagerApi->AddNoteToSupplier");
 
-            var localVarPath = "/Pagemanager/AddNoteToSupplier";
+            var localVarPath = "/PageManager/AddNoteToSupplier";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -677,30 +677,30 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'productName' is set
             if (productName == null)
-                throw new ApiException(400, "Missing required parameter 'productName' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'productName' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'chemicalName' is set
             if (chemicalName == null)
-                throw new ApiException(400, "Missing required parameter 'chemicalName' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'chemicalName' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'molWeight' is set
             if (molWeight == null)
-                throw new ApiException(400, "Missing required parameter 'molWeight' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'molWeight' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'description' is set
             if (description == null)
-                throw new ApiException(400, "Missing required parameter 'description' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'description' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'price' is set
             if (price == null)
-                throw new ApiException(400, "Missing required parameter 'price' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'price' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'packaging' is set
             if (packaging == null)
-                throw new ApiException(400, "Missing required parameter 'packaging' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'packaging' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'deliveryTime' is set
             if (deliveryTime == null)
-                throw new ApiException(400, "Missing required parameter 'deliveryTime' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'deliveryTime' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'producer' is set
             if (producer == null)
-                throw new ApiException(400, "Missing required parameter 'producer' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'producer' when calling PageManagerApi->CreateProduct");
 
-            var localVarPath = "/Pagemanager/CreateProduct";
+            var localVarPath = "/PageManager/CreateProduct";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -792,30 +792,30 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'productName' is set
             if (productName == null)
-                throw new ApiException(400, "Missing required parameter 'productName' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'productName' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'chemicalName' is set
             if (chemicalName == null)
-                throw new ApiException(400, "Missing required parameter 'chemicalName' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'chemicalName' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'molWeight' is set
             if (molWeight == null)
-                throw new ApiException(400, "Missing required parameter 'molWeight' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'molWeight' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'description' is set
             if (description == null)
-                throw new ApiException(400, "Missing required parameter 'description' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'description' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'price' is set
             if (price == null)
-                throw new ApiException(400, "Missing required parameter 'price' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'price' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'packaging' is set
             if (packaging == null)
-                throw new ApiException(400, "Missing required parameter 'packaging' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'packaging' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'deliveryTime' is set
             if (deliveryTime == null)
-                throw new ApiException(400, "Missing required parameter 'deliveryTime' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'deliveryTime' when calling PageManagerApi->CreateProduct");
             // verify the required parameter 'producer' is set
             if (producer == null)
-                throw new ApiException(400, "Missing required parameter 'producer' when calling PagemanagerApi->CreateProduct");
+                throw new ApiException(400, "Missing required parameter 'producer' when calling PageManagerApi->CreateProduct");
 
-            var localVarPath = "/Pagemanager/CreateProduct";
+            var localVarPath = "/PageManager/CreateProduct";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -891,9 +891,9 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'product' is set
             if (product == null)
-                throw new ApiException(400, "Missing required parameter 'product' when calling PagemanagerApi->DeleteProduct");
+                throw new ApiException(400, "Missing required parameter 'product' when calling PageManagerApi->DeleteProduct");
 
-            var localVarPath = "/Pagemanager/DeleteProduct";
+            var localVarPath = "/PageManager/DeleteProduct";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -970,9 +970,9 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'product' is set
             if (product == null)
-                throw new ApiException(400, "Missing required parameter 'product' when calling PagemanagerApi->DeleteProduct");
+                throw new ApiException(400, "Missing required parameter 'product' when calling PageManagerApi->DeleteProduct");
 
-            var localVarPath = "/Pagemanager/DeleteProduct";
+            var localVarPath = "/PageManager/DeleteProduct";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1062,30 +1062,30 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'product' is set
             if (product == null)
-                throw new ApiException(400, "Missing required parameter 'product' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'product' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newProductName' is set
             if (newProductName == null)
-                throw new ApiException(400, "Missing required parameter 'newProductName' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newProductName' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newChemicalName' is set
             if (newChemicalName == null)
-                throw new ApiException(400, "Missing required parameter 'newChemicalName' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newChemicalName' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newMolWeight' is set
             if (newMolWeight == null)
-                throw new ApiException(400, "Missing required parameter 'newMolWeight' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newMolWeight' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newDescription' is set
             if (newDescription == null)
-                throw new ApiException(400, "Missing required parameter 'newDescription' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newDescription' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newPrice' is set
             if (newPrice == null)
-                throw new ApiException(400, "Missing required parameter 'newPrice' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newPrice' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newPackaging' is set
             if (newPackaging == null)
-                throw new ApiException(400, "Missing required parameter 'newPackaging' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newPackaging' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newDeliveryTime' is set
             if (newDeliveryTime == null)
-                throw new ApiException(400, "Missing required parameter 'newDeliveryTime' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newDeliveryTime' when calling PageManagerApi->EditProduct");
 
-            var localVarPath = "/Pagemanager/EditProduct";
+            var localVarPath = "/PageManager/EditProduct";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1183,30 +1183,30 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'product' is set
             if (product == null)
-                throw new ApiException(400, "Missing required parameter 'product' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'product' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newProductName' is set
             if (newProductName == null)
-                throw new ApiException(400, "Missing required parameter 'newProductName' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newProductName' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newChemicalName' is set
             if (newChemicalName == null)
-                throw new ApiException(400, "Missing required parameter 'newChemicalName' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newChemicalName' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newMolWeight' is set
             if (newMolWeight == null)
-                throw new ApiException(400, "Missing required parameter 'newMolWeight' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newMolWeight' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newDescription' is set
             if (newDescription == null)
-                throw new ApiException(400, "Missing required parameter 'newDescription' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newDescription' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newPrice' is set
             if (newPrice == null)
-                throw new ApiException(400, "Missing required parameter 'newPrice' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newPrice' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newPackaging' is set
             if (newPackaging == null)
-                throw new ApiException(400, "Missing required parameter 'newPackaging' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newPackaging' when calling PageManagerApi->EditProduct");
             // verify the required parameter 'newDeliveryTime' is set
             if (newDeliveryTime == null)
-                throw new ApiException(400, "Missing required parameter 'newDeliveryTime' when calling PagemanagerApi->EditProduct");
+                throw new ApiException(400, "Missing required parameter 'newDeliveryTime' when calling PageManagerApi->EditProduct");
 
-            var localVarPath = "/Pagemanager/EditProduct";
+            var localVarPath = "/PageManager/EditProduct";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1287,7 +1287,7 @@ namespace IO.Swagger.Api
         public ApiResponse< List<Page> > GetSuppliersWithHttpInfo ()
         {
 
-            var localVarPath = "/Pagemanager/GetSuppliers";
+            var localVarPath = "/PageManager/GetSuppliers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1354,7 +1354,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<List<Page>>> GetSuppliersAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/Pagemanager/GetSuppliers";
+            var localVarPath = "/PageManager/GetSuppliers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1428,18 +1428,18 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'page' is set
             if (page == null)
-                throw new ApiException(400, "Missing required parameter 'page' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'page' when calling PageManagerApi->UpdatePage");
             // verify the required parameter 'description' is set
             if (description == null)
-                throw new ApiException(400, "Missing required parameter 'description' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'description' when calling PageManagerApi->UpdatePage");
             // verify the required parameter 'location' is set
             if (location == null)
-                throw new ApiException(400, "Missing required parameter 'location' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'location' when calling PageManagerApi->UpdatePage");
             // verify the required parameter 'contactInformation' is set
             if (contactInformation == null)
-                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling PageManagerApi->UpdatePage");
 
-            var localVarPath = "/Pagemanager/UpdatePage";
+            var localVarPath = "/PageManager/UpdatePage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1518,18 +1518,18 @@ namespace IO.Swagger.Api
         {
             // verify the required parameter 'page' is set
             if (page == null)
-                throw new ApiException(400, "Missing required parameter 'page' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'page' when calling PageManagerApi->UpdatePage");
             // verify the required parameter 'description' is set
             if (description == null)
-                throw new ApiException(400, "Missing required parameter 'description' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'description' when calling PageManagerApi->UpdatePage");
             // verify the required parameter 'location' is set
             if (location == null)
-                throw new ApiException(400, "Missing required parameter 'location' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'location' when calling PageManagerApi->UpdatePage");
             // verify the required parameter 'contactInformation' is set
             if (contactInformation == null)
-                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling PagemanagerApi->UpdatePage");
+                throw new ApiException(400, "Missing required parameter 'contactInformation' when calling PageManagerApi->UpdatePage");
 
-            var localVarPath = "/Pagemanager/UpdatePage";
+            var localVarPath = "/PageManager/UpdatePage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

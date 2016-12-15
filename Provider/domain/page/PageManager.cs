@@ -10,11 +10,11 @@ namespace Provider.domain.page
     public class PageManager : IPageManager
     {
         public List<Page> pages { get; set; }
-        private PagemanagerApi pagemanagerApi;
+        private PageManagerApi pagemanagerApi;
 
         public PageManager()
         {
-            pagemanagerApi = new PagemanagerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
+            pagemanagerApi = new PageManagerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
         }
 
         /// <summary>
