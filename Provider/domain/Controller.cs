@@ -77,7 +77,7 @@ namespace Provider.domain
 
         public bool LogIn(string userName, string password)
         {
-            bool validated = userManager.LogIn(userName, rsa.Encrypt(password), api);
+            bool validated = userManager.LogIn(userName, rsa.Encrypt(password));
             if (validated)
             {
                 GetSuppliers();
@@ -122,7 +122,7 @@ namespace Provider.domain
         /// <returns> A list of all posts</returns>
         public void GetPosts()
         {
-            bulletinboard.GetPosts(api);
+            bulletinboard.GetPosts();
         }
 
         public List<Post> ViewAllPosts()
@@ -181,7 +181,7 @@ namespace Provider.domain
         /// <param name="type">The type of the post</param>
         public void CreatePost(string owner, string title, string description, PostType type)
         {
-            bulletinboard.CreatePost(owner, title, description, type, api);
+            bulletinboard.CreatePost(owner, title, description, type);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Provider.domain
         /// <param name="post">The post which is being deleted.</param>
         public void DeletePost(Post post)
         {
-            bulletinboard.DeletePost(post, api);
+            bulletinboard.DeletePost(post);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Provider.domain
         /// <param name="newTitle"> The updated title of the post</param>
         public void EditPost(Post post, string newDescription, string newTitle)
         {
-            bulletinboard.EditPost(post, newDescription, newTitle, api);
+            bulletinboard.EditPost(post, newDescription, newTitle);
         }
 
         /// <summary>
