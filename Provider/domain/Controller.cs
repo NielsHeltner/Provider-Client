@@ -61,7 +61,7 @@ namespace Provider.domain
                         }
                     }
                 }
-                catch (ApiException)
+                catch (ApiException) //fanger timeout
                 {
                     Update();
                 }
