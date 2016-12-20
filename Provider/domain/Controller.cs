@@ -219,8 +219,10 @@ namespace Provider.domain
         /// <param name="text">The note which is being added to the supplier</param>
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
-            string encrypted = rsa.Encrypt(text);
-            pageManager.AddNoteToSupplier(supplierName, editor, encrypted);
+            if (text.Length != 0) { 
+                text = rsa.Encrypt(text);
+            }
+            pageManager.AddNoteToSupplier(supplierName, editor, text);
         }
 
         /// <summary>
