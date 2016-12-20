@@ -41,8 +41,6 @@ namespace Provider.domain
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
             api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
-            //api = new ControllerApi("http://192.168.87.103:16832");
-            //api = new ControllerApi("http://192.168.1.234:8080");
             rsa = new RSA(api.RequestPublicKey());
             Update();
         }
@@ -63,7 +61,7 @@ namespace Provider.domain
                         }
                     }
                 }
-                catch (ApiException)
+                catch (ApiException) //fanger timeout
                 {
                     Update();
                 }
@@ -221,8 +219,10 @@ namespace Provider.domain
         /// <param name="text">The note which is being added to the supplier</param>
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
-            string encrypted = rsa.Encrypt(text);
-            pageManager.AddNoteToSupplier(supplierName, editor, encrypted);
+            if (text.Length != 0) { 
+                text = rsa.Encrypt(text);
+            }
+            pageManager.AddNoteToSupplier(supplierName, editor, text);
         }
 
         /// <summary>

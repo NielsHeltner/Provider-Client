@@ -58,14 +58,17 @@ namespace Provider.gui
             Dispatcher.Invoke((ThreadStart) delegate
             {
                 product = Controller.instance.FindProduct(product.Producer, product.Id);
-                productNameTextBox.Text = product.ProductName;
-                chemicalNameTextBox.Text = product.ChemicalName;
-                molValueTextBox.Text = product.MolWeight.Value.ToString();
-                priceTextBox.Text = product.Price.Value.ToString();
-                packetingTextBox.Text = product.Packaging;
-                deliveryTimeTextBox.Text = product.DeliveryTime;
-                descriptionTextBox.Text = product.Description;
-                producerNameTextBox.Text = product.Producer;
+                if (product != null)
+                {
+                    productNameTextBox.Text = product.ProductName;
+                    chemicalNameTextBox.Text = product.ChemicalName;
+                    molValueTextBox.Text = product.MolWeight.Value.ToString();
+                    priceTextBox.Text = product.Price.Value.ToString();
+                    packetingTextBox.Text = product.Packaging;
+                    deliveryTimeTextBox.Text = product.DeliveryTime;
+                    descriptionTextBox.Text = product.Description;
+                    producerNameTextBox.Text = product.Producer;
+                }
             });
         }
 
