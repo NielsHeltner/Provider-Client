@@ -36,9 +36,5 @@ namespace Provider.gui
             frame.Content = new CreateNewProductPage(supplierPage);
         }
 
-        private void frame_Navigated(object sender, NavigationEventArgs e)
-        {
-
-        }
     }
 }

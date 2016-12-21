@@ -10,6 +10,7 @@ using IO.Swagger.Client;
 using IO.Swagger.Model;
 using Provider.domain.security;
 using System.Text;
+using System.Windows;
 
 namespace Provider.domain
 {
@@ -21,7 +22,7 @@ namespace Provider.domain
         private IBulletinboard bulletinboard;
         private ControllerApi api;
         private RSA rsa;
-        private Object updateLock = new Object();
+        private readonly Object updateLock = new Object();
 
         public static IController instance
         {

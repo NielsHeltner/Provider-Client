@@ -57,7 +57,10 @@ namespace Provider.gui
         {
             Dispatcher.Invoke((ThreadStart) delegate
             {
-                product = Controller.instance.FindProduct(product.Producer, product.Id);
+                if (product != null)
+                {
+                    product = Controller.instance.FindProduct(product.Producer, product.Id);
+                }
                 if (product != null)
                 {
                     productNameTextBox.Text = product.ProductName;
@@ -74,7 +77,7 @@ namespace Provider.gui
 
         private void BackToListView(object sender, RoutedEventArgs e)
         {
-            supplierInformationPage.Reloadpage(false);
+            supplierInformationPage.Reloadpage();
         }
 
         private void OpenPDFButton(object sender, RoutedEventArgs e)
@@ -100,49 +103,49 @@ namespace Provider.gui
                 productNameTextBox.IsUndoEnabled = true;
                 productNameTextBox.Cursor = Cursors.IBeam;
                 productNameTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
-                productNameTextBox.ToolTip = "Write the name of your product";
+                productNameTextBox.ToolTip = "Produktets navn";
                 chemicalNameTextBox.Background = null;
                 chemicalNameTextBox.IsReadOnly = false;
                 chemicalNameTextBox.AcceptsReturn = true;
                 chemicalNameTextBox.IsUndoEnabled = true;
                 chemicalNameTextBox.Cursor = Cursors.IBeam;
                 chemicalNameTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
-                chemicalNameTextBox.ToolTip = "Write the chemicalname of your product";
+                chemicalNameTextBox.ToolTip = "Produktets kemiske navn";
                 molValueTextBox.Background = null;
                 molValueTextBox.IsReadOnly = false;
                 molValueTextBox.AcceptsReturn = true;
                 molValueTextBox.IsUndoEnabled = true;
                 molValueTextBox.Cursor = Cursors.IBeam;
                 molValueTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
-                molValueTextBox.ToolTip = "Write the MOL value of your product";
+                molValueTextBox.ToolTip = "Produktets molvægt";
                 priceTextBox.Background = null;
                 priceTextBox.IsReadOnly = false;
                 priceTextBox.AcceptsReturn = true;
                 priceTextBox.IsUndoEnabled = true;
                 priceTextBox.Cursor = Cursors.IBeam;
                 priceTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
-                priceTextBox.ToolTip = "Write the price of your product";
+                priceTextBox.ToolTip = "Produktets pris";
                 packetingTextBox.Background = null;
                 packetingTextBox.IsReadOnly = false;
                 packetingTextBox.AcceptsReturn = true;
                 packetingTextBox.IsUndoEnabled = true;
                 packetingTextBox.Cursor = Cursors.IBeam;
                 packetingTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
-                packetingTextBox.ToolTip = "Write what package your product will be send in";
+                packetingTextBox.ToolTip = "Produktets emballage";
                 descriptionTextBox.Background = null;
                 descriptionTextBox.IsReadOnly = false;
                 descriptionTextBox.AcceptsReturn = true;
                 descriptionTextBox.IsUndoEnabled = true;
                 descriptionTextBox.Cursor = Cursors.IBeam;
                 descriptionTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
-                descriptionTextBox.ToolTip = "Write the description of your product";
+                descriptionTextBox.ToolTip = "Produktets beskrivelse";
                 deliveryTimeTextBox.Background = null;
                 deliveryTimeTextBox.IsReadOnly = false;
                 deliveryTimeTextBox.AcceptsReturn = true;
                 deliveryTimeTextBox.IsUndoEnabled = true;
                 deliveryTimeTextBox.Cursor = Cursors.IBeam;
                 deliveryTimeTextBox.BorderThickness = new Thickness(1, 1, 1, 1);
-                deliveryTimeTextBox.ToolTip = "Write the expected delivertytime of your product";
+                deliveryTimeTextBox.ToolTip = "Produktets forventede leveringstid";
                 editProduct.Content = "Gem";
             }
             else
@@ -150,22 +153,11 @@ namespace Provider.gui
                 try
                 {
                     wrongInput.Visibility = Visibility.Hidden;
+                    HideButtons();
+                    editProduct.Content = "Redigér";
                     Controller.instance.EditProduct(product, productNameTextBox.Text, chemicalNameTextBox.Text,
                         Double.Parse(molValueTextBox.Text), descriptionTextBox.Text, Double.Parse(priceTextBox.Text), packetingTextBox.Text,
                         deliveryTimeTextBox.Text);
-                    product.ProductName = productNameTextBox.Text;
-                    product.ChemicalName = chemicalNameTextBox.Text;
-                    product.MolWeight = Double.Parse(molValueTextBox.Text);
-                    product.Description = descriptionTextBox.Text;
-                    product.Price = Double.Parse(priceTextBox.Text);
-                    product.Packaging = packetingTextBox.Text;
-                    product.DeliveryTime = deliveryTimeTextBox.Text;
-                    HideButtons();
-                    editProduct.Content = "Redigér";
-
-                    savedPostTextBlock.Visibility = Visibility.Visible;
-                    savedPostTextBlock.BeginAnimation(OpacityProperty,
-                        new DoubleAnimation(1, 0, new TimeSpan(0, 0, 0, 0, 1000), FillBehavior.HoldEnd));
                 }
                 catch (FormatException)
                 {
@@ -219,7 +211,6 @@ namespace Provider.gui
             if (confirmation == MessageBoxResult.Yes)
             {
                 Controller.instance.DeleteProduct(product);
-                supplierInformationPage.Reloadpage(true);
             }
         }
 
