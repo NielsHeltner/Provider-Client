@@ -10,6 +10,7 @@ using IO.Swagger.Client;
 using IO.Swagger.Model;
 using Provider.domain.security;
 using System.Text;
+using System.Windows;
 
 namespace Provider.domain
 {
@@ -21,7 +22,7 @@ namespace Provider.domain
         private IBulletinboard bulletinboard;
         private ControllerApi api;
         private RSA rsa;
-        private Object updateLock = new Object();
+        private readonly Object updateLock = new Object();
 
         public static IController instance
         {
@@ -41,10 +42,8 @@ namespace Provider.domain
             pageManager = new PageManager();
             bulletinboard = new Bulletinboard();
             api = new ControllerApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
-            //api = new ControllerApi("http://10.126.13.122:16832");
-            //api = new ControllerApi("http://192.168.1.234:8080");
-            //rsa = new RSA(api.RequestPublicKey());
-            //Update();
+            rsa = new RSA(api.RequestPublicKey());
+            Update();
         }
 
         private void Update()
@@ -63,7 +62,7 @@ namespace Provider.domain
                         }
                     }
                 }
-                catch (ApiException)
+                catch (ApiException) //fanger timeout
                 {
                     Update();
                 }
@@ -77,7 +76,7 @@ namespace Provider.domain
 
         public bool LogIn(string userName, string password)
         {
-            bool validated = userManager.LogIn(userName, password, api);
+            bool validated = userManager.LogIn(userName, rsa.Encrypt(password));
             if (validated)
             {
                 GetSuppliers();
@@ -108,7 +107,7 @@ namespace Provider.domain
         /// </summary>
         public void GetSuppliers()
         {
-            pageManager.GetSuppliers(api);
+            pageManager.GetSuppliers();
         }
 
         public List<Page> GetPages()
@@ -122,7 +121,7 @@ namespace Provider.domain
         /// <returns> A list of all posts</returns>
         public void GetPosts()
         {
-            bulletinboard.GetPosts(api);
+            bulletinboard.GetPosts();
         }
 
         public List<Post> ViewAllPosts()
@@ -181,7 +180,7 @@ namespace Provider.domain
         /// <param name="type">The type of the post</param>
         public void CreatePost(string owner, string title, string description, PostType type)
         {
-            bulletinboard.CreatePost(owner, title, description, type, api);
+            bulletinboard.CreatePost(owner, title, description, type);
         }
 
         /// <summary>
@@ -190,7 +189,7 @@ namespace Provider.domain
         /// <param name="post">The post which is being deleted.</param>
         public void DeletePost(Post post)
         {
-            bulletinboard.DeletePost(post, api);
+            bulletinboard.DeletePost(post);
         }
 
         /// <summary>
@@ -201,7 +200,7 @@ namespace Provider.domain
         /// <param name="newTitle"> The updated title of the post</param>
         public void EditPost(Post post, string newDescription, string newTitle)
         {
-            bulletinboard.EditPost(post, newDescription, newTitle, api);
+            bulletinboard.EditPost(post, newDescription, newTitle);
         }
 
         /// <summary>
@@ -210,7 +209,7 @@ namespace Provider.domain
         /// <param name="page">The page which is being edited</param>
         public void ManageSupplierPage(Page page)
         {
-            pageManager.ManageSupplierPage(page, api);
+            pageManager.ManageSupplierPage(page);
         }
 
         /// <summary>
@@ -221,14 +220,10 @@ namespace Provider.domain
         /// <param name="text">The note which is being added to the supplier</param>
         public void AddNoteToSupplier(string supplierName, string editor, string text)
         {
-            char[] charArray = text.ToCharArray();
-            byte[] bytes = new byte[charArray.Length];
-            for(int i = 0; i < charArray.Length; i++)
-            {
-                bytes[i] = Convert.ToByte(charArray[i]);
+            if (text.Length != 0) { 
+                text = rsa.Encrypt(text);
             }
-            api.AddNoteToSupplier(supplierName, editor, rsa.Encrypt(bytes));
-            pageManager.AddNoteToSupplier(supplierName, editor, text, api);
+            pageManager.AddNoteToSupplier(supplierName, editor, text);
         }
 
         /// <summary>
@@ -258,7 +253,7 @@ namespace Provider.domain
         {
             if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                pageManager.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime, api);
+                pageManager.EditProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
             }
         }
         
@@ -275,7 +270,7 @@ namespace Provider.domain
         /// <param name="producer">The producer of the product</param>
         public void CreateProduct(string productName, string chemicalName, Double molWeight, string description, Double price, string packaging, string deliveryTime, string producer)
         {
-            pageManager.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer, api);
+            pageManager.CreateProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
         }
 
         /// <summary>
@@ -288,7 +283,7 @@ namespace Provider.domain
         {
             if (GetLoggedInUser().Username.Equals(product.Producer) || GetLoggedInUser().Rights == User.RightsEnum.Admin)
             {
-                pageManager.DeleteProduct(product, api);
+                pageManager.DeleteProduct(product);
             }
         }
 

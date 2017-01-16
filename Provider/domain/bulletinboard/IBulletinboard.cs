@@ -12,13 +12,13 @@ namespace Provider.domain.bulletinboard
 
         List<Post> GetPosts(PostType type);
 
-        void GetPosts(ControllerApi api);
+        void GetPosts();
 
-        void CreatePost(string owner, string title, string description, PostType type, ControllerApi api);
+        void CreatePost(string owner, string title, string description, PostType type);
 
-        void DeletePost(Post post, ControllerApi api);
+        void DeletePost(Post post);
 
-        void EditPost(Post post, string newDescription, string newTitle, ControllerApi api);
+        void EditPost(Post post, string newDescription, string newTitle);
 
     }
 }

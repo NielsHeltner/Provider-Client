@@ -64,7 +64,7 @@
             </Style.Triggers>
         </Style>
         <Style TargetType="{x:Type ListViewItem}">
-            <EventSetter Event="Control.MouseDoubleClick" Handler="ViewSupplierInformation"/>
+            <EventSetter Event="Control.MouseLeftButtonUp" Handler="ViewSupplierInformation"/>
             <Setter Property="Height" Value="50"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="0"/>

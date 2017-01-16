@@ -10,7 +10,7 @@
 
     <Grid Width="421" Height="550" Background="White">
         <GroupBox x:Name="groupBox" Header="Produkt Information" HorizontalAlignment="Left" VerticalAlignment="Top" Height="540" Width="421">
-            <Frame x:Name="frame" Content="Frame" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="411" Margin="0,0,-2,-2" Navigated="frame_Navigated"/>
+            <Frame x:Name="frame" Content="Frame" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="411" Margin="0,0,-2,-2"/>
         </GroupBox>
 
     </Grid>

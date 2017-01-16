@@ -8,6 +8,12 @@ namespace Provider.domain.bulletinboard
     public class Bulletinboard : IBulletinboard
     {
         public List<Post> posts { get; set; }
+        private BulletinboardApi bulletinboardApi;
+
+        public Bulletinboard()
+        {
+            bulletinboardApi = new BulletinboardApi("http://tek-sb3-glo0a.tek.sdu.dk:16832");
+        }
 
         /// <summary>
         /// Gets all post with a given post type. 
@@ -23,9 +29,9 @@ namespace Provider.domain.bulletinboard
         /// This method lists all the posts on the bulletinboard. 
         /// </summary>
         /// <returns> A list of all posts</returns>
-        public void GetPosts(ControllerApi api)
+        public void GetPosts()
         {
-            posts = api.GetAllPosts();
+            posts = bulletinboardApi.GetAllPosts();
         }
 
         /// <summary>
@@ -35,18 +41,18 @@ namespace Provider.domain.bulletinboard
         /// <param name="title"> The title of the post</param>
         /// <param name="description"> The description of the post</param>
         /// <param name="type">The type of the post</param>
-        public void CreatePost(string owner, string title, string description, PostType type, ControllerApi api)
+        public void CreatePost(string owner, string title, string description, PostType type)
         {
-            api.CreatePost(owner, title, description, type);
+            bulletinboardApi.CreatePost(owner, title, description, type);
         }
 
         /// <summary>
         /// Deletes a post and removes it from the bulletinboard.
         /// </summary>
         /// <param name="post">The post which is being deleted.</param>
-        public void DeletePost(Post post, ControllerApi api)
+        public void DeletePost(Post post)
         {
-            api.DeletePost(post);
+            bulletinboardApi.DeletePost(post);
         }
 
         /// <summary>
@@ -55,9 +61,9 @@ namespace Provider.domain.bulletinboard
         /// <param name="post">The post which is being edited</param>
         /// <param name="newDescription"> The updated description of the post</param>
         /// <param name="newTitle"> The updated title of the post</param>
-        public void EditPost(Post post, string newDescription, string newTitle, ControllerApi api)
+        public void EditPost(Post post, string newDescription, string newTitle)
         {
-            api.EditPost(post, newDescription, newTitle);
+            bulletinboardApi.EditPost(post, newDescription, newTitle);
         }
 
     }

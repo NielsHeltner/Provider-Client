@@ -10,7 +10,8 @@ namespace Provider.gui
     /// </summary>
     public partial class CreateNewProductPage : Page
     {
-        SupplierInformation viewSupplierInformation;
+        private SupplierInformation viewSupplierInformation;
+
         public CreateNewProductPage(SupplierInformation viewSupplierInformation)
         {
             InitializeComponent();
@@ -23,8 +24,10 @@ namespace Provider.gui
         {
             try
             {
-                Controller.instance.CreateProduct(ProductName.Text, ProductChemName.Text, Double.Parse(ProductDensity.Text), ProductDescription.Text, Double.Parse(ProductPrice.Text), ProductPackaging.Text, ProductDeliveryTime.Text, OwnerTextBlock.Text);
-                viewSupplierInformation.Reloadpage(true);
+                Controller.instance.CreateProduct(ProductName.Text, ProductChemName.Text, 
+                    Double.Parse(ProductDensity.Text), ProductDescription.Text, 
+                    Double.Parse(ProductPrice.Text), ProductPackaging.Text, 
+                    ProductDeliveryTime.Text, OwnerTextBlock.Text);
             }
             catch (FormatException)
             {

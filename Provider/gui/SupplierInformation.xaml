@@ -8,8 +8,8 @@
       d:DesignHeight="659" d:DesignWidth="1275"
       Title="Page">
     <Page.Resources>
-        <Style TargetType="{x:Type ListView}" >
-            <EventSetter Event="MouseDoubleClick" Handler="GoToProduct"/>
+        <Style TargetType="{x:Type ListViewItem}">
+            <EventSetter Event="MouseLeftButtonUp" Handler="GoToProduct"/>
         </Style>
         <DataTemplate x:Key="HeaderTemplateArrowUp">
             <DockPanel LastChildFill="True" Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GridViewColumnHeader}}}">

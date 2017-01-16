@@ -81,7 +81,7 @@
         </Style>
 
         <Style TargetType="{x:Type ListViewItem}">
-            <EventSetter Event="MouseDoubleClick" Handler="ViewPostInformation"/>
+            <EventSetter Event="MouseLeftButtonUp" Handler="ViewPostInformation"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Margin" Value="0"/>

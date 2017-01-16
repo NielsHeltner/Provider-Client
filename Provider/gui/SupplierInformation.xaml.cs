@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -18,17 +17,14 @@ namespace Provider.gui
     {
         private GridViewColumnHeader lastHeaderClicked;
         private ListSortDirection lastDirection = ListSortDirection.Descending;
-        private List<IO.Swagger.Model.Product> products;
         private IO.Swagger.Model.Page page;
         public SupplierInformation(IO.Swagger.Model.Page page)
         {
             InitializeComponent();
             this.page = Controller.instance.FindPage(page);
-            products = new List<Product>();
             groupBox.Header = page.Owner;
             frame.Content = new SupplierGroupBox(page);
-            products = page.Products;
-            ProductsListView.ItemsSource = products;
+            ProductsListView.ItemsSource = page.Products;
             productFrame.Visibility = Visibility.Collapsed;
             Update();
         }
@@ -42,7 +38,7 @@ namespace Provider.gui
                     lock (Controller.instance.GetUpdateLock())
                     {
                         Monitor.Wait(Controller.instance.GetUpdateLock());
-                        Reloadpage(true);
+                        Reloadpage();
                     }
                 }
             }).Start();
@@ -119,15 +115,12 @@ namespace Provider.gui
             productFrame.Content = new ViewProductGBPage((Product)ProductsListView.SelectedItem, this);
         }
 
-        public void Reloadpage(bool loadProductsToo)
+        public void Reloadpage()
         {
-            Dispatcher.BeginInvoke((ThreadStart) delegate
+            Dispatcher.Invoke((ThreadStart) delegate
             {
-                if (loadProductsToo)
-                {
-                    ProductsListView.ItemsSource = null;
-                    ProductsListView.ItemsSource = Controller.instance.FindPageByName(page.Owner).Products;
-                }
+                ProductsListView.ItemsSource = null;
+                ProductsListView.ItemsSource = Controller.instance.FindPageByName(page.Owner).Products;
                 productFrame.Visibility = Visibility.Collapsed;
                 button.Visibility = Visibility.Visible;
             });
