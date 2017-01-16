@@ -46,7 +46,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="N">N.</param>
         /// <param name="E">E.</param>
-        public PublicKey(decimal? N = null, decimal? E = null)
+        public PublicKey(string N = null, string E = null)
         {
             this.N = N;
             this.E = E;
@@ -56,12 +56,12 @@ namespace IO.Swagger.Model
         /// Gets or Sets N
         /// </summary>
         [DataMember(Name="n", EmitDefaultValue=false)]
-        public decimal? N { get; set; }
+        public string N { get; set; }
         /// <summary>
         /// Gets or Sets E
         /// </summary>
         [DataMember(Name="e", EmitDefaultValue=false)]
-        public decimal? E { get; set; }
+        public string E { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
